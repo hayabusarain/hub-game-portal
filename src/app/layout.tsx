@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "HUB-GAME | 総合ゲーム攻略ポータル",
   description: "競技ゲーマーのための最強の戦略、ティアリスト、総合攻略ハブポータル。ワイルドリフトやその他の最新ゲーム攻略情報を網羅。",
+  other: {
+    'google-adsense-account': 'ca-pub-7201202773518258',
+  },
 };
 
 export default function RootLayout({
