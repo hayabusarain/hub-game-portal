@@ -23,7 +23,7 @@ export default function ContactPage() {
         </p>
 
         <a 
-          href="https://twitter.com/WildRiftHub_" 
+          href="https://x.com/hub_gamecom" 
           target="_blank" 
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center gap-3 w-full bg-white text-black font-bold py-4 px-6 rounded-2xl hover:bg-zinc-200 transition-colors"
@@ -32,7 +32,7 @@ export default function ContactPage() {
           <svg viewBox="0 0 24 24" aria-hidden="true" className="w-5 h-5 fill-current">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.005 3.869H5.078z"></path>
           </svg>
-          @WildRiftHub_ へ DMを送る
+          @hub_gamecom へ DMを送る
         </a>
 
         <p className="mt-8 text-xs text-zinc-500">
