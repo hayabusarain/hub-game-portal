@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl';
-import Image from "next/image";
+
 import { Link } from "@/i18n/routing";
 import { ChevronRight, Gamepad2, ArrowRight } from "lucide-react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
