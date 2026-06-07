@@ -1,0 +1,59 @@
+{
+  "Home": {
+    "title": "HUB-GAME",
+    "description": "We deliver the latest tier lists, builds, patch notes, and other useful data for game strategies.",
+    "wildRiftTitle": "Wild Rift",
+    "wildRiftDesc": "A complete strategy database covering the latest patch tier lists, champion guides, item builds, and more.",
+    "comingSoonTitle": "New Project",
+    "comingSoonDesc": "We are currently developing strategy sites for new games.\nPlease stay tuned for further updates.",
+    "disclaimerText": "This site is an unofficial fan site and is not affiliated with Riot Games or any other publisher in any way."
+  },
+  "Terms": {
+    "title": "Terms of Service",
+    "introTitle": "1. Introduction",
+    "introText": "These Terms of Service (hereinafter referred to as \"Terms\") establish the conditions for using the services (hereinafter referred to as \"Service\") provided by \"HUB-GAME\" (hereinafter referred to as \"Site\"). Users must use the Service in accordance with these Terms.",
+    "copyrightTitle": "2. Copyrights",
+    "copyrightText": "Copyrights regarding the information (text, images, data, etc.) posted on this Site belong to this Site or their respective rights holders. Unauthorized use, reproduction, or reprinting beyond the scope of personal use is prohibited.",
+    "copyrightNote": "* Copyrights for game images and characters belong to Riot Games and their respective publishers.",
+    "prohibitionsTitle": "3. Prohibited Acts",
+    "prohibitionsText": "When using this Site, users must not engage in the following acts:",
+    "prohibitionsList": [
+      "Acts that violate laws or public order and morals",
+      "Acts related to criminal activities",
+      "Acts that destroy or interfere with the functionality of the servers or networks of this Site, other users, or third parties",
+      "Acts that may interfere with the operation of this Site's services"
+    ],
+    "modificationsTitle": "4. Modification of Terms",
+    "modificationsText": "This Site reserves the right to change these Terms at any time without notifying users if deemed necessary."
+  },
+  "Privacy": {
+    "title": "Privacy Policy",
+    "collectionTitle": "1. Collection of Personal Information",
+    "collectionText": "This Site may collect personal information such as the user's name and email address in the process of responding to inquiries or providing services. This personal information will be appropriately managed and will not be used for any other purposes.",
+    "analyticsTitle": "2. About Access Analytics Tools",
+    "analyticsText": "This Site uses the access analytics tool \"Google Analytics\" provided by Google. Google Analytics uses cookies to collect traffic data. This traffic data is collected anonymously and does not personally identify you.",
+    "adsTitle": "3. About Advertising Delivery",
+    "adsText": "This Site may use third-party advertising services. Ad providers may use cookies to display ads tailored to users' interests.",
+    "disclosureTitle": "4. Disclosure of Personal Information to Third Parties",
+    "disclosureText": "This Site will appropriately manage personal information and will not disclose it to third parties except in the following cases:",
+    "disclosureList": [
+      "When the individual's consent has been obtained",
+      "When disclosure is required for cooperation with laws and regulations, etc."
+    ]
+  },
+  "Disclaimer": {
+    "title": "Disclaimer",
+    "accuracyTitle": "1. About the Accuracy of Information",
+    "accuracyText": "We strive to post the most accurate information possible regarding the content and information on this Site, but we do not necessarily guarantee its accuracy or reliability. Information may also become outdated due to game patch updates.",
+    "liabilityTitle": "2. About Liability for Damages, etc.",
+    "liabilityText": "Please note that we shall not be held liable for any damages caused by the content posted on this Site. Furthermore, if you are redirected to another site via links or banners from this Site, we take no responsibility for the information, services, etc., provided on the destination site.",
+    "copyrightsTitle": "3. Ownership of Copyrights, etc.",
+    "copyrightsText": "This Site is an unofficial fan site. The copyrights and portrait rights of game images, videos, character names, etc., posted on this Site belong to Riot Games, Inc. or their respective rights holders. We have absolutely no intention of infringing on any rights. If there are any issues with the content of our articles or posted images, please contact us directly via our inquiry form or social media. We will promptly address the issue upon confirmation."
+  },
+  "Contact": {
+    "title": "Contact Us",
+    "text": "If you have any questions, wish to provide information, or request deletions regarding this Site, we accept direct messages (DMs) on our official X (formerly Twitter) account.",
+    "button": "Send a DM to @hub_gamecom",
+    "note": "* Please note that it may take some time for us to reply.\nThank you for your understanding."
+  }
+}
