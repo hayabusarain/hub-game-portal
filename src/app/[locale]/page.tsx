@@ -74,21 +74,36 @@ export default function Home() {
             </div>
           </Link>
 
-          {/* Coming Soon Card 1 (Honor of Kings) */}
-          <div className="relative bg-slate-100 rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm opacity-80">
-            <div className="w-full h-28 relative bg-slate-200 overflow-hidden">
-              <div className="absolute inset-0 opacity-40 bg-[url('https://game.gtimg.cn/images/yxzj/img201606/skin/hero-info/109/109-bigskin-1.jpg')] bg-cover bg-top grayscale transition-opacity duration-300 hover:opacity-70 hover:grayscale-0" />
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <span className="px-4 py-1.5 bg-slate-800/80 backdrop-blur-sm text-white text-xs font-bold tracking-widest rounded-full">COMING SOON</span>
+          {/* Honor of Kings Card */}
+          <Link href="https://hok.hub-game.com" target="_blank" rel="noopener noreferrer" className="group block relative bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200 transition-all active:scale-[0.98] hover:shadow-md">
+            {/* Image Banner */}
+            <div className="w-full h-40 relative bg-slate-100 overflow-hidden">
+              <div className="absolute inset-0 bg-[url('https://game.gtimg.cn/images/yxzj/img201606/skin/hero-info/109/109-bigskin-1.jpg')] bg-cover bg-top transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60" />
+              
+              <div className="absolute bottom-4 left-5 flex gap-2">
+                <span className="px-2.5 py-1 text-[10px] font-bold bg-indigo-500 text-white rounded-md shadow-sm">
+                  MOBA
+                </span>
+                <span className="px-2.5 py-1 text-[10px] font-bold bg-emerald-500 text-white rounded-md shadow-sm">
+                  稼働中
+                </span>
               </div>
             </div>
+            
+            {/* Card Content */}
             <div className="p-5">
-              <h3 className="text-lg font-bold text-slate-700">{t('hokTitle')}</h3>
-              <p className="text-xs text-slate-500 mt-1.5 leading-relaxed font-medium whitespace-pre-wrap">
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="text-xl font-black text-slate-900">{t('hokTitle')}</h3>
+                <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-indigo-50 transition-colors">
+                  <ArrowRight size={16} className="text-slate-400 group-hover:text-indigo-600 transition-colors" />
+                </div>
+              </div>
+              <p className="text-xs text-slate-500 leading-relaxed font-medium">
                 {t('hokDesc')}
               </p>
             </div>
-          </div>
+          </Link>
 
           {/* Coming Soon Card 2 (Mobile Legends) */}
           <div className="relative bg-slate-100 rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm opacity-80">
