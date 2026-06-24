@@ -105,21 +105,6 @@ export default function Home() {
             </div>
           </Link>
 
-          {/* Coming Soon Card 2 (Mobile Legends) */}
-          <div className="relative bg-slate-100 rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm opacity-80">
-            <div className="w-full h-28 relative bg-slate-200 overflow-hidden">
-              <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center grayscale" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="px-4 py-1.5 bg-slate-800/80 backdrop-blur-sm text-white text-xs font-bold tracking-widest rounded-full">COMING SOON</span>
-              </div>
-            </div>
-            <div className="p-5">
-              <h3 className="text-lg font-bold text-slate-700">{t('mlbbTitle')}</h3>
-              <p className="text-xs text-slate-500 mt-1.5 leading-relaxed font-medium whitespace-pre-wrap">
-                {t('mlbbDesc')}
-              </p>
-            </div>
-          </div>
 
         </section>
       </main>
