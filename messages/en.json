@@ -1,61 +1,211 @@
 {
   "Home": {
     "title": "HUB-GAME",
-    "description": "We deliver the latest tier lists, builds, patch notes, and other useful data for game strategies.",
+    "description": "Your ultimate portal for the latest tier lists, builds, patch notes, and competitive game strategies.",
     "wildRiftTitle": "Wild Rift",
-    "wildRiftDesc": "A complete strategy database covering the latest patch tier lists, champion guides, item builds, and more.",
+    "wildRiftDesc": "Complete strategy database covering champion guides, item builds, and patch tier lists.",
     "hokTitle": "Honor of Kings Hub",
-    "hokDesc": "Get the latest Tier Lists, Hero Builds, and Beginner Guides for Honor of Kings.",
+    "hokDesc": "Top tier rankings, optimal hero builds, and beginner-to-pro guides for Honor of Kings.",
     "mlbbTitle": "Mobile Legends",
-    "mlbbDesc": "Strategy guides, tier lists, and build guides are currently in development.\nPlease stay tuned for updates.",
-    "disclaimerText": "This site is an unofficial fan site and is not affiliated with Riot Games or any other publisher in any way."
+    "mlbbDesc": "Comprehensive guides, tier lists, and build strategies coming soon. Stay tuned!",
+    "disclaimerText": "This website is an unofficial fan site and is not affiliated with Riot Games or any other publishers."
+  },
+  "Nav": {
+    "home": "Home",
+    "guides": "Guides & Strats",
+    "compare": "Side-by-Side",
+    "quiz": "Find Your MOBA",
+    "glossary": "Glossary"
+  },
+  "GuidesPage": {
+    "title": "MOBA Strategy Portal",
+    "subtitle": "Welcome to the ultimate time-sink. Find the MOBA that perfectly fits your playstyle and start grinding!",
+    "tabs": {
+      "all": "All",
+      "intro": "What is MOBA?",
+      "games": "By Game",
+      "compare": "Face-Off"
+    },
+    "featured": "Top Picks",
+    "searchPlaceholder": "Search articles...",
+    "readMore": "Read Full Review",
+    "backToGuides": "Back to Guides",
+    "relatedArticles": "Check These Out Too"
+  },
+  "GuideWhatIsMoba": {
+    "title": "[WARNING: Addicting] What Makes MOBAs So Insanely Fun? The 5v5 Hype Explained",
+    "intro": "Let me tell you about the most incredibly addictive game genre ever made: the MOBA. If you're wondering why millions of players are grinding ranked every single day, sit down and take notes.",
+    "mapBreakdown": "You get a 5v5 map with three lanes and a jungle. The goal is simple: destroy the enemy base. But the mind games, macro, and micro required to get there? Infinite depth, my guy.",
+    "dopamine": "There is absolutely nothing like the dopamine rush of landing a perfect clutch ult in a chaotic teamfight and wiping the enemy team. It's hype on another level.",
+    "roles": {
+      "title": "The 5 Crucial Roles",
+      "top": "Top: The 1v1 island. You duel, you survive, and you split-push to apply massive map pressure.",
+      "mid": "Mid: The playmaker. Burst mages and assassins who farm mid and roam to snowball the rest of the map.",
+      "jungle": "Jungle: The puppeteer. You farm camps, control objectives, and execute ganks out of nowhere to tilt the enemy.",
+      "adc": "ADC (Marksman): Weak early, but if you farm up, you become a right-click god that literally melts the entire enemy team. The ultimate carry.",
+      "support": "Support: The unsung hero. You provide vision, peel for your carry, and engage. A massive support ult literally wins the game."
+    },
+    "conclusion": "Bottom line: it's the perfect blend of insane mechanical outplays (micro) and massive brain-check strategy (macro). If you haven't played one, download it now and say goodbye to your free time."
+  },
+  "GuideHOK": {
+    "title": "[Global Hype] Why You NEED to Play Honor of Kings Right Now! Fast-Paced 15-Min Brawls",
+    "intro": "With over 200 million players globally, this absolute monster of a game is finally taking over everywhere. It is dangerously fast-paced and insanely fun to binge.",
+    "gameplay": "Matches wrap up in about 15 minutes. It's a non-stop brawl where you can snowball aggressively and just 1v9 if you get a lead.",
+    "characters": "The character design goes unbelievably hard. Mythological heroes, flashy animations, and hitting your abilities just feels extremely smooth and responsive.",
+    "controls": "The mobile controls are buttery smooth. Skill combos lock in perfectly, and the satisfying feeling when you pop your ult and wipe their backline is just broken.",
+    "conclusion": "If you're new to MOBAs or just want that non-stop teamfight adrenaline with your squad without being stuck in a 40-minute hostage situation, HoK is it."
+  },
+  "GuideWildRift": {
+    "title": "[Peak Mechanics] The Deep Tactics of Wild Rift! The Undisputed King of Mobile MOBAs",
+    "intro": "Carrying the legendary DNA of PC League of Legends, Wild Rift isn't just a mobile port—it is an incredibly deep, highly competitive masterpiece.",
+    "tactics": "Vision control with wards, brutal fights over Dragons and Baron. Your understanding of wave management and map macro directly translates to your win rate.",
+    "mechanics": "The champion ceiling is super high. It's not just about stats; mechanically outplaying your opponent with perfect spacing and skillshots feels god-tier.",
+    "outplays": "Flash-combos, dodging abilities on 1 HP, and turning a 1v2 gank around into a double kill... the 'I am simply better' moments are chef's kiss.",
+    "conclusion": "If you want a hardcore, highly tactical experience where you can truly express your mechanical skill, Wild Rift is the only choice. The grind to Challenger is glorious."
+  },
+  "GuideCompare": {
+    "title": "Head-to-Head: Honor of Kings vs Wild Rift! Which Mobile MOBA is For You?",
+    "intro": "Are you hard-stuck trying to decide which game to main? I've grinded both, so let's break down the definitive comparison.",
+    "points": {
+      "duration": "[Match Length] HoK is crazy fast (10-15 mins). Wild Rift is more methodical and punishing (15-20+ mins).",
+      "difficulty": "[Learning Curve] HoK is pick-up-and-play with non-stop action. Wild Rift requires hardcore map awareness, warding, and wave control.",
+      "graphics": "[Vibe & Style] HoK rocks a vibrant, flashy, Eastern fantasy aesthetic. Wild Rift brings that heavy, detailed Runeterra dark fantasy vibe.",
+      "teamfight": "[Pacing] HoK is a constant skirmish fiesta from minute one. Wild Rift is a tactical chess match building up to massive objective fights."
+    },
+    "recommendation": "Want fast brawls, flashy combos, and instant gratification? Play HoK. Want PC-level depth, intense macro, and hardcore outplays? Lock in Wild Rift."
+  },
+  "Quiz": {
+    "title": "Find Your MOBA: The Ultimate Vibe Check",
+    "subtitle": "Answer 3 quick questions and we'll tell you which game you're destined to grind.",
+    "description": "Answer 3 quick questions and we'll tell you which game you're destined to grind.",
+    "start": "Take the Quiz",
+    "q1": "How do you like your game pace?",
+    "q1a1": "Fast & bloody 10-15 min brawls!",
+    "q1a2": "Methodical 15-20 min macro chess match!",
+    "q2": "What are your combat & control preferences?",
+    "q2a1": "Intuitive controls & insane flashy combos!",
+    "q2a2": "Precision skillshots, dodging, and warding!",
+    "q3": "Which aesthetic hits harder for you?",
+    "q3a1": "Vibrant, mythical Eastern fantasy heroes!",
+    "q3a2": "Gritty Western dark fantasy champions!",
+    "resultHok": "Honor of Kings is your perfect match!",
+    "resultHokDesc": "Fast-paced 15-minute brawls and insane flashy combos provide the ultimate adrenaline rush!",
+    "resultWr": "Wild Rift is your perfect match!",
+    "resultWrDesc": "Deep vision control, tactical macro, and precise mechanics let you dominate the rift!",
+    "results": {
+      "hok": "[Result: Honor of Kings] You're an absolute brawler! You thrive on high-speed chaos, fast snowballing, and flashy mechanics. Get in there!",
+      "hokDesc": "15-minute high-octane brawls and flashy combos offer the most exhilarating mobile MOBA action!",
+      "wildrift": "[Result: Wild Rift] You're a tactical mastermind! You respect the macro game, love outplaying your opponents, and have the patience to scale.",
+      "wildriftDesc": "Dominate the rift with ward control, deep laning tactics, and precise teamfight execution!"
+    },
+    "retake": "Run It Back",
+    "playNow": "Play Now",
+    "readGuide": "Read Review"
+  },
+  "Glossary": {
+    "title": "Gamer Dictionary: Learn to Speak MOBA",
+    "description": "Don't look like a noob. Here are the essential terms you need to survive.",
+    "searchPlaceholder": "Search terms...",
+    "all": "All",
+    "basic": "Basics",
+    "map": "Map & Vision",
+    "combat": "Combat",
+    "macro": "Macro",
+    "terms": {
+      "Gank": {
+        "term": "Gank",
+        "def": "When players from other lanes ambush you. Usually the Jungler's job. 'Bro, gank my lane, he has no Flash!'"
+      },
+      "LastHit": {
+        "term": "Last Hit (CS)",
+        "def": "Landing the killing blow on a minion to secure the gold. If you miss your last hits, you're going to be useless later."
+      },
+      "Build": {
+        "term": "Build",
+        "def": "The specific combination of items and skill order you use. Adapt your build to counter the enemy team, or get stomped."
+      },
+      "BuffDebuff": {
+        "term": "Buff / Debuff",
+        "def": "Buffs make you stronger, debuffs weaken you. Securing the Blue/Red buff from the jungle is crucial for early game dominance."
+      },
+      "Bush": {
+        "term": "Bush",
+        "def": "Tall grass that hides you from enemy vision. The absolute best spot to camp and one-shot the enemy squishy carry."
+      },
+      "Ace": {
+        "term": "Ace (Wipe)",
+        "def": "Eliminating the entire enemy team. The perfect time to push towers and aggressively end the game."
+      },
+      "Snowball": {
+        "term": "Snowball",
+        "def": "Taking a small early advantage (like a first blood) and rolling it into a massive, unstoppable lead. Once you're fed, you steamroll."
+      },
+      "KDA": {
+        "term": "KDA",
+        "def": "Kill/Death/Assist ratio. Stop diving 1v5. Not dying is often more important than getting a risky kill."
+      },
+      "Push": {
+        "term": "Push",
+        "def": "Clearing enemy minions fast to shove your wave into the enemy tower. Applies massive map pressure."
+      },
+      "Turtle": {
+        "term": "Turtle / Dragon",
+        "def": "Major neutral objectives that give insane team-wide buffs. Most games are decided by who wins the teamfight at the Dragon pit."
+      }
+    }
   },
   "Terms": {
     "title": "Terms of Service",
     "introTitle": "1. Introduction",
-    "introText": "These Terms of Service (hereinafter referred to as \"Terms\") establish the conditions for using the services (hereinafter referred to as \"Service\") provided by \"HUB-GAME\" (hereinafter referred to as \"Site\"). Users must use the Service in accordance with these Terms.",
-    "copyrightTitle": "2. Copyrights",
-    "copyrightText": "Copyrights regarding the information (text, images, data, etc.) posted on this Site belong to this Site or their respective rights holders. Unauthorized use, reproduction, or reprinting beyond the scope of personal use is prohibited.",
-    "copyrightNote": "* Copyrights for game images and characters belong to Riot Games and their respective publishers.",
-    "prohibitionsTitle": "3. Prohibited Acts",
-    "prohibitionsText": "When using this Site, users must not engage in the following acts:",
+    "introText": "These Terms of Service govern your use of HUB-GAME.",
+    "copyrightTitle": "2. Copyright",
+    "copyrightText": "All intellectual property rights belong to their respective owners.",
+    "copyrightNote": "Game graphics and trademarks belong to Riot Games and respective publishers.",
+    "prohibitionsTitle": "3. Prohibitions",
+    "prohibitionsText": "Users must not engage in illegal or harmful behavior on the site.",
     "prohibitionsList": [
-      "Acts that violate laws or public order and morals",
-      "Acts related to criminal activities",
-      "Acts that destroy or interfere with the functionality of the servers or networks of this Site, other users, or third parties",
-      "Acts that may interfere with the operation of this Site's services"
+      "Violating laws or regulations",
+      "Disrupting site services or networks"
     ],
-    "modificationsTitle": "4. Modification of Terms",
-    "modificationsText": "This Site reserves the right to change these Terms at any time without notifying users if deemed necessary."
+    "modificationsTitle": "4. Modifications",
+    "modificationsText": "Terms may be updated without prior notice."
   },
   "Privacy": {
     "title": "Privacy Policy",
-    "collectionTitle": "1. Collection of Personal Information",
-    "collectionText": "This Site may collect personal information such as the user's name and email address in the process of responding to inquiries or providing services. This personal information will be appropriately managed and will not be used for any other purposes.",
-    "analyticsTitle": "2. About Access Analytics Tools",
-    "analyticsText": "This Site uses the access analytics tool \"Google Analytics\" provided by Google. Google Analytics uses cookies to collect traffic data. This traffic data is collected anonymously and does not personally identify you.",
-    "adsTitle": "3. About Advertising Delivery",
-    "adsText": "This Site may use third-party advertising services. Ad providers may use cookies to display ads tailored to users' interests.",
-    "disclosureTitle": "4. Disclosure of Personal Information to Third Parties",
-    "disclosureText": "This Site will appropriately manage personal information and will not disclose it to third parties except in the following cases:",
-    "disclosureList": [
-      "When the individual's consent has been obtained",
-      "When disclosure is required for cooperation with laws and regulations, etc."
-    ]
+    "collectionTitle": "1. Information Collection",
+    "collectionText": "We may collect contact information provided voluntarily.",
+    "analyticsTitle": "2. Analytics",
+    "analyticsText": "We use Google Analytics with cookies for anonymous traffic analysis.",
+    "adsTitle": "3. Advertising",
+    "adsText": "Third-party ad networks may use cookies to serve tailored ads.",
+    "disclosureTitle": "4. Data Disclosure",
+    "disclosureText": "Personal data will not be shared except as required by law."
   },
   "Disclaimer": {
     "title": "Disclaimer",
-    "accuracyTitle": "1. About the Accuracy of Information",
-    "accuracyText": "We strive to post the most accurate information possible regarding the content and information on this Site, but we do not necessarily guarantee its accuracy or reliability. Information may also become outdated due to game patch updates.",
-    "liabilityTitle": "2. About Liability for Damages, etc.",
-    "liabilityText": "Please note that we shall not be held liable for any damages caused by the content posted on this Site. Furthermore, if you are redirected to another site via links or banners from this Site, we take no responsibility for the information, services, etc., provided on the destination site.",
-    "copyrightsTitle": "3. Ownership of Copyrights, etc.",
-    "copyrightsText": "This Site is an unofficial fan site. The copyrights and portrait rights of game images, videos, character names, etc., posted on this Site belong to Riot Games, Inc. or their respective rights holders. We have absolutely no intention of infringing on any rights. If there are any issues with the content of our articles or posted images, please contact us directly via our inquiry form or social media. We will promptly address the issue upon confirmation."
+    "accuracyTitle": "1. Accuracy",
+    "accuracyText": "We strive for accuracy but cannot guarantee zero errors due to game patches.",
+    "liabilityTitle": "2. Liability",
+    "liabilityText": "We are not liable for any damages resulting from site usage.",
+    "copyrightsTitle": "3. Rights",
+    "copyrightsText": "Unofficial fan site. Trademarks belong to respective owners."
   },
   "Contact": {
     "title": "Contact Us",
-    "text": "If you have any questions, wish to provide information, or request deletions regarding this Site, we accept direct messages (DMs) on our official X (formerly Twitter) account.",
-    "button": "Send a DM to @hub_gamecom",
-    "note": "* Please note that it may take some time for us to reply.\nThank you for your understanding."
+    "text": "For inquiries or removal requests, please send a Direct Message on X.",
+    "button": "Send DM to @hub_gamecom",
+    "note": "Replies may take some time."
+  },
+  "Header": {
+    "home": "Home",
+    "guides": "Guides",
+    "compare": "Compare",
+    "quiz": "Quiz",
+    "glossary": "Glossary"
+  },
+  "Footer": {
+    "quickLinks": "Quick Links",
+    "games": "Games",
+    "rights": "© 2026 HUB-GAME. All rights reserved."
   }
 }

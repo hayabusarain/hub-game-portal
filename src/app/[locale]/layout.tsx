@@ -54,7 +54,7 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
-          <div className="max-w-md mx-auto min-h-screen bg-slate-50 shadow-2xl relative overflow-hidden flex flex-col">
+          <div className="w-full mx-auto min-h-screen bg-slate-50 relative overflow-hidden flex flex-col">
             {children}
           </div>
           <ServiceWorkerRegister />

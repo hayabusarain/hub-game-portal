@@ -7,6 +7,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Define active static paths (without locale prefix)
   const staticPaths = [
     '',
+    '/guides',
+    '/guides/compare',
+    '/guides/what-is-moba',
+    '/guides/wild-rift',
+    '/guides/honor-of-kings',
     '/contact',
     '/disclaimer',
     '/privacy',
