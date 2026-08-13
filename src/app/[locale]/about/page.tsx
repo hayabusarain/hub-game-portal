@@ -1,4 +1,5 @@
 import { Link } from "@/i18n/routing";
+import { ArrowRight } from "lucide-react";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import HeaderNav from "@/components/HeaderNav";
 import FooterNav from "@/components/FooterNav";
@@ -9,20 +10,20 @@ import { getAlternates } from '@/utils/seo';
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Meta' });
-  return { title: t('terms.title'), description: t('terms.description'), alternates: getAlternates(locale, '/terms') };
+  return { title: t('about.title'), description: t('about.description'), alternates: getAlternates(locale, '/about') };
 }
 
-export default async function TermsPage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations('Terms');
+  const t = await getTranslations('About');
   const tBreadcrumb = await getTranslations('Breadcrumb');
 
   // 表示中のパンくずと同じ階層を構造化データにも出す
   const graph = buildGraph(
     buildBreadcrumb(locale, [
       { name: tBreadcrumb('home'), path: '/' },
-      { name: t('title'), path: '/terms' },
+      { name: t('title'), path: '/about' },
     ])
   );
 
@@ -54,29 +55,31 @@ export default async function TermsPage({ params }: { params: Promise<{ locale: 
         <div className="bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
           <div className="space-y-6 text-slate-600 text-sm leading-relaxed">
             <section>
-              <h2 className="text-base font-bold text-slate-900 mb-2">{t('introTitle')}</h2>
-              <p>{t('introText')}</p>
+              <h2 className="text-base font-bold text-slate-900 mb-2">{t('siteTitle')}</h2>
+              <p>{t('siteText')}</p>
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-slate-900 mb-2">{t('copyrightTitle')}</h2>
-              <p>{t('copyrightText')}</p>
-              <p className="mt-2 text-slate-500 text-xs">{t('copyrightNote')}</p>
+              <h2 className="text-base font-bold text-slate-900 mb-2">{t('operatorTitle')}</h2>
+              <p>{t('operatorText')}</p>
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-slate-900 mb-2">{t('prohibitionsTitle')}</h2>
-              <p>{t('prohibitionsText')}</p>
-              <ul className="list-disc pl-5 mt-2 space-y-1">
-                {t.raw('prohibitionsList').map((item: string, i: number) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
+              <h2 className="text-base font-bold text-slate-900 mb-2">{t('policyTitle')}</h2>
+              <p>{t('policyText')}</p>
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-slate-900 mb-2">{t('modificationsTitle')}</h2>
-              <p>{t('modificationsText')}</p>
+              <h2 className="text-base font-bold text-slate-900 mb-2">{t('contactTitle')}</h2>
+              <p>{t('contactText')}</p>
+              {/* お問い合わせページへの導線 */}
+              <Link
+                href="/contact"
+                className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-indigo-600 hover:text-indigo-800 transition-colors"
+              >
+                {t('contactTitle')}
+                <ArrowRight size={14} />
+              </Link>
             </section>
           </div>
         </div>

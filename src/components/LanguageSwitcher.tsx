@@ -17,12 +17,13 @@ export default function LanguageSwitcher() {
     <button
       onClick={toggleLocale}
       className="flex flex-col items-center justify-center p-1.5 rounded-lg bg-slate-50 border border-slate-200 active:scale-95 transition-all w-10 h-10 group"
-      aria-label="Toggle Language"
+      aria-label={locale === 'ja' ? 'Switch to English' : '日本語に切り替え'}
     >
+      {/* 現在のロケール側をハイライトする（ja のとき「あ」、en のとき「A」） */}
       <div className="flex text-xs font-black">
-        <span className={`${locale === 'ja' ? 'text-indigo-600' : 'text-slate-400 group-hover:text-slate-600'}`}>A</span>
-        <span className={`${locale === 'ja' ? 'text-slate-400 group-hover:text-slate-600' : 'text-indigo-600'}`}>/</span>
-        <span className={`${locale === 'en' ? 'text-indigo-600' : 'text-slate-400 group-hover:text-slate-600'}`}>あ</span>
+        <span className={`${locale === 'en' ? 'text-indigo-600' : 'text-slate-400 group-hover:text-slate-600'}`}>A</span>
+        <span className="text-slate-400 group-hover:text-slate-600">/</span>
+        <span className={`${locale === 'ja' ? 'text-indigo-600' : 'text-slate-400 group-hover:text-slate-600'}`}>あ</span>
       </div>
       <span className="text-[8px] font-bold text-slate-500 mt-0.5 tracking-wider">
         {locale === 'en' ? 'EN' : 'JA'}

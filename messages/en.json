@@ -1,211 +1,683 @@
 {
+  "Meta": {
+    "home": {
+      "title": "HUB-GAME | Mobile MOBA Strategy Portal",
+      "description": "Strategy portal for Wild Rift and Honor of Kings. Compare titles, take the aptitude quiz, and browse the glossary to find the mobile MOBA that fits you."
+    },
+    "guides": {
+      "title": "MOBA Guides & Articles",
+      "description": "Beginner-friendly MOBA introduction, reviews and comparison of Honor of Kings and Wild Rift, plus an essential glossary."
+    },
+    "whatIsMoba": {
+      "title": "What is a MOBA? The Appeal of 5v5 Battle Games",
+      "description": "A beginner-friendly guide to MOBA basics: core rules, the five roles, and what makes the genre so engaging."
+    },
+    "hok": {
+      "title": "Honor of Kings Review: Fast-Paced 15-Minute MOBA",
+      "description": "A hands-on review of Honor of Kings covering match tempo, controls, and who the game is best suited for."
+    },
+    "wildRift": {
+      "title": "Wild Rift Review: The Competitive Mobile MOBA",
+      "description": "A review of Wild Rift's depth, from vision control to outplays, for players who value competitiveness."
+    },
+    "compare": {
+      "title": "Honor of Kings vs Wild Rift: Full Comparison",
+      "description": "Compare match length, controls, graphics, and teamfight pace to decide which mobile MOBA fits you."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Contact HUB-GAME for questions, information, or takedown requests."
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "How HUB-GAME handles personal information, cookies, advertising, and analytics."
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "description": "Terms of use, copyright, and prohibited activities on HUB-GAME."
+    },
+    "disclaimer": {
+      "title": "Disclaimer",
+      "description": "Accuracy of information, scope of liability, and copyright attribution on HUB-GAME."
+    },
+    "about": {
+      "title": "About",
+      "description": "Who runs HUB-GAME, the site's purpose, and our editorial policy."
+    },
+    "glossary": {
+      "title": "MOBA Glossary for Wild Rift & Honor of Kings",
+      "description": "Plain definitions of the MOBA terms you actually hear in game — gank, CS, peel, power spike and more — with the differences between Wild Rift and Honor of Kings noted."
+    }
+  },
   "Home": {
     "title": "HUB-GAME",
-    "description": "Your ultimate portal for the latest tier lists, builds, patch notes, and competitive game strategies.",
+    "heading": "Mobile MOBA Strategy Portal",
+    "description": "A portal that brings together mobile MOBA comparisons, an aptitude quiz, a glossary,\nand gateways to our dedicated strategy sites.",
     "wildRiftTitle": "Wild Rift",
-    "wildRiftDesc": "Complete strategy database covering champion guides, item builds, and patch tier lists.",
+    "wildRiftDesc": "A strategy database covering tier lists, champion guides, and item builds for the latest patch.",
     "hokTitle": "Honor of Kings Hub",
-    "hokDesc": "Top tier rankings, optimal hero builds, and beginner-to-pro guides for Honor of Kings.",
-    "mlbbTitle": "Mobile Legends",
-    "mlbbDesc": "Comprehensive guides, tier lists, and build strategies coming soon. Stay tuned!",
+    "hokDesc": "Tier lists, hero builds, and beginner guides for Honor of Kings.",
+    "compareCardTitle": "HoK vs Wild Rift",
+    "compareCardDesc": "Which MOBA fits you better?",
+    "mobaCardTitle": "MOBA Basics",
+    "mobaCardDesc": "Essentials for beginners",
+    "activeBadge": "Live",
+    "viewAll": "View All",
+    "badge": "PORTAL",
+    "guidesSectionTitle": "Guides & Articles",
+    "gamesSectionTitle": "Games",
+    "picksTitle": "This Week's Picks",
+    "picksLead": "The updates from our strategy sites that are worth reading before your next game.",
+    "picksUpdatedLabel": "Updated",
     "disclaimerText": "This website is an unofficial fan site and is not affiliated with Riot Games or any other publishers."
   },
   "Nav": {
     "home": "Home",
-    "guides": "Guides & Strats",
-    "compare": "Side-by-Side",
-    "quiz": "Find Your MOBA",
-    "glossary": "Glossary"
+    "guides": "Guides",
+    "compare": "Compare",
+    "glossary": "Glossary",
+    "skipToContent": "Skip to main content"
   },
   "GuidesPage": {
     "title": "MOBA Strategy Portal",
-    "subtitle": "Welcome to the ultimate time-sink. Find the MOBA that perfectly fits your playstyle and start grinding!",
-    "tabs": {
-      "all": "All",
-      "intro": "What is MOBA?",
-      "games": "By Game",
-      "compare": "Face-Off"
-    },
-    "featured": "Top Picks",
-    "searchPlaceholder": "Search articles...",
-    "readMore": "Read Full Review",
-    "backToGuides": "Back to Guides",
-    "relatedArticles": "Check These Out Too"
+    "subtitle": "Decide between Honor of Kings and Wild Rift with our comparison article, aptitude quiz, and glossary.",
+    "featured": "Featured Articles",
+    "readMore": "Read Article",
+    "backToGuides": "Back to Articles",
+    "tagIntro": "Beginner",
+    "tagReview": "Game Review",
+    "tagCompare": "Comparison",
+    "glossaryCta": "Open the MOBA Glossary",
+    "glossaryCtaDesc": "Gank, CS, peel, power spike — the vocabulary Wild Rift and Honor of Kings players use, explained on one page, with the differences between the two games noted.",
+    "eyebrow": "MOBA STRATEGY & REVIEWS",
+    "relatedTerms": "Terms from this article"
   },
   "GuideWhatIsMoba": {
-    "title": "[WARNING: Addicting] What Makes MOBAs So Insanely Fun? The 5v5 Hype Explained",
-    "intro": "Let me tell you about the most incredibly addictive game genre ever made: the MOBA. If you're wondering why millions of players are grinding ranked every single day, sit down and take notes.",
-    "mapBreakdown": "You get a 5v5 map with three lanes and a jungle. The goal is simple: destroy the enemy base. But the mind games, macro, and micro required to get there? Infinite depth, my guy.",
-    "dopamine": "There is absolutely nothing like the dopamine rush of landing a perfect clutch ult in a chaotic teamfight and wiping the enemy team. It's hype on another level.",
-    "roles": {
-      "title": "The 5 Crucial Roles",
-      "top": "Top: The 1v1 island. You duel, you survive, and you split-push to apply massive map pressure.",
-      "mid": "Mid: The playmaker. Burst mages and assassins who farm mid and roam to snowball the rest of the map.",
-      "jungle": "Jungle: The puppeteer. You farm camps, control objectives, and execute ganks out of nowhere to tilt the enemy.",
-      "adc": "ADC (Marksman): Weak early, but if you farm up, you become a right-click god that literally melts the entire enemy team. The ultimate carry.",
-      "support": "Support: The unsung hero. You provide vision, peel for your carry, and engage. A massive support ult literally wins the game."
-    },
-    "conclusion": "Bottom line: it's the perfect blend of insane mechanical outplays (micro) and massive brain-check strategy (macro). If you haven't played one, download it now and say goodbye to your free time."
+    "title": "What Makes MOBAs So Addictive? A Deep Dive into 5v5 Battles",
+    "intro": "MOBA (Multiplayer Online Battle Arena) is one of the most popular game genres worldwide. Here's why it draws in so many players.",
+    "category": "Column / Essay",
+    "pageTitle": "Five Years Deep in the MOBA Rabbit Hole",
+    "publishedAt": "Posted: July 2026",
+    "author": "By HUB-GAME",
+    "leadParagraphs": [
+      "Up front: a MOBA (Multiplayer Online Battle Arena) is not a game I would cheerfully hand to just anyone with a \"trust me, it's fun, give it a shot.\"",
+      "I still remember my first day in the genre. A friend talked me into installing it, and I could not tell you what was happening on screen. Some ability I never saw coming landed on me from somewhere off to the side, everything went grey, and a teammate typed: please just stay under the tower.",
+      "I uninstalled it that same night, fully convinced the whole thing was unfair garbage."
+    ],
+    "pullQuote": "And then, a few days later, it surfaced out of nowhere: if I hadn't walked through that bush, I probably would have lived. I was clicking download again before I had really decided to.",
+    "leadOutro": "That was the start of everything. I'm past 2,000 hours in the genre now. So here is my attempt to work out, from my own experience, why these games swallow so much of your time.",
+    "section1Heading": "■ Twenty minutes a match, and the perfect high only lands once every ten",
+    "section1Setup": [
+      "A MOBA match is five players against five, all tangled up on the same map. Everyone opens at level 1, farms minions for gold, and buys items to grow into the late game.",
+      "The correct play changes with every situation, and plenty of matches fall apart purely because nobody on the team is reading it the same way. Eight games out of ten I close the client annoyed, still stinging, still wondering why nobody rotated when I pinged."
+    ],
+    "section1Highlight": "But in the other one or two, you get <strong>the impossible moment</strong>.",
+    "section1Payoff": [
+      "Late game, the match already looking lost, no vision anywhere on the map, and the teamfight timing lands exactly right. Their main damage dealer goes down in the opening second, the ace follows, and a dead game flips.",
+      "The shaking hands and the rush that hits right after aren't something I've found in any action game or FPS. Once you've had that once, the eight losses stop reading as losses and turn into the setup for the next one. That, I think, is the genuinely dangerous part of this genre."
+    ],
+    "section2Heading": "■ Five roles, and one of them will fit you",
+    "section2Intro": "The same way soccer has strikers and keepers, a MOBA team is built out of five roles.",
+    "roles": [
+      {
+        "name": "TOP:",
+        "description": "The far edge of the map, where you and your lane opponent trade blows for as long as it takes. It suits patient players who like a straight 1v1."
+      },
+      {
+        "name": "MID:",
+        "description": "The center of the map, usually on a flashy assassin or mage. Made for players who want the spotlight and hold up under pressure."
+      },
+      {
+        "name": "JUNGLE:",
+        "description": "No lane of your own. You clear the camps in the forest and look for gank windows. The role for people who like reading the whole map at once."
+      },
+      {
+        "name": "ADC (Marksman):",
+        "description": "Weak in the early game, but once the gold is banked, you can shred the enemy team on auto-attacks alone. The team's main damage source in the late game."
+      },
+      {
+        "name": "SUPPORT:",
+        "description": "Heals, shields, and vision for the rest of the team. It looks unglamorous, but the support is usually the one who decides when a teamfight starts."
+      }
+    ],
+    "section2Outro": "Even if you start out sure your reflexes aren't good enough, you can still decide games from the jungle or by specializing on support. Finding the role that matches how your head already works is a real part of the appeal.",
+    "section3Heading": "■ Last thing, for anyone about to start",
+    "section3Paragraphs": [
+      "If you're thinking about picking up a MOBA, I'd strongly suggest either muting team chat or queuing with a friend for the first stretch. There is an enormous amount to learn, and you are going to get rolled while you learn it.",
+      "But once you're through that first wall and you land the combo exactly the way you pictured it, you'll arrive at the same thought I did: oh no, this game has me."
+    ],
+    "ctaCompare": "Compare: Honor of Kings vs. Wild Rift, which one suits you?"
   },
   "GuideHOK": {
-    "title": "[Global Hype] Why You NEED to Play Honor of Kings Right Now! Fast-Paced 15-Min Brawls",
-    "intro": "With over 200 million players globally, this absolute monster of a game is finally taking over everywhere. It is dangerously fast-paced and insanely fun to binge.",
-    "gameplay": "Matches wrap up in about 15 minutes. It's a non-stop brawl where you can snowball aggressively and just 1v9 if you get a lead.",
-    "characters": "The character design goes unbelievably hard. Mythological heroes, flashy animations, and hitting your abilities just feels extremely smooth and responsive.",
-    "controls": "The mobile controls are buttery smooth. Skill combos lock in perfectly, and the satisfying feeling when you pop your ult and wipe their backline is just broken.",
-    "conclusion": "If you're new to MOBAs or just want that non-stop teamfight adrenaline with your squad without being stuck in a 40-minute hostage situation, HoK is it."
+    "title": "Why We Recommend Honor of Kings: A Thrilling 15-Minute MOBA",
+    "intro": "Honor of Kings, said to be played by over 200 million people worldwide, has gone global. Its fast tempo keeps you coming back for more.",
+    "category": "Game Review / Impressions",
+    "heading": "Six Months of Honor of Kings: My Honest Take on the MOBA That Fits After Work",
+    "published": "Published: July 2026",
+    "author": "Written by HUB-GAME",
+    "leadParagraphs": [
+      "I have played MOBAs on PC for years, and I walked into this one carrying a bias: a MOBA on a phone means a cramped screen and mushy controls, right?",
+      "Then the global release of Honor of Kings — often cited as the most-played MOBA in the world — landed, I gave it a shot, and that bias did not survive the first session. Six months later I still catch myself queuing up \"just one more\" after work with my brain running on fumes. Here is my honest take on why the pacing works so well."
+    ],
+    "tempoHeading": "■ 10 to 15 minutes a match, with no dead air",
+    "tempoParagraphs": [
+      "The pace is the first thing that got me.",
+      "In a PC MOBA, the opening ten minutes are usually a patience test: you and your lane opponent quietly last-hitting minions and trading poke. In HoK you hit level 4 in under two minutes and everyone has their ultimate unlocked (as of the August 2026 build).",
+      "Movement speed and farming income are tuned to match, so a fight is breaking out somewhere on the map almost from the first minute. There is no lull to sit through, and 12 to 15 minutes is usually enough for one team to push through the towers and close it out.",
+      "If you cannot give up 30-plus minutes on a weeknight but still want the tension of a real competitive match, the format lines up with a working adult's schedule almost uncomfortably well."
+    ],
+    "controlsHeading": "■ Touch controls that stay out of the way",
+    "controlsParagraphs": [
+      "It is a virtual stick on a phone screen, but the inputs stick where you put them and the response is quick.",
+      "Skill aiming is assisted just enough that combos go off in the direction you intended without the game feeling like it is playing for you. It clicks hardest on assassins and mages: dashing behind a squishy target and dumping a full burst combo on them lands closer to an action game than to lane management.",
+      "The roster helps too. Heroes drawn from the Three Kingdoms and Chinese mythology — Zhuge Liang, Sun Wukong, Diaochan and the rest — come with loud, colorful spell effects, and simply moving them around the map is satisfying on its own."
+    ],
+    "downsideHeading": "■ The catch: games snowball hard",
+    "downsideParagraphs": [
+      "It would not be a fair review if I only listed the good parts.",
+      "Because matches move fast and gold comes in quickly, the team that builds an early lead tends to snowball straight through to the base. If what you enjoy is the heavier macro game — holding under tower, controlling the map and grinding out a comeback — HoK can feel blunt by comparison."
+    ],
+    "verdictHeading": "■ Verdict: who it is for",
+    "verdictList": [
+      "Players who want a complete competitive match in about 15 minutes",
+      "Players who would rather land flashy skill combos than fight the control scheme",
+      "Groups who want to hop on voice chat and queue as a full five-stack with friends"
+    ],
+    "closing": "The barrier to entry is low, which also makes it a solid first MOBA if you have never touched the genre. If any of this sounds like your kind of evening, it is worth a few games.",
+    "cta": "See tier lists and builds on Honor of Kings Hub"
   },
   "GuideWildRift": {
-    "title": "[Peak Mechanics] The Deep Tactics of Wild Rift! The Undisputed King of Mobile MOBAs",
-    "intro": "Carrying the legendary DNA of PC League of Legends, Wild Rift isn't just a mobile port—it is an incredibly deep, highly competitive masterpiece.",
-    "tactics": "Vision control with wards, brutal fights over Dragons and Baron. Your understanding of wave management and map macro directly translates to your win rate.",
-    "mechanics": "The champion ceiling is super high. It's not just about stats; mechanically outplaying your opponent with perfect spacing and skillshots feels god-tier.",
-    "outplays": "Flash-combos, dodging abilities on 1 HP, and turning a 1v2 gank around into a double kill... the 'I am simply better' moments are chef's kiss.",
-    "conclusion": "If you want a hardcore, highly tactical experience where you can truly express your mechanical skill, Wild Rift is the only choice. The grind to Challenger is glorious."
+    "title": "Wild Rift: Depth and Competitiveness on Mobile",
+    "intro": "Wild Rift inherits the DNA of League of Legends on PC. It is not a mere port — it offers real competitive depth.",
+    "category": "Game Review / Impressions",
+    "heading": "No Compromises: Why Wild Rift Doesn't Play Like a Mobile Game",
+    "publishedAt": "Published: July 2026",
+    "author": "Written by HUB-GAME",
+    "lead": [
+      "As someone who spent years on League of Legends on PC, I met the announcement of League of Legends: Wild Rift with equal parts excitement and dread.",
+      "There was no way a phone screen could carry League's macro game or the precision that its harder champions demand — that was my assumption going in. Then I actually played it, and what I found was a Summoner's Rift built without shortcuts."
+    ],
+    "section1Heading": "■ Warding and last-hitting made the cut",
+    "section1Body": [
+      "When a MOBA gets streamlined for mobile, the fiddly parts are usually the first to go: wards and vision control disappear, and last-hitting gets automated or flattened into passive gold income.",
+      "Wild Rift kept both. Choosing where to drop a ward, and reading when the enemy jungler is about to come out of the fog, is the same mind game it is on PC.",
+      "Last-hitting matters just as much — miss the CS and you simply don't get the gold — so every step forward to harass and every step back to hold your spacing in lane still carries weight. That strictness is where the depth comes from, and it's exactly the part other mobile MOBAs tend to sand off."
+    ],
+    "section2Heading": "■ The payoff when your mechanics turn a fight around",
+    "section2Body": [
+      "The controls weren't dumbed down either. The high-skill champions are still genuinely hard to play, and the gap between knowing a combo and landing it is as wide as ever.",
+      "Yasuo's dash chains, Zed's shadow-swap combos, Lee Sin's Insec (ward-hop into a Flash kick) — they all made it over, and what your fingers can do translates directly into results.",
+      "Sitting on a sliver of HP, dodging a skillshot you saw coming, then Flashing into a combo to turn the kill around: that's a win you know you earned rather than one the game handed you."
+    ],
+    "section3Heading": "■ The honest downsides: a lot to learn, and matches aren't short",
+    "section3Body": [
+      "The flip side of that authenticity is a steep wall for newcomers.",
+      "A game usually runs 15 to 20 minutes, and you can't walk away mid-match without leaving four teammates a man down. On top of that there's a mountain to memorize: item builds, what every champion's abilities actually do, and which Dragon buffs your team is stacking.",
+      "If you're looking for something you can tap through with half your attention, this probably isn't it."
+    ],
+    "section4Heading": "■ Verdict: who this is for",
+    "recommendedFor": [
+      "Players who want PC-grade strategy and decision-making on a phone",
+      "Competitive players who want to push their mechanics and game sense as far as they'll go",
+      "Anyone who wants to climb solo queue and find out where they actually stand"
+    ],
+    "conclusion": "If you care more about real competition and the satisfaction that comes with it than about convenience, Wild Rift is well worth your time.",
+    "ctaLabel": "Browse champion guides on Wild Rift Hub"
   },
   "GuideCompare": {
-    "title": "Head-to-Head: Honor of Kings vs Wild Rift! Which Mobile MOBA is For You?",
-    "intro": "Are you hard-stuck trying to decide which game to main? I've grinded both, so let's break down the definitive comparison.",
-    "points": {
-      "duration": "[Match Length] HoK is crazy fast (10-15 mins). Wild Rift is more methodical and punishing (15-20+ mins).",
-      "difficulty": "[Learning Curve] HoK is pick-up-and-play with non-stop action. Wild Rift requires hardcore map awareness, warding, and wave control.",
-      "graphics": "[Vibe & Style] HoK rocks a vibrant, flashy, Eastern fantasy aesthetic. Wild Rift brings that heavy, detailed Runeterra dark fantasy vibe.",
-      "teamfight": "[Pacing] HoK is a constant skirmish fiesta from minute one. Wild Rift is a tactical chess match building up to massive objective fights."
+    "title": "Honor of Kings vs Wild Rift: Which Mobile MOBA Suits You?",
+    "intro": "Torn between the two? We compared both titles in depth based on hands-on play.",
+    "category": "Comparison / Opinion",
+    "heading": "Honor of Kings or Wild Rift? An Honest Take on Which One to Play",
+    "lead": "Honor of Kings (HoK) and League of Legends: Wild Rift are the two heavyweights of mobile MOBA. If you are stuck on which one to start with, here is a straight answer from someone who has put serious hours into both.",
+    "cards": {
+      "hok": {
+        "label": "Fast, high-tempo matches",
+        "name": "Honor of Kings",
+        "body": "Matches run 10 to 15 minutes. The pace is quick and teamfights break out early. It leans hard into momentum, which suits players who want a short, satisfying session and newcomers easing into the genre."
+      },
+      "wr": {
+        "label": "Deep macro and competition",
+        "name": "Wild Rift",
+        "body": "Matches run 15 to 20 minutes. Ward placement and vision control, tight last-hitting, precise mechanics. It is built for players who want PC-style strategic depth and a high skill ceiling."
+      }
     },
-    "recommendation": "Want fast brawls, flashy combos, and instant gratification? Play HoK. Want PC-level depth, intense macro, and hardcore outplays? Lock in Wild Rift."
+    "section1": {
+      "heading": "■ 1. The Real Split: Match Tempo and Vision",
+      "intro": "The two biggest differences are <strong>match length and tempo</strong> and <strong>whether wards and vision control exist at all</strong>.",
+      "hokLabel": "Honor of Kings:",
+      "hokBody": "There is no ward war, so enemy positions on the map stay relatively readable. Movement and farming are fast, and a full teamfight can break out two or three minutes in. The design skips the setup phase and gets straight to fighting.",
+      "wrLabel": "Wild Rift:",
+      "wrBody": "Fog of war is in play, so placing wards to hold vision is not optional. That gives you the tension of never quite knowing where the enemy will collapse from, plus the macro payoff of reading them and getting there first."
+    },
+    "section2": {
+      "heading": "■ 2. How Item Buying and Recall Work",
+      "hokLabel": "Honor of Kings:",
+      "hokBody": "You can buy items anywhere on the map without recalling. Unless you are one hit from dying, there is no reason to head back, so the game keeps rolling without the usual dead time.",
+      "wrLabel": "Wild Rift:",
+      "wrBody": "Buying items means recalling all the way to the fountain. You have to read the lane state and pick your moment to reset and upgrade, and that timing decision carries real strategic weight."
+    },
+    "section3": {
+      "heading": "■ 3. Side by Side, From a Player Perspective"
+    },
+    "tableHeader": {
+      "axis": "Aspect",
+      "hok": "Honor of Kings",
+      "wr": "Wild Rift"
+    },
+    "tableRows": [
+      {
+        "axis": "Match length",
+        "hok": "10-15 min (very fast)",
+        "wr": "15-20+ min (slower burn)"
+      },
+      {
+        "axis": "Knowledge to learn",
+        "hok": "Fairly light, intuitive",
+        "wr": "A lot (items, vision, runes)"
+      },
+      {
+        "axis": "Controls",
+        "hok": "Built for touch, smooth",
+        "wr": "Precise, high skill ceiling"
+      },
+      {
+        "axis": "Item shopping",
+        "hok": "Anywhere on the map (keeps the pace up)",
+        "wr": "Fountain only (timing matters)"
+      },
+      {
+        "axis": "Art and setting",
+        "hok": "Eastern mythology, heroic, colorful",
+        "wr": "Western dark fantasy, the LoL universe"
+      }
+    ],
+    "section4": {
+      "heading": "■ 4. Verdict: Which One Is for You"
+    },
+    "recommendHok": {
+      "heading": "▶ Who Honor of Kings Is For",
+      "points": [
+        "• Players with limited free time who want a match wrapped up in about 15 minutes",
+        "• Anyone who wants flashy combos and kills without a pile of homework first",
+        "• MOBA newcomers who want to pick up the fundamentals while still having fun"
+      ]
+    },
+    "recommendWr": {
+      "heading": "▶ Who Wild Rift Is For",
+      "points": [
+        "• Players who want PC-level tactics and mind games",
+        "• Competitive players who want precise skill dodging and vision control to decide the game",
+        "• Anyone drawn to the League of Legends world and champion designs"
+      ]
+    }
   },
   "Quiz": {
-    "title": "Find Your MOBA: The Ultimate Vibe Check",
-    "subtitle": "Answer 3 quick questions and we'll tell you which game you're destined to grind.",
-    "description": "Answer 3 quick questions and we'll tell you which game you're destined to grind.",
-    "start": "Take the Quiz",
-    "q1": "How do you like your game pace?",
-    "q1a1": "Fast & bloody 10-15 min brawls!",
-    "q1a2": "Methodical 15-20 min macro chess match!",
-    "q2": "What are your combat & control preferences?",
-    "q2a1": "Intuitive controls & insane flashy combos!",
-    "q2a2": "Precision skillshots, dodging, and warding!",
-    "q3": "Which aesthetic hits harder for you?",
-    "q3a1": "Vibrant, mythical Eastern fantasy heroes!",
-    "q3a2": "Gritty Western dark fantasy champions!",
-    "resultHok": "Honor of Kings is your perfect match!",
-    "resultHokDesc": "Fast-paced 15-minute brawls and insane flashy combos provide the ultimate adrenaline rush!",
-    "resultWr": "Wild Rift is your perfect match!",
-    "resultWrDesc": "Deep vision control, tactical macro, and precise mechanics let you dominate the rift!",
-    "results": {
-      "hok": "[Result: Honor of Kings] You're an absolute brawler! You thrive on high-speed chaos, fast snowballing, and flashy mechanics. Get in there!",
-      "hokDesc": "15-minute high-octane brawls and flashy combos offer the most exhilarating mobile MOBA action!",
-      "wildrift": "[Result: Wild Rift] You're a tactical mastermind! You respect the macro game, love outplaying your opponents, and have the patience to scale.",
-      "wildriftDesc": "Dominate the rift with ward control, deep laning tactics, and precise teamfight execution!"
-    },
-    "retake": "Run It Back",
-    "playNow": "Play Now",
-    "readGuide": "Read Review"
+    "title": "Mobile MOBA Aptitude Quiz",
+    "subtitle": "Answer 5 quick questions and we'll suggest the MOBA that matches your playstyle — plus the role you should main!",
+    "start": "Start the Quiz",
+    "q1": "What match tempo do you prefer?",
+    "q1a1": "Fast 10-15 minute games with constant action!",
+    "q1a2": "Slower 15-20 minute games with farming and strategy!",
+    "q2": "How do you like your controls and combat?",
+    "q2a1": "Intuitive controls and flashy combos!",
+    "q2a2": "Precise play with vision control and skill dodging!",
+    "q3": "Which art style appeals to you?",
+    "q3a1": "Vibrant Eastern fantasy and historical heroes!",
+    "q3a2": "Rich Western fantasy designs!",
+    "q4": "Where on the map do you want to be fighting?",
+    "q4a1": "On the front line, soaking the enemy's damage so my team can go in",
+    "q4a2": "In the middle, a short walk from every lane so I can dictate the pace",
+    "q4a3": "Nowhere near a lane — roaming the jungle and the enemy's half of the map",
+    "q4a4": "Safe in the backline, dealing damage without getting touched",
+    "q4a5": "Right next to a teammate, warding and peeling for them",
+    "q5": "Which kind of win feels best to you?",
+    "q5a1": "Completely shutting down your lane opponent 1v1",
+    "q5a2": "Reading the enemy's next move and collapsing on them first",
+    "q5a3": "Deleting two or three enemies in a single teamfight",
+    "q5a4": "Finishing the game at the top of the damage chart",
+    "q5a5": "Setting your team up so they can commit without hesitating",
+    "resultTitleLabel": "Recommended game",
+    "resultHok": "We recommend Honor of Kings!",
+    "resultHokDesc": "Roughly 15 minutes per match. Enjoy fast-paced games and flashy skill combos.",
+    "resultWr": "We recommend Wild Rift!",
+    "resultWrDesc": "Vision control with wards and deep laning. Great for players who want to hone real skill.",
+    "gameHok": "Honor of Kings",
+    "gameWr": "Wild Rift",
+    "resultRoleLabel": "Your best-fit role",
+    "role_top": "TOP",
+    "role_top_desc": "Top is the island lane: long 1v1s with almost no help, then leading the engage and eating the enemy's opening spells in teamfights. Your answers lean toward handling a situation on your own, and top is the role that lets you decide when the fight starts.",
+    "role_jungle": "JUNGLE",
+    "role_jungle_desc": "Junglers skip laning entirely — you clear camps and pick your own timings for ganks and objectives. You said you win by reading the enemy and hitting first, and jungle is the one role that gets to choose where the fight happens.",
+    "role_mid": "MID",
+    "role_mid_desc": "Mid is the shortest walk to every other lane, so you provide damage while setting the tempo of the game. You picked quick, decisive fights and staying involved across the map, which is exactly what mid does once the wave is shoved.",
+    "role_adc": "ADC (Marksman)",
+    "role_adc_desc": "Marksmen turn last hits (CS) into gold and gold into steady damage from the safety of the backline. You chose to farm up and win on raw output, and that patient early game is what an ADC is trading for.",
+    "role_support": "SUPPORT",
+    "role_support_desc": "Supports buy the wards, take the damage meant for the carry, and lock enemies down so teammates can commit. You put your team's survival and map information ahead of your own kill count, which is the entire job description.",
+    "share": "Share on X",
+    "shareText": "I took the HUB-GAME mobile MOBA quiz — my match is {game} and my best-fit role is {role}.",
+    "readGuide": "Read the Review",
+    "retake": "Retake the Quiz"
   },
   "Glossary": {
-    "title": "Gamer Dictionary: Learn to Speak MOBA",
-    "description": "Don't look like a noob. Here are the essential terms you need to survive.",
+    "title": "Essential MOBA Glossary",
+    "description": "The basic terms every beginner should know — the shared language of MOBA players.",
+    "pageLead": "Not sure what a gank is, or what CS actually stands for? These are the terms Wild Rift and Honor of Kings players use in chat, in guides and in ranked — defined the way they are actually used, with the differences between the two games noted where they matter.",
     "searchPlaceholder": "Search terms...",
     "all": "All",
     "basic": "Basics",
     "map": "Map & Vision",
-    "combat": "Combat",
-    "macro": "Macro",
+    "combat": "Teamfights",
+    "macro": "Strategy",
+    "count": "{count, plural, one {# term} other {# terms}}",
+    "noResults": "No matching terms found",
     "terms": {
       "Gank": {
         "term": "Gank",
-        "def": "When players from other lanes ambush you. Usually the Jungler's job. 'Bro, gank my lane, he has no Flash!'"
+        "cat": "combat",
+        "def": "Ambushing an enemy from another lane or the jungle to create a numbers advantage. A jungler's main job."
+      },
+      "Laning": {
+        "term": "Laning",
+        "cat": "basic",
+        "def": "The early phase of the game where you kill minions in your lane to earn experience and gold."
       },
       "LastHit": {
         "term": "Last Hit (CS)",
-        "def": "Landing the killing blow on a minion to secure the gold. If you miss your last hits, you're going to be useless later."
+        "cat": "basic",
+        "def": "Dealing the killing blow to a minion to earn gold. The foundation of income — accuracy translates directly into item advantages."
       },
       "Build": {
         "term": "Build",
-        "def": "The specific combination of items and skill order you use. Adapt your build to counter the enemy team, or get stomped."
+        "cat": "basic",
+        "def": "The order in which you buy items and level skills. Adapting your build to the enemy team is key to winning."
       },
       "BuffDebuff": {
         "term": "Buff / Debuff",
-        "def": "Buffs make you stronger, debuffs weaken you. Securing the Blue/Red buff from the jungle is crucial for early game dominance."
-      },
-      "Bush": {
-        "term": "Bush",
-        "def": "Tall grass that hides you from enemy vision. The absolute best spot to camp and one-shot the enemy squishy carry."
-      },
-      "Ace": {
-        "term": "Ace (Wipe)",
-        "def": "Eliminating the entire enemy team. The perfect time to push towers and aggressively end the game."
-      },
-      "Snowball": {
-        "term": "Snowball",
-        "def": "Taking a small early advantage (like a first blood) and rolling it into a massive, unstoppable lead. Once you're fed, you steamroll."
+        "cat": "basic",
+        "def": "Buffs strengthen (e.g. attack up) and debuffs weaken (e.g. slows). Jungle monster buffs are crucial for early-game control."
       },
       "KDA": {
         "term": "KDA",
-        "def": "Kill/Death/Assist ratio. Stop diving 1v5. Not dying is often more important than getting a risky kill."
+        "cat": "basic",
+        "def": "Your kill/death/assist ratio. Beginners improve fastest by focusing on dying less."
+      },
+      "Carry": {
+        "term": "Carry",
+        "cat": "basic",
+        "def": "The hero your team feeds gold and safe farm so they can win late-game fights. If you are the carry, take the free farm; if you are not, play around protecting the one who is."
+      },
+      "Tank": {
+        "term": "Tank",
+        "cat": "basic",
+        "def": "A high-health frontliner who starts fights and soaks damage. Tanks buy resistances instead of damage, so judge them by how much enemy attention they pull, not by KDA."
+      },
+      "Fighter": {
+        "term": "Fighter (Bruiser)",
+        "cat": "basic",
+        "def": "A durable melee hero who still deals real damage — able to keep trading in a fight without being a pure tank. Usually takes the solo lane, called the Baron Lane in Wild Rift."
+      },
+      "Assassin": {
+        "term": "Assassin",
+        "cat": "basic",
+        "def": "A burst hero built to reach the enemy carry and delete them in one combo. Strong when the enemy is split up, near-useless when they group and peel for each other."
+      },
+      "Mage": {
+        "term": "Mage",
+        "cat": "basic",
+        "def": "A ranged magic-damage hero, usually in the mid lane. Mages jump in strength the moment their first major item completes, so it is worth checking the enemy mage's build before you fight."
+      },
+      "Marksman": {
+        "term": "Marksman (ADC)",
+        "cat": "basic",
+        "def": "A ranged basic-attack carry who scales with items. Wild Rift plays them in the Dragon Lane with a support; Honor of Kings pairs them the same way in the bottom lane."
+      },
+      "Support": {
+        "term": "Support",
+        "cat": "basic",
+        "def": "Starts the game beside the marksman and gives up farm in exchange for vision, crowd control and peel. Wild Rift supports also manage wards; Honor of Kings has no ward item, so its supports lean on shields, heals and knock-ups instead."
+      },
+      "Jungler": {
+        "term": "Jungler",
+        "cat": "basic",
+        "def": "The player who farms neutral camps instead of a lane and decides where to gank. Their pathing sets the early tempo for the whole team."
+      },
+      "Minion": {
+        "term": "Minions",
+        "cat": "basic",
+        "def": "The AI soldiers that march down each lane. They are your steady income — clearing waves pays for your build, and shoving them into a tower is how you take it down."
+      },
+      "Recall": {
+        "term": "Recall (Back)",
+        "cat": "basic",
+        "def": "Channeling back to your fountain to heal and shop. Time it right after you shove the wave in, so you lose the least gold and experience while you are away."
+      },
+      "Farm": {
+        "term": "Farm",
+        "cat": "basic",
+        "def": "Steadily collecting gold and experience from minions and jungle camps. When a fight is not clearly winnable, taking a wave is usually the higher-value play."
+      },
+      "Jungle": {
+        "term": "Jungle",
+        "cat": "map",
+        "def": "The neutral area between lanes. Defeat monsters there for experience and buffs."
+      },
+      "Bush": {
+        "term": "Bush",
+        "cat": "map",
+        "def": "Grass that hides you from enemy view. A classic spot to ambush the enemy carry."
+      },
+      "Tower": {
+        "term": "Tower (Turret)",
+        "cat": "map",
+        "def": "Lane defenses that hit hard and switch to you the moment you attack an enemy hero in range. Only step in when your own minion wave is there to take the shots for you."
+      },
+      "Nexus": {
+        "term": "Nexus / Crystal (Base)",
+        "cat": "map",
+        "def": "The final structure in the enemy base — the Nexus in Wild Rift, the Crystal in Honor of Kings. Destroying it ends the match regardless of the kill score."
+      },
+      "Ward": {
+        "term": "Ward / Vision",
+        "cat": "map",
+        "def": "A placeable item that reveals part of the map. Wild Rift gives every player free wards from the shop, while Honor of Kings has no ward item at all — there, vision comes from bushes, the minimap and hero skills."
+      },
+      "FogOfWar": {
+        "term": "Fog of War",
+        "cat": "map",
+        "def": "The unlit part of the map where enemies are invisible to you. When an enemy disappears from the minimap, assume they are walking toward you until you see otherwise."
+      },
+      "Fountain": {
+        "term": "Fountain (Base)",
+        "cat": "map",
+        "def": "The healing zone in your base where you shop and refill. Enemies who chase you into it get shredded by the fountain's attack, so a fountain dive is almost never worth it."
+      },
+      "Ace": {
+        "term": "Ace",
+        "cat": "combat",
+        "def": "Wiping out the entire enemy team. Use the window to take towers and objectives and swing the game."
+      },
+      "Peel": {
+        "term": "Peel",
+        "cat": "combat",
+        "def": "Protecting your carry (damage dealer) from enemy attacks."
+      },
+      "CC": {
+        "term": "CC (Crowd Control)",
+        "cat": "combat",
+        "def": "Any effect that takes control away from a hero — stun, knock-up, root, silence, slow. Chaining CC is how a team kills a tank, and holding your escape until after the first CC lands is how you survive one."
+      },
+      "Burst": {
+        "term": "Burst",
+        "cat": "combat",
+        "def": "Damage delivered in one short combo rather than over time. Burst heroes live or die on whether the target dies before it can react, so they need setup or CC to land it."
+      },
+      "Poke": {
+        "term": "Poke",
+        "cat": "combat",
+        "def": "Chipping away at enemy health from outside their range before a fight starts. Enough poke forces the enemy to recall or fight at a health deficit."
+      },
+      "Sustain": {
+        "term": "Sustain",
+        "cat": "combat",
+        "def": "Health you recover on your own — lifesteal, regeneration, or a heal skill. Good sustain lets you stay in lane through poke instead of giving up waves to recall."
+      },
+      "Dive": {
+        "term": "Tower Dive",
+        "cat": "combat",
+        "def": "Attacking an enemy who is standing under their own tower. It only works when you have a minion wave to hold the tower's aggro and enough damage to finish before it kills you."
+      },
+      "Focus": {
+        "term": "Focus",
+        "cat": "combat",
+        "def": "Agreeing on one target and killing it first. Damage spread across five enemies kills nobody; five players hitting the same squishy usually decides the fight on the spot."
+      },
+      "Kiting": {
+        "term": "Kiting",
+        "cat": "combat",
+        "def": "Moving between basic attacks so you keep dealing damage while staying out of reach. Attack, step back, attack again — it is the core mechanic of every marksman."
+      },
+      "Engage": {
+        "term": "Engage / Disengage",
+        "cat": "combat",
+        "def": "Engage is the skill that starts a fight — a knock-up, a hook, a dash in. Disengage is what pulls your team out of a bad one. Whichever side has the better engage usually gets to choose when the fight happens."
+      },
+      "Snowball": {
+        "term": "Snowball",
+        "cat": "macro",
+        "def": "Turning a small lead into an ever-growing advantage and keeping control of the game."
       },
       "Push": {
         "term": "Push",
-        "def": "Clearing enemy minions fast to shove your wave into the enemy tower. Applies massive map pressure."
+        "cat": "macro",
+        "def": "Killing minions to move the front line toward the enemy's towers."
       },
-      "Turtle": {
-        "term": "Turtle / Dragon",
-        "def": "Major neutral objectives that give insane team-wide buffs. Most games are decided by who wins the teamfight at the Dragon pit."
+      "Macro": {
+        "term": "Macro",
+        "cat": "macro",
+        "def": "Big-picture strategy: map awareness, objective control, and rotations. Its counterpart, micro, refers to mechanical skill."
+      },
+      "Objective": {
+        "term": "Objectives (Dragon / Tyrant, etc.)",
+        "cat": "macro",
+        "def": "Neutral monsters that grant powerful team-wide buffs — Wild Rift's Dragon, Honor of Kings' Tyrant. Teamfights around them often decide the game."
+      },
+      "Roam": {
+        "term": "Roam",
+        "cat": "macro",
+        "def": "Leaving your lane to make something happen elsewhere — a gank, an objective, a vision sweep. Roam after you shove your wave in, so the trip does not cost you farm."
+      },
+      "SplitPush": {
+        "term": "Split Push",
+        "cat": "macro",
+        "def": "Pushing a side lane alone while your team holds the enemy's attention elsewhere. It forces them to send someone to answer, which is how you create the numbers fight your team can win."
+      },
+      "WaveManagement": {
+        "term": "Wave Management (Freeze)",
+        "cat": "macro",
+        "def": "Controlling where the minion waves meet. Freeze the wave near your own tower to farm safely, or slow push a big wave first so you have time to take an objective."
+      },
+      "Scaling": {
+        "term": "Scaling",
+        "cat": "macro",
+        "def": "How much stronger a hero gets from levels and items. A late-scaling team should trade early aggression for farm; an early-game team has to convert its lead before the other side catches up."
+      },
+      "PowerSpike": {
+        "term": "Power Spike",
+        "cat": "macro",
+        "def": "The moment a hero jumps in strength — a key level or a completed item. Look for fights right after your own spike, and avoid them right after the enemy's."
+      },
+      "Meta": {
+        "term": "Meta",
+        "cat": "macro",
+        "def": "The heroes, builds and strategies that are strongest under the current patch. It shifts with every balance change, so check the patch date on any tier list you read."
       }
-    }
+    },
+    "eyebrow": "MOBA GLOSSARY"
   },
   "Terms": {
     "title": "Terms of Service",
     "introTitle": "1. Introduction",
-    "introText": "These Terms of Service govern your use of HUB-GAME.",
+    "introText": "These Terms of Service (the \"Terms\") set out the conditions for using the services provided by HUB-GAME (the \"Site\"). By using the Site, you agree to be bound by these Terms.",
     "copyrightTitle": "2. Copyright",
-    "copyrightText": "All intellectual property rights belong to their respective owners.",
-    "copyrightNote": "Game graphics and trademarks belong to Riot Games and respective publishers.",
-    "prohibitionsTitle": "3. Prohibitions",
-    "prohibitionsText": "Users must not engage in illegal or harmful behavior on the site.",
+    "copyrightText": "The copyright of information published on the Site (text, images, data, etc.) belongs to the Site or the respective rights holders. Unauthorized use, reproduction, or redistribution beyond the scope of private use is prohibited.",
+    "copyrightNote": "* Copyrights for game images, characters, and related assets belong to Riot Games and the respective publishers.",
+    "prohibitionsTitle": "3. Prohibited Activities",
+    "prohibitionsText": "When using the Site, you must not engage in any of the following:",
     "prohibitionsList": [
-      "Violating laws or regulations",
-      "Disrupting site services or networks"
+      "Activities that violate laws or public order and morals",
+      "Activities related to criminal acts",
+      "Activities that destroy or interfere with the servers or networks of the Site, other users, or third parties",
+      "Activities that may interfere with the operation of the Site's services"
     ],
-    "modificationsTitle": "4. Modifications",
-    "modificationsText": "Terms may be updated without prior notice."
+    "modificationsTitle": "4. Changes to the Terms",
+    "modificationsText": "The Site may modify these Terms at any time without notice when deemed necessary."
   },
   "Privacy": {
     "title": "Privacy Policy",
-    "collectionTitle": "1. Information Collection",
-    "collectionText": "We may collect contact information provided voluntarily.",
+    "collectionTitle": "1. Collection of Personal Information",
+    "collectionText": "The Site may collect personal information such as your name and email address in the course of inquiries or providing services. Such information is managed appropriately and is never used for other purposes.",
     "analyticsTitle": "2. Analytics",
-    "analyticsText": "We use Google Analytics with cookies for anonymous traffic analysis.",
+    "analyticsText": "The Site may use Google Analytics, an analytics tool provided by Google. Google Analytics uses cookies to collect traffic data. This data is collected anonymously and does not identify individuals. You can refuse this collection by disabling cookies in your browser.",
     "adsTitle": "3. Advertising",
-    "adsText": "Third-party ad networks may use cookies to serve tailored ads.",
-    "disclosureTitle": "4. Data Disclosure",
-    "disclosureText": "Personal data will not be shared except as required by law."
+    "adsText": "The Site uses Google AdSense, a third-party advertising service. Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this and other websites. You can opt out of personalized advertising at any time via Google's Ads Settings (adssettings.google.com), or disable third-party vendor cookies for personalized ads at www.aboutads.info.",
+    "disclosureTitle": "4. Disclosure to Third Parties",
+    "disclosureText": "The Site manages personal information appropriately and does not disclose it to third parties except in the following cases:",
+    "disclosureList": [
+      "When the user has given consent",
+      "When disclosure is required to comply with laws and regulations"
+    ]
   },
   "Disclaimer": {
     "title": "Disclaimer",
-    "accuracyTitle": "1. Accuracy",
-    "accuracyText": "We strive for accuracy but cannot guarantee zero errors due to game patches.",
+    "accuracyTitle": "1. Accuracy of Information",
+    "accuracyText": "While we strive to publish accurate information on the Site, we do not guarantee its accuracy or reliability. Information may become outdated due to game patches and updates.",
     "liabilityTitle": "2. Liability",
-    "liabilityText": "We are not liable for any damages resulting from site usage.",
-    "copyrightsTitle": "3. Rights",
-    "copyrightsText": "Unofficial fan site. Trademarks belong to respective owners."
+    "liabilityText": "We accept no responsibility for any damages arising from the content published on the Site. We are also not responsible for information or services provided on external sites reached via links or banners on the Site.",
+    "copyrightsTitle": "3. Copyright Attribution",
+    "copyrightsText": "The Site is an unofficial fan site. Copyrights and portrait rights for game images, videos, and character names published on the Site belong to Riot Games, Inc. or the respective rights holders. We have no intention of infringing any rights. If you find an issue with our articles or images, rights holders are asked to contact us via the contact page; we will respond promptly after confirmation."
   },
   "Contact": {
-    "title": "Contact Us",
-    "text": "For inquiries or removal requests, please send a Direct Message on X.",
-    "button": "Send DM to @hub_gamecom",
-    "note": "Replies may take some time."
+    "title": "Contact",
+    "text": "For questions, corrections to our articles, tips, or takedown requests, reach us by email or by direct message on our official X (formerly Twitter) account.",
+    "emailLabel": "Email us",
+    "xLabel": "Message us on X",
+    "note": "* Replies may take a few days.\nThanks for your patience."
   },
-  "Header": {
-    "home": "Home",
-    "guides": "Guides",
-    "compare": "Compare",
-    "quiz": "Quiz",
-    "glossary": "Glossary"
+  "NotFound": {
+    "title": "Page not found",
+    "body": "The page you were looking for may have moved or been removed. Try one of the links below.",
+    "code": "404",
+    "backHome": "Back to home",
+    "browseGuides": "Browse articles",
+    "browseGlossary": "Open the MOBA glossary"
+  },
+  "Error": {
+    "title": "Something went wrong",
+    "body": "We hit an error while loading this page. Please try again in a moment.",
+    "retry": "Reload the page",
+    "backHome": "Back to home"
+  },
+  "Breadcrumb": {
+    "home": "Home"
+  },
+  "About": {
+    "title": "About",
+    "siteTitle": "About This Site",
+    "siteText": "HUB-GAME (hub-game.com) is a strategy portal focused on mobile MOBAs. This site offers comparison articles, an aptitude quiz, and a glossary to help you choose a title, while our sister sites cover detailed strategy for Wild Rift and Honor of Kings.",
+    "operatorTitle": "Operator",
+    "operatorText": "HUB-GAME team (email: contact@hub-game.com / X: @hub_gamecom). Articles are written by gamers who play mobile MOBAs daily, based on hands-on experience.",
+    "policyTitle": "Editorial Policy",
+    "policyText": "Articles are based on what we have verified through actual play. Because patches can make information outdated, we note the verification date for numbers and balance claims wherever possible. If you spot an error, please let us know via the contact page.",
+    "contactTitle": "Get in Touch",
+    "contactText": "For questions, information, or feedback about our content, please see the contact page."
   },
   "Footer": {
     "quickLinks": "Quick Links",
     "games": "Games",
-    "rights": "© 2026 HUB-GAME. All rights reserved."
+    "rights": "© 2026 HUB-GAME. All rights reserved.",
+    "tagline": "Ultimate MOBA Strategy Portal",
+    "policy": "Policy"
   }
 }

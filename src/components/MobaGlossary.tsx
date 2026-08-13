@@ -1,20 +1,39 @@
 'use client';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Search, BookA } from "lucide-react";
+import { Search, BookA, Link2 } from "lucide-react";
+// アンカーIDの生成はサーバー側（JSON-LD）とも共有するため utils に置いている
+import { toAnchorId } from "@/utils/glossary";
 
-export default function MobaGlossary() {
+// messages/{locale}.json の Glossary.terms に対応する用語データの型
+type GlossaryTerm = {
+  term: string;
+  cat: string;
+  def: string;
+};
+
+// カテゴリごとのバッジ色（ライト背景でも文字が読める濃さに揃える）
+const CAT_STYLES: Record<string, string> = {
+  basic: 'bg-amber-50 text-amber-700 border-amber-200',
+  map: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+  combat: 'bg-rose-50 text-rose-700 border-rose-200',
+  macro: 'bg-indigo-50 text-indigo-700 border-indigo-200',
+};
+
+/**
+ * 用語データはサーバー側（glossary/page.tsx）から props で受け取る。
+ *
+ * ここで t.raw('terms') を読むと、44語の定義文（約12KB）が
+ * NextIntlClientProvider 経由で全ページのHTMLに埋め込まれてしまうため、
+ * 用語集ページだけが送るように外出ししている。
+ */
+export default function MobaGlossary({ terms: termRecord }: { terms: Record<string, GlossaryTerm> }) {
   const t = useTranslations('Glossary');
   const [query, setQuery] = useState('');
   const [filter, setFilter] = useState('all');
 
-  const terms = [
-    { term: "ガンク (Gank)", cat: "combat", desc: "他のレーンから急襲して、数的優位を作って敵を倒すこと。" },
-    { term: "レーニング (Laning)", cat: "basic", desc: "序盤に自分のレーンでミニオンを倒し、経験値とゴールドを稼ぐフェーズ。" },
-    { term: "ジャングル (Jungle)", cat: "map", desc: "レーンとレーンの間にある森のエリア。中立モンスターが生息している。" },
-    { term: "マクロ (Macro)", cat: "macro", desc: "マップ全体の状況把握や、オブジェクト管理など大局的な戦略のこと。" },
-    { term: "ピール (Peel)", cat: "combat", desc: "味方のキャリー（火力役）を敵の攻撃から守ること。" },
-  ];
+  // アンカーリンクのため、値だけでなくキーも保持する
+  const terms = useMemo(() => Object.entries(termRecord), [termRecord]);
 
   const categories = [
     { id: 'all', label: t('all') },
@@ -24,65 +43,110 @@ export default function MobaGlossary() {
     { id: 'macro', label: t('macro') },
   ];
 
-  const filtered = terms.filter(item => {
-    const matchSearch = item.term.toLowerCase().includes(query.toLowerCase()) || item.desc.toLowerCase().includes(query.toLowerCase());
+  const catLabels: Record<string, string> = {
+    basic: t('basic'),
+    map: t('map'),
+    combat: t('combat'),
+    macro: t('macro'),
+  };
+
+  const needle = query.trim().toLowerCase();
+  const filtered = terms.filter(([, item]) => {
+    const matchSearch =
+      needle === '' ||
+      item.term.toLowerCase().includes(needle) ||
+      item.def.toLowerCase().includes(needle);
     const matchCat = filter === 'all' || item.cat === filter;
     return matchSearch && matchCat;
   });
 
   return (
     <div className="flex flex-col gap-5">
-      
+
       {/* Search & Filters */}
       <div className="flex flex-col gap-4">
         <div className="relative">
           <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-          <input 
-            type="text" 
+          <input
+            type="search"
+            aria-label={t('searchPlaceholder')}
             placeholder={t('searchPlaceholder')}
             value={query}
             onChange={e => setQuery(e.target.value)}
-            className="w-full pl-11 pr-4 py-3.5 bg-white border border-slate-200 rounded-2xl text-sm font-medium text-slate-800 placeholder-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all"
+            className="w-full pl-11 pr-4 py-3.5 bg-white border border-slate-200 rounded-2xl text-sm font-medium text-slate-900 placeholder-slate-500 shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-400/40 focus:border-amber-400 transition-all"
           />
         </div>
-        
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide">
+
+        <div className="flex flex-wrap items-center gap-2">
           {categories.map(c => (
             <button
               key={c.id}
+              type="button"
               onClick={() => setFilter(c.id)}
-              className={`px-4 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap ${
-                filter === c.id 
-                  ? 'bg-slate-900 text-white shadow-md' 
-                  : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
+              aria-pressed={filter === c.id}
+              className={`px-4 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap border ${
+                filter === c.id
+                  ? 'bg-amber-500 border-amber-500 text-slate-950 shadow-md'
+                  : 'bg-white border-slate-200 text-slate-600 hover:text-slate-900 hover:border-slate-300'
               }`}
             >
               {c.label}
             </button>
           ))}
         </div>
+
+        {/* 語数が多いので、絞り込み結果の件数を出す */}
+        <p aria-live="polite" className="text-xs font-bold text-slate-600">
+          {t('count', { count: filtered.length })}
+        </p>
       </div>
 
       {/* Results */}
-      <div className="flex flex-col gap-3">
-        {filtered.length > 0 ? (
-          filtered.map((item, i) => (
-            <div key={i} className="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex items-center gap-2 mb-2">
-                <BookA size={16} className="text-indigo-500" />
-                <h4 className="font-bold text-slate-800">{item.term}</h4>
-              </div>
-              <p className="text-xs text-slate-600 font-medium leading-relaxed">
-                {item.desc}
-              </p>
-            </div>
-          ))
-        ) : (
-          <div className="p-8 text-center bg-slate-50 rounded-2xl border border-slate-100">
-            <p className="text-sm font-bold text-slate-400">用語が見つかりません</p>
-          </div>
-        )}
-      </div>
+      {filtered.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {filtered.map(([key, item]) => {
+            const anchorId = toAnchorId(key);
+            return (
+              <article
+                key={key}
+                id={anchorId}
+                // sticky ヘッダーに隠れないようアンカー位置を下げる
+                className="group scroll-mt-24 p-5 bg-white rounded-2xl border border-slate-200 shadow-sm hover:border-amber-400 transition-colors"
+              >
+                <div className="flex items-start justify-between gap-3 mb-2">
+                  <h2 className="font-black text-slate-900 leading-snug flex items-center gap-2">
+                    <BookA size={16} className="text-amber-600 shrink-0" />
+                    {item.term}
+                  </h2>
+                  <a
+                    href={`#${anchorId}`}
+                    aria-label={item.term}
+                    className="mt-0.5 text-slate-400 opacity-0 group-hover:opacity-100 focus:opacity-100 hover:text-amber-600 transition-all"
+                  >
+                    <Link2 size={14} />
+                  </a>
+                </div>
+
+                <span
+                  className={`inline-block mb-2 px-2 py-0.5 rounded-md border text-[10px] font-black uppercase tracking-wider ${
+                    CAT_STYLES[item.cat] ?? 'bg-slate-100 text-slate-600 border-slate-200'
+                  }`}
+                >
+                  {catLabels[item.cat] ?? item.cat}
+                </span>
+
+                <p className="text-xs text-slate-600 font-medium leading-relaxed">
+                  {item.def}
+                </p>
+              </article>
+            );
+          })}
+        </div>
+      ) : (
+        <div className="p-8 text-center bg-white rounded-2xl border border-slate-200 shadow-sm">
+          <p className="text-sm font-bold text-slate-500">{t('noResults')}</p>
+        </div>
+      )}
 
     </div>
   );

@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HUB-GAME Portal
 
-## Getting Started
+スマホMOBAの攻略ポータル [hub-game.com](https://hub-game.com) のソースコードです。
+ワイルドリフトとオナー・オブ・キングスの比較記事・適性診断・用語集を掲載し、姉妹サイト
+[wildrift.hub-game.com](https://wildrift.hub-game.com) / [hok.hub-game.com](https://hok.hub-game.com)
+への入口となるハブサイトです。
 
-First, run the development server:
+## 技術構成
+
+- [Next.js 16](https://nextjs.org)（App Router）
+- [next-intl 4](https://next-intl.dev)（日英2言語対応）
+- [Tailwind CSS 4](https://tailwindcss.com)
+- React 19
+
+## 開発コマンド
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev    # 開発サーバーを起動（http://localhost:3000）
+npm run build  # 本番ビルド
+npm run lint   # ESLint によるチェック
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ディレクトリ構成の要点
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+  app/
+    [locale]/        # ロケール別ページ（ja / en）。レイアウトとメタデータもここで生成
+    page.tsx         # ルートアクセスをデフォルトロケール（ja）へリダイレクト
+    sitemap.ts       # サイトマップ生成
+    manifest.ts      # PWA マニフェスト
+  i18n/
+    routing.ts       # 対応ロケールとデフォルトロケールの定義（一元管理）
+  proxy.ts           # next-intl ミドルウェア（ロケール判定・リダイレクト）
+messages/
+  ja.json            # 日本語の翻訳メッセージ
+  en.json            # 英語の翻訳メッセージ
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 翻訳の追加手順
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. `messages/ja.json` と `messages/en.json` の両方に同じキーを追加する（片方だけの追加は不可）。
+2. サーバーコンポーネントでは `getTranslations`（`next-intl/server`）、
+   クライアントコンポーネントでは `useTranslations`（`next-intl`）でキーを参照する。
+3. 新しいロケールを増やす場合は `src/i18n/routing.ts` の `locales` に追加し、
+   `messages/` に対応する JSON ファイルを用意する。
