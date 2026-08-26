@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from "@/i18n/routing";
-import { BookMarked, BookOpen, ChevronRight, Flame, Sparkles, Swords, Target, Compass } from "lucide-react";
+import { BookMarked, BookOpen, ChevronRight, Flame, Sparkles, Swords, Target, Compass, ArrowLeftRight } from "lucide-react";
 import HeaderNav from "@/components/HeaderNav";
 import FooterNav from "@/components/FooterNav";
 import JsonLd from "@/components/JsonLd";
@@ -21,6 +21,7 @@ export default async function GuidesPage({ params }: { params: Promise<{ locale:
   const tHok = await getTranslations('GuideHOK');
   const tWr = await getTranslations('GuideWildRift');
   const tComp = await getTranslations('GuideCompare');
+  const tMap = await getTranslations('GuideTermMapping');
   const tGlossary = await getTranslations('Glossary');
   const tNav = await getTranslations('Nav');
   const tBreadcrumb = await getTranslations('Breadcrumb');
@@ -65,6 +66,14 @@ export default async function GuidesPage({ params }: { params: Promise<{ locale:
       tag: t('tagCompare'),
       color: "bg-purple-500 text-white",
       icon: Swords
+    },
+    {
+      slug: "term-mapping",
+      title: tMap('title'),
+      desc: tMap('intro'),
+      tag: t('tagCompare'),
+      color: "bg-purple-500 text-white",
+      icon: ArrowLeftRight
     }
   ];
 

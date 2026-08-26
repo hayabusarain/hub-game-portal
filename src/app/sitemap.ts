@@ -12,6 +12,7 @@ const STATIC_PATHS = [
   '/guides/what-is-moba',
   '/guides/wild-rift',
   '/guides/honor-of-kings',
+  '/guides/term-mapping',
   '/glossary',
   '/about',
   '/contact',
@@ -34,7 +35,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // 言語を判定できない訪問者向けの既定はデフォルトロケール
     alternatesLanguages['x-default'] = `${BASE_URL}/${routing.defaultLocale}${path}`;
 
-    // 記事は更新日を持つので lastModified として出す（持たないページは省略）
+    // 記事は articles.ts の updated、それ以外は PAGE_UPDATED から更新日を出す。
+    // 全URLに lastmod を付け、更新中のサイトであることをクローラーに示す
     const lastModified = getLastModified(path);
 
     for (const locale of routing.locales) {

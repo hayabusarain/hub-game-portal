@@ -7,7 +7,7 @@ import MobaDiagnosticQuiz from '@/components/MobaDiagnosticQuiz';
 import { ArrowLeft } from 'lucide-react';
 import JsonLd from '@/components/JsonLd';
 import { buildArticle, buildBreadcrumb, buildGraph } from '@/utils/jsonld';
-import { ARTICLES } from '@/data/articles';
+import { ARTICLES, formatArticleDate } from '@/data/articles';
 import { getAlternates } from '@/utils/seo';
 import GlossaryTermLinks from '@/components/GlossaryTermLinks';
 
@@ -29,7 +29,6 @@ export default async function CompareGuidePage({ params }: { params: Promise<{ l
   const tNav = await getTranslations('Nav');
   const tBreadcrumb = await getTranslations('Breadcrumb');
 
-  // このページには日付の表示欄が無いので、日付は構造化データにだけ載せる
   const graph = buildGraph(
     buildBreadcrumb(locale, [
       { name: tBreadcrumb('home'), path: '/' },
@@ -78,6 +77,17 @@ export default async function CompareGuidePage({ params }: { params: Promise<{ l
           <p className="text-sm text-slate-600 font-medium leading-relaxed">
             {t('lead')}
           </p>
+
+          {/* 比較表の数値はパッチで動くので、公開日と更新日を画面にも出す */}
+          <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500">
+            <span>{tCommon('publishedLabel')} <time dateTime={meta.published}>{formatArticleDate(meta.published, locale)}</time></span>
+            {meta.updated !== meta.published && (
+              <>
+                <span>•</span>
+                <span>{tCommon('updatedLabel')} <time dateTime={meta.updated}>{formatArticleDate(meta.updated, locale)}</time></span>
+              </>
+            )}
+          </div>
         </header>
 
         {/* Article Body */}
@@ -156,6 +166,11 @@ export default async function CompareGuidePage({ params }: { params: Promise<{ l
               </tbody>
             </table>
           </div>
+
+          {/* 表のデータ行の検証時点と出典 */}
+          {t.has('tableFootnote') && (
+            <p className="text-xs text-slate-500 leading-relaxed">{t('tableFootnote')}</p>
+          )}
 
           <h2 className="text-xl font-bold text-slate-900 pt-4 border-t border-slate-200">
             {t('section4.heading')}

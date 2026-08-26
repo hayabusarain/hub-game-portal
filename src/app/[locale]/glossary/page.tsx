@@ -8,9 +8,17 @@ import JsonLd from "@/components/JsonLd";
 import { toAnchorId } from '@/utils/glossary';
 import { buildBreadcrumb, buildDefinedTermSet, buildGraph } from '@/utils/jsonld';
 import { getAlternates } from '@/utils/seo';
+import { SITE_ORIGINS, type HighlightSite } from '@/data/highlights';
 
-// messages/{locale}.json の Glossary.terms に対応する用語データの型
-type GlossaryTermEntry = { term: string; cat: string; def: string };
+// messages/{locale}.json の Glossary.terms に対応する用語データの型。
+// note は2タイトルでの違いの注記、links は姉妹サイトの該当ページ（どちらも任意）
+type GlossaryTermEntry = {
+  term: string;
+  cat: string;
+  def: string;
+  note?: string;
+  links?: { site: HighlightSite; path: string; label: string }[];
+};
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -30,6 +38,23 @@ export default async function GlossaryPage({ params }: { params: Promise<{ local
   // クライアント側で読むと44語の定義文が全ページのHTMLに載ってしまうため
   // （layout の NextIntlClientProvider は Glossary.terms を除いて渡している）。
   const termRecord = t.raw('terms') as Record<string, GlossaryTermEntry>;
+
+  // 姉妹サイトへのリンクは、サーバー側でロケール付きの完全な URL に組み立ててから渡す。
+  // クライアント側にオリジン表を持たせず、messages には site と path だけを書けばよい
+  const termsForClient = Object.fromEntries(
+    Object.entries(termRecord).map(([key, item]) => [
+      key,
+      {
+        term: item.term,
+        cat: item.cat,
+        def: item.def,
+        ...(item.note ? { note: item.note } : {}),
+        ...(item.links?.length
+          ? { links: item.links.map((l) => ({ label: l.label, href: `${SITE_ORIGINS[l.site]}/${locale}${l.path}` })) }
+          : {}),
+      },
+    ])
+  );
 
   // アンカーIDの生成は表示側（MobaGlossary）と同じ関数を使い、
   // 構造化データの @id が実際のカードの id と必ず一致するようにする
@@ -76,7 +101,7 @@ export default async function GlossaryPage({ params }: { params: Promise<{ local
 
         {/* 検索・カテゴリ絞り込み付きの用語リスト（各カードに id を振ってアンカー可能にしている） */}
         <section>
-          <MobaGlossary terms={termRecord} />
+          <MobaGlossary terms={termsForClient} />
         </section>
 
         {/* 記事一覧への導線 */}

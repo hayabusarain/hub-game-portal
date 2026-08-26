@@ -47,6 +47,10 @@
     "glossary": {
       "title": "MOBA Glossary for Wild Rift & Honor of Kings",
       "description": "Plain definitions of the MOBA terms you actually hear in game — gank, CS, peel, power spike and more — with the differences between Wild Rift and Honor of Kings noted."
+    },
+    "termMapping": {
+      "title": "Honor of Kings ⇄ Wild Rift: Term Map and Switching Guide",
+      "description": "Twenty-two things Honor of Kings and Wild Rift both have but call by different names, lined up side by side — each with a one-line note on how the mechanics actually differ, from spawn timers to where you are allowed to shop."
     }
   },
   "Home": {
@@ -69,7 +73,7 @@
     "picksTitle": "This Week's Picks",
     "picksLead": "The updates from our strategy sites that are worth reading before your next game.",
     "picksUpdatedLabel": "Updated",
-    "disclaimerText": "This website is an unofficial fan site and is not affiliated with Riot Games or any other publishers."
+    "disclaimerText": "This website is an unofficial fan site and is not affiliated with Riot Games, Tencent Games (Level Infinite), or any other publisher. League of Legends: Wild Rift is a trademark of Riot Games, Inc.; Honor of Kings is a registered trademark of Tencent."
   },
   "Nav": {
     "home": "Home",
@@ -90,11 +94,15 @@
     "glossaryCta": "Open the MOBA Glossary",
     "glossaryCtaDesc": "Gank, CS, peel, power spike — the vocabulary Wild Rift and Honor of Kings players use, explained on one page, with the differences between the two games noted.",
     "eyebrow": "MOBA STRATEGY & REVIEWS",
-    "relatedTerms": "Terms from this article"
+    "relatedTerms": "Terms from this article",
+    "updatedLabel": "Updated",
+    "publishedLabel": "Published",
+    "switchHokToWr": "From Honor of Kings to Wild Rift",
+    "switchWrToHok": "From Wild Rift to Honor of Kings"
   },
   "GuideWhatIsMoba": {
     "title": "What Makes MOBAs So Addictive? A Deep Dive into 5v5 Battles",
-    "intro": "MOBA (Multiplayer Online Battle Arena) is one of the most popular game genres worldwide. Here's why it draws in so many players.",
+    "intro": "I uninstalled my first MOBA the same night. Five years and 2,000 hours later, here is my attempt to work out why a 5v5 genre that loses you eight games in ten is so hard to put down.",
     "category": "Column / Essay",
     "pageTitle": "Five Years Deep in the MOBA Rabbit Hole",
     "publishedAt": "Posted: July 2026",
@@ -106,7 +114,7 @@
     ],
     "pullQuote": "And then, a few days later, it surfaced out of nowhere: if I hadn't walked through that bush, I probably would have lived. I was clicking download again before I had really decided to.",
     "leadOutro": "That was the start of everything. I'm past 2,000 hours in the genre now. So here is my attempt to work out, from my own experience, why these games swallow so much of your time.",
-    "section1Heading": "■ Twenty minutes a match, and the perfect high only lands once every ten",
+    "section1Heading": "■ Fifteen to twenty minutes a match, and the perfect high only lands once every ten",
     "section1Setup": [
       "A MOBA match is five players against five, all tangled up on the same map. Everyone opens at level 1, farms minions for gold, and buys items to grow into the late game.",
       "The correct play changes with every situation, and plenty of matches fall apart purely because nobody on the team is reading it the same way. Eight games out of ten I close the client annoyed, still stinging, still wondering why nobody rotated when I pinged."
@@ -146,18 +154,26 @@
       "If you're thinking about picking up a MOBA, I'd strongly suggest either muting team chat or queuing with a friend for the first stretch. There is an enormous amount to learn, and you are going to get rolled while you learn it.",
       "But once you're through that first wall and you land the combo exactly the way you pictured it, you'll arrive at the same thought I did: oh no, this game has me."
     ],
-    "ctaCompare": "Compare: Honor of Kings vs. Wild Rift, which one suits you?"
+    "ctaCompare": "Compare: Honor of Kings vs. Wild Rift, which one suits you?",
+    "definitionBlock": {
+      "heading": "What a MOBA is, in one minute",
+      "paragraphs": [
+        "A MOBA (Multiplayer Online Battle Arena) is a competitive genre in which two teams of five fight over a single map. Each player controls one character, earns gold, and buys items to grow stronger as the match goes on. The first team to destroy the enemy base (the Nexus, or the Crystal in Honor of Kings) wins. The major titles are all free-to-play.",
+        "Match length depends on the game. In our comparison article, Honor of Kings matches run about 10 to 15 minutes and Wild Rift matches about 15 to 20.",
+        "On PC, the genre is defined by League of Legends (2009) and Dota 2 (2013). On mobile, the two we cover here are Honor of Kings and League of Legends: Wild Rift; Arena of Valor and Pokémon UNITE belong to the same genre."
+      ]
+    }
   },
   "GuideHOK": {
     "title": "Why We Recommend Honor of Kings: A Thrilling 15-Minute MOBA",
-    "intro": "Honor of Kings, said to be played by over 200 million people worldwide, has gone global. Its fast tempo keeps you coming back for more.",
+    "intro": "Six months on the global version, from a longtime PC MOBA player. Ultimates unlock in under two minutes and games end in 12 to 15, and that same pace is why an early lead tends to snowball.",
     "category": "Game Review / Impressions",
     "heading": "Six Months of Honor of Kings: My Honest Take on the MOBA That Fits After Work",
     "published": "Published: July 2026",
     "author": "Written by HUB-GAME",
     "leadParagraphs": [
       "I have played MOBAs on PC for years, and I walked into this one carrying a bias: a MOBA on a phone means a cramped screen and mushy controls, right?",
-      "Then the global release of Honor of Kings — often cited as the most-played MOBA in the world — landed, I gave it a shot, and that bias did not survive the first session. Six months later I still catch myself queuing up \"just one more\" after work with my brain running on fumes. Here is my honest take on why the pacing works so well."
+      "Then the global version of Honor of Kings reached Japan on June 20, 2024, I gave it a shot, and that bias did not survive the first session. Six months later I still catch myself queuing up \"just one more\" after work with my brain running on fumes. Here is my honest take on why the pacing works so well."
     ],
     "tempoHeading": "■ 10 to 15 minutes a match, with no dead air",
     "tempoParagraphs": [
@@ -179,16 +195,16 @@
     ],
     "verdictHeading": "■ Verdict: who it is for",
     "verdictList": [
-      "Players who want a complete competitive match in about 15 minutes",
-      "Players who would rather land flashy skill combos than fight the control scheme",
-      "Groups who want to hop on voice chat and queue as a full five-stack with friends"
+      "116 heroes as of 2026-08-26 (Honor of Kings Hub data). Fighters (38) and Mages (37) make up the bulk of the roster, while Tanks (17) and Supports (16) are the thinnest roles.",
+      "Patches land every two weeks. The last three hit on July 16, July 30 and August 13, 2026, exactly 14 days apart. The shop holds 114 items, and there are 30 Arcana, ten each in red, blue and green (as of 2026-08-26).",
+      "The match runs on a fixed clock. Outer towers take 40% reduced damage for the first four minutes, the Overlord spawns at 2:00, the Tyrant at 4:00, and the Tempest Dragon at 20:00. Most games are over by around the 20-minute mark (Honor of Kings Hub beginner guide, checked 2026-08-26)."
     ],
-    "closing": "The barrier to entry is low, which also makes it a solid first MOBA if you have never touched the genre. If any of this sounds like your kind of evening, it is worth a few games.",
+    "closing": "For the finer points of who it suits and who it doesn't, see the comparison article, where it sits side by side with Wild Rift.",
     "cta": "See tier lists and builds on Honor of Kings Hub"
   },
   "GuideWildRift": {
     "title": "Wild Rift: Depth and Competitiveness on Mobile",
-    "intro": "Wild Rift inherits the DNA of League of Legends on PC. It is not a mere port — it offers real competitive depth.",
+    "intro": "A review from someone who spent years on League of Legends on PC. Wild Rift kept warding and last-hitting intact; the price is 15-to-20-minute matches and a lot to learn before you're comfortable.",
     "category": "Game Review / Impressions",
     "heading": "No Compromises: Why Wild Rift Doesn't Play Like a Mobile Game",
     "publishedAt": "Published: July 2026",
@@ -217,16 +233,16 @@
     ],
     "section4Heading": "■ Verdict: who this is for",
     "recommendedFor": [
-      "Players who want PC-grade strategy and decision-making on a phone",
-      "Competitive players who want to push their mechanics and game sense as far as they'll go",
-      "Anyone who wants to climb solo queue and find out where they actually stand"
+      "141 champions as of 2026-08-26 (Wild Rift Hub). Six roles — Fighter, Tank, Mage, Assassin, Marksman and Support — spread across five positions: Top (Solo), Jungle, Mid, Duo (ADC) and Support.",
+      "Patches arrive roughly every two weeks. Patch 7.2 landed on July 8, 2026, 7.2a followed a week later on July 15, and 7.2b (July 29), 7.2c (August 12) and 7.2d (August 26) came at 14-day intervals (Riot's official patch notes, checked 2026-08-26). Wild Rift Hub's data reflects patches through 7.2c (updated 2026-08-12).",
+      "The tier list has six tiers, OP through D, broken out by all five positions, with four rank brackets to choose from: Diamond+, Master+, Challenger and Rift Apex. It is built on the Chinese server's official statistics for Master and above, as of 2026-08-20."
     ],
-    "conclusion": "If you care more about real competition and the satisfaction that comes with it than about convenience, Wild Rift is well worth your time.",
+    "conclusion": "To see whether Wild Rift or Honor of Kings is the better fit for you, read the comparison article, where the two are lined up side by side.",
     "ctaLabel": "Browse champion guides on Wild Rift Hub"
   },
   "GuideCompare": {
     "title": "Honor of Kings vs Wild Rift: Which Mobile MOBA Suits You?",
-    "intro": "Torn between the two? We compared both titles in depth based on hands-on play.",
+    "intro": "Tempo, vision, and how buying items works: the differences that matter, from someone who has put hours into both. Honor of Kings runs 10 to 15 minutes a game and Wild Rift 15 to 20. Here is how to choose.",
     "category": "Comparison / Opinion",
     "heading": "Honor of Kings or Wild Rift? An Honest Take on Which One to Play",
     "lead": "Honor of Kings (HoK) and League of Legends: Wild Rift are the two heavyweights of mobile MOBA. If you are stuck on which one to start with, here is a straight answer from someone who has put serious hours into both.",
@@ -290,6 +306,51 @@
         "axis": "Art and setting",
         "hok": "Eastern mythology, heroic, colorful",
         "wr": "Western dark fantasy, the LoL universe"
+      },
+      {
+        "axis": "Hero / champion count",
+        "hok": "116 heroes across six roles: Tank, Fighter, Assassin, Mage, Marksman and Support. 33 of them are listed under two roles.",
+        "wr": "141 champions across the same six roles: Fighter, Tank, Mage, Assassin, Marksman and Support."
+      },
+      {
+        "axis": "Lanes",
+        "hok": "Five: Clash Lane (solo), Jungle, Mid Lane, Farm Lane and Roam. The roamer has no lane of their own and moves across the whole map.",
+        "wr": "Five: Top (Baron Lane), Jungle, Mid, Duo (Dragon Lane) and Support. Top and Duo sometimes swap lanes after the first turret falls or to set up for an upcoming objective."
+      },
+      {
+        "axis": "Item count",
+        "hok": "114 items in six categories (physical, magic, defense, movement, jungle, roam), with six slots. Every tier-2 boot costs 700G.",
+        "wr": "167 items including 16 boots. Non-boot items split by price into 12 basic, 43 mid-tier and 96 core, topping out at 3,400G. Six slots, and only one item with an active effect."
+      },
+      {
+        "axis": "Arcana / runes",
+        "hok": "30 Arcana, 10 each in red, blue and green. You fill 10 slots per color, 30 in total, and level each one from 1 to 5, where the big jump comes at level 5.",
+        "wr": "53 runes in four trees (Domination, Precision, Resolve, Sorcery): 13 keystones plus 40 minor runes."
+      },
+      {
+        "axis": "Summoner spells",
+        "hok": "11 spells with 30-120s cooldowns, unlocked by account level: Sprint at level 1, Flash not until level 19. Jungle items require Smite.",
+        "wr": "9 spells with 10-150s cooldowns. Smite is the shortest at 10s; Flash and Teleport the longest at 150s. Smite upgrades to Chill Smite after three uses."
+      },
+      {
+        "axis": "Major objectives",
+        "hok": "Overlord spawns at 2:00 and Tyrant at 4:00. From 10:00 their Shadow versions take over, and the Tempest Dragon appears at 20:00 with a team-wide shield.",
+        "wr": "Four elemental dragons (Infernal, Ocean, Mountain, Cloud), Rift Herald, Baron Nashor and the late-game Elder Dragon."
+      },
+      {
+        "axis": "Patch cadence",
+        "hok": "Roughly every two weeks. In July and August 2026 the updates landed on Jul 2, 16 and 30 and Aug 13, 14 days apart. The Season 15 \"Grand Venture\" update on Jun 17 added four heroes at once.",
+        "wr": "Roughly every two weeks. After 7.2 on Jul 8, patches 7.2a-7.2d followed on Jul 15, Jul 29, Aug 12 and Aug 26. Numbered patches are about three months apart (7.1 on Apr 7, 7.2 on Jul 8); ranked Season 21 opened Apr 10."
+      },
+      {
+        "axis": "Developer and launch (checked Aug 26, 2026)",
+        "hok": "Developed by TiMi Studio Group, published by Level Infinite (Tencent Games). The global version launched in Japan, North America and Europe on June 20, 2024.",
+        "wr": "Riot Games. Open beta began on October 27, 2020 in Japan, South Korea and Southeast Asia."
+      },
+      {
+        "axis": "App size and OS",
+        "hok": "819.1 MB, iOS 12.0 or later. Also on Google Play for Android.",
+        "wr": "1.1 GB, iOS 15.0 or later. Also on Google Play for Android."
       }
     ],
     "section4": {
@@ -310,7 +371,8 @@
         "• Competitive players who want precise skill dodging and vision control to decide the game",
         "• Anyone drawn to the League of Legends world and champion designs"
       ]
-    }
+    },
+    "tableFootnote": "Figures are as of August 26, 2026. Hero, item, arcana and spell counts come from the data published on each strategy site; patch dates are the publication dates of each game’s official patch notes; app size and OS requirements are as shown on the Japanese App Store."
   },
   "Quiz": {
     "title": "Mobile MOBA Aptitude Quiz",
@@ -381,22 +443,74 @@
       "Laning": {
         "term": "Laning",
         "cat": "basic",
-        "def": "The early phase of the game where you kill minions in your lane to earn experience and gold."
+        "def": "The early phase of the game where you kill minions in your lane to earn experience and gold.",
+        "note": "The lanes go by different names. Wild Rift has Top (Baron lane), Mid and Duo (Dragon lane); Honor of Kings has the Clash Lane (top), Mid and the Farm Lane (bottom).",
+        "links": [
+          {
+            "site": "hok",
+            "path": "/guide",
+            "label": "Honor of Kings Hub: Beginner's Guide (lane roles)"
+          },
+          {
+            "site": "wildrift",
+            "path": "/guide",
+            "label": "Wild Rift Hub: Beginner Guide (lane roles)"
+          }
+        ]
       },
       "LastHit": {
         "term": "Last Hit (CS)",
         "cat": "basic",
-        "def": "Dealing the killing blow to a minion to earn gold. The foundation of income — accuracy translates directly into item advantages."
+        "def": "Dealing the killing blow to a minion to earn gold. The foundation of income — accuracy translates directly into item advantages.",
+        "note": "In Honor of Kings a last hit pays roughly 1.5x what a minion dying next to you does, and you can spend that gold from anywhere on the map. On the Wild Rift side, read it together with the eight wave-management entries in the glossary — freezing, slow pushing and the rest.",
+        "links": [
+          {
+            "site": "hok",
+            "path": "/guide",
+            "label": "Honor of Kings Hub: Beginner's Guide (last hitting)"
+          },
+          {
+            "site": "wildrift",
+            "path": "/encyclopedia",
+            "label": "Wild Rift Hub: Glossary (wave management)"
+          }
+        ]
       },
       "Build": {
         "term": "Build",
         "cat": "basic",
-        "def": "The order in which you buy items and level skills. Adapting your build to the enemy team is key to winning."
+        "def": "The order in which you buy items and level skills. Adapting your build to the enemy team is key to winning.",
+        "note": "Wild Rift has 167 items plus 53 runes; Honor of Kings has 114 items plus 30 arcana. Boots differ too: Wild Rift upgrades them in tiers from a 400-gold pair, while every upper-tier boot in Honor of Kings costs a flat 700 gold and can be swapped for free after a five-minute cooldown.",
+        "links": [
+          {
+            "site": "hok",
+            "path": "/items/simulator",
+            "label": "Honor of Kings Hub: Item Build Simulator"
+          },
+          {
+            "site": "wildrift",
+            "path": "/items",
+            "label": "Wild Rift Hub: Items"
+          }
+        ]
       },
       "BuffDebuff": {
         "term": "Buff / Debuff",
         "cat": "basic",
-        "def": "Buffs strengthen (e.g. attack up) and debuffs weaken (e.g. slows). Jungle monster buffs are crucial for early-game control."
+        "def": "Buffs strengthen (e.g. attack up) and debuffs weaken (e.g. slows). Jungle monster buffs are crucial for early-game control.",
+        "note": "In Honor of Kings, Red Buff adds a slow and true damage over time, Blue Buff gives 20% cooldown reduction and mana regen, and both respawn every 90 seconds. In Wild Rift the big team-wide buffs come from the four dragons.",
+        "links": [
+          {
+            "site": "hok",
+            "path": "/guide",
+            "label": "Honor of Kings Hub: Beginner's Guide (Red & Blue Buffs)"
+          },
+          {
+            "site": "wildrift",
+            "path": "/encyclopedia",
+            "label": "Wild Rift Hub: Glossary (the four dragons)"
+          }
+        ]
       },
       "KDA": {
         "term": "KDA",
@@ -416,7 +530,20 @@
       "Fighter": {
         "term": "Fighter (Bruiser)",
         "cat": "basic",
-        "def": "A durable melee hero who still deals real damage — able to keep trading in a fight without being a pure tank. Usually takes the solo lane, called the Baron Lane in Wild Rift."
+        "def": "A durable melee hero who still deals real damage — able to keep trading in a fight without being a pure tank. Usually takes the solo lane: Top in Wild Rift, the Clash Lane in Honor of Kings.",
+        "note": "Their home is Top (Baron lane) in Wild Rift and the Clash Lane (top side) in Honor of Kings. Both are 1v1 lanes; in teamfights a fighter either holds the frontline or flanks into the enemy backline.",
+        "links": [
+          {
+            "site": "hok",
+            "path": "/tier-list/clash",
+            "label": "Honor of Kings Hub: Clash Lane Tier List"
+          },
+          {
+            "site": "wildrift",
+            "path": "/tier-list",
+            "label": "Wild Rift Hub: Tier List (Top)"
+          }
+        ]
       },
       "Assassin": {
         "term": "Assassin",
@@ -431,27 +558,92 @@
       "Marksman": {
         "term": "Marksman (ADC)",
         "cat": "basic",
-        "def": "A ranged basic-attack carry who scales with items. Wild Rift plays them in the Dragon Lane with a support; Honor of Kings pairs them the same way in the bottom lane."
+        "def": "A ranged basic-attack carry who scales with items. Wild Rift plays them in the Duo lane (Dragon lane) with a support. Honor of Kings puts them in the Farm Lane (bottom). The roamer holds no lane and moves across the whole map, so a partner is not always standing beside you.",
+        "note": "A Wild Rift ADC farms with a support standing guard. In Honor of Kings the roamer holds no lane: it helps clear the first mid wave at level 1, then moves on to take vision around the boss pits, so the Farm Lane marksman cannot count on a partner standing next to them.",
+        "links": [
+          {
+            "site": "hok",
+            "path": "/tier-list/farm",
+            "label": "Honor of Kings Hub: Farm Lane Tier List"
+          },
+          {
+            "site": "wildrift",
+            "path": "/tier-list",
+            "label": "Wild Rift Hub: Tier List (Duo)"
+          }
+        ]
       },
       "Support": {
         "term": "Support",
         "cat": "basic",
-        "def": "Starts the game beside the marksman and gives up farm in exchange for vision, crowd control and peel. Wild Rift supports also manage wards; Honor of Kings has no ward item, so its supports lean on shields, heals and knock-ups instead."
+        "def": "The role that gives up farm in exchange for vision, crowd control and peel. In Wild Rift the support starts beside the marksman and also manages wards. Honor of Kings calls the role Roam: it holds no lane, moves across the whole map, and — with no ward item — earns its keep by checking bushes, protecting teammates and calling the start of a fight.",
+        "note": "A Wild Rift support pairs with the ADC in the Duo lane and handles wards. The equivalent Honor of Kings role is the Roam, which buys the 300-gold Knowledge Gem and moves across the whole map instead of holding a lane.",
+        "links": [
+          {
+            "site": "hok",
+            "path": "/tier-list/roam",
+            "label": "Honor of Kings Hub: Roam Tier List"
+          },
+          {
+            "site": "wildrift",
+            "path": "/guide",
+            "label": "Wild Rift Hub: Beginner Guide (support role)"
+          }
+        ]
       },
       "Jungler": {
         "term": "Jungler",
         "cat": "basic",
-        "def": "The player who farms neutral camps instead of a lane and decides where to gank. Their pathing sets the early tempo for the whole team."
+        "def": "The player who farms neutral camps instead of a lane and decides where to gank. Their pathing sets the early tempo for the whole team.",
+        "note": "Smite is a different spell in each game. Honor of Kings: 1,500 true damage on a 30-second cooldown, and you cannot buy jungle items without it. Wild Rift: 600 true damage on a 10-second cooldown, upgrading to Chill Smite after three uses.",
+        "links": [
+          {
+            "site": "hok",
+            "path": "/spells",
+            "label": "Honor of Kings Hub: Summoner Spells (Smite)"
+          },
+          {
+            "site": "wildrift",
+            "path": "/spells",
+            "label": "Wild Rift Hub: Summoner Spells"
+          }
+        ]
       },
       "Minion": {
         "term": "Minions",
         "cat": "basic",
-        "def": "The AI soldiers that march down each lane. They are your steady income — clearing waves pays for your build, and shoving them into a tower is how you take it down."
+        "def": "The AI soldiers that march down each lane. They are your steady income — clearing waves pays for your build, and shoving them into a tower is how you take it down.",
+        "note": "Honor of Kings waves gain a long-range ballista from 4:00, and killing the Overlord turns your next two waves into Dragon Vanguards. In Wild Rift it is the Baron buff that supercharges nearby minions.",
+        "links": [
+          {
+            "site": "hok",
+            "path": "/guide/bosses",
+            "label": "Honor of Kings Hub: Jungle Boss Guide (Overlord)"
+          },
+          {
+            "site": "wildrift",
+            "path": "/encyclopedia",
+            "label": "Wild Rift Hub: Glossary (Baron Nashor)"
+          }
+        ]
       },
       "Recall": {
         "term": "Recall (Back)",
         "cat": "basic",
-        "def": "Channeling back to your fountain to heal and shop. Time it right after you shove the wave in, so you lose the least gold and experience while you are away."
+        "def": "Channeling back to your fountain to heal and shop. Time it right after you shove the wave in, so you lose the least gold and experience while you are away.",
+        "note": "Honor of Kings lets you buy items from anywhere on the map, so a recall is for healing, not shopping.（HoK 側の記述は「どこでも買える」までで、「purely」の断定は根拠がない） In Wild Rift the usual timing is right before a cannon minion wave arrives or straight after crashing your wave into the tower.",
+        "links": [
+          {
+            "site": "hok",
+            "path": "/guide",
+            "label": "Honor of Kings Hub: Beginner's Guide (buy anywhere)"
+          },
+          {
+            "site": "wildrift",
+            "path": "/encyclopedia",
+            "label": "Wild Rift Hub: Glossary (recall timing)"
+          }
+        ]
       },
       "Farm": {
         "term": "Farm",
@@ -471,17 +663,56 @@
       "Tower": {
         "term": "Tower (Turret)",
         "cat": "map",
-        "def": "Lane defenses that hit hard and switch to you the moment you attack an enemy hero in range. Only step in when your own minion wave is there to take the shots for you."
+        "def": "Lane defenses that hit hard and switch to you the moment you attack an enemy hero in range. Only step in when your own minion wave is there to take the shots for you.",
+        "note": "In Honor of Kings, outer towers take 40% less damage for the first four minutes, and hitting a tower with no allied minions nearby cuts your damage by 55%. Wild Rift's early tower plan is to take the Rift Herald and send it charging in.",
+        "links": [
+          {
+            "site": "hok",
+            "path": "/guide",
+            "label": "Honor of Kings Hub: Beginner's Guide (tower protection)"
+          },
+          {
+            "site": "wildrift",
+            "path": "/encyclopedia",
+            "label": "Wild Rift Hub: Glossary (Rift Herald)"
+          }
+        ]
       },
       "Nexus": {
         "term": "Nexus / Crystal (Base)",
         "cat": "map",
-        "def": "The final structure in the enemy base — the Nexus in Wild Rift, the Crystal in Honor of Kings. Destroying it ends the match regardless of the kill score."
+        "def": "The final structure in the enemy base — the Nexus in Wild Rift, the Crystal in Honor of Kings. Destroying it ends the match regardless of the kill score.",
+        "note": "In Honor of Kings the Crystal cannot be attacked until at least one high ground tower is down. In Wild Rift, breaking a lane's third tower — the Inhibitor Turret — spawns Super Minions in that lane.",
+        "links": [
+          {
+            "site": "hok",
+            "path": "/guide",
+            "label": "Honor of Kings Hub: Beginner's Guide (high ground towers)"
+          },
+          {
+            "site": "wildrift",
+            "path": "/encyclopedia",
+            "label": "Wild Rift Hub: Glossary (Inhibitor Turret)"
+          }
+        ]
       },
       "Ward": {
         "term": "Ward / Vision",
         "cat": "map",
-        "def": "A placeable item that reveals part of the map. Wild Rift gives every player free wards from the shop, while Honor of Kings has no ward item at all — there, vision comes from bushes, the minimap and hero skills."
+        "def": "A placeable item that reveals part of the map. Wild Rift gives every player free wards from the shop, while Honor of Kings has no ward item at all — there, vision comes from bushes, the minimap and hero skills.",
+        "note": "Wild Rift vision runs on wards, cleared with the Sweeping Lens, and wards even serve as Teleport targets. Honor of Kings has no ward at all — the roamer walks into the bush first to check it.",
+        "links": [
+          {
+            "site": "wildrift",
+            "path": "/encyclopedia",
+            "label": "Wild Rift Hub: Glossary (vision & Sweeping Lens)"
+          },
+          {
+            "site": "hok",
+            "path": "/guide",
+            "label": "Honor of Kings Hub: Beginner's Guide (vision & bushes)"
+          }
+        ]
       },
       "FogOfWar": {
         "term": "Fog of War",
@@ -506,7 +737,20 @@
       "CC": {
         "term": "CC (Crowd Control)",
         "cat": "combat",
-        "def": "Any effect that takes control away from a hero — stun, knock-up, root, silence, slow. Chaining CC is how a team kills a tank, and holding your escape until after the first CC lands is how you survive one."
+        "def": "Any effect that takes control away from a hero — stun, knock-up, root, silence, slow. Chaining CC is how a team kills a tank, and holding your escape until after the first CC lands is how you survive one.",
+        "note": "The cleanse spell is Purify in Honor of Kings (120s cooldown) and Cleanse in Wild Rift (110s). In both games, suppression is the one effect the usual cleanses cannot remove.",
+        "links": [
+          {
+            "site": "hok",
+            "path": "/spells",
+            "label": "Honor of Kings Hub: Summoner Spells (Purify)"
+          },
+          {
+            "site": "wildrift",
+            "path": "/encyclopedia",
+            "label": "Wild Rift Hub: Glossary (14 crowd-control effects)"
+          }
+        ]
       },
       "Burst": {
         "term": "Burst",
@@ -526,7 +770,20 @@
       "Dive": {
         "term": "Tower Dive",
         "cat": "combat",
-        "def": "Attacking an enemy who is standing under their own tower. It only works when you have a minion wave to hold the tower's aggro and enough damage to finish before it kills you."
+        "def": "Attacking an enemy who is standing under their own tower. It only works when you have a minion wave to hold the tower's aggro and enough damage to finish before it kills you.",
+        "note": "Honor of Kings towers take 40% reduced damage until 4:00, so dives before then almost never work. The Wild Rift glossary covers tower aggro swapping — passing the tower's target from one teammate to the next so everyone walks out.",
+        "links": [
+          {
+            "site": "hok",
+            "path": "/guide",
+            "label": "Honor of Kings Hub: Beginner's Guide (tower protection)"
+          },
+          {
+            "site": "wildrift",
+            "path": "/encyclopedia",
+            "label": "Wild Rift Hub: Glossary (tower dive & aggro swap)"
+          }
+        ]
       },
       "Focus": {
         "term": "Focus",
@@ -561,17 +818,56 @@
       "Objective": {
         "term": "Objectives (Dragon / Tyrant, etc.)",
         "cat": "macro",
-        "def": "Neutral monsters that grant powerful team-wide buffs — Wild Rift's Dragon, Honor of Kings' Tyrant. Teamfights around them often decide the game."
+        "def": "Neutral monsters that grant powerful team-wide buffs — Wild Rift's dragons and Baron, Honor of Kings' Tyrant and Overlord. Teamfights around them often decide the game.",
+        "note": "Honor of Kings objectives run on a clock: Overlord at 2:00, Tyrant at 4:00, their Shadow versions at 10:00 and the Tempest Dragon at 20:00. Wild Rift has seven — four dragons, the Rift Herald, Baron Nashor and the Elder Dragon.",
+        "links": [
+          {
+            "site": "hok",
+            "path": "/guide/bosses",
+            "label": "Honor of Kings Hub: Jungle Boss Guide (Tyrant & Overlord)"
+          },
+          {
+            "site": "wildrift",
+            "path": "/encyclopedia",
+            "label": "Wild Rift Hub: Glossary (all 7 objectives)"
+          }
+        ]
       },
       "Roam": {
         "term": "Roam",
         "cat": "macro",
-        "def": "Leaving your lane to make something happen elsewhere — a gank, an objective, a vision sweep. Roam after you shove your wave in, so the trip does not cost you farm."
+        "def": "Leaving your lane to make something happen elsewhere — a gank, an objective, a vision sweep. Roam after you shove your wave in, so the trip does not cost you farm. In Honor of Kings, Roam is also the name of the support position.",
+        "note": "In Honor of Kings, Roam is also the name of a role, with its own tier list. The roamer helps clear the first mid wave at level 1, then goes to take vision around the boss pits. In Wild Rift the word only describes the action.",
+        "links": [
+          {
+            "site": "hok",
+            "path": "/tier-list/roam",
+            "label": "Honor of Kings Hub: Roam Tier List"
+          },
+          {
+            "site": "wildrift",
+            "path": "/encyclopedia",
+            "label": "Wild Rift Hub: Glossary (Roam)"
+          }
+        ]
       },
       "SplitPush": {
         "term": "Split Push",
         "cat": "macro",
-        "def": "Pushing a side lane alone while your team holds the enemy's attention elsewhere. It forces them to send someone to answer, which is how you create the numbers fight your team can win."
+        "def": "Pushing a side lane alone while your team holds the enemy's attention elsewhere. It forces them to send someone to answer, which is how you create the numbers fight your team can win.",
+        "note": "Honor of Kings speeds up the Clash Lane side with a warp point — kill its sprite to activate it, then it has a 30-second cooldown. The Wild Rift glossary lays out the 1-4 and 1-3-1 formations.",
+        "links": [
+          {
+            "site": "hok",
+            "path": "/guide",
+            "label": "Honor of Kings Hub: Beginner's Guide (warp point)"
+          },
+          {
+            "site": "wildrift",
+            "path": "/encyclopedia",
+            "label": "Wild Rift Hub: Glossary (1-4 and 1-3-1 split push)"
+          }
+        ]
       },
       "WaveManagement": {
         "term": "Wave Management (Freeze)",
@@ -586,15 +882,43 @@
       "PowerSpike": {
         "term": "Power Spike",
         "cat": "macro",
-        "def": "The moment a hero jumps in strength — a key level or a completed item. Look for fights right after your own spike, and avoid them right after the enemy's."
+        "def": "The moment a hero jumps in strength — a key level or a completed item. Look for fights right after your own spike, and avoid them right after the enemy's.",
+        "note": "In Honor of Kings the first spike is level 4, when your ultimate unlocks. In Wild Rift, tier 3 boots only unlock at 10:00, so the pair you buy early decides the passive you finish the game with.",
+        "links": [
+          {
+            "site": "hok",
+            "path": "/guide",
+            "label": "Honor of Kings Hub: Beginner's Guide (game flow)"
+          },
+          {
+            "site": "wildrift",
+            "path": "/items",
+            "label": "Wild Rift Hub: Items (boots)"
+          }
+        ]
       },
       "Meta": {
         "term": "Meta",
         "cat": "macro",
-        "def": "The heroes, builds and strategies that are strongest under the current patch. It shifts with every balance change, so check the patch date on any tier list you read."
+        "def": "The heroes, builds and strategies that are strongest under the current patch. It shifts with every balance change, so check the patch date on any tier list you read.",
+        "note": "The two tier lists draw on different data. Honor of Kings Hub uses win, pick and ban rates from the official in-game HoK Camp; Wild Rift Hub uses official China-server stats from Master rank and above.",
+        "links": [
+          {
+            "site": "hok",
+            "path": "/tier-list",
+            "label": "Honor of Kings Hub: Tier List"
+          },
+          {
+            "site": "wildrift",
+            "path": "/tier-list",
+            "label": "Wild Rift Hub: Tier List"
+          }
+        ]
       }
     },
-    "eyebrow": "MOBA GLOSSARY"
+    "eyebrow": "MOBA GLOSSARY",
+    "crossNote": "How the two games differ",
+    "seeAlso": "Related pages"
   },
   "Terms": {
     "title": "Terms of Service",
@@ -602,7 +926,7 @@
     "introText": "These Terms of Service (the \"Terms\") set out the conditions for using the services provided by HUB-GAME (the \"Site\"). By using the Site, you agree to be bound by these Terms.",
     "copyrightTitle": "2. Copyright",
     "copyrightText": "The copyright of information published on the Site (text, images, data, etc.) belongs to the Site or the respective rights holders. Unauthorized use, reproduction, or redistribution beyond the scope of private use is prohibited.",
-    "copyrightNote": "* Copyrights for game images, characters, and related assets belong to Riot Games and the respective publishers.",
+    "copyrightNote": "* Copyrights for game images, characters, and related assets belong to Riot Games, Inc., Tencent Games (Level Infinite), and the respective publishers.",
     "prohibitionsTitle": "3. Prohibited Activities",
     "prohibitionsText": "When using the Site, you must not engage in any of the following:",
     "prohibitionsList": [
@@ -619,9 +943,9 @@
     "collectionTitle": "1. Collection of Personal Information",
     "collectionText": "The Site may collect personal information such as your name and email address in the course of inquiries or providing services. Such information is managed appropriately and is never used for other purposes.",
     "analyticsTitle": "2. Analytics",
-    "analyticsText": "The Site may use Google Analytics, an analytics tool provided by Google. Google Analytics uses cookies to collect traffic data. This data is collected anonymously and does not identify individuals. You can refuse this collection by disabling cookies in your browser.",
+    "analyticsText": "The Site does not currently use Google Analytics or any other analytics tool. If one is introduced, this policy will be updated to describe the cookies involved and how to opt out.",
     "adsTitle": "3. Advertising",
-    "adsText": "The Site uses Google AdSense, a third-party advertising service. Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this and other websites. You can opt out of personalized advertising at any time via Google's Ads Settings (adssettings.google.com), or disable third-party vendor cookies for personalized ads at www.aboutads.info.",
+    "adsText": "The Site uses Google AdSense, a third-party advertising service. Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this and other websites. You can opt out of personalized advertising at any time via Google's Ads Settings (adssettings.google.com), or disable third-party vendor cookies for personalized ads at www.aboutads.info. Visitors from the EEA, the UK, and Switzerland are asked for consent to advertising cookies through Google’s consent management tool before ads are served.",
     "disclosureTitle": "4. Disclosure to Third Parties",
     "disclosureText": "The Site manages personal information appropriately and does not disclose it to third parties except in the following cases:",
     "disclosureList": [
@@ -636,7 +960,7 @@
     "liabilityTitle": "2. Liability",
     "liabilityText": "We accept no responsibility for any damages arising from the content published on the Site. We are also not responsible for information or services provided on external sites reached via links or banners on the Site.",
     "copyrightsTitle": "3. Copyright Attribution",
-    "copyrightsText": "The Site is an unofficial fan site. Copyrights and portrait rights for game images, videos, and character names published on the Site belong to Riot Games, Inc. or the respective rights holders. We have no intention of infringing any rights. If you find an issue with our articles or images, rights holders are asked to contact us via the contact page; we will respond promptly after confirmation."
+    "copyrightsText": "The Site is an unofficial fan site. Copyrights and portrait rights for game images, videos, and character names published on the Site belong to Riot Games, Inc., Tencent Games (Level Infinite), or the respective rights holders. We have no intention of infringing any rights. If you find an issue with our articles or images, rights holders are asked to contact us via the contact page; we will respond promptly after confirmation."
   },
   "Contact": {
     "title": "Contact",
@@ -667,11 +991,18 @@
     "siteTitle": "About This Site",
     "siteText": "HUB-GAME (hub-game.com) is a strategy portal focused on mobile MOBAs. This site offers comparison articles, an aptitude quiz, and a glossary to help you choose a title, while our sister sites cover detailed strategy for Wild Rift and Honor of Kings.",
     "operatorTitle": "Operator",
-    "operatorText": "HUB-GAME team (email: contact@hub-game.com / X: @hub_gamecom). Articles are written by gamers who play mobile MOBAs daily, based on hands-on experience.",
+    "operatorText": "HUB-GAME team (email: contact@hub-game.com / X: @hub_gamecom). The articles and data are produced by an operator who plays Wild Rift and Honor of Kings daily, working from hands-on play and the actual in-game screens.",
     "policyTitle": "Editorial Policy",
-    "policyText": "Articles are based on what we have verified through actual play. Because patches can make information outdated, we note the verification date for numbers and balance claims wherever possible. If you spot an error, please let us know via the contact page.",
+    "policyText": "Articles are based on what we have verified through actual play. Because patches make information go stale, we note the verification date for numbers and balance claims wherever possible. Anything we cannot confirm is marked as unverified rather than guessed. If you spot an error, please let us know via the contact page.",
     "contactTitle": "Get in Touch",
-    "contactText": "For questions, information, or feedback about our content, please see the contact page."
+    "contactText": "For questions, information, or feedback about our content, please see the contact page.",
+    "methodTitle": "How We Verify Data",
+    "methodList": [
+      "Hero base stats and skill numbers are transcribed from screenshots of the actual game screens. For Honor of Kings, we cross-checked 113 hero stat screens plus 140 skill and item detail screens in August 2026.",
+      "Win, pick, and ban rates on the tier lists come from official statistics (HoK Camp for Honor of Kings), fetched manually, with the retrieval date shown on the page. They are not always current, so check the date before you rely on them.",
+      "Before publishing, the Japanese and English data sets are compared mechanically so that an outdated value cannot survive in only one language.",
+      "Where the comparison article or the glossary describes how the two games differ, the figures are the same ones published on each strategy site, with the verification date attached."
+    ]
   },
   "Footer": {
     "quickLinks": "Quick Links",
@@ -679,5 +1010,196 @@
     "rights": "© 2026 HUB-GAME. All rights reserved.",
     "tagline": "Ultimate MOBA Strategy Portal",
     "policy": "Policy"
+  },
+  "GuideTermMapping": {
+    "title": "Honor of Kings ⇄ Wild Rift: Term Map and Switching Guide",
+    "intro": "Twenty-two things Honor of Kings and Wild Rift both have but call by different names, lined up side by side — each with a one-line note on how the mechanics actually differ, from spawn timers to where you are allowed to shop.",
+    "lead": "Crystal and Nexus, Tyrant and Dragon, Arcana and Runes. The names differ, but the job each one does in a match is close to identical. Treat them as the same thing, though, and the details — spawn times, how shopping works — will trip you up. Drawing on the glossaries of our two strategy sites, this page pairs up the terms and notes where the mechanics diverge.",
+    "tableHeader": {
+      "concept": "Concept",
+      "hok": "Honor of Kings",
+      "wr": "Wild Rift",
+      "note": "What differs"
+    },
+    "sections": [
+      {
+        "heading": "Map and Base",
+        "intro": "Both maps run three lanes plus a jungle. What changes is what the base is called and how the lanes are named.",
+        "rows": [
+          {
+            "concept": "Final objective",
+            "hok": "Crystal",
+            "wr": "Nexus",
+            "note": "Destroying it ends the game in both. In HoK you must bring down at least one high ground tower before the Crystal can be attacked."
+          },
+          {
+            "concept": "Last tower before the base",
+            "hok": "High Ground Tower",
+            "wr": "Inhibitor Turret",
+            "note": "Both spawn Super Minions in that lane once destroyed. In Wild Rift this is the third turret standing just outside the base."
+          },
+          {
+            "concept": "Upper solo lane",
+            "hok": "Clash Lane",
+            "wr": "Baron Lane (listed as \"Top\" on Wild Rift Hub)",
+            "note": "A fighter or tank 1v1 in both games. In HoK, kill the sprite at the nearby warp point early so the teleport is ready when you need it."
+          },
+          {
+            "concept": "Lower duo lane",
+            "hok": "Farm Lane",
+            "wr": "Dragon Lane (\"Duo\" on Wild Rift Hub)",
+            "note": "Marksman plus support in both. HoK adds a gold object in the middle of the lane that pays the whole team when destroyed."
+          },
+          {
+            "concept": "Getting vision",
+            "hok": "Bushes and skills (no wards)",
+            "wr": "Wards / Sweeping Lens",
+            "note": "Every Wild Rift player carries a free ward, and where you place it is a mind game. HoK has no wards: throw a skill into the bush and watch for a hit."
+          }
+        ]
+      },
+      {
+        "heading": "Objectives and Buffs",
+        "intro": "HoK's bosses spawn early on fixed timers; Wild Rift revolves around a rotating set of elemental dragons. Even when a boss plays the same role, the reward takes a different shape.",
+        "rows": [
+          {
+            "concept": "Early team-wide buff",
+            "hok": "Tyrant",
+            "wr": "Dragon (four elements)",
+            "note": "Tyrant spawns at 4:00 and gives everyone Chain Lightning on their attacks. Wild Rift's dragons each buff a different team-wide stat depending on the element."
+          },
+          {
+            "concept": "Minion-powered push",
+            "hok": "Overlord",
+            "wr": "Rift Herald",
+            "note": "Overlord spawns at 2:00 and turns your next two waves into Dragon Vanguards. Herald spawns at 6:00 and drops the Eye of the Herald, which sends it charging into a turret."
+          },
+          {
+            "concept": "Mid-game major boss",
+            "hok": "Shadow Tyrant / Shadow Overlord",
+            "wr": "Baron Nashor",
+            "note": "At 10:00 both HoK bosses are replaced by their Shadow versions. Baron appears from the mid game on and grants Hand of Baron: more AD/AP and heavily empowered nearby minions."
+          },
+          {
+            "concept": "Late-game decider",
+            "hok": "Tempest Dragon",
+            "wr": "Elder Dragon",
+            "note": "Tempest spawns at 20:00 and shields every living teammate for 20–50% of max HP. Elder makes your attacks execute enemies below a health threshold."
+          }
+        ]
+      },
+      {
+        "heading": "Progression: Items, Arcana/Runes, Spells",
+        "intro": "Pre-game setup follows different logic in Arcana and Runes, and once the match starts the biggest gap is where you are allowed to shop.",
+        "rows": [
+          {
+            "concept": "Pre-game stat bonuses",
+            "hok": "Arcana",
+            "wr": "Runes",
+            "note": "Arcana are fixed bonuses slotted 10 each in red, blue and green, 30 in total. Runes come from four trees — Domination, Precision, Resolve, Sorcery — as a keystone plus minor runes."
+          },
+          {
+            "concept": "Shared skills picked before the match",
+            "hok": "Battle Spells (Summoner Spells on the HoK Hub list page)",
+            "wr": "Summoner Spells",
+            "note": "HoK has 11, unlocked by account level; Wild Rift has 9. A shared name does not mean shared numbers — the next three rows are examples."
+          },
+          {
+            "concept": "Short-range blink",
+            "hok": "Flash (120s cooldown)",
+            "wr": "Flash (150s cooldown)",
+            "note": "HoK's Flash unlocks at account level 19. Until then, Sprint, available from level 1, fills the same role."
+          },
+          {
+            "concept": "The jungler's spell",
+            "hok": "Smite (30s cooldown)",
+            "wr": "Smite (10s cooldown)",
+            "note": "HoK's Smite deals 1,500 true damage plus a 1-second stun, and you cannot buy jungle items without it. Wild Rift's deals 600 true damage and heals you when used on a monster."
+          },
+          {
+            "concept": "Finisher spell",
+            "hok": "Execute",
+            "wr": "Ignite",
+            "note": "Execute deals instant true damage equal to 16% of the target's missing health. Ignite is 5 seconds of true damage over time with Grievous Wounds, used for early kill pressure."
+          },
+          {
+            "concept": "Boots",
+            "hok": "Upgraded boots (flat 700G)",
+            "wr": "Boots (from 400G)",
+            "note": "In HoK, any pair you own can be swapped for a different pair for free after a 5-minute cooldown. In Wild Rift you upgrade the 400G Boots of Speed to tier 2, and tier 3 unlocks at 10:00."
+          }
+        ]
+      },
+      {
+        "heading": "Roles and Lanes",
+        "intro": "HoK calls them heroes and Wild Rift calls them champions, but the five roles are nearly identical. One catch: in HoK, \"Roam\" is the name of a role, while in Wild Rift it describes an action.",
+        "rows": [
+          {
+            "concept": "The teammate who enables the others",
+            "hok": "Roam",
+            "wr": "Support",
+            "note": "HoK's Roam buys the Knowledge Gem (300G) first（src/data/hok_items.json id 1701 name_en \"Knowledge Gem\"。HoK Hub 英語版のアイテム名と一致させる） and moves across the whole map. Wild Rift's support stands beside the marksman and handles the wards."
+          },
+          {
+            "concept": "Ranged carry",
+            "hok": "Marksman (Farm Lane)",
+            "wr": "Marksman / ADC (Dragon Lane)",
+            "note": "Same job. HoK marksmen can shop in lane and rarely need to leave it; in Wild Rift every purchase means a trip back to the fountain."
+          },
+          {
+            "concept": "Jungler",
+            "hok": "Jungle (assassin / fighter)",
+            "wr": "Jungle",
+            "note": "HoK's jungle items require Smite and cut your damage to minions by 25% until 10:00 in exchange for better rewards from monsters. Wild Rift's jungler is also expected to cover every lane."
+          }
+        ]
+      },
+      {
+        "heading": "Match Flow and Vocabulary",
+        "intro": "Match length and the level that unlocks your ultimate both differ, so \"early game\" refers to a different stretch of the clock in each game.",
+        "rows": [
+          {
+            "concept": "Returning to base",
+            "hok": "Recall",
+            "wr": "Recall",
+            "note": "In HoK you can buy anywhere, so recalling is mostly about healing. In Wild Rift the shop is fountain-only, and choosing when to go back is a skill in itself."
+          },
+          {
+            "concept": "Match length",
+            "hok": "10–15 minutes",
+            "wr": "15–20 minutes",
+            "note": "HoK reaches level 4 in under two minutes and Tempest Dragon at 20:00. In Wild Rift the Rift Herald arrives at 6:00 — the whole early game sits later on the clock."
+          },
+          {
+            "concept": "Ultimate unlock",
+            "hok": "Level 4",
+            "wr": "Level 5",
+            "note": "Level 4 is HoK's first real window to make a play. Wild Rift unlocks the ultimate at level 5 and ranks it up at 9 and 13."
+          },
+          {
+            "concept": "Last hitting",
+            "hok": "CS (about 1.5x gold)",
+            "wr": "Last hit / CS",
+            "note": "In HoK, landing the killing blow pays roughly 1.5x what a minion dying next to you does. In Wild Rift, missed CS costs most of the gold, and that gap shows up directly in items."
+          }
+        ]
+      }
+    ],
+    "switchGuide": {
+      "heading": "Habits to Fix First When You Switch",
+      "hokToWr": [
+        "If you come from HoK, the first wall is shopping. Your gold piles up, but you cannot spend it where you stand. You have to be at the fountain, so get in the habit of shoving the wave in, then recalling.",
+        "Next, wards. HoK has nothing like them, so you will forget to place them at first. Drop one in the river bush before Dragon or Baron spawns, and clear enemy wards with the Sweeping Lens. That alone removes most of the \"why do I get ganked every time\" feeling.",
+        "Your clock needs resetting too. In HoK, 4:00 is when tower protection drops and the first push begins; in Wild Rift the Rift Herald does not show up until 6:00 and your ultimate waits for level 5. Force a fight in the second minute on HoK instinct and you will be brawling without your ultimate."
+      ],
+      "wrToHok": [
+        "Coming from Wild Rift, your first job is the opposite: never stop shopping. The moment gold comes in, open the shop — while walking, while dead, wherever you are. Once you think of recall as a heal button rather than a shopping trip, HoK's tempo starts to make sense.",
+        "With no wards, get used to checking bushes by throwing a skill in and watching for a hit. When an enemy vanishes from the minimap, assume they are heading your way. With no way to leave vision behind, your pings carry more of the load.",
+        "Every objective comes early. Overlord at 2:00, Tyrant at 4:00, and both swap to their Shadow versions at 10:00. Boots cost a flat 700G, and five minutes after buying a pair you can swap to a different one for free, so change them to match your lane opponent."
+      ]
+    },
+    "closing": "Figures reflect Honor of Kings Hub as of 2026-08-26 and Wild Rift Hub as of patch 7.2c. Both games shift with every patch, so when in doubt, check each site's glossary and boss guide.",
+    "ctaHok": "Honor of Kings beginner guide",
+    "ctaWr": "Wild Rift beginner guide"
   }
 }

@@ -41,6 +41,34 @@ export const SITE_LABELS: Record<HighlightSite, string> = {
 
 export const highlights: Highlight[] = [
   {
+    id: 'hok-item-usage-2026-08-26',
+    site: 'hok',
+    path: '/items/usage',
+    date: '2026-08-26',
+    en: {
+      title: 'Item pick rates from 226 popular builds',
+      body: 'Which of the 114 items actually get built across all 116 heroes, filterable by role and lane. A quick read on what the current meta is buying.',
+    },
+    ja: {
+      title: '装備採用率ランキング（人気ビルド226通り）',
+      body: '116体の人気ビルドを集計し、114種の装備がどれだけ組まれているかをロール別・レーン別に確認できます。今の環境で買われている装備が一目で分かります。',
+    },
+  },
+  {
+    id: 'wr-encyclopedia-2026-08-26',
+    site: 'wildrift',
+    path: '/encyclopedia',
+    date: '2026-08-26',
+    en: {
+      title: 'Wild Rift glossary: crowd control, waves and objectives',
+      body: 'How each crowd-control effect behaves, wave management such as freezing and slow pushing, teamfight formations, and how to play around dragons and Baron.',
+    },
+    ja: {
+      title: 'ワイリフ大辞典：CC・ウェーブ管理・オブジェクト',
+      body: 'スタンやノックアップなどCCの仕様、フリーズやスロープッシュといったウェーブ管理、ドラゴンとバロンの扱い方を項目ごとに解説しています。',
+    },
+  },
+  {
     id: 'wr-tier-list',
     site: 'wildrift',
     path: '/tier-list',

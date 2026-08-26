@@ -66,9 +66,15 @@ export default async function WildRiftGuidePage({ params }: { params: Promise<{ 
             {t('heading')}
           </h1>
 
-          <div className="flex items-center gap-3 text-xs text-slate-500">
+          <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500">
             {/* 日付は articles.ts を唯一の情報源にし、機械可読な dateTime も持たせる */}
             <time dateTime={meta.published}>{formatArticleDate(meta.published, locale)}</time>
+            {meta.updated !== meta.published && (
+              <>
+                <span>•</span>
+                <span>{tCommon('updatedLabel')} <time dateTime={meta.updated}>{formatArticleDate(meta.updated, locale)}</time></span>
+              </>
+            )}
             <span>•</span>
             <span>{t('author')}</span>
           </div>

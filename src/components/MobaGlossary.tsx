@@ -1,15 +1,18 @@
 'use client';
 import { useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Search, BookA, Link2 } from "lucide-react";
+import { Search, BookA, Link2, ArrowUpRight } from "lucide-react";
 // アンカーIDの生成はサーバー側（JSON-LD）とも共有するため utils に置いている
 import { toAnchorId } from "@/utils/glossary";
 
-// messages/{locale}.json の Glossary.terms に対応する用語データの型
+// 用語データの型。note と links は glossary/page.tsx が messages から組み立てて渡す
+// （links の href はロケール付きの完全な URL）
 type GlossaryTerm = {
   term: string;
   cat: string;
   def: string;
+  note?: string;
+  links?: { label: string; href: string }[];
 };
 
 // カテゴリごとのバッジ色（ライト背景でも文字が読める濃さに揃える）
@@ -55,7 +58,8 @@ export default function MobaGlossary({ terms: termRecord }: { terms: Record<stri
     const matchSearch =
       needle === '' ||
       item.term.toLowerCase().includes(needle) ||
-      item.def.toLowerCase().includes(needle);
+      item.def.toLowerCase().includes(needle) ||
+      (item.note ?? '').toLowerCase().includes(needle);
     const matchCat = filter === 'all' || item.cat === filter;
     return matchSearch && matchCat;
   });
@@ -138,6 +142,34 @@ export default function MobaGlossary({ terms: termRecord }: { terms: Record<stri
                 <p className="text-xs text-slate-600 font-medium leading-relaxed">
                   {item.def}
                 </p>
+
+                {/* 2タイトルで呼び名や仕組みが違う語には、その差を定義の下に添える */}
+                {item.note && (
+                  <p className="mt-2 text-xs text-slate-700 leading-relaxed bg-slate-50 border border-slate-200 rounded-xl px-3 py-2">
+                    <span className="font-black text-amber-700">{t('crossNote')}</span>
+                    <span className="mx-1.5 text-slate-300" aria-hidden="true">|</span>
+                    {item.note}
+                  </p>
+                )}
+
+                {/* 姉妹サイトの該当ページ。用語集を攻略サイト群への入口として機能させる */}
+                {item.links && item.links.length > 0 && (
+                  <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                    <span className="text-[10px] font-black text-slate-500 uppercase tracking-wider">{t('seeAlso')}</span>
+                    {item.links.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white border border-slate-200 text-[11px] font-bold text-slate-700 hover:border-amber-400 hover:text-amber-700 transition-colors"
+                      >
+                        {link.label}
+                        <ArrowUpRight size={11} aria-hidden="true" />
+                      </a>
+                    ))}
+                  </div>
+                )}
               </article>
             );
           })}

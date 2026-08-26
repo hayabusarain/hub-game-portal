@@ -69,6 +69,16 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               <p>{t('policyText')}</p>
             </section>
 
+            {/* 数値をどう確かめているかを具体的に書く。掲載方針の裏付けになる部分 */}
+            <section>
+              <h2 className="text-base font-bold text-slate-900 mb-2">{t('methodTitle')}</h2>
+              <ul className="list-disc pl-5 space-y-2">
+                {(t.raw('methodList') as string[]).map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </section>
+
             <section>
               <h2 className="text-base font-bold text-slate-900 mb-2">{t('contactTitle')}</h2>
               <p>{t('contactText')}</p>

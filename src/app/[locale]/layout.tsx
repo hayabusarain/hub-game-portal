@@ -1,4 +1,5 @@
 import { Geist } from "next/font/google";
+import Script from 'next/script';
 import "../globals.css";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
@@ -106,6 +107,49 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
+      <head>
+        {/* Consent Mode v2 の既定値。Google のタグより先に実行される必要があるため、
+            next/script ではなく素の script で書く（HoK サイトの layout と同じ構成。
+            beforeInteractive は self.__next_s のキューに積むだけで実タグにならず使えない）。
+            EEA・UK・スイスからのアクセスだけ denied で開始し、AdSense 側で公開済みの
+            GDPR メッセージ（Privacy & messaging）で同意が取れた時点で granted へ更新される。
+            対象外の地域まで denied にする理由は無いので region で絞る */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              'ad_storage': 'denied',
+              'ad_user_data': 'denied',
+              'ad_personalization': 'denied',
+              'analytics_storage': 'denied',
+              'wait_for_update': 500,
+              'region': ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH']
+            });
+            gtag('consent', 'default', {
+              'ad_storage': 'granted',
+              'ad_user_data': 'granted',
+              'ad_personalization': 'granted',
+              'analytics_storage': 'granted'
+            });
+            gtag('set', 'ads_data_redaction', true);
+          `,
+          }}
+        />
+        {/* Google AdSense（自動広告）。public/ads.txt と generateMetadata の
+            google-adsense-account に登録済みのパブリッシャーIDと同じものを使う。
+            afterInteractive で body へ注入されるため初期 HTML にタグは出ないが、
+            素の script にすると adsbygoogle.js が head の先頭へ自前のタグを差し込み、
+            React の描画位置と DOM がずれてハイドレーションが失敗する（HoK サイトで実測済み）。
+            審査クローラーは JS を実行するので、初期 HTML に無くても問題ない */}
+        <Script
+          id="google-adsense"
+          strategy="afterInteractive"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7201202773518258"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body
         className={`${geistSans.variable} antialiased`}
       >

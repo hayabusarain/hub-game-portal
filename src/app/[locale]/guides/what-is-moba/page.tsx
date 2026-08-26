@@ -74,13 +74,31 @@ export default async function WhatIsMobaPage({ params }: { params: Promise<{ loc
             {t('pageTitle')}
           </h1>
 
-          <div className="flex items-center gap-3 text-xs text-slate-500">
-            {/* 日付は articles.ts を唯一の情報源にし、機械可読な dateTime も持たせる */}
+          <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500">
+            {/* 日付は articles.ts を唯一の情報源にし、機械可読な dateTime も持たせる。
+                手を入れた記事は更新日も出す（パッチで陳腐化するジャンルなので鮮度が信頼に直結する） */}
             <time dateTime={meta.published}>{formatArticleDate(meta.published, locale)}</time>
+            {meta.updated !== meta.published && (
+              <>
+                <span>•</span>
+                <span>{tCommon('updatedLabel')} <time dateTime={meta.updated}>{formatArticleDate(meta.updated, locale)}</time></span>
+              </>
+            )}
             <span>•</span>
             <span>{t('author')}</span>
           </div>
         </header>
+
+        {/* 「MOBAとは」の検索意図に体験記より先に答える定義ブロック。
+            数値は比較記事と同じ値を使う（messages 側で揃えている） */}
+        {t.has('definitionBlock.heading') && (
+          <section className="bg-white border border-slate-200 rounded-2xl p-5 space-y-3">
+            <h2 className="text-base font-bold text-slate-900">{t('definitionBlock.heading')}</h2>
+            {(t.raw('definitionBlock.paragraphs') as string[]).map((paragraph, i) => (
+              <p key={i} className="text-sm text-slate-700 leading-relaxed">{paragraph}</p>
+            ))}
+          </section>
+        )}
 
         {/* Authentic Essay Content */}
         <article className="space-y-6 text-slate-700 leading-relaxed text-sm md:text-base font-normal">
