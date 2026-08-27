@@ -47,7 +47,9 @@ function keysOf(obj, prefix = '') {
 
 /* ---------- 2. 記事の日付 ---------- */
 const articlesSrc = read('src/data/articles.ts');
-const today = new Date().toISOString().slice(0, 10);
+// 掲載日は日本時間で書いている。UTCで数えると朝9時前の作業が前日扱いになり、
+// 当日の日付を入れたほうが「未来」で落ちる（sv-SE ロケールが YYYY-MM-DD を返す）
+const today = new Date().toLocaleDateString('sv-SE', { timeZone: 'Asia/Tokyo' });
 const ISO = /^\d{4}-\d{2}-\d{2}$/;
 const articleBlocks = [...articlesSrc.matchAll(/path:\s*'([^']+)',\s*published:\s*'([^']+)',\s*updated:\s*'([^']+)'/g)];
 // 冒頭のコメントにも PAGE_UPDATED の語が出るので、宣言（const ... = {）だけを拾う

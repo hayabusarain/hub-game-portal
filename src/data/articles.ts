@@ -41,12 +41,12 @@ export const ARTICLES: Record<ArticleSlug, ArticleMeta> = {
   compare: {
     path: '/guides/compare',
     published: '2026-07-01',
-    updated: '2026-08-26',
+    updated: '2026-08-28',
   },
   'term-mapping': {
     path: '/guides/term-mapping',
     published: '2026-08-26',
-    updated: '2026-08-26',
+    updated: '2026-08-28',
   },
 };
 
@@ -57,7 +57,7 @@ export const ARTICLES: Record<ArticleSlug, ArticleMeta> = {
 export const PAGE_UPDATED: Record<string, string> = {
   '': '2026-08-26',
   '/guides': '2026-08-26',
-  '/glossary': '2026-08-26',
+  '/glossary': '2026-08-28',
   '/about': '2026-08-26',
   '/contact': '2026-08-13',
   '/disclaimer': '2026-08-26',

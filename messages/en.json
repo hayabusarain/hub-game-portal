@@ -631,7 +631,7 @@
         "term": "Recall (Back)",
         "cat": "basic",
         "def": "Channeling back to your fountain to heal and shop. Time it right after you shove the wave in, so you lose the least gold and experience while you are away.",
-        "note": "Honor of Kings lets you buy items from anywhere on the map, so a recall is for healing, not shopping.（HoK 側の記述は「どこでも買える」までで、「purely」の断定は根拠がない） In Wild Rift the usual timing is right before a cannon minion wave arrives or straight after crashing your wave into the tower.",
+        "note": "Honor of Kings lets you buy items from anywhere on the map, so a recall is for healing, not shopping. In Wild Rift the usual timing is right before a cannon minion wave arrives or straight after crashing your wave into the tower.",
         "links": [
           {
             "site": "hok",
@@ -1138,7 +1138,7 @@
             "concept": "The teammate who enables the others",
             "hok": "Roam",
             "wr": "Support",
-            "note": "HoK's Roam buys the Knowledge Gem (300G) first（src/data/hok_items.json id 1701 name_en \"Knowledge Gem\"。HoK Hub 英語版のアイテム名と一致させる） and moves across the whole map. Wild Rift's support stands beside the marksman and handles the wards."
+            "note": "HoK's Roam buys the Knowledge Gem (300G) first and moves across the whole map. Wild Rift's support stands beside the marksman and handles the wards."
           },
           {
             "concept": "Ranged carry",
