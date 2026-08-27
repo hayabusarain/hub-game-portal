@@ -166,7 +166,7 @@
   },
   "GuideHOK": {
     "title": "Why We Recommend Honor of Kings: A Thrilling 15-Minute MOBA",
-    "intro": "Six months on the global version, from a longtime PC MOBA player. Ultimates unlock in under two minutes and games end in 12 to 15, and that same pace is why an early lead tends to snowball.",
+    "intro": "Six months on the global version, from a longtime PC MOBA player. Ultimates unlock in under two minutes and games end in 10 to 15, and that same pace is why an early lead tends to snowball.",
     "category": "Game Review / Impressions",
     "heading": "Six Months of Honor of Kings: My Honest Take on the MOBA That Fits After Work",
     "published": "Published: July 2026",
@@ -179,7 +179,7 @@
     "tempoParagraphs": [
       "The pace is the first thing that got me.",
       "In a PC MOBA, the opening ten minutes are usually a patience test: you and your lane opponent quietly last-hitting minions and trading poke. In HoK you hit level 4 in under two minutes and everyone has their ultimate unlocked (as of the August 2026 build).",
-      "Movement speed and farming income are tuned to match, so a fight is breaking out somewhere on the map almost from the first minute. There is no lull to sit through, and 12 to 15 minutes is usually enough for one team to push through the towers and close it out.",
+      "Movement speed and farming income are tuned to match, so a fight is breaking out somewhere on the map almost from the first minute. There is no lull to sit through, and 10 to 15 minutes is usually enough for one team to push through the towers and close it out.",
       "If you cannot give up 30-plus minutes on a weeknight but still want the tension of a real competitive match, the format lines up with a working adult's schedule almost uncomfortably well."
     ],
     "controlsHeading": "■ Touch controls that stay out of the way",
@@ -197,7 +197,7 @@
     "verdictList": [
       "116 heroes as of 2026-08-26 (Honor of Kings Hub data). Fighters (38) and Mages (37) make up the bulk of the roster, while Tanks (17) and Supports (16) are the thinnest roles.",
       "Patches land every two weeks. The last three hit on July 16, July 30 and August 13, 2026, exactly 14 days apart. The shop holds 114 items, and there are 30 Arcana, ten each in red, blue and green (as of 2026-08-26).",
-      "The match runs on a fixed clock. Outer towers take 40% reduced damage for the first four minutes, the Overlord spawns at 2:00, the Tyrant at 4:00, and the Tempest Dragon at 20:00. Most games are over by around the 20-minute mark (Honor of Kings Hub beginner guide, checked 2026-08-26)."
+      "The match runs on a fixed clock. Outer towers take 40% reduced damage for the first four minutes, the Overlord spawns at 2:00, the Tyrant at 4:00, and the Tempest Dragon at 20:00. Most games finish well before that, and 20 minutes is about the ceiling (Honor of Kings Hub beginner guide, checked 2026-08-26)."
     ],
     "closing": "For the finer points of who it suits and who it doesn't, see the comparison article, where it sits side by side with Wild Rift.",
     "cta": "See tier lists and builds on Honor of Kings Hub"
@@ -284,8 +284,8 @@
     "tableRows": [
       {
         "axis": "Match length",
-        "hok": "10-15 min (very fast)",
-        "wr": "15-20+ min (slower burn)"
+        "hok": "10–15 min (very fast)",
+        "wr": "15–20+ min (slower burn)"
       },
       {
         "axis": "Knowledge to learn",
@@ -359,7 +359,7 @@
     "recommendHok": {
       "heading": "▶ Who Honor of Kings Is For",
       "points": [
-        "• Players with limited free time who want a match wrapped up in about 15 minutes",
+        "• Players with limited free time who want a match wrapped up in 10 to 15 minutes",
         "• Anyone who wants flashy combos and kills without a pile of homework first",
         "• MOBA newcomers who want to pick up the fundamentals while still having fun"
       ]
@@ -401,22 +401,32 @@
     "q5a5": "Setting your team up so they can commit without hesitating",
     "resultTitleLabel": "Recommended game",
     "resultHok": "We recommend Honor of Kings!",
-    "resultHokDesc": "Roughly 15 minutes per match. Enjoy fast-paced games and flashy skill combos.",
+    "resultHokDesc": "10 to 15 minutes per match. Enjoy fast-paced games and flashy skill combos.",
     "resultWr": "We recommend Wild Rift!",
     "resultWrDesc": "Vision control with wards and deep laning. Great for players who want to hone real skill.",
     "gameHok": "Honor of Kings",
     "gameWr": "Wild Rift",
     "resultRoleLabel": "Your best-fit role",
-    "role_top": "TOP",
-    "role_top_desc": "Top is the island lane: long 1v1s with almost no help, then leading the engage and eating the enemy's opening spells in teamfights. Your answers lean toward handling a situation on your own, and top is the role that lets you decide when the fight starts.",
-    "role_jungle": "JUNGLE",
-    "role_jungle_desc": "Junglers skip laning entirely — you clear camps and pick your own timings for ganks and objectives. You said you win by reading the enemy and hitting first, and jungle is the one role that gets to choose where the fight happens.",
-    "role_mid": "MID",
-    "role_mid_desc": "Mid is the shortest walk to every other lane, so you provide damage while setting the tempo of the game. You picked quick, decisive fights and staying involved across the map, which is exactly what mid does once the wave is shoved.",
-    "role_adc": "ADC (Marksman)",
-    "role_adc_desc": "Marksmen turn last hits (CS) into gold and gold into steady damage from the safety of the backline. You chose to farm up and win on raw output, and that patient early game is what an ADC is trading for.",
-    "role_support": "SUPPORT",
-    "role_support_desc": "Supports buy the wards, take the damage meant for the carry, and lock enemies down so teammates can commit. You put your team's survival and map information ahead of your own kill count, which is the entire job description.",
+    "role_wr_top": "TOP",
+    "role_hok_top": "Clash Lane",
+    "role_hok_top_desc": "The clash lane is the island lane: long 1v1s with almost no help, then leading the engage and eating the enemy's opening spells in teamfights. Your answers lean toward handling a situation on your own, and clash is the role that lets you decide when the fight starts.",
+    "role_wr_top_desc": "Top is the island lane: long 1v1s with almost no help, then leading the engage and eating the enemy's opening spells in teamfights. Your answers lean toward handling a situation on your own, and top is the role that lets you decide when the fight starts.",
+    "role_wr_jungle": "JUNGLE",
+    "role_hok_jungle": "Jungle",
+    "role_hok_jungle_desc": "Junglers skip laning entirely — you clear camps and pick your own timings for ganks and objectives. You said you win by reading the enemy and hitting first, and jungle is the one role that gets to choose where the fight happens. Jungle items require Smite, and they cut your damage to minions by 25% until the 10:00 mark.",
+    "role_wr_jungle_desc": "Junglers skip laning entirely — you clear camps and pick your own timings for ganks and objectives. You said you win by reading the enemy and hitting first, and jungle is the one role that gets to choose where the fight happens.",
+    "role_wr_mid": "MID",
+    "role_hok_mid": "Mid Lane",
+    "role_hok_mid_desc": "Mid is the shortest walk to every other lane, so you provide damage while setting the tempo of the game. You picked quick, decisive fights and staying involved across the map, which is exactly what mid does once the wave is shoved.",
+    "role_wr_mid_desc": "Mid is the shortest walk to every other lane, so you provide damage while setting the tempo of the game. You picked quick, decisive fights and staying involved across the map, which is exactly what mid does once the wave is shoved.",
+    "role_wr_adc": "ADC (Marksman)",
+    "role_hok_adc": "Farm Lane (Marksman)",
+    "role_hok_adc_desc": "Marksmen turn CS into gold and gold into steady damage from the safety of the backline. You chose to farm up and win on raw output, and that patient early game is what the farm lane is trading for. Honor of Kings lets you shop from anywhere, so you can stay in lane for it.",
+    "role_wr_adc_desc": "Marksmen turn last hits (CS) into gold and gold into steady damage from the safety of the backline. You chose to farm up and win on raw output, and that patient early game is what an ADC is trading for.",
+    "role_wr_support": "SUPPORT",
+    "role_hok_support": "Roam",
+    "role_hok_support_desc": "A roamer buys the Knowledge Gem first, moves across the whole map, soaks the damage meant for the carry and locks enemies down so teammates can commit. You put your team's survival and map information ahead of your own kill count. Honor of Kings has no wards, so vision comes from firing a skill into a bush and watching for a reaction.",
+    "role_wr_support_desc": "Supports buy the wards, take the damage meant for the carry, and lock enemies down so teammates can commit. You put your team's survival and map information ahead of your own kill count, which is the entire job description.",
     "share": "Share on X",
     "shareText": "I took the HUB-GAME mobile MOBA quiz — my match is {game} and my best-fit role is {role}.",
     "readGuide": "Read the Review",

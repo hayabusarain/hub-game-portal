@@ -31,7 +31,7 @@ export const ARTICLES: Record<ArticleSlug, ArticleMeta> = {
   'honor-of-kings': {
     path: '/guides/honor-of-kings',
     published: '2026-07-01',
-    updated: '2026-08-26',
+    updated: '2026-08-28',
   },
   'wild-rift': {
     path: '/guides/wild-rift',
@@ -55,7 +55,7 @@ export const ARTICLES: Record<ArticleSlug, ArticleMeta> = {
  * 内容を変えたらその日に上げる。法的ページも権利表記の変更などで動く。
  */
 export const PAGE_UPDATED: Record<string, string> = {
-  '': '2026-08-26',
+  '': '2026-08-28',
   '/guides': '2026-08-26',
   '/glossary': '2026-08-28',
   '/about': '2026-08-26',

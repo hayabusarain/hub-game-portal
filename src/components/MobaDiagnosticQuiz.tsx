@@ -229,7 +229,10 @@ export default function MobaDiagnosticQuiz() {
   const { isHok, role } = getResult(answers);
   const RoleIcon = ROLE_ICONS[role];
   const gameName = isHok ? t('gameHok') : t('gameWr');
-  const roleName = t(`role_${role}`);
+  // ロール名も説明文もタイトルごとに別物。レーン名（クラッシュ／ファーム／ローム）が違ううえ、
+  // ワイルドリフト前提の文面をそのまま出すと「HoKのロームがワードを置く」ことになる
+  const game = isHok ? 'hok' : 'wr';
+  const roleName = t(`role_${game}_${role}`);
   const accent = isHok
     ? 'from-amber-400 to-orange-500'
     : 'from-indigo-500 to-blue-600';
@@ -272,7 +275,7 @@ export default function MobaDiagnosticQuiz() {
             </div>
           </div>
           <p className="text-sm text-slate-600 font-medium leading-relaxed">
-            {t(`role_${role}_desc`)}
+            {t(`role_${game}_${role}_desc`)}
           </p>
         </div>
 
