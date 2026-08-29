@@ -63,46 +63,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </p>
         </section>
 
-        {/* Diagnostic Quiz Section
-            設問と選択肢をサーバー側で描くので、JSが無くても読めてそのまま送信できる。
-            送信先は /[locale]/diagnosis。結果は1つのURLに集約している */}
-        <section className="flex flex-col gap-4">
-          <QuizForm locale={locale} />
-          <Link
-            href="/diagnosis"
-            className="self-center text-xs font-bold text-indigo-600 transition-colors hover:text-indigo-800"
-          >
-            {tQuiz('howItWorks')}
-          </Link>
-        </section>
-
-        {/* 用語集の note から、初戦で判断が変わる5語だけを抜いたブロック。
-            呼び名の全対応は /guides/term-mapping が持つので、ここは行を増やさない */}
-        <GlossaryHighlights />
-
-        {/* Guides & Articles Highlight */}
-        <section className="flex flex-col gap-4 relative">
-          <div className="flex items-center justify-between">
-            <h3 className="text-lg font-black text-slate-800 flex items-center gap-2">
-              <BookOpen size={20} className="text-indigo-500" /> {t('guidesSectionTitle')}
-            </h3>
-            <Link href="/guides" className="text-xs font-bold text-indigo-600 hover:text-indigo-800 flex items-center gap-1 group">
-              {t('viewAll')} <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-          
-          <div className="grid grid-cols-2 gap-3">
-            <Link href="/guides/compare" className="bg-gradient-to-br from-rose-500 to-pink-600 p-4 rounded-3xl text-white shadow-md hover:shadow-lg transition-all active:scale-95 group">
-              <h4 className="font-bold text-sm mb-1 group-hover:underline">{t('compareCardTitle')}</h4>
-              <p className="text-[10px] text-rose-100 font-medium">{t('compareCardDesc')}</p>
-            </Link>
-            <Link href="/guides/what-is-moba" className="bg-gradient-to-br from-emerald-500 to-teal-600 p-4 rounded-3xl text-white shadow-md hover:shadow-lg transition-all active:scale-95 group">
-              <h4 className="font-bold text-sm mb-1 group-hover:underline">{t('mobaCardTitle')}</h4>
-              <p className="text-[10px] text-emerald-100 font-medium">{t('mobaCardDesc')}</p>
-            </Link>
-          </div>
-        </section>
-
         {/* Game Cards List */}
         <section className="flex flex-col gap-5">
           <h3 className="text-lg font-black text-slate-800 flex items-center gap-2">
@@ -237,6 +197,46 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               );
             })}
           </ul>
+        </section>
+
+        {/* Diagnostic Quiz Section
+            設問と選択肢をサーバー側で描くので、JSが無くても読めてそのまま送信できる。
+            送信先は /[locale]/diagnosis。結果は1つのURLに集約している */}
+        <section className="flex flex-col gap-4">
+          <QuizForm locale={locale} />
+          <Link
+            href="/diagnosis"
+            className="self-center text-xs font-bold text-indigo-600 transition-colors hover:text-indigo-800"
+          >
+            {tQuiz('howItWorks')}
+          </Link>
+        </section>
+
+        {/* 用語集の note から、初戦で判断が変わる5語だけを抜いたブロック。
+            呼び名の全対応は /guides/term-mapping が持つので、ここは行を増やさない */}
+        <GlossaryHighlights />
+
+        {/* Guides & Articles Highlight */}
+        <section className="flex flex-col gap-4 relative">
+          <div className="flex items-center justify-between">
+            <h3 className="text-lg font-black text-slate-800 flex items-center gap-2">
+              <BookOpen size={20} className="text-indigo-500" /> {t('guidesSectionTitle')}
+            </h3>
+            <Link href="/guides" className="text-xs font-bold text-indigo-600 hover:text-indigo-800 flex items-center gap-1 group">
+              {t('viewAll')} <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+          
+          <div className="grid grid-cols-2 gap-3">
+            <Link href="/guides/compare" className="bg-gradient-to-br from-rose-500 to-pink-600 p-4 rounded-3xl text-white shadow-md hover:shadow-lg transition-all active:scale-95 group">
+              <h4 className="font-bold text-sm mb-1 group-hover:underline">{t('compareCardTitle')}</h4>
+              <p className="text-[10px] text-rose-100 font-medium">{t('compareCardDesc')}</p>
+            </Link>
+            <Link href="/guides/what-is-moba" className="bg-gradient-to-br from-emerald-500 to-teal-600 p-4 rounded-3xl text-white shadow-md hover:shadow-lg transition-all active:scale-95 group">
+              <h4 className="font-bold text-sm mb-1 group-hover:underline">{t('mobaCardTitle')}</h4>
+              <p className="text-[10px] text-emerald-100 font-medium">{t('mobaCardDesc')}</p>
+            </Link>
+          </div>
         </section>
       </main>
 
