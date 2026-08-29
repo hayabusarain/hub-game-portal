@@ -43,33 +43,12 @@ export default async function TitleSnapshot({ locale }: Props) {
 
   const ja = locale === 'ja';
   const patchLabel = ja ? hok.patch.labelJa : hok.patch.label;
-  const statsSource = ja ? hok.stats.sourceJa : hok.stats.sourceEn;
-
-  const hokSourceNote = (
-    <>
-      {t('sourceLabel')}{' '}
-      {hok.stats.sourceUrl ? (
-        <a
-          href={hok.stats.sourceUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline decoration-slate-300 underline-offset-2 hover:text-slate-700"
-        >
-          {statsSource}
-        </a>
-      ) : (
-        statsSource
-      )}
-    </>
-  );
 
   return (
     <section className="flex flex-col gap-3">
       <h3 className="text-lg font-black text-slate-800 flex items-center gap-2">
         <Table2 size={20} className="text-indigo-500" /> {t('heading')}
       </h3>
-
-      <p className="text-xs text-slate-500 font-medium leading-relaxed">{t('lead')}</p>
 
       {/* 3列あるので狭い画面では横に送る。行を折り返して潰すより読める */}
       <div className="overflow-x-auto rounded-2xl border border-slate-200/80 bg-white shadow-sm">
@@ -126,16 +105,6 @@ export default async function TitleSnapshot({ locale }: Props) {
               <Cell value={t('wr.heroes')} note={t('wr.catalog')} />
             </tr>
 
-            <tr>
-              <th scope="row" className="py-3 px-3 align-top font-semibold text-slate-600">
-                {t('rowStats')}
-              </th>
-              <Cell
-                value={t('statsAsOf', { date: hok.stats.updatedAt })}
-                note={hokSourceNote}
-              />
-              <Cell value={t('wr.statsAsOf')} note={t('wr.statsSource')} />
-            </tr>
           </tbody>
         </table>
       </div>

@@ -21,7 +21,7 @@
       "description": "League of LegendsのDNAを受け継ぐワイルドリフトの奥深さを解説。視界管理やアウトプレイなど、競技性を重視する人向けのレビューです。"
     },
     "compare": {
-      "title": "オナー・オブ・キングスとワイルドリフトを徹底比較",
+      "title": "オナー・オブ・キングスとワイルドリフトを比べる",
       "description": "試合時間・操作性・グラフィック・集団戦のペースを比較し、どちらのスマホMOBAが自分に合うかを判断できます。"
     },
     "contact": {
@@ -75,11 +75,11 @@
     "guidesSectionTitle": "ガイド・記事",
     "gamesSectionTitle": "ゲーム",
     "picksTitle": "今週の注目",
-    "picksLead": "各攻略サイトから、今読んでおくと差がつく更新をピックアップしています。",
+    "picksLead": "両サイトの最新パッチから1件ずつ。",
     "picksUpdatedLabel": "最終更新",
     "disclaimerText": "当サイトは非公式のファンサイトであり、Riot Games、Tencent Games（Level Infinite）およびその他のパブリッシャーとは一切関係ありません。League of Legends: Wild Rift は Riot Games, Inc. の、Honor of Kings は Tencent の商標または登録商標です。",
     "firstMatchTitle": "最初の1試合で事故る5点",
-    "firstMatchLead": "片方のタイトルに慣れているほど、同じつもりで動いて事故る。初戦で判断が変わる5点を、両タイトルの仕組みごと並べました。呼び名の全対応は用語対応表にあります。",
+    "firstMatchLead": "片方のタイトルに慣れているほど、同じつもりで動いて事故る。呼び名の対応は用語対応表にあります。",
     "firstMatchMappingLink": "用語対応表",
     "firstMatchColConcept": "つまずく場面",
     "firstMatchColHok": "Honor of Kings",
@@ -132,7 +132,7 @@
     "backToGuides": "記事一覧へ戻る",
     "tagIntro": "入門コラム",
     "tagReview": "タイトル解説",
-    "tagCompare": "徹底比較",
+    "tagCompare": "比較",
     "glossaryCta": "MOBA用語集を見る",
     "glossaryCtaDesc": "ガンク、ラストヒット（CS）、ピール、パワースパイクなど、試合中に飛び交う用語を1ページにまとめています。ワイルドリフトとオナー・オブ・キングスで仕様が違う語は、その差にも触れています。",
     "eyebrow": "MOBA攻略・レビュー",
@@ -283,7 +283,7 @@
     "ctaLabel": "ワイルドリフトHubでチャンピオン攻略を見る"
   },
   "GuideCompare": {
-    "title": "徹底比較：Honor of Kings vs ワイルドリフト！あなたに合うスマホMOBAは？",
+    "title": "Honor of Kings とワイルドリフトの比較｜どちらが自分に合うか",
     "intro": "両方をやり込んだ視点で、試合のテンポ、ワードの有無、アイテム購入とリコールの仕様を比べた。1試合10〜15分のHoKと15〜20分のワイルドリフト、どちらから始めるかの判断材料に。",
     "category": "比較レビュー / 考察",
     "heading": "【ガチ本音比較】Honor of Kingsとワイルドリフト、結局どっちを遊ぶべき？",
@@ -418,7 +418,7 @@
   },
   "Quiz": {
     "title": "スマホMOBA適性診断",
-    "subtitle": "5つの質問からあなたのプレイスタイルを分析し、合いそうなMOBAゲームと向いているロールを診断します！",
+    "subtitle": "5問に答えると、合いそうなタイトルと、始めるのに向いたロールが出ます。",
     "q1": "試合のテンポはどうしたい？",
     "q1a1": "10〜15分の高速展開でガンガンキルを取りたい！",
     "q1a2": "15〜20分のじっくり展開でファームと戦略を楽しみたい！",
@@ -1263,27 +1263,21 @@
   },
   "TitleSnapshot": {
     "heading": "2タイトルの現在地",
-    "lead": "どちらのサイトが、いつ時点のデータをどれだけ載せているか。数字にはすべて出典を付けた。",
     "colAxis": "項目",
     "colHok": "Honor of Kings",
     "colWr": "Wild Rift",
     "rowPatch": "現在のパッチ",
     "rowChanged": "直近パッチで調整されたヒーロー数",
     "rowRoster": "掲載ヒーロー数",
-    "rowStats": "データの時点と出典",
     "heroCount": "{count}体",
     "hokCatalog": "装備{items}種・アルカナ{arcana}種・スペル{spells}種",
-    "statsAsOf": "{date} 取得",
-    "sourceLabel": "出典:",
     "wr": {
       "patch": "7.2d",
       "patchDate": "2026-08-26",
       "changedHeroes": "15体",
       "heroes": "141体",
-      "catalog": "装備167種・ルーン53種・スペル9種",
-      "statsAsOf": "2026-08-29 に確認",
-      "statsSource": "出典: wildrift.hub-game.com（手入力）"
+      "catalog": "装備167種・ルーン53種・スペル9種"
     },
-    "footnote": "Honor of Kings の列は hok.hub-game.com の /api/latest から30分ごとに取り込んでいます。Wild Rift の列は自動取得ではありません。Wild Rift の掲載数は2026年8月26日時点の当サイトの調べです。パッチ7.2dと調整15体は、2026年8月29日に wildrift.hub-game.com のパッチノートで確認しました。"
+    "footnote": "Honor of Kings の列は hok.hub-game.com から30分ごとに取り込んでいます。Wild Rift の列は手入力です。掲載数は2026年8月26日、パッチ7.2dと調整15体は2026年8月29日に確認しました。"
   }
 }

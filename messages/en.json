@@ -21,7 +21,7 @@
       "description": "A review of Wild Rift's depth, from vision control to outplays, for players who value competitiveness."
     },
     "compare": {
-      "title": "Honor of Kings vs Wild Rift: Full Comparison",
+      "title": "Honor of Kings vs Wild Rift: How They Compare",
       "description": "Compare match length, controls, graphics, and teamfight pace to decide which mobile MOBA fits you."
     },
     "contact": {
@@ -75,11 +75,11 @@
     "guidesSectionTitle": "Guides & Articles",
     "gamesSectionTitle": "Games",
     "picksTitle": "This Week's Picks",
-    "picksLead": "The updates from our strategy sites that are worth reading before your next game.",
+    "picksLead": "One update from each site’s latest patch.",
     "picksUpdatedLabel": "Updated",
     "disclaimerText": "This website is an unofficial fan site and is not affiliated with Riot Games, Tencent Games (Level Infinite), or any other publisher. League of Legends: Wild Rift is a trademark of Riot Games, Inc.; Honor of Kings is a registered trademark of Tencent.",
     "firstMatchTitle": "Five things that catch you out in your first match",
-    "firstMatchLead": "Habits from one title carry over badly into the other. These five decide the most in a first game, so here is how each one actually works. Every name pairing lives in the term mapping guide.",
+    "firstMatchLead": "Habits from one title carry over badly into the other. Name pairings are collected in the term mapping guide.",
     "firstMatchMappingLink": "Term mapping",
     "firstMatchColConcept": "Where it goes wrong",
     "firstMatchColHok": "Honor of Kings",
@@ -418,7 +418,7 @@
   },
   "Quiz": {
     "title": "Mobile MOBA Aptitude Quiz",
-    "subtitle": "Answer 5 quick questions and we'll suggest the MOBA that matches your playstyle — plus the role you should main!",
+    "subtitle": "Five questions, then you get the title that fits you and the role to start with.",
     "q1": "What match tempo do you prefer?",
     "q1a1": "Fast 10-15 minute games with constant action!",
     "q1a2": "Slower 15-20 minute games with farming and strategy!",
@@ -1263,27 +1263,21 @@
   },
   "TitleSnapshot": {
     "heading": "Where both games stand",
-    "lead": "How much data each site carries, and how current it is. Every figure names its source.",
     "colAxis": "Aspect",
     "colHok": "Honor of Kings",
     "colWr": "Wild Rift",
     "rowPatch": "Current patch",
     "rowChanged": "Heroes changed in the latest patch",
     "rowRoster": "Heroes covered",
-    "rowStats": "As of, and source",
     "heroCount": "{count, plural, one {# hero} other {# heroes}}",
     "hokCatalog": "{items} items, {arcana} arcana, {spells} spells",
-    "statsAsOf": "As of {date}",
-    "sourceLabel": "Source:",
     "wr": {
       "patch": "7.2d",
       "patchDate": "2026-08-26",
       "changedHeroes": "15 champions",
       "heroes": "141 champions",
-      "catalog": "167 items, 53 runes, 9 spells",
-      "statsAsOf": "Checked 2026-08-29",
-      "statsSource": "Source: wildrift.hub-game.com (entered by hand)"
+      "catalog": "167 items, 53 runes, 9 spells"
     },
-    "footnote": "The Honor of Kings column is pulled from hok.hub-game.com/api/latest and refreshes every 30 minutes. The Wild Rift column is not fetched. Its counts are this site’s own tally as of August 26, 2026, and patch 7.2d with its 15 adjusted champions was checked against the wildrift.hub-game.com patch notes on August 29, 2026."
+    "footnote": "The Honor of Kings column refreshes every 30 minutes from hok.hub-game.com. The Wild Rift column is entered by hand: the counts are as of August 26, 2026, and patch 7.2d with its 15 adjusted champions was checked on August 29, 2026."
   }
 }
