@@ -66,15 +66,9 @@ export type SiteSnapshot = {
     spells: number;
     arcana: number;
   };
-  stats: {
-    /** 勝率などの統計を取得した日 YYYY-MM-DD */
-    updatedAt: string;
-    sourceJa: string;
-    sourceEn: string;
-    /** 出典の URL。無ければ出典名だけを出す */
-    sourceUrl: string | null;
-  };
 };
+// 相手の /api/latest は snapshot.stats（統計の取得日と出典）も返すが、表からその行を
+// 外したので受け取っていない。ここに戻すと、使わない項目が欠けただけで表が丸ごと消える
 
 const isNonEmptyString = (v: unknown): v is string => typeof v === 'string' && v.trim().length > 0;
 
@@ -134,8 +128,7 @@ function toSnapshot(site: HighlightSite, data: LatestResponse): SiteSnapshot | n
 
   const patch = isRecord(snapshot.patch) ? snapshot.patch : null;
   const catalog = isRecord(snapshot.catalog) ? snapshot.catalog : null;
-  const stats = isRecord(snapshot.stats) ? snapshot.stats : null;
-  if (!patch || !catalog || !stats) return null;
+  if (!patch || !catalog) return null;
 
   const patchDate = toDateOnly(patch.date);
   const changedHeroes = toCount(patch.changedHeroes);
@@ -143,7 +136,6 @@ function toSnapshot(site: HighlightSite, data: LatestResponse): SiteSnapshot | n
   const items = toPositiveInt(catalog.items);
   const spells = toPositiveInt(catalog.spells);
   const arcana = toPositiveInt(catalog.arcana);
-  const statsUpdatedAt = toDateOnly(stats.updatedAt);
 
   if (
     !patchDate ||
@@ -153,10 +145,7 @@ function toSnapshot(site: HighlightSite, data: LatestResponse): SiteSnapshot | n
     heroes === null ||
     items === null ||
     spells === null ||
-    arcana === null ||
-    !statsUpdatedAt ||
-    !isNonEmptyString(stats.sourceJa) ||
-    !isNonEmptyString(stats.sourceEn)
+    arcana === null
   ) {
     return null;
   }
@@ -165,12 +154,6 @@ function toSnapshot(site: HighlightSite, data: LatestResponse): SiteSnapshot | n
     site,
     patch: { label: patch.label, labelJa: patch.labelJa, date: patchDate, changedHeroes },
     catalog: { heroes, items, spells, arcana },
-    stats: {
-      updatedAt: statsUpdatedAt,
-      sourceJa: stats.sourceJa,
-      sourceEn: stats.sourceEn,
-      sourceUrl: isNonEmptyString(stats.sourceUrl) ? stats.sourceUrl : null,
-    },
   };
 }
 
