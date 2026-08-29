@@ -1,3 +1,4 @@
+import { cache } from 'react';
 import { SITE_ORIGINS, type Highlight, type HighlightSite } from '@/data/highlights';
 
 /**
@@ -7,6 +8,12 @@ import { SITE_ORIGINS, type Highlight, type HighlightSite } from '@/data/highlig
  * 相手のデータ源（Supabase なのかリポジトリ内 JSON なのか）を知らなくてよい。
  * 取得に失敗した場合は空配列を返し、呼び出し側が src/data/highlights.ts の
  * 手動ピックだけで表示できるようにしてある（姉妹サイトが落ちてもトップは壊れない）。
+ *
+ * 取り出し口は2つある。どちらも取得できなければ null か空配列を返し、
+ * 呼び出し側がその部分だけを描かずに済ませる。
+ * - getLiveHighlights() … 「今週の注目」カード用。以前からある
+ * - getSiteSnapshot()   … 「2タイトルの現在地」表用。snapshot キーが無い相手には null を返すので、
+ *                         対応していないサイトが混ざっても既存の表示は変わらない
  */
 
 /**
@@ -32,9 +39,57 @@ type LatestResponse = {
   date?: unknown;
   ja?: { title?: unknown; body?: unknown };
   en?: { title?: unknown; body?: unknown };
+  /** 対応していないサイトでは丸ごと無い。無ければ表を出さないだけで、他の表示には影響しない */
+  snapshot?: unknown;
+};
+
+/**
+ * 姉妹サイトが公開している「掲載データの現在地」。
+ * 数字を画面に出す以上、いつ時点で・どこから来た値かが分からないものは採らない。
+ * そのため全項目が揃っているときだけ組み立て、1つでも欠けたら null を返す。
+ */
+export type SiteSnapshot = {
+  site: HighlightSite;
+  patch: {
+    /** 英語表記の版名（例: August 27 Update） */
+    label: string;
+    /** 日本語表記の版名（例: 8月27日アップデート） */
+    labelJa: string;
+    /** YYYY-MM-DD */
+    date: string;
+    /** そのパッチで調整されたヒーロー数。修正のみのパッチなら 0 もありうる */
+    changedHeroes: number;
+  };
+  catalog: {
+    heroes: number;
+    items: number;
+    spells: number;
+    arcana: number;
+  };
+  stats: {
+    /** 勝率などの統計を取得した日 YYYY-MM-DD */
+    updatedAt: string;
+    sourceJa: string;
+    sourceEn: string;
+    /** 出典の URL。無ければ出典名だけを出す */
+    sourceUrl: string | null;
+  };
 };
 
 const isNonEmptyString = (v: unknown): v is string => typeof v === 'string' && v.trim().length > 0;
+
+const isRecord = (v: unknown): v is Record<string, unknown> =>
+  typeof v === 'object' && v !== null && !Array.isArray(v);
+
+/** 掲載数として使える値だけを通す（1以上の整数）。0件の一覧は表に出す意味がない */
+function toPositiveInt(value: unknown): number | null {
+  return typeof value === 'number' && Number.isInteger(value) && value > 0 ? value : null;
+}
+
+/** 調整ヒーロー数だけは 0 を正しい値として扱う（不具合修正だけのパッチがある） */
+function toCount(value: unknown): number | null {
+  return typeof value === 'number' && Number.isInteger(value) && value >= 0 ? value : null;
+}
 
 /** ISO 日時でも YYYY-MM-DD でも受け取れるようにし、日付部分だけを取り出す */
 function toDateOnly(value: unknown): string | null {
@@ -69,23 +124,89 @@ function toHighlight(site: HighlightSite, data: LatestResponse): Highlight | nul
   };
 }
 
+/**
+ * snapshot を組み立てる。欠けている・型が違う項目が1つでもあれば null。
+ * 半端な行が混ざった表を出すくらいなら、表ごと出さないほうがよい。
+ */
+function toSnapshot(site: HighlightSite, data: LatestResponse): SiteSnapshot | null {
+  const snapshot = data.snapshot;
+  if (!isRecord(snapshot)) return null;
+
+  const patch = isRecord(snapshot.patch) ? snapshot.patch : null;
+  const catalog = isRecord(snapshot.catalog) ? snapshot.catalog : null;
+  const stats = isRecord(snapshot.stats) ? snapshot.stats : null;
+  if (!patch || !catalog || !stats) return null;
+
+  const patchDate = toDateOnly(patch.date);
+  const changedHeroes = toCount(patch.changedHeroes);
+  const heroes = toPositiveInt(catalog.heroes);
+  const items = toPositiveInt(catalog.items);
+  const spells = toPositiveInt(catalog.spells);
+  const arcana = toPositiveInt(catalog.arcana);
+  const statsUpdatedAt = toDateOnly(stats.updatedAt);
+
+  if (
+    !patchDate ||
+    changedHeroes === null ||
+    !isNonEmptyString(patch.label) ||
+    !isNonEmptyString(patch.labelJa) ||
+    heroes === null ||
+    items === null ||
+    spells === null ||
+    arcana === null ||
+    !statsUpdatedAt ||
+    !isNonEmptyString(stats.sourceJa) ||
+    !isNonEmptyString(stats.sourceEn)
+  ) {
+    return null;
+  }
+
+  return {
+    site,
+    patch: { label: patch.label, labelJa: patch.labelJa, date: patchDate, changedHeroes },
+    catalog: { heroes, items, spells, arcana },
+    stats: {
+      updatedAt: statsUpdatedAt,
+      sourceJa: stats.sourceJa,
+      sourceEn: stats.sourceEn,
+      sourceUrl: isNonEmptyString(stats.sourceUrl) ? stats.sourceUrl : null,
+    },
+  };
+}
+
+/**
+ * /api/latest を1回だけ叩く。同じ描画のなかで「今週の注目」と「現在地」表の
+ * 両方から呼ばれるため、react の cache で1リクエストにまとめている。
+ */
+const fetchLatest = cache(async (site: HighlightSite): Promise<LatestResponse | null> => {
+  try {
+    const res = await fetch(ENDPOINTS[site], {
+      next: { revalidate: REVALIDATE_SECONDS },
+    });
+    if (!res.ok) return null;
+    return (await res.json()) as LatestResponse;
+  } catch {
+    // 姉妹サイトが未デプロイ・停止中でもトップページは成立させる
+    return null;
+  }
+});
+
 export async function getLiveHighlights(): Promise<Highlight[]> {
   const sites = Object.keys(ENDPOINTS) as HighlightSite[];
 
   const results = await Promise.all(
     sites.map(async (site) => {
-      try {
-        const res = await fetch(ENDPOINTS[site], {
-          next: { revalidate: REVALIDATE_SECONDS },
-        });
-        if (!res.ok) return null;
-        return toHighlight(site, (await res.json()) as LatestResponse);
-      } catch {
-        // 姉妹サイトが未デプロイ・停止中でもトップページは手動ピックで成立させる
-        return null;
-      }
+      const data = await fetchLatest(site);
+      // 手動ピック（src/data/highlights.ts）だけでもトップは成立する
+      return data ? toHighlight(site, data) : null;
     })
   );
 
   return results.filter((h): h is Highlight => h !== null);
+}
+
+/** 取得できなければ null。呼び出し側は表そのものを描かない */
+export async function getSiteSnapshot(site: HighlightSite): Promise<SiteSnapshot | null> {
+  const data = await fetchLatest(site);
+  return data ? toSnapshot(site, data) : null;
 }

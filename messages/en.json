@@ -51,6 +51,10 @@
     "termMapping": {
       "title": "Honor of Kings ⇄ Wild Rift: Term Map and Switching Guide",
       "description": "Twenty-two things Honor of Kings and Wild Rift both have but call by different names, lined up side by side — each with a one-line note on how the mechanics actually differ, from spawn timers to where you are allowed to shop."
+    },
+    "diagnosis": {
+      "title": "Mobile MOBA Aptitude Quiz: Your Game and Role in 5 Questions",
+      "description": "Answer five questions to see whether Honor of Kings or Wild Rift suits you, and which role to start with. The result lists the answers it was based on."
     }
   },
   "Home": {
@@ -73,7 +77,45 @@
     "picksTitle": "This Week's Picks",
     "picksLead": "The updates from our strategy sites that are worth reading before your next game.",
     "picksUpdatedLabel": "Updated",
-    "disclaimerText": "This website is an unofficial fan site and is not affiliated with Riot Games, Tencent Games (Level Infinite), or any other publisher. League of Legends: Wild Rift is a trademark of Riot Games, Inc.; Honor of Kings is a registered trademark of Tencent."
+    "disclaimerText": "This website is an unofficial fan site and is not affiliated with Riot Games, Tencent Games (Level Infinite), or any other publisher. League of Legends: Wild Rift is a trademark of Riot Games, Inc.; Honor of Kings is a registered trademark of Tencent.",
+    "firstMatchTitle": "Five things that catch you out in your first match",
+    "firstMatchLead": "Habits from one title carry over badly into the other. These five decide the most in a first game, so here is how each one actually works. Every name pairing lives in the term mapping guide.",
+    "firstMatchMappingLink": "Term mapping",
+    "firstMatchColConcept": "Where it goes wrong",
+    "firstMatchColHok": "Honor of Kings",
+    "firstMatchColWr": "Wild Rift",
+    "firstMatchItems": {
+      "Ward": {
+        "label": "Before you step into a bush",
+        "pitfall": "The two games find enemies in completely different ways. Walk into the river on the wrong habit and you get collapsed on.",
+        "hok": "No ward item exists. The roamer steps into the bush first, or throws a skill in to see what reacts.",
+        "wr": "Everyone carries free wards, and the Sweeping Lens clears the enemy's."
+      },
+      "Recall": {
+        "label": "When to head home",
+        "pitfall": "Saving up gold and channelling back is a habit only one of the two games needs.",
+        "hok": "Items are bought from anywhere on the map, so a recall is for healing.",
+        "wr": "Shopping happens at the fountain only. Go right after you shove the wave into the tower."
+      },
+      "LastHit": {
+        "label": "Minion gold",
+        "pitfall": "Chipping minions down earns nothing. The item gap at ten minutes starts here.",
+        "hok": "Land the killing blow and you take roughly 1.5x what a minion dying beside you pays.",
+        "wr": "Gold lands only on the killing blow. Missed CS turns straight into an item deficit."
+      },
+      "Tower": {
+        "label": "Diving a tower",
+        "pitfall": "Chase someone under their tower and the tower turns on you. Check the conditions before stepping in.",
+        "hok": "Outer towers take 40% less damage for the first four minutes, and your damage to a tower drops 55% with no allied minions beside you.",
+        "wr": "The standard early plan is to take the Rift Herald and send it charging into the tower."
+      },
+      "Objective": {
+        "label": "Objective timers",
+        "pitfall": "Objectives are the call to group up. Read the clock wrong and it is over before you arrive.",
+        "hok": "Overlord at 2:00, Tyrant at 4:00, and both are replaced by Shadow versions at 10:00.",
+        "wr": "Seven in all: four dragons, the Rift Herald, Baron Nashor and the Elder Dragon."
+      }
+    }
   },
   "Nav": {
     "home": "Home",
@@ -195,8 +237,8 @@
     ],
     "verdictHeading": "■ Verdict: who it is for",
     "verdictList": [
-      "116 heroes as of 2026-08-26 (Honor of Kings Hub data). Fighters (38) and Mages (37) make up the bulk of the roster, while Tanks (17) and Supports (16) are the thinnest roles.",
-      "Patches land every two weeks. The last three hit on July 16, July 30 and August 13, 2026, exactly 14 days apart. The shop holds 114 items, and there are 30 Arcana, ten each in red, blue and green (as of 2026-08-26).",
+      "116 heroes as of 2026-08-29 (Honor of Kings Hub data). Fighters (38) and Mages (37) make up the bulk of the roster, while Tanks (17) and Supports (16) are the thinnest roles.",
+      "Patches land every two weeks. The last three hit on July 30, August 13 and August 27, 2026, exactly 14 days apart. The shop holds 114 items, and there are 30 Arcana, ten each in red, blue and green (as of 2026-08-29).",
       "The match runs on a fixed clock. Outer towers take 40% reduced damage for the first four minutes, the Overlord spawns at 2:00, the Tyrant at 4:00, and the Tempest Dragon at 20:00. Most games finish well before that, and 20 minutes is about the ceiling (Honor of Kings Hub beginner guide, checked 2026-08-26)."
     ],
     "closing": "For the finer points of who it suits and who it doesn't, see the comparison article, where it sits side by side with Wild Rift.",
@@ -234,8 +276,8 @@
     "section4Heading": "■ Verdict: who this is for",
     "recommendedFor": [
       "141 champions as of 2026-08-26 (Wild Rift Hub). Six roles — Fighter, Tank, Mage, Assassin, Marksman and Support — spread across five positions: Top (Solo), Jungle, Mid, Duo (ADC) and Support.",
-      "Patches arrive roughly every two weeks. Patch 7.2 landed on July 8, 2026, 7.2a followed a week later on July 15, and 7.2b (July 29), 7.2c (August 12) and 7.2d (August 26) came at 14-day intervals (Riot's official patch notes, checked 2026-08-26). Wild Rift Hub's data reflects patches through 7.2c (updated 2026-08-12).",
-      "The tier list has six tiers, OP through D, broken out by all five positions, with four rank brackets to choose from: Diamond+, Master+, Challenger and Rift Apex. It is built on the Chinese server's official statistics for Master and above, as of 2026-08-20."
+      "Patches arrive roughly every two weeks. Patch 7.2 landed on July 8, 2026, 7.2a followed a week later on July 15, and 7.2b (July 29), 7.2c (August 12) and 7.2d (August 26) came at 14-day intervals (Riot's official patch notes, checked 2026-08-26). Wild Rift Hub's tier list already applies the 7.2d adjustments. Its statistics, though, were captured on August 25, the day before 7.2d shipped, and the site itself notes that they reflect the patch only in part (checked 2026-08-29).",
+      "The tier list has six tiers, OP through D, broken out by all five positions, with five rank brackets to choose from: All ranks, Diamond+, Master+, Challenger and Rift Apex. Master+ is what loads by default. The data is the Chinese server's official League of Legends: Wild Rift statistics, captured 2026-08-25 (checked 2026-08-29)."
     ],
     "conclusion": "To see whether Wild Rift or Honor of Kings is the better fit for you, read the comparison article, where the two are lined up side by side.",
     "ctaLabel": "Browse champion guides on Wild Rift Hub"
@@ -339,7 +381,7 @@
       },
       {
         "axis": "Patch cadence",
-        "hok": "Roughly every two weeks. In July and August 2026 the updates landed on Jul 2, 16 and 30 and Aug 13, 14 days apart. The Season 15 \"Grand Venture\" update on Jun 17 added four heroes at once.",
+        "hok": "Roughly every two weeks. In July and August 2026 the updates landed on Jul 2, Jul 16, Jul 30, Aug 13 and Aug 27, 14 days apart. The Season 15 \"Grand Venture\" update on Jun 17 added four heroes at once.",
         "wr": "Roughly every two weeks. After 7.2 on Jul 8, patches 7.2a-7.2d followed on Jul 15, Jul 29, Aug 12 and Aug 26. Numbered patches are about three months apart (7.1 on Apr 7, 7.2 on Jul 8); ranked Season 21 opened Apr 10."
       },
       {
@@ -372,12 +414,11 @@
         "• Anyone drawn to the League of Legends world and champion designs"
       ]
     },
-    "tableFootnote": "Figures are as of August 26, 2026. Hero, item, arcana and spell counts come from the data published on each strategy site; patch dates are the publication dates of each game’s official patch notes; app size and OS requirements are as shown on the Japanese App Store."
+    "tableFootnote": "Figures are as of August 26, 2026; the Honor of Kings patch schedule was re-checked on August 29. Hero, item, arcana and spell counts come from the data published on each strategy site; patch dates are the publication dates of each game’s official patch notes; app size and OS requirements are as shown on the Japanese App Store."
   },
   "Quiz": {
     "title": "Mobile MOBA Aptitude Quiz",
     "subtitle": "Answer 5 quick questions and we'll suggest the MOBA that matches your playstyle — plus the role you should main!",
-    "start": "Start the Quiz",
     "q1": "What match tempo do you prefer?",
     "q1a1": "Fast 10-15 minute games with constant action!",
     "q1a2": "Slower 15-20 minute games with farming and strategy!",
@@ -392,7 +433,7 @@
     "q4a2": "In the middle, a short walk from every lane so I can dictate the pace",
     "q4a3": "Nowhere near a lane — roaming the jungle and the enemy's half of the map",
     "q4a4": "Safe in the backline, dealing damage without getting touched",
-    "q4a5": "Right next to a teammate, warding and peeling for them",
+    "q4a5": "Right next to a teammate, scouting ahead and peeling to keep them alive",
     "q5": "Which kind of win feels best to you?",
     "q5a1": "Completely shutting down your lane opponent 1v1",
     "q5a2": "Reading the enemy's next move and collapsing on them first",
@@ -430,7 +471,15 @@
     "share": "Share on X",
     "shareText": "I took the HUB-GAME mobile MOBA quiz — my match is {game} and my best-fit role is {role}.",
     "readGuide": "Read the Review",
-    "retake": "Retake the Quiz"
+    "retake": "Retake the Quiz",
+    "submit": "See my result",
+    "reset": "Clear my answers",
+    "answered": "{answered} / {total} answered",
+    "incomplete": "Some questions are still unanswered. Fill in the rest, then submit again.",
+    "pageLead": "Questions 1 to 3 decide the game. Three is an odd number, so it never ties. For the role, questions 4 and 5 give 3 points to the position you pick and 1 to its neighbour, and questions 1 and 2 add a point each. When two roles tie, the position you chose yourself in question 4 wins, then question 5.",
+    "yourAnswers": "Your answers",
+    "backToTop": "Back to the home page",
+    "howItWorks": "How the quiz scores your answers"
   },
   "Glossary": {
     "title": "Essential MOBA Glossary",
@@ -1211,5 +1260,30 @@
     "closing": "Figures reflect Honor of Kings Hub as of 2026-08-26 and Wild Rift Hub as of patch 7.2c. Both games shift with every patch, so when in doubt, check each site's glossary and boss guide.",
     "ctaHok": "Honor of Kings beginner guide",
     "ctaWr": "Wild Rift beginner guide"
+  },
+  "TitleSnapshot": {
+    "heading": "Where both games stand",
+    "lead": "How much data each site carries, and how current it is. Every figure names its source.",
+    "colAxis": "Aspect",
+    "colHok": "Honor of Kings",
+    "colWr": "Wild Rift",
+    "rowPatch": "Current patch",
+    "rowChanged": "Heroes changed in the latest patch",
+    "rowRoster": "Heroes covered",
+    "rowStats": "As of, and source",
+    "heroCount": "{count, plural, one {# hero} other {# heroes}}",
+    "hokCatalog": "{items} items, {arcana} arcana, {spells} spells",
+    "statsAsOf": "As of {date}",
+    "sourceLabel": "Source:",
+    "wr": {
+      "patch": "7.2d",
+      "patchDate": "2026-08-26",
+      "changedHeroes": "15 champions",
+      "heroes": "141 champions",
+      "catalog": "167 items, 53 runes, 9 spells",
+      "statsAsOf": "Checked 2026-08-29",
+      "statsSource": "Source: wildrift.hub-game.com (entered by hand)"
+    },
+    "footnote": "The Honor of Kings column is pulled from hok.hub-game.com/api/latest and refreshes every 30 minutes. The Wild Rift column is not fetched. Its counts are this site’s own tally as of August 26, 2026, and patch 7.2d with its 15 adjusted champions was checked against the wildrift.hub-game.com patch notes on August 29, 2026."
   }
 }

@@ -4,7 +4,9 @@ import Image from "next/image";
 import { Gamepad2, ArrowRight, BookOpen, Sparkles } from "lucide-react";
 import HeaderNav from "@/components/HeaderNav";
 import FooterNav from "@/components/FooterNav";
-import MobaDiagnosticQuiz from "@/components/MobaDiagnosticQuiz";
+import QuizForm from "@/components/QuizForm";
+import GlossaryHighlights from "@/components/GlossaryHighlights";
+import TitleSnapshot from "@/components/TitleSnapshot";
 import { getAlternates } from '@/utils/seo';
 import { getLatestHighlights, buildHighlightUrl, SITE_LABELS } from '@/data/highlights';
 import { getLiveHighlights } from '@/lib/sisterSites';
@@ -23,6 +25,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations('Home');
+  const tQuiz = await getTranslations('Quiz');
 
   // 姉妹サイトのパッチ情報は各サイトの /api/latest から取得し、
   // 取得できた分を手動ピックより前に出す（落ちていても手動分だけで成立する）
@@ -60,10 +63,22 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </p>
         </section>
 
-        {/* Diagnostic Quiz Section */}
+        {/* Diagnostic Quiz Section
+            設問と選択肢をサーバー側で描くので、JSが無くても読めてそのまま送信できる。
+            送信先は /[locale]/diagnosis。結果は1つのURLに集約している */}
         <section className="flex flex-col gap-4">
-          <MobaDiagnosticQuiz />
+          <QuizForm locale={locale} />
+          <Link
+            href="/diagnosis"
+            className="self-center text-xs font-bold text-indigo-600 transition-colors hover:text-indigo-800"
+          >
+            {tQuiz('howItWorks')}
+          </Link>
         </section>
+
+        {/* 用語集の note から、初戦で判断が変わる5語だけを抜いたブロック。
+            呼び名の全対応は /guides/term-mapping が持つので、ここは行を増やさない */}
+        <GlossaryHighlights />
 
         {/* Guides & Articles Highlight */}
         <section className="flex flex-col gap-4 relative">
@@ -172,6 +187,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </Link>
 
         </section>
+
+        {/* 2タイトルの現在地: 数字はHoK側の /api/latest から取り込む。取れなければ表ごと出ない */}
+        <TitleSnapshot locale={locale} />
 
         {/* 今週の注目: 姉妹サイトの新着ピックアップ（src/data/highlights.ts を毎週更新する） */}
         <section className="flex flex-col gap-4">

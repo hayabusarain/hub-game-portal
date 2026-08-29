@@ -13,6 +13,7 @@ const STATIC_PATHS = [
   '/guides/wild-rift',
   '/guides/honor-of-kings',
   '/guides/term-mapping',
+  '/diagnosis',
   '/glossary',
   '/about',
   '/contact',
