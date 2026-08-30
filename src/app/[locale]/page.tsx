@@ -148,7 +148,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
         </section>
 
-        {/* 2タイトルの現在地: 数字はHoK側の /api/latest から取り込む。取れなければ表ごと出ない */}
+        {/* 2タイトルの最新データ: 数字はHoK側の /api/latest から取り込む。取れなければ表ごと出ない */}
         <TitleSnapshot locale={locale} />
 
         {/* 今週の注目: 姉妹サイトの新着ピックアップ（src/data/highlights.ts を毎週更新する） */}

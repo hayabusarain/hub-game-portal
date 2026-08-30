@@ -4,7 +4,7 @@ import { Table2 } from 'lucide-react';
 import { getSiteSnapshot } from '@/lib/sisterSites';
 
 /**
- * トップに置く「2タイトルの現在地」表。
+ * トップに置く「2タイトルの最新データ」表。
  *
  * 狙いは、リンクを踏まなくてもこのページだけで読み切れる事実を出すこと。
  * 出どころを説明できない数字は載せない。
