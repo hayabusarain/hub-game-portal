@@ -276,8 +276,8 @@
     "section4Heading": "■ Verdict: who this is for",
     "recommendedFor": [
       "141 champions as of 2026-08-26 (Wild Rift Hub). Six roles — Fighter, Tank, Mage, Assassin, Marksman and Support — spread across five positions: Top (Solo), Jungle, Mid, Duo (ADC) and Support.",
-      "Patches arrive roughly every two weeks. Patch 7.2 landed on July 8, 2026, 7.2a followed a week later on July 15, and 7.2b (July 29), 7.2c (August 12) and 7.2d (August 26) came at 14-day intervals (Riot's official patch notes, checked 2026-08-26). Wild Rift Hub's tier list already applies the 7.2d adjustments. Its statistics, though, were captured on August 25, the day before 7.2d shipped, and the site itself notes that they reflect the patch only in part (checked 2026-08-29).",
-      "The tier list has six tiers, OP through D, broken out by all five positions, with five rank brackets to choose from: All ranks, Diamond+, Master+, Challenger and Rift Apex. Master+ is what loads by default. The data is the Chinese server's official League of Legends: Wild Rift statistics, captured 2026-08-25 (checked 2026-08-29)."
+      "Patches arrive roughly every two weeks. Patch 7.2 landed on July 8, 2026, and 7.2a followed a week later on July 15. From there 7.2b (July 29), 7.2c (August 12) and 7.2d (August 26) came at 14-day intervals. Wild Rift Hub's tier list already applies the 7.2d adjustments, but the statistics behind it were captured on August 25, the day before 7.2d shipped, so the rankings will still move.",
+      "The tier list has six tiers, OP through D, broken out by all five positions, with five rank brackets to choose from: All ranks, Diamond+, Master+, Challenger and Rift Apex. Master+ is what loads by default. The data is the Chinese server's official League of Legends: Wild Rift statistics, captured 2026-08-25."
     ],
     "conclusion": "To see whether Wild Rift or Honor of Kings is the better fit for you, read the comparison article, where the two are lined up side by side.",
     "ctaLabel": "Browse champion guides on Wild Rift Hub"
@@ -414,7 +414,7 @@
         "• Anyone drawn to the League of Legends world and champion designs"
       ]
     },
-    "tableFootnote": "Figures are as of August 26, 2026; the Honor of Kings patch schedule was re-checked on August 29. Hero, item, arcana and spell counts come from the data published on each strategy site; patch dates are the publication dates of each game’s official patch notes; app size and OS requirements are as shown on the Japanese App Store."
+    "tableFootnote": "Figures are as of August 29, 2026. Hero, item, arcana and spell counts come from the data published on each strategy site; patch dates are the publication dates of each game’s official patch notes; app size and OS requirements are as shown on the Japanese App Store."
   },
   "Quiz": {
     "title": "Mobile MOBA Aptitude Quiz",
@@ -1257,7 +1257,7 @@
         "Every objective comes early. Overlord at 2:00, Tyrant at 4:00, and both swap to their Shadow versions at 10:00. Boots cost a flat 700G, and five minutes after buying a pair you can swap to a different one for free, so change them to match your lane opponent."
       ]
     },
-    "closing": "Figures reflect Honor of Kings Hub as of 2026-08-26 and Wild Rift Hub as of patch 7.2c. Both games shift with every patch, so when in doubt, check each site's glossary and boss guide.",
+    "closing": "Figures reflect Honor of Kings Hub as of 2026-08-29 and Wild Rift Hub as of patch 7.2d. Both games shift with every patch, so when in doubt, check each site's glossary and boss guide.",
     "ctaHok": "Honor of Kings beginner guide",
     "ctaWr": "Wild Rift beginner guide"
   },
@@ -1278,6 +1278,6 @@
       "heroes": "141 champions",
       "catalog": "167 items, 53 runes, 9 spells"
     },
-    "footnote": "The Honor of Kings column refreshes every 30 minutes from hok.hub-game.com. The Wild Rift column is entered by hand: the counts are as of August 26, 2026, and patch 7.2d with its 15 adjusted champions was checked on August 29, 2026."
+    "footnote": "Wild Rift counts are as of August 29, 2026. Patch dates are the publication dates of each game's official patch notes."
   }
 }
