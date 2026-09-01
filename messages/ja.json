@@ -1276,8 +1276,19 @@
       "patchDate": "2026-08-26",
       "changedHeroes": "15体",
       "heroes": "141体",
-      "catalog": "装備167種・ルーン53種・スペル9種"
+      "catalog": "装備167種・ルーン53種・スペル9種",
+      "asOf": "2026年8月29日"
     },
-    "footnote": "Wild Rift の掲載数は2026年8月29日時点。パッチの日付は各公式パッチノートの公開日です。"
+    "hok": {
+      "patch": "8月27日アップデート",
+      "patchDate": "2026-08-27",
+      "changedHeroes": "8体",
+      "heroes": "116体",
+      "catalog": "装備114種・アルカナ30種・スペル11種",
+      "asOf": "2026年9月2日"
+    },
+    "wrCatalog": "装備{items}種・ルーン{arcana}種・スペル{spells}種",
+    "asOf": "{site} の掲載数は{date}時点。",
+    "footnoteBase": "パッチの日付は各公式パッチノートの公開日です。"
   }
 }

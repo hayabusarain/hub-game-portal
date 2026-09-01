@@ -1276,8 +1276,19 @@
       "patchDate": "2026-08-26",
       "changedHeroes": "15 champions",
       "heroes": "141 champions",
-      "catalog": "167 items, 53 runes, 9 spells"
+      "catalog": "167 items, 53 runes, 9 spells",
+      "asOf": "August 29, 2026"
     },
-    "footnote": "Wild Rift counts are as of August 29, 2026. Patch dates are the publication dates of each game's official patch notes."
+    "hok": {
+      "patch": "August 27 Update",
+      "patchDate": "2026-08-27",
+      "changedHeroes": "8 heroes",
+      "heroes": "116 heroes",
+      "catalog": "114 items, 30 arcana, 11 spells",
+      "asOf": "September 2, 2026"
+    },
+    "wrCatalog": "{items} items, {arcana} runes, {spells} spells",
+    "asOf": "{site} counts are as of {date}.",
+    "footnoteBase": "Patch dates are the publication dates of each game's official patch notes."
   }
 }

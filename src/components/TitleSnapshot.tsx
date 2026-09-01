@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { getTranslations } from 'next-intl/server';
 import { Table2 } from 'lucide-react';
-import { getSiteSnapshot } from '@/lib/sisterSites';
+import { getSiteSnapshot, type SiteSnapshot } from '@/lib/sisterSites';
 
 /**
  * トップに置く「2タイトルの最新データ」表。
@@ -9,17 +9,36 @@ import { getSiteSnapshot } from '@/lib/sisterSites';
  * 狙いは、リンクを踏まなくてもこのページだけで読み切れる事実を出すこと。
  * 出どころを説明できない数字は載せない。
  *
- * 列ごとに出どころが違う。
- * - Honor of Kings … hok.hub-game.com の /api/latest から取り込む。掲載データを増やせば自動で追従する
- * - Wild Rift      … 自動取得はしていない。messages の静的値で、確認日は表の下の注記に書く
+ * 列ごとに、姉妹サイトの /api/latest に snapshot があればそれを使い、
+ * 無ければ messages の静的値に落ちる。列は互いに独立していて、
+ * 片方が落ちても、もう片方は取り込んだ値のまま出る。
+ * - Honor of Kings … snapshot を返すので通常は取り込み。掲載データを増やせば自動で追従する
+ * - Wild Rift      … いまは snapshot を返さない（/api/latest 自体は 200 を返す）ので静的値。
+ *                    向こうが snapshot を足せば、ここは何も変えずに取り込みへ切り替わる
  *
- * 取得に失敗したら null を返して表ごと消す。半端な行が残った表は、無いほうがましなので。
+ * 以前は取得に失敗したら表ごと消していた。2タイトルを並べる表なので、
+ * 片方が落ちただけで両方消えるのは行き過ぎだった。静的値という完全な代替がある。
+ *
+ * 静的値で出した列は「いつ時点の数字か」を注記に出す。鮮度は読者の判断が変わる情報なので書く。
+ * 取得間隔や手入力かどうかといった運営側の事情は書かない（2b51a6c で削った経緯がある）。
+ *
  * サーバーコンポーネントのままにしておくこと。初期HTMLに文字が出ることがこの表の目的で、
  * 'use client' にすると数字がスクリプトの中へ引っ込む。
  */
 
 type Props = {
   locale: string;
+};
+
+/** 表の1列ぶん。取り込みでも静的値でも、ここまで来たら同じ形になる */
+type Column = {
+  patchLabel: string;
+  patchDate: string;
+  changedHeroes: string;
+  heroes: string;
+  catalog: string;
+  /** 静的値で出した列の「いつ時点か」。取り込めた列は null */
+  asOf: string | null;
 };
 
 /** 値を1行目、出典や内訳を2行目に置く。行ごとに書き方が揺れないよう部品にしている */
@@ -36,13 +55,51 @@ function Cell({ value, note }: { value: ReactNode; note?: ReactNode }) {
 
 export default async function TitleSnapshot({ locale }: Props) {
   const t = await getTranslations('TitleSnapshot');
-  const hok = await getSiteSnapshot('hok');
-
-  // 姉妹サイトが落ちている・古い形の JSON を返している場合はここで諦める
-  if (!hok) return null;
-
   const ja = locale === 'ja';
-  const patchLabel = ja ? hok.patch.labelJa : hok.patch.label;
+
+  // 2サイトを並行して取りに行く。片方の遅れがもう片方を待たせないようにする
+  const [hokSnap, wrSnap] = await Promise.all([
+    getSiteSnapshot('hok'),
+    getSiteSnapshot('wildrift'),
+  ]);
+
+  /**
+   * 取り込めた snapshot を列の形に直す。
+   * catalogKey を分けているのは、3つ目の枠の呼び名がタイトルで違うため
+   * （HoK はアルカナ、Wild Rift はルーン）。
+   */
+  const fromSnapshot = (s: SiteSnapshot, catalogKey: 'hokCatalog' | 'wrCatalog'): Column => ({
+    patchLabel: ja ? s.patch.labelJa : s.patch.label,
+    patchDate: s.patch.date,
+    changedHeroes: t('heroCount', { count: s.patch.changedHeroes }),
+    heroes: t('heroCount', { count: s.catalog.heroes }),
+    catalog: t(catalogKey, {
+      items: s.catalog.items,
+      arcana: s.catalog.arcana,
+      spells: s.catalog.spells,
+    }),
+    asOf: null,
+  });
+
+  /** 取り込めなかったときの控え。messages に持っている手元の値 */
+  const fromMessages = (key: 'hok' | 'wr'): Column => ({
+    patchLabel: t(`${key}.patch`),
+    patchDate: t(`${key}.patchDate`),
+    changedHeroes: t(`${key}.changedHeroes`),
+    heroes: t(`${key}.heroes`),
+    catalog: t(`${key}.catalog`),
+    asOf: t(`${key}.asOf`),
+  });
+
+  const hok = hokSnap ? fromSnapshot(hokSnap, 'hokCatalog') : fromMessages('hok');
+  const wr = wrSnap ? fromSnapshot(wrSnap, 'wrCatalog') : fromMessages('wr');
+
+  // 静的値で出した列だけ、いつ時点かを添える。両方取り込めた日は最後の一文だけになる
+  const stale = [
+    hok.asOf ? t('asOf', { site: t('colHok'), date: hok.asOf }) : null,
+    wr.asOf ? t('asOf', { site: t('colWr'), date: wr.asOf }) : null,
+  ].filter(Boolean);
+  const footnote = [...stale, t('footnoteBase')].join(ja ? '' : ' ');
 
   return (
     <section className="flex flex-col gap-3">
@@ -73,12 +130,12 @@ export default async function TitleSnapshot({ locale }: Props) {
                 {t('rowPatch')}
               </th>
               <Cell
-                value={patchLabel}
-                note={<time dateTime={hok.patch.date}>{hok.patch.date}</time>}
+                value={hok.patchLabel}
+                note={<time dateTime={hok.patchDate}>{hok.patchDate}</time>}
               />
               <Cell
-                value={t('wr.patch')}
-                note={<time dateTime={t('wr.patchDate')}>{t('wr.patchDate')}</time>}
+                value={wr.patchLabel}
+                note={<time dateTime={wr.patchDate}>{wr.patchDate}</time>}
               />
             </tr>
 
@@ -86,30 +143,23 @@ export default async function TitleSnapshot({ locale }: Props) {
               <th scope="row" className="py-3 px-3 align-top font-semibold text-slate-600">
                 {t('rowChanged')}
               </th>
-              <Cell value={t('heroCount', { count: hok.patch.changedHeroes })} />
-              <Cell value={t('wr.changedHeroes')} />
+              <Cell value={hok.changedHeroes} />
+              <Cell value={wr.changedHeroes} />
             </tr>
 
             <tr>
               <th scope="row" className="py-3 px-3 align-top font-semibold text-slate-600">
                 {t('rowRoster')}
               </th>
-              <Cell
-                value={t('heroCount', { count: hok.catalog.heroes })}
-                note={t('hokCatalog', {
-                  items: hok.catalog.items,
-                  arcana: hok.catalog.arcana,
-                  spells: hok.catalog.spells,
-                })}
-              />
-              <Cell value={t('wr.heroes')} note={t('wr.catalog')} />
+              <Cell value={hok.heroes} note={hok.catalog} />
+              <Cell value={wr.heroes} note={wr.catalog} />
             </tr>
 
           </tbody>
         </table>
       </div>
 
-      <p className="text-[11px] text-slate-500 font-medium leading-relaxed">{t('footnote')}</p>
+      <p className="text-[11px] text-slate-500 font-medium leading-relaxed">{footnote}</p>
     </section>
   );
 }
