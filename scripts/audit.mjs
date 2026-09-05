@@ -7,7 +7,8 @@
  * チェック内容:
  *   1. 翻訳キー差分  … messages/ja.json と en.json のキー構造が一致するか
  *   2. 記事の日付    … articles.ts の日付が YYYY-MM-DD で、updated が published 以降・未来でないか
- *   3. sitemap 網羅  … sitemap.ts の STATIC_PATHS 全部に lastmod（記事か PAGE_UPDATED）があるか
+ *   3. sitemap 網羅  … STATIC_PATHS 全部に lastmod とページがあるか。逆に、page.tsx があるのに
+ *                      STATIC_PATHS に無いページや getAlternates を呼んでいないページが無いか
  *   4. 権利表記      … 2タイトルの権利者（Riot / Tencent）が両言語の3キーに入っているか
  *   5. 広告の整合    … プライバシーポリシーが AdSense 利用を書いているなら layout に広告コードがあるか
  *   6. 更新日の鮮度  … messages を触った作業ツリーで、記事・ページの更新日が今日になっているか
@@ -81,6 +82,30 @@ for (const [p, d] of Object.entries(pageUpdated)) {
   for (const p of paths) {
     const dir = path.join(pageDir, p.replace(/^\//, ''));
     if (!fs.existsSync(path.join(dir, 'page.tsx'))) report('sitemap', `${p || '/'} のページファイルが無い`);
+  }
+
+  // 逆方向。ページを足して STATIC_PATHS への追記を忘れると、sitemap に出ず hreflang も出ない。
+  // 記事を追加する作業でいちばん起きやすい取りこぼしなので、page.tsx の側から数える。
+  // canonical と hreflang の付け忘れも同じ走査で見る。
+  // 動的セグメント（[...rest] など）とルートグループは静的パスに出せないので降りない。
+  {
+    const declared = new Set(paths);
+    const inspect = (dir, rel) => {
+      const file = path.join(dir, 'page.tsx');
+      if (fs.existsSync(file)) {
+        if (!declared.has(rel)) {
+          report('sitemap', `${rel || '/'} に page.tsx があるのに sitemap.ts の STATIC_PATHS に無い（sitemap に出ず hreflang も出ない）`);
+        }
+        if (!/getAlternates/.test(fs.readFileSync(file, 'utf8'))) {
+          report('sitemap', `${rel || '/'} が @/utils/seo の getAlternates を呼んでいない（canonical と hreflang が出ない）`);
+        }
+      }
+      for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+        if (!e.isDirectory() || e.name.startsWith('[') || e.name.startsWith('(')) continue;
+        inspect(path.join(dir, e.name), `${rel}/${e.name}`);
+      }
+    };
+    inspect(pageDir, '');
   }
 }
 
