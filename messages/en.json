@@ -236,12 +236,18 @@
       "Because matches move fast and gold comes in quickly, the team that builds an early lead tends to snowball straight through to the base. If what you enjoy is the heavier macro game — holding under tower, controlling the map and grinding out a comeback — HoK can feel blunt by comparison."
     ],
     "verdictHeading": "■ Verdict: who it is for",
+    "verdictParagraphs": [
+      "What kept me coming back for six months is the clock. A game ends in 10 to 15 minutes, so I know when my evening is getting handed back before I ever queue. Ultimates are up inside two minutes, and there is no quiet stretch to sit through.",
+      "On a tired weeknight brain, the inputs still go where I aim them. Slipping behind the enemy line on an assassin and landing the whole combo stayed with me whether the game went my way or not.",
+      "The speed costs you the comeback. Gold comes in fast, and the team that takes the first lead usually rides it all the way to the base. If the part you enjoy is the heavier macro game — holding the map, grinding an advantage back — this is not the one."
+    ],
+    "verdictDataHeading": "Honor of Kings by the numbers (as of 2026-08-29)",
     "verdictList": [
       "116 heroes as of 2026-08-29 (Honor of Kings Hub data). Fighters (38) and Mages (37) make up the bulk of the roster, while Tanks (17) and Supports (16) are the thinnest roles.",
       "Patches land every two weeks. The last three hit on July 30, August 13 and August 27, 2026, exactly 14 days apart. The shop holds 114 items, and there are 30 Arcana, ten each in red, blue and green (as of 2026-08-29).",
       "The match runs on a fixed clock. Outer towers take 40% reduced damage for the first four minutes, the Overlord spawns at 2:00, the Tyrant at 4:00, and the Tempest Dragon at 20:00. Most games finish well before that, and 20 minutes is about the ceiling (Honor of Kings Hub beginner guide, checked 2026-08-26)."
     ],
-    "closing": "For the finer points of who it suits and who it doesn't, see the comparison article, where it sits side by side with Wild Rift.",
+    "closing": "If you want the tension of a competitive match in one short sitting, Honor of Kings covers it. For the finer differences against Wild Rift, the comparison article goes deeper.",
     "cta": "See tier lists and builds on Honor of Kings Hub"
   },
   "GuideWildRift": {
@@ -274,12 +280,17 @@
       "If you're looking for something you can tap through with half your attention, this probably isn't it."
     ],
     "section4Heading": "■ Verdict: who this is for",
+    "verdictParagraphs": [
+      "What you get is a match where the reason you won or lost sits on your side of the screen. Put a ward in the wrong spot and the enemy jungler collects on it; miss the CS and the gold simply isn't there. The fight you turn around counts as something your own hands did.",
+      "What you give up is control over your free time. A game runs 15 to 20 minutes, and once it starts you're in it to the end. The list of things to hold in your head keeps growing too: items, what each ability actually does, the Dragon buffs your team is stacking.",
+      "If you want to be able to explain a win in your own words, that weight is worth carrying. If low commitment is what matters most to you, Wild Rift isn't the answer."
+    ],
+    "verdictDataHeading": "Wild Rift by the numbers (as of 2026-08-26)",
     "recommendedFor": [
       "141 champions as of 2026-08-26 (Wild Rift Hub). Six roles — Fighter, Tank, Mage, Assassin, Marksman and Support — spread across five positions: Top (Solo), Jungle, Mid, Duo (ADC) and Support.",
-      "Patches arrive roughly every two weeks. Patch 7.2 landed on July 8, 2026, and 7.2a followed a week later on July 15. From there 7.2b (July 29), 7.2c (August 12) and 7.2d (August 26) came at 14-day intervals. Wild Rift Hub's tier list already applies the 7.2d adjustments, but the statistics behind it were captured on August 25, the day before 7.2d shipped, so the rankings will still move.",
-      "The tier list has six tiers, OP through D, broken out by all five positions, with five rank brackets to choose from: All ranks, Diamond+, Master+, Challenger and Rift Apex. Master+ is what loads by default. The data is the Chinese server's official League of Legends: Wild Rift statistics, captured 2026-08-25."
+      "Patches arrive roughly every two weeks. Patch 7.2 landed on July 8, 2026, and 7.2a followed a week later on July 15. From there 7.2b (July 29), 7.2c (August 12) and 7.2d (August 26) came at 14-day intervals. Wild Rift Hub's tier list already applies the 7.2d adjustments, but the statistics behind it were captured on August 25, the day before 7.2d shipped, so the rankings will still move."
     ],
-    "conclusion": "To see whether Wild Rift or Honor of Kings is the better fit for you, read the comparison article, where the two are lined up side by side.",
+    "conclusion": "If what you want on a phone is the same feeling of having earned the game that PC gave you, Wild Rift holds up. To see whether Wild Rift or Honor of Kings is the better fit, read the comparison article, where the two are lined up side by side.",
     "ctaLabel": "Browse champion guides on Wild Rift Hub"
   },
   "GuideCompare": {

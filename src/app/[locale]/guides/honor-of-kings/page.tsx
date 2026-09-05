@@ -114,6 +114,16 @@ export default async function HonorOfKingsGuidePage({ params }: { params: Promis
             {t('verdictHeading')}
           </h2>
 
+          {/* 見出しが「こんな人におすすめ」と約束しているので、まず地の文で結論を出す。
+              数字はその裏づけとして下に置き、見出しで数字だと分かるようにする */}
+          {(t.raw('verdictParagraphs') as string[]).map((text, i) => (
+            <p key={`verdict-p-${i}`}>{text}</p>
+          ))}
+
+          <h3 className="text-base font-bold text-slate-900 pt-2">
+            {t('verdictDataHeading')}
+          </h3>
+
           <ul className="list-disc pl-5 space-y-2 text-slate-700">
             {(t.raw('verdictList') as string[]).map((item, i) => (
               <li key={`verdict-${i}`}>{item}</li>

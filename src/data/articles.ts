@@ -31,12 +31,12 @@ export const ARTICLES: Record<ArticleSlug, ArticleMeta> = {
   'honor-of-kings': {
     path: '/guides/honor-of-kings',
     published: '2026-07-01',
-    updated: '2026-08-28',
+    updated: '2026-09-06',
   },
   'wild-rift': {
     path: '/guides/wild-rift',
     published: '2026-07-01',
-    updated: '2026-08-26',
+    updated: '2026-09-06',
   },
   compare: {
     path: '/guides/compare',
