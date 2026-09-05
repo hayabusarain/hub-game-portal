@@ -11,7 +11,7 @@ import { SITE_ORIGINS, type Highlight, type HighlightSite } from '@/data/highlig
  *
  * 取り出し口は2つある。どちらも取得できなければ null か空配列を返し、
  * 呼び出し側がその部分だけを描かずに済ませる。
- * - getLiveHighlights() … 「今週の注目」カード用。以前からある
+ * - getLiveHighlights() … 「最新パッチの注目」カード用。以前からある
  * - getSiteSnapshot()   … 「2タイトルの最新データ」表用。snapshot キーが無い相手には null を返すので、
  *                         対応していないサイトが混ざっても既存の表示は変わらない
  */
@@ -158,7 +158,7 @@ function toSnapshot(site: HighlightSite, data: LatestResponse): SiteSnapshot | n
 }
 
 /**
- * /api/latest を1回だけ叩く。同じ描画のなかで「今週の注目」と「最新データ」表の
+ * /api/latest を1回だけ叩く。同じ描画のなかで「最新パッチの注目」と「最新データ」表の
  * 両方から呼ばれるため、react の cache で1リクエストにまとめている。
  */
 const fetchLatest = cache(async (site: HighlightSite): Promise<LatestResponse | null> => {

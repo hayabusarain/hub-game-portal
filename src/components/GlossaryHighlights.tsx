@@ -95,7 +95,7 @@ export default async function GlossaryHighlights() {
               <p className="mt-1.5 text-xs text-slate-600 font-medium leading-relaxed">{item.text.pitfall}</p>
 
               {/* 2・3セル目: 同じ場面が各タイトルでどう違うか。
-                  色は「今週の注目」と揃える（HoK=amber / Wild Rift=indigo） */}
+                  色は「最新パッチの注目」と揃える（HoK=amber / Wild Rift=indigo） */}
               <div className="mt-3 grid gap-2 sm:grid-cols-2">
                 <div className="rounded-2xl bg-amber-50/70 border border-amber-100 p-3">
                   <span className="block text-[10px] font-black tracking-wide text-amber-700 mb-1">

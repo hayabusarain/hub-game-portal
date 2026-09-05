@@ -151,7 +151,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         {/* 2タイトルの最新データ: 数字はHoK側の /api/latest から取り込む。取れなければ表ごと出ない */}
         <TitleSnapshot locale={locale} />
 
-        {/* 今週の注目: 姉妹サイトの新着ピックアップ（src/data/highlights.ts を毎週更新する） */}
+        {/* 最新パッチの注目: 姉妹サイトのピックアップ。自動取得分と src/data/highlights.ts の常設プールを混ぜて出す */}
         <section className="flex flex-col gap-4">
           <div className="flex items-end justify-between gap-3">
             <h3 className="text-lg font-black text-slate-800 flex items-center gap-2">
