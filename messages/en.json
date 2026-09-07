@@ -112,7 +112,7 @@
       "Objective": {
         "label": "Objective timers",
         "pitfall": "Objectives are the call to group up. Read the clock wrong and it is over before you arrive.",
-        "hok": "Overlord at 2:00, Tyrant at 4:00, and both are replaced by Shadow versions at 10:00.",
+        "hok": "The Overlord and the Tyrant both spawn at 4:00, and are replaced by Shadow versions at 10:00.",
         "wr": "Seven in all: four dragons, the Rift Herald, Baron Nashor and the Elder Dragon."
       }
     }
@@ -245,7 +245,7 @@
     "verdictList": [
       "116 heroes as of 2026-08-29 (Honor of Kings Hub data). Fighters (38) and Mages (37) make up the bulk of the roster, while Tanks (17) and Supports (16) are the thinnest roles.",
       "Patches land every two weeks. The last three hit on July 30, August 13 and August 27, 2026, exactly 14 days apart. The shop holds 114 items, and there are 30 Arcana, ten each in red, blue and green (as of 2026-08-29).",
-      "The match runs on a fixed clock. Outer towers take 40% reduced damage for the first four minutes, the Overlord spawns at 2:00, the Tyrant at 4:00, and the Tempest Dragon at 20:00. Most games finish well before that, and 20 minutes is about the ceiling (Honor of Kings Hub beginner guide, checked 2026-08-26)."
+      "The match runs on a fixed clock. Outer towers take 40% reduced damage for the first four minutes, the Overlord and the Tyrant both spawn at 4:00, and the Tempest Dragon at 20:00. Most games finish well before that, and 20 minutes is about the ceiling (Honor of Kings Hub beginner guide, checked 2026-09-08)."
     ],
     "closing": "If you want the tension of a competitive match in one short sitting, Honor of Kings covers it. For the finer differences against Wild Rift, the comparison article goes deeper.",
     "cta": "See tier lists and builds on Honor of Kings Hub"
@@ -387,7 +387,7 @@
       },
       {
         "axis": "Major objectives",
-        "hok": "Overlord spawns at 2:00 and Tyrant at 4:00. From 10:00 their Shadow versions take over, and the Tempest Dragon appears at 20:00 with a team-wide shield.",
+        "hok": "The Overlord and the Tyrant both spawn at 4:00. From 10:00 their Shadow versions take over, and the Tempest Dragon appears at 20:00 with a team-wide shield.",
         "wr": "Four elemental dragons (Infernal, Ocean, Mountain, Cloud), Rift Herald, Baron Nashor and the late-game Elder Dragon."
       },
       {
@@ -889,7 +889,7 @@
         "term": "Objectives (Dragon / Tyrant, etc.)",
         "cat": "macro",
         "def": "Neutral monsters that grant powerful team-wide buffs — Wild Rift's dragons and Baron, Honor of Kings' Tyrant and Overlord. Teamfights around them often decide the game.",
-        "note": "Honor of Kings objectives run on a clock: Overlord at 2:00, Tyrant at 4:00, their Shadow versions at 10:00 and the Tempest Dragon at 20:00. Wild Rift has seven — four dragons, the Rift Herald, Baron Nashor and the Elder Dragon.",
+        "note": "Honor of Kings objectives run on a clock: the Overlord and the Tyrant at 4:00, their Shadow versions at 10:00 and the Tempest Dragon at 20:00. Wild Rift has seven — four dragons, the Rift Herald, Baron Nashor and the Elder Dragon.",
         "links": [
           {
             "site": "hok",
@@ -1142,7 +1142,7 @@
             "concept": "Minion-powered push",
             "hok": "Overlord",
             "wr": "Rift Herald",
-            "note": "Overlord spawns at 2:00 and turns your next two waves into Dragon Vanguards. Herald spawns at 6:00 and drops the Eye of the Herald, which sends it charging into a turret."
+            "note": "Overlord spawns at 4:00 and turns your next two waves into Dragon Vanguards. Herald spawns at 6:00 and drops the Eye of the Herald, which sends it charging into a turret."
           },
           {
             "concept": "Mid-game major boss",
@@ -1265,7 +1265,7 @@
       "wrToHok": [
         "Coming from Wild Rift, your first job is the opposite: never stop shopping. The moment gold comes in, open the shop — while walking, while dead, wherever you are. Once you think of recall as a heal button rather than a shopping trip, HoK's tempo starts to make sense.",
         "With no wards, get used to checking bushes by throwing a skill in and watching for a hit. When an enemy vanishes from the minimap, assume they are heading your way. With no way to leave vision behind, your pings carry more of the load.",
-        "Every objective comes early. Overlord at 2:00, Tyrant at 4:00, and both swap to their Shadow versions at 10:00. Boots cost a flat 700G, and five minutes after buying a pair you can swap to a different one for free, so change them to match your lane opponent."
+        "Every objective comes early. The Overlord and the Tyrant at 4:00, and both swap to their Shadow versions at 10:00. Boots cost a flat 700G, and five minutes after buying a pair you can swap to a different one for free, so change them to match your lane opponent."
       ]
     },
     "closing": "Figures reflect Honor of Kings Hub as of 2026-08-29 and Wild Rift Hub as of patch 7.2d. Both games shift with every patch, so when in doubt, check each site's glossary and boss guide.",

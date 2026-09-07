@@ -31,7 +31,7 @@ export const ARTICLES: Record<ArticleSlug, ArticleMeta> = {
   'honor-of-kings': {
     path: '/guides/honor-of-kings',
     published: '2026-07-01',
-    updated: '2026-09-06',
+    updated: '2026-09-08',
   },
   'wild-rift': {
     path: '/guides/wild-rift',
@@ -41,12 +41,12 @@ export const ARTICLES: Record<ArticleSlug, ArticleMeta> = {
   compare: {
     path: '/guides/compare',
     published: '2026-07-01',
-    updated: '2026-08-28',
+    updated: '2026-09-08',
   },
   'term-mapping': {
     path: '/guides/term-mapping',
     published: '2026-08-26',
-    updated: '2026-08-28',
+    updated: '2026-09-08',
   },
 };
 
@@ -55,10 +55,10 @@ export const ARTICLES: Record<ArticleSlug, ArticleMeta> = {
  * 内容を変えたらその日に上げる。法的ページも権利表記の変更などで動く。
  */
 export const PAGE_UPDATED: Record<string, string> = {
-  '': '2026-09-06',
+  '': '2026-09-08',
   '/guides': '2026-08-26',
   '/diagnosis': '2026-08-29',
-  '/glossary': '2026-08-28',
+  '/glossary': '2026-09-08',
   '/about': '2026-08-26',
   '/contact': '2026-08-13',
   '/disclaimer': '2026-08-26',
