@@ -1,4 +1,5 @@
 import { routing } from '@/i18n/routing';
+import { SITE_ORIGINS, liveSites } from '@/data/highlights';
 
 /**
  * 構造化データ（JSON-LD）のビルダー。
@@ -8,8 +9,11 @@ import { routing } from '@/i18n/routing';
 
 const BASE_URL = 'https://hub-game.com';
 
-/** 姉妹サイト。sameAs に並べて同一運営であることを機械可読に示す */
-const SISTER_SITES = ['https://wildrift.hub-game.com', 'https://hok.hub-game.com'];
+/**
+ * 姉妹サイト。sameAs に並べて同一運営であることを機械可読に示す。
+ * 未公開のサイトは並べない（highlights.ts の SITE_LIVE が単一の正）
+ */
+const SISTER_SITES = liveSites().map((s) => SITE_ORIGINS[s]);
 
 const X_ACCOUNT = 'https://x.com/hub_gamecom';
 

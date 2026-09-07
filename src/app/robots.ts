@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { SITE_ORIGINS, liveSites } from '@/data/highlights';
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -7,11 +8,12 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
     },
     // AdSense の審査もクロールもドメイン単位で行われるため、
-    // 姉妹サイト（サブドメイン）のサイトマップもルートの robots.txt から参照させる
+    // 姉妹サイト（サブドメイン）のサイトマップもルートの robots.txt から参照させる。
+    // 未公開のサイトは並べない（存在しない sitemap を指すとクロールエラーになる）。
+    // 公開したら highlights.ts の SITE_LIVE を true にするだけでここにも載る
     sitemap: [
       'https://hub-game.com/sitemap.xml',
-      'https://wildrift.hub-game.com/sitemap.xml',
-      'https://hok.hub-game.com/sitemap.xml',
+      ...liveSites().map((s) => `${SITE_ORIGINS[s]}/sitemap.xml`),
     ],
   };
 }

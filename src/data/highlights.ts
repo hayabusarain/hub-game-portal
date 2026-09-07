@@ -15,7 +15,7 @@
  * 同じページを再度取り上げたいときは新しい date でエントリを足せばよい。
  */
 
-export type HighlightSite = 'wildrift' | 'hok';
+export type HighlightSite = 'wildrift' | 'hok' | 'mlbb';
 
 export type Highlight = {
   /** 重複を避けるための一意なID（表示には使わない） */
@@ -32,12 +32,38 @@ export type Highlight = {
 export const SITE_ORIGINS: Record<HighlightSite, string> = {
   wildrift: 'https://wildrift.hub-game.com',
   hok: 'https://hok.hub-game.com',
+  mlbb: 'https://mlbb.hub-game.com',
 };
 
 export const SITE_LABELS: Record<HighlightSite, string> = {
   wildrift: 'Wild Rift',
   hok: 'Honor of Kings',
+  mlbb: 'Mobile Legends: Bang Bang',
 };
+
+/**
+ * 公開済みのサイトだけ true。**表に出すかどうかは必ずここを見ること。**
+ *
+ * まだ公開していないサイトをカード・表・フッター・robots・構造化データに
+ * 出すと、死んだドメインへのリンクを読者と Google の両方に見せることになる。
+ * hub-game.com は現在 AdSense のポリシー違反（有用性の低いコンテンツ）を
+ * 受けている最中で、判定はドメイン単位なので、切れたリンクを増やす余裕は無い。
+ *
+ * **公開したらここを true にするだけでよい。** カード・スナップショット表・
+ * フッター・robots.txt・JSON-LD・診断のすべてがこの1箇所を見ている。
+ * 逆に、ここを true にする前に mlbb.hub-game.com が 200 を返すことを確かめること。
+ */
+export const SITE_LIVE: Record<HighlightSite, boolean> = {
+  wildrift: true,
+  hok: true,
+  mlbb: false,
+};
+
+/** 表示順。公開済みのものだけを、この順で並べる */
+export const SITE_ORDER: HighlightSite[] = ['hok', 'wildrift', 'mlbb'];
+
+/** 表に出してよいサイト。SITE_ORDER の順を保つ */
+export const liveSites = (): HighlightSite[] => SITE_ORDER.filter((s) => SITE_LIVE[s]);
 
 export const highlights: Highlight[] = [
   {

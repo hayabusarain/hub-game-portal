@@ -1,5 +1,5 @@
 import { cache } from 'react';
-import { SITE_ORIGINS, type Highlight, type HighlightSite } from '@/data/highlights';
+import { SITE_ORIGINS, liveSites, type Highlight, type HighlightSite } from '@/data/highlights';
 
 /**
  * 姉妹サイトの「最新情報」を各サイトの公開エンドポイントから取得する。
@@ -24,11 +24,13 @@ import { SITE_ORIGINS, type Highlight, type HighlightSite } from '@/data/highlig
 const ENDPOINT_ORIGINS: Record<HighlightSite, string> = {
   wildrift: process.env.SISTER_ORIGIN_WILDRIFT || SITE_ORIGINS.wildrift,
   hok: process.env.SISTER_ORIGIN_HOK || SITE_ORIGINS.hok,
+  mlbb: process.env.SISTER_ORIGIN_MLBB || SITE_ORIGINS.mlbb,
 };
 
 const ENDPOINTS: Record<HighlightSite, string> = {
   wildrift: `${ENDPOINT_ORIGINS.wildrift}/api/latest`,
   hok: `${ENDPOINT_ORIGINS.hok}/api/latest`,
+  mlbb: `${ENDPOINT_ORIGINS.mlbb}/api/latest`,
 };
 
 /** 30分ごとに取り直す。姉妹サイト側も同じ間隔でキャッシュしている */
@@ -187,7 +189,9 @@ const fetchLatest = cache(async (site: HighlightSite): Promise<LatestResponse | 
 });
 
 export async function getLiveHighlights(): Promise<Highlight[]> {
-  const sites = Object.keys(ENDPOINTS) as HighlightSite[];
+  // 未公開のサイトは叩かない。存在しないドメインへの fetch を毎回の描画で
+  // 走らせても、待たされるだけで得るものが無い
+  const sites = liveSites();
 
   const results = await Promise.all(
     sites.map(async (site) => {
