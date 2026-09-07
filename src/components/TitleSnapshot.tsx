@@ -2,22 +2,28 @@ import type { ReactNode } from 'react';
 import { getTranslations } from 'next-intl/server';
 import { Table2 } from 'lucide-react';
 import { getSiteSnapshot, type SiteSnapshot } from '@/lib/sisterSites';
+import { liveSites, type HighlightSite } from '@/data/highlights';
 
 /**
- * トップに置く「2タイトルの最新データ」表。
+ * トップに置く「タイトル別の最新データ」表。
  *
  * 狙いは、リンクを踏まなくてもこのページだけで読み切れる事実を出すこと。
  * 出どころを説明できない数字は載せない。
  *
+ * 列は highlights.ts の liveSites() で決まる。**公開したサイトが自動で1列増える。**
+ * ここに列を書き足す作業は無い。増やすときは SITE_LIVE を true にして、
+ * 下の SITE_META にその1件を書くだけでよい。
+ *
  * 列ごとに、姉妹サイトの /api/latest に snapshot があればそれを使い、
  * 無ければ messages の静的値に落ちる。列は互いに独立していて、
- * 片方が落ちても、もう片方は取り込んだ値のまま出る。
- * - Honor of Kings … snapshot を返すので通常は取り込み。掲載データを増やせば自動で追従する
- * - Wild Rift      … いまは snapshot を返さない（/api/latest 自体は 200 を返す）ので静的値。
- *                    向こうが snapshot を足せば、ここは何も変えずに取り込みへ切り替わる
+ * ひとつが落ちても、他は取り込んだ値のまま出る。
  *
- * 以前は取得に失敗したら表ごと消していた。2タイトルを並べる表なので、
- * 片方が落ちただけで両方消えるのは行き過ぎだった。静的値という完全な代替がある。
+ * 以前は取得に失敗したら表ごと消していた。複数タイトルを並べる表なので、
+ * ひとつが落ちただけで全部消えるのは行き過ぎだった。静的値という完全な代替がある。
+ *
+ * 静的値を持たないサイト（fallbackKey が無い）は、取得できなければ「—」を出す。
+ * **控えの数字を手で書き足さないこと。** 実データの裏が無い数字を表に出すくらいなら、
+ * 空であることを見せたほうがよい。
  *
  * 静的値で出した列は「いつ時点の数字か」を注記に出す。鮮度は読者の判断が変わる情報なので書く。
  * 取得間隔や手入力かどうかといった運営側の事情は書かない（2b51a6c で削った経緯がある）。
@@ -30,6 +36,30 @@ type Props = {
   locale: string;
 };
 
+/**
+ * 列ごとの見た目と messages のキー。
+ *
+ * catalogKey が分かれているのは、3つ目の枠の呼び名がタイトルで違うため
+ * （HoK はアルカナ、Wild Rift はルーン、MLBB はエンブレム）。
+ * snapshot 側はどれも arcana というキーで返してくる（契約が共通のため）。
+ *
+ * fallbackKey は静的値の置き場で、**持たないサイトがあってよい。**
+ * MLBB は掲載数の実測をポータル側に持っていないため控えを用意していない。
+ */
+const SITE_META: Record<
+  HighlightSite,
+  {
+    headClass: string;
+    catalogKey: string;
+    labelKey: string;
+    fallbackKey?: string;
+  }
+> = {
+  hok: { headClass: 'text-amber-700', catalogKey: 'hokCatalog', labelKey: 'colHok', fallbackKey: 'hok' },
+  wildrift: { headClass: 'text-cyan-700', catalogKey: 'wrCatalog', labelKey: 'colWr', fallbackKey: 'wr' },
+  mlbb: { headClass: 'text-violet-700', catalogKey: 'mlbbCatalog', labelKey: 'colMlbb' },
+};
+
 /** 表の1列ぶん。取り込みでも静的値でも、ここまで来たら同じ形になる */
 type Column = {
   patchLabel: string;
@@ -37,7 +67,7 @@ type Column = {
   changedHeroes: string;
   heroes: string;
   catalog: string;
-  /** サイト自体の最終更新日。相手が返していなければ null で、その行は出さない */
+  /** サイト自体の最終更新日。相手が返していなければ null で、その欄は「未公開」 */
   siteUpdatedAt: string | null;
   /** 静的値で出した列の「いつ時点か」。取り込めた列は null */
   asOf: string | null;
@@ -59,18 +89,12 @@ export default async function TitleSnapshot({ locale }: Props) {
   const t = await getTranslations('TitleSnapshot');
   const ja = locale === 'ja';
 
-  // 2サイトを並行して取りに行く。片方の遅れがもう片方を待たせないようにする
-  const [hokSnap, wrSnap] = await Promise.all([
-    getSiteSnapshot('hok'),
-    getSiteSnapshot('wildrift'),
-  ]);
+  // 公開済みのタイトルを並行して取りに行く。ひとつの遅れが他を待たせないようにする
+  const sites = liveSites();
+  const snapshots = await Promise.all(sites.map((site) => getSiteSnapshot(site)));
 
-  /**
-   * 取り込めた snapshot を列の形に直す。
-   * catalogKey を分けているのは、3つ目の枠の呼び名がタイトルで違うため
-   * （HoK はアルカナ、Wild Rift はルーン）。
-   */
-  const fromSnapshot = (s: SiteSnapshot, catalogKey: 'hokCatalog' | 'wrCatalog'): Column => ({
+  /** 取り込めた snapshot を列の形に直す */
+  const fromSnapshot = (s: SiteSnapshot, catalogKey: string): Column => ({
     patchLabel: ja ? s.patch.labelJa : s.patch.label,
     patchDate: s.patch.date,
     changedHeroes: t('heroCount', { count: s.patch.changedHeroes }),
@@ -85,7 +109,7 @@ export default async function TitleSnapshot({ locale }: Props) {
   });
 
   /** 取り込めなかったときの控え。messages に持っている手元の値 */
-  const fromMessages = (key: 'hok' | 'wr'): Column => ({
+  const fromMessages = (key: string): Column => ({
     patchLabel: t(`${key}.patch`),
     patchDate: t(`${key}.patchDate`),
     changedHeroes: t(`${key}.changedHeroes`),
@@ -96,15 +120,30 @@ export default async function TitleSnapshot({ locale }: Props) {
     asOf: t(`${key}.asOf`),
   });
 
-  const hok = hokSnap ? fromSnapshot(hokSnap, 'hokCatalog') : fromMessages('hok');
-  const wr = wrSnap ? fromSnapshot(wrSnap, 'wrCatalog') : fromMessages('wr');
+  const columns = sites.map((site) => {
+    const meta = SITE_META[site];
+    const snap = snapshots[sites.indexOf(site)];
+    const col = snap
+      ? fromSnapshot(snap, meta.catalogKey)
+      : meta.fallbackKey
+        ? fromMessages(meta.fallbackKey)
+        : null;
+    return { site, meta, col };
+  });
 
-  // 静的値で出した列だけ、いつ時点かを添える。両方取り込めた日は最後の一文だけになる
-  const stale = [
-    hok.asOf ? t('asOf', { site: t('colHok'), date: hok.asOf }) : null,
-    wr.asOf ? t('asOf', { site: t('colWr'), date: wr.asOf }) : null,
-  ].filter(Boolean);
+  /** 列が無い（取り込めず控えも無い）ときの表示。空欄にせず、無いことを見せる */
+  const DASH = '—';
+
+  // 静的値で出した列だけ、いつ時点かを添える。全部取り込めた日は最後の一文だけになる
+  const stale = columns
+    .map(({ meta, col }) =>
+      col?.asOf ? t('asOf', { site: t(meta.labelKey), date: col.asOf }) : null,
+    )
+    .filter(Boolean);
   const footnote = [...stale, t('footnoteBase')].join(ja ? '' : ' ');
+
+  // 最終更新日は、どのタイトルも返していなければ行ごと出さない（空欄が並ぶ行を作らない）
+  const anySiteUpdated = columns.some(({ col }) => col?.siteUpdatedAt);
 
   return (
     <section className="flex flex-col gap-3">
@@ -112,20 +151,23 @@ export default async function TitleSnapshot({ locale }: Props) {
         <Table2 size={20} className="text-indigo-500" /> {t('heading')}
       </h3>
 
-      {/* 3列あるので狭い画面では横に送る。行を折り返して潰すより読める */}
+      {/* 列が増えるので狭い画面では横に送る。行を折り返して潰すより読める。
+          最小幅は「項目の列 + 1タイトルあたり 170px」で見積もる */}
       <div className="overflow-x-auto rounded-2xl border border-slate-200/80 bg-white shadow-sm">
-        <table className="w-full min-w-[480px] border-collapse text-left text-xs">
+        <table
+          className="w-full border-collapse text-left text-xs"
+          style={{ minWidth: `${170 + columns.length * 155}px` }}
+        >
           <thead>
             <tr className="bg-slate-100 text-slate-600">
               <th scope="col" className="w-[30%] py-2.5 px-3 font-bold">
                 {t('colAxis')}
               </th>
-              <th scope="col" className="py-2.5 px-3 font-bold text-amber-700">
-                {t('colHok')}
-              </th>
-              <th scope="col" className="py-2.5 px-3 font-bold text-cyan-700">
-                {t('colWr')}
-              </th>
+              {columns.map(({ site, meta }) => (
+                <th key={site} scope="col" className={`py-2.5 px-3 font-bold ${meta.headClass}`}>
+                  {t(meta.labelKey)}
+                </th>
+              ))}
             </tr>
           </thead>
 
@@ -134,61 +176,54 @@ export default async function TitleSnapshot({ locale }: Props) {
               <th scope="row" className="py-3 px-3 align-top font-semibold text-slate-600">
                 {t('rowPatch')}
               </th>
-              <Cell
-                value={hok.patchLabel}
-                note={<time dateTime={hok.patchDate}>{hok.patchDate}</time>}
-              />
-              <Cell
-                value={wr.patchLabel}
-                note={<time dateTime={wr.patchDate}>{wr.patchDate}</time>}
-              />
+              {columns.map(({ site, col }) => (
+                <Cell
+                  key={site}
+                  value={col ? col.patchLabel : DASH}
+                  note={col ? <time dateTime={col.patchDate}>{col.patchDate}</time> : undefined}
+                />
+              ))}
             </tr>
 
             <tr>
               <th scope="row" className="py-3 px-3 align-top font-semibold text-slate-600">
                 {t('rowChanged')}
               </th>
-              <Cell value={hok.changedHeroes} />
-              <Cell value={wr.changedHeroes} />
+              {columns.map(({ site, col }) => (
+                <Cell key={site} value={col ? col.changedHeroes : DASH} />
+              ))}
             </tr>
 
             <tr>
               <th scope="row" className="py-3 px-3 align-top font-semibold text-slate-600">
                 {t('rowRoster')}
               </th>
-              <Cell value={hok.heroes} note={hok.catalog} />
-              <Cell value={wr.heroes} note={wr.catalog} />
+              {columns.map(({ site, col }) => (
+                <Cell key={site} value={col ? col.heroes : DASH} note={col?.catalog} />
+              ))}
             </tr>
 
             {/* サイト自体の最終更新日。上の「現在のパッチ」はゲーム側の公開日なので、
-                サイトが手入れされているかは分からない。両サイトとも返していなければ
-                行ごと出さない（空欄が2つ並ぶ行を作らない） */}
-            {(hok.siteUpdatedAt || wr.siteUpdatedAt) && (
+                サイトが手入れされているかは分からない */}
+            {anySiteUpdated && (
               <tr>
                 <th scope="row" className="py-3 px-3 align-top font-semibold text-slate-600">
                   {t('rowSiteUpdated')}
                 </th>
-                <Cell
-                  value={
-                    hok.siteUpdatedAt ? (
-                      <time dateTime={hok.siteUpdatedAt}>{hok.siteUpdatedAt}</time>
-                    ) : (
-                      t('notPublished')
-                    )
-                  }
-                />
-                <Cell
-                  value={
-                    wr.siteUpdatedAt ? (
-                      <time dateTime={wr.siteUpdatedAt}>{wr.siteUpdatedAt}</time>
-                    ) : (
-                      t('notPublished')
-                    )
-                  }
-                />
+                {columns.map(({ site, col }) => (
+                  <Cell
+                    key={site}
+                    value={
+                      col?.siteUpdatedAt ? (
+                        <time dateTime={col.siteUpdatedAt}>{col.siteUpdatedAt}</time>
+                      ) : (
+                        t('notPublished')
+                      )
+                    }
+                  />
+                ))}
               </tr>
             )}
-
           </tbody>
         </table>
       </div>

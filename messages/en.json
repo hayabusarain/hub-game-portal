@@ -1273,10 +1273,11 @@
     "ctaWr": "Wild Rift beginner guide"
   },
   "TitleSnapshot": {
-    "heading": "Where both games stand",
+    "heading": "Where each game stands",
     "colAxis": "Aspect",
     "colHok": "Honor of Kings",
     "colWr": "Wild Rift",
+    "colMlbb": "Mobile Legends",
     "rowPatch": "Current patch",
     "rowChanged": "Heroes changed in the latest patch",
     "rowSiteUpdated": "Site last updated",
@@ -1301,6 +1302,7 @@
       "asOf": "September 2, 2026"
     },
     "wrCatalog": "{items} items, {arcana} runes, {spells} spells",
+    "mlbbCatalog": "{items} items, {arcana} emblems, {spells} spells",
     "asOf": "{site} counts are as of {date}.",
     "footnoteBase": "Patch dates are the publication dates of each game's official patch notes."
   }

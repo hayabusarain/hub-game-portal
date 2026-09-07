@@ -1273,10 +1273,11 @@
     "ctaWr": "ワイルドリフトの初心者ガイドへ"
   },
   "TitleSnapshot": {
-    "heading": "2タイトルの最新データ",
+    "heading": "タイトル別の最新データ",
     "colAxis": "項目",
     "colHok": "Honor of Kings",
     "colWr": "Wild Rift",
+    "colMlbb": "Mobile Legends",
     "rowPatch": "現在のパッチ",
     "rowChanged": "直近パッチで調整されたヒーロー数",
     "rowRoster": "掲載ヒーロー数",
@@ -1301,6 +1302,7 @@
       "asOf": "2026年9月2日"
     },
     "wrCatalog": "装備{items}種・ルーン{arcana}種・スペル{spells}種",
+    "mlbbCatalog": "装備{items}種・エンブレム{arcana}種・スペル{spells}種",
     "asOf": "{site} の掲載数は{date}時点。",
     "footnoteBase": "パッチの日付は各公式パッチノートの公開日です。"
   }
