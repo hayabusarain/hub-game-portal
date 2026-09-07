@@ -1280,6 +1280,8 @@
     "rowPatch": "現在のパッチ",
     "rowChanged": "直近パッチで調整されたヒーロー数",
     "rowRoster": "掲載ヒーロー数",
+    "rowSiteUpdated": "サイトの最終更新日",
+    "notPublished": "未公開",
     "heroCount": "{count}体",
     "hokCatalog": "装備{items}種・アルカナ{arcana}種・スペル{spells}種",
     "wr": {

@@ -37,6 +37,8 @@ type Column = {
   changedHeroes: string;
   heroes: string;
   catalog: string;
+  /** サイト自体の最終更新日。相手が返していなければ null で、その行は出さない */
+  siteUpdatedAt: string | null;
   /** 静的値で出した列の「いつ時点か」。取り込めた列は null */
   asOf: string | null;
 };
@@ -78,6 +80,7 @@ export default async function TitleSnapshot({ locale }: Props) {
       arcana: s.catalog.arcana,
       spells: s.catalog.spells,
     }),
+    siteUpdatedAt: s.siteUpdatedAt,
     asOf: null,
   });
 
@@ -88,6 +91,8 @@ export default async function TitleSnapshot({ locale }: Props) {
     changedHeroes: t(`${key}.changedHeroes`),
     heroes: t(`${key}.heroes`),
     catalog: t(`${key}.catalog`),
+    // 取り込めなかった列は最終更新日も分からない。憶測で静的値を置かない
+    siteUpdatedAt: null,
     asOf: t(`${key}.asOf`),
   });
 
@@ -154,6 +159,35 @@ export default async function TitleSnapshot({ locale }: Props) {
               <Cell value={hok.heroes} note={hok.catalog} />
               <Cell value={wr.heroes} note={wr.catalog} />
             </tr>
+
+            {/* サイト自体の最終更新日。上の「現在のパッチ」はゲーム側の公開日なので、
+                サイトが手入れされているかは分からない。両サイトとも返していなければ
+                行ごと出さない（空欄が2つ並ぶ行を作らない） */}
+            {(hok.siteUpdatedAt || wr.siteUpdatedAt) && (
+              <tr>
+                <th scope="row" className="py-3 px-3 align-top font-semibold text-slate-600">
+                  {t('rowSiteUpdated')}
+                </th>
+                <Cell
+                  value={
+                    hok.siteUpdatedAt ? (
+                      <time dateTime={hok.siteUpdatedAt}>{hok.siteUpdatedAt}</time>
+                    ) : (
+                      t('notPublished')
+                    )
+                  }
+                />
+                <Cell
+                  value={
+                    wr.siteUpdatedAt ? (
+                      <time dateTime={wr.siteUpdatedAt}>{wr.siteUpdatedAt}</time>
+                    ) : (
+                      t('notPublished')
+                    )
+                  }
+                />
+              </tr>
+            )}
 
           </tbody>
         </table>

@@ -66,9 +66,17 @@ export type SiteSnapshot = {
     spells: number;
     arcana: number;
   };
+  /**
+   * 掲載サイト自体の最終更新日（YYYY-MM-DD）。**任意**。
+   * patch.date はゲーム側のパッチ公開日なので、サイトが手入れされた日とは別物。
+   * 必須にしてはいけない。片方のサイトが未対応なだけで表が丸ごと消えるため、
+   * 欠けていれば null にして、その行だけ出さない（下の toSnapshot / TitleSnapshot）。
+   */
+  siteUpdatedAt: string | null;
 };
 // 相手の /api/latest は snapshot.stats（統計の取得日と出典）も返すが、表からその行を
-// 外したので受け取っていない。ここに戻すと、使わない項目が欠けただけで表が丸ごと消える
+// 外したので受け取っていない。必須項目として戻すと、使わない項目が欠けただけで表が
+// 丸ごと消える。snapshot.site.updatedAt は同じ轍を踏まないよう任意項目にしてある
 
 const isNonEmptyString = (v: unknown): v is string => typeof v === 'string' && v.trim().length > 0;
 
@@ -150,10 +158,14 @@ function toSnapshot(site: HighlightSite, data: LatestResponse): SiteSnapshot | n
     return null;
   }
 
+  // 任意項目。欠けていても他の行は成立するので、ここで return null しない
+  const siteInfo = isRecord(snapshot.site) ? snapshot.site : null;
+
   return {
     site,
     patch: { label: patch.label, labelJa: patch.labelJa, date: patchDate, changedHeroes },
     catalog: { heroes, items, spells, arcana },
+    siteUpdatedAt: siteInfo ? toDateOnly(siteInfo.updatedAt) : null,
   };
 }
 

@@ -1279,6 +1279,8 @@
     "colWr": "Wild Rift",
     "rowPatch": "Current patch",
     "rowChanged": "Heroes changed in the latest patch",
+    "rowSiteUpdated": "Site last updated",
+    "notPublished": "Not published",
     "rowRoster": "Heroes covered",
     "heroCount": "{count, plural, one {# hero} other {# heroes}}",
     "hokCatalog": "{items} items, {arcana} arcana, {spells} spells",
