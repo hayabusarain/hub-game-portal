@@ -14,11 +14,34 @@
 [`src/data/highlights.ts`](../src/data/highlights.ts) の **1行を書き換えるだけ**で載る。
 
 ```ts
-export const SITE_LIVE: Record<HighlightSite, boolean> = {
-  wildrift: true,
-  hok: true,
-  mlbb: false,   // ← ここを true にする
+export const SITE_LOCALES: Record<HighlightSite, string[]> = {
+  wildrift: ['ja', 'en'],
+  hok: ['ja', 'en'],
+  mlbb: [],        // ← ここを ['ja'] にする
 };
+```
+
+**MLBB は日本語のみで公開する前提にしてある。**（2026-09-08 に MLBB 側 ee30f3e で
+英語ページを廃止。同名の英語サイト mlbbhub.com が先にあり、内容も重なるため。
+711ページ→359ページ、/en は /ja へ 308）。
+
+そのためポータルは真偽値ではなく**対応言語の配列**を持つ。空配列は未公開。
+`['ja']` にすれば日本語のポータルにだけ出て、英語のポータルには出ない。
+英語の読者を、読めない日本語だけのサイトへ送らないための区別。
+
+参照側は用途で2つに分かれている。
+
+| 関数 | 用途 |
+|---|---|
+| `liveSites()` | 言語に依らないもの。robots.txt の sitemap 列挙、JSON-LD の sameAs、`/api/latest` の取得先 |
+| `liveSitesFor(locale)` | 読者が踏むもの。最新データ表の列、最新パッチの注目カード |
+
+`['ja']` にして実際の出力を確認済み。
+
+```
+日本語の表  項目 | Honor of Kings | Wild Rift | Mobile Legends
+英語の表    Aspect | Honor of Kings | Wild Rift
+robots.txt  4本すべて（サイト自体は存在するので言語に依らず載せる）
 ```
 
 これ1箇所で次のすべてが切り替わる。コミット `d507214` と `80df316` で実装済みで、
@@ -26,10 +49,10 @@ export const SITE_LIVE: Record<HighlightSite, boolean> = {
 
 | 切り替わるもの | 実装 |
 |---|---|
-| `robots.txt` の Sitemap 列挙 | `src/app/robots.ts` |
+| `robots.txt` の Sitemap 列挙 | `src/app/robots.ts`（言語に依らない） |
 | JSON-LD の `sameAs` | `src/utils/jsonld.ts` |
 | `/api/latest` の取得先 | `src/lib/sisterSites.ts` |
-| トップの「タイトル別の最新データ」表の列 | `src/components/TitleSnapshot.tsx` |
+| トップの「タイトル別の最新データ」表の列 | `src/components/TitleSnapshot.tsx`（言語別） |
 
 **フラグを立てる前に `mlbb.hub-game.com` が 200 を返すことを確かめること。**
 未公開のドメインを出すと、死んだリンクを読者と Google の両方に見せることになる。
@@ -160,8 +183,12 @@ HoK はボスの出現時刻を社内の記録で「2:00 か 4:00 か要確認�
 
 - ポータルは HoK Hub 担当のセッションが見ている。素材が揃ったら声をかければ、
   カードと記事の受け入れをやる
-- Wild Rift Hub 担当のセッションは、141体238構成のアイテム採用データを
-  「必要な切り口で出せる」と言っている。3タイトルの比較記事を書くときに使える
+- Wild Rift Hub 担当のセッションは 2026-09-08 に終了している。**この文書が
+  そのセッションから受けた情報の唯一の記録。** あちらは 141体238構成の
+  アイテム採用データを持っていて、3タイトルの比較記事を書くときに使える
 - ポータルの記事を3タイトル軸で厚くするのが AdSense 再審査に向けた本丸。
   いまポータルは記事9本・23,678字で、`compare` と `term-mapping` が2タイトル前提の
   ぶん薄い。MLBB が入ると、これらは水増しでなく必要に迫られて厚くなる
+- **英語版を作るかどうかは記事を書く段で決める。** MLBB 本体が日本語のみに
+  なった以上、ポータルの `guides/mobile-legends` も日本語だけにする可能性が高い。
+  英語版を書いて日本語サイトへ送るのは、読者にとって行き止まりになる
