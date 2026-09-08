@@ -61,7 +61,8 @@ export const SITE_LABELS: Record<HighlightSite, string> = {
 export const SITE_LOCALES: Record<HighlightSite, string[]> = {
   wildrift: ['ja', 'en'],
   hok: ['ja', 'en'],
-  mlbb: [],
+  // 2026-09-09 公開。日本語のみ（英語版は畳んである）
+  mlbb: ['ja'],
 };
 
 /** 表示順。公開済みのものだけを、この順で並べる */
