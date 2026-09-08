@@ -11,7 +11,8 @@ const BASE_URL = 'https://hub-game.com';
 
 /**
  * 姉妹サイト。sameAs に並べて同一運営であることを機械可読に示す。
- * 未公開のサイトは並べない（highlights.ts の SITE_LIVE が単一の正）
+ * 未公開のサイトは並べない（highlights.ts の SITE_LOCALES が単一の正）。
+ * 同一運営であることを示すだけなので、言語には依らない
  */
 const SISTER_SITES = liveSites().map((s) => SITE_ORIGINS[s]);
 

@@ -42,28 +42,44 @@ export const SITE_LABELS: Record<HighlightSite, string> = {
 };
 
 /**
- * 公開済みのサイトだけ true。**表に出すかどうかは必ずここを見ること。**
+ * サイトごとの対応言語。**表に出すかどうかは必ずここを見ること。**
  *
- * まだ公開していないサイトをカード・表・フッター・robots・構造化データに
- * 出すと、死んだドメインへのリンクを読者と Google の両方に見せることになる。
- * hub-game.com は現在 AdSense のポリシー違反（有用性の低いコンテンツ）を
- * 受けている最中で、判定はドメイン単位なので、切れたリンクを増やす余裕は無い。
+ * 空配列は「まだ公開していない」。言語が1つだけなら、その言語のページにしか出さない。
+ * MLBB は日本語のみで公開する（同名の英語サイト mlbbhub.com が先にあり、内容も
+ * 重なるため英語版を畳んだ。2026-09-08 に MLBB 側から連絡）。英語のポータルから
+ * 日本語だけのサイトへ送ると、読者は読めないページに着く。だから言語ごとに持つ。
  *
- * **公開したらここを true にするだけでよい。** カード・スナップショット表・
- * フッター・robots.txt・JSON-LD・診断のすべてがこの1箇所を見ている。
- * 逆に、ここを true にする前に mlbb.hub-game.com が 200 を返すことを確かめること。
+ * まだ公開していないサイトをカード・表・フッター・robots・構造化データに出すと、
+ * 死んだドメインへのリンクを読者と Google の両方に見せることになる。
+ * hub-game.com は AdSense のポリシー違反（有用性の低いコンテンツ）を受けている
+ * 最中で、判定はドメイン単位なので、切れたリンクを増やす余裕は無い。
+ *
+ * **公開したらここに言語を足すだけでよい。** カード・スナップショット表・
+ * フッター・robots.txt・JSON-LD がこの1箇所を見ている。
+ * 足す前に、そのサイトがその言語で 200 を返すことを確かめること。
  */
-export const SITE_LIVE: Record<HighlightSite, boolean> = {
-  wildrift: true,
-  hok: true,
-  mlbb: false,
+export const SITE_LOCALES: Record<HighlightSite, string[]> = {
+  wildrift: ['ja', 'en'],
+  hok: ['ja', 'en'],
+  mlbb: [],
 };
 
 /** 表示順。公開済みのものだけを、この順で並べる */
 export const SITE_ORDER: HighlightSite[] = ['hok', 'wildrift', 'mlbb'];
 
-/** 表に出してよいサイト。SITE_ORDER の順を保つ */
-export const liveSites = (): HighlightSite[] => SITE_ORDER.filter((s) => SITE_LIVE[s]);
+/**
+ * どれか1つでも言語を持つサイト。robots.txt の sitemap 列挙や JSON-LD の sameAs、
+ * /api/latest の取得先のように、**言語に依らない用途**で使う。
+ */
+export const liveSites = (): HighlightSite[] =>
+  SITE_ORDER.filter((s) => SITE_LOCALES[s].length > 0);
+
+/**
+ * その言語の読者に見せてよいサイト。カードや表など、**読者が踏むもの**はこちらを使う。
+ * 日本語だけのサイトを英語ページに出さないための区別。
+ */
+export const liveSitesFor = (locale: string): HighlightSite[] =>
+  SITE_ORDER.filter((s) => SITE_LOCALES[s].includes(locale));
 
 export const highlights: Highlight[] = [
   {

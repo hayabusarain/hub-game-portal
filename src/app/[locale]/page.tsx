@@ -29,7 +29,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
   // 姉妹サイトのパッチ情報は各サイトの /api/latest から取得し、
   // 取得できた分を手動ピックより前に出す（落ちていても手動分だけで成立する）
-  const livePicks = await getLiveHighlights();
+  const livePicks = await getLiveHighlights(locale);
   const picks = [...livePicks, ...getLatestHighlights(4)].slice(0, 4);
 
   // 一番新しいピックの日付を、そのまま「最終更新」として見せる

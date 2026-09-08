@@ -1,5 +1,5 @@
 import { cache } from 'react';
-import { SITE_ORIGINS, liveSites, type Highlight, type HighlightSite } from '@/data/highlights';
+import { SITE_ORIGINS, liveSites, liveSitesFor, type Highlight, type HighlightSite } from '@/data/highlights';
 
 /**
  * 姉妹サイトの「最新情報」を各サイトの公開エンドポイントから取得する。
@@ -188,10 +188,14 @@ const fetchLatest = cache(async (site: HighlightSite): Promise<LatestResponse | 
   }
 });
 
-export async function getLiveHighlights(): Promise<Highlight[]> {
+/**
+ * 「最新パッチの注目」に出すカード。読者が踏むものなので、その言語で公開している
+ * サイトだけに絞る。locale を渡さなければ、どれか1言語でも公開しているサイト全部。
+ */
+export async function getLiveHighlights(locale?: string): Promise<Highlight[]> {
   // 未公開のサイトは叩かない。存在しないドメインへの fetch を毎回の描画で
   // 走らせても、待たされるだけで得るものが無い
-  const sites = liveSites();
+  const sites = locale ? liveSitesFor(locale) : liveSites();
 
   const results = await Promise.all(
     sites.map(async (site) => {

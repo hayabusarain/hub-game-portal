@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { getTranslations } from 'next-intl/server';
 import { Table2 } from 'lucide-react';
 import { getSiteSnapshot, type SiteSnapshot } from '@/lib/sisterSites';
-import { liveSites, type HighlightSite } from '@/data/highlights';
+import { liveSitesFor, type HighlightSite } from '@/data/highlights';
 
 /**
  * トップに置く「タイトル別の最新データ」表。
@@ -10,9 +10,12 @@ import { liveSites, type HighlightSite } from '@/data/highlights';
  * 狙いは、リンクを踏まなくてもこのページだけで読み切れる事実を出すこと。
  * 出どころを説明できない数字は載せない。
  *
- * 列は highlights.ts の liveSites() で決まる。**公開したサイトが自動で1列増える。**
- * ここに列を書き足す作業は無い。増やすときは SITE_LIVE を true にして、
+ * 列は highlights.ts の liveSitesFor(locale) で決まる。**公開したサイトが自動で1列増える。**
+ * ここに列を書き足す作業は無い。増やすときは SITE_LOCALES にその言語を足して、
  * 下の SITE_META にその1件を書くだけでよい。
+ *
+ * 言語別なのは、日本語だけで公開しているサイトを英語の表に出さないため。
+ * 出すと、英語の読者が読めないページへ送られる。
  *
  * 列ごとに、姉妹サイトの /api/latest に snapshot があればそれを使い、
  * 無ければ messages の静的値に落ちる。列は互いに独立していて、
@@ -90,7 +93,7 @@ export default async function TitleSnapshot({ locale }: Props) {
   const ja = locale === 'ja';
 
   // 公開済みのタイトルを並行して取りに行く。ひとつの遅れが他を待たせないようにする
-  const sites = liveSites();
+  const sites = liveSitesFor(locale);
   const snapshots = await Promise.all(sites.map((site) => getSiteSnapshot(site)));
 
   /** 取り込めた snapshot を列の形に直す */
