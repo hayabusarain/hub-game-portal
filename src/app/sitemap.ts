@@ -12,6 +12,7 @@ const STATIC_PATHS = [
   '/guides/what-is-moba',
   '/guides/wild-rift',
   '/guides/honor-of-kings',
+  '/guides/mobile-legends',
   '/guides/term-mapping',
   '/diagnosis',
   '/glossary',

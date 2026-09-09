@@ -8,7 +8,7 @@ import JsonLd from "@/components/JsonLd";
 import { toAnchorId } from '@/utils/glossary';
 import { buildBreadcrumb, buildDefinedTermSet, buildGraph } from '@/utils/jsonld';
 import { getAlternates } from '@/utils/seo';
-import { SITE_ORIGINS, type HighlightSite } from '@/data/highlights';
+import { SITE_ORIGINS, liveSitesFor, type HighlightSite } from '@/data/highlights';
 
 // messages/{locale}.json の Glossary.terms に対応する用語データの型。
 // note は2タイトルでの違いの注記、links は姉妹サイトの該当ページ（どちらも任意）
@@ -40,20 +40,27 @@ export default async function GlossaryPage({ params }: { params: Promise<{ local
   const termRecord = t.raw('terms') as Record<string, GlossaryTermEntry>;
 
   // 姉妹サイトへのリンクは、サーバー側でロケール付きの完全な URL に組み立ててから渡す。
-  // クライアント側にオリジン表を持たせず、messages には site と path だけを書けばよい
+  // クライアント側にオリジン表を持たせず、messages には site と path だけを書けばよい。
+  //
+  // その言語で公開していないサイトへのリンクは落とす。注記の本文は3タイトルとも残す
+  // （呼び名や仕様の違いはゲームの話で、当方のサイトが公開済みかどうかとは別）。
+  const readable = liveSitesFor(locale);
   const termsForClient = Object.fromEntries(
-    Object.entries(termRecord).map(([key, item]) => [
-      key,
-      {
-        term: item.term,
-        cat: item.cat,
-        def: item.def,
-        ...(item.note ? { note: item.note } : {}),
-        ...(item.links?.length
-          ? { links: item.links.map((l) => ({ label: l.label, href: `${SITE_ORIGINS[l.site]}/${locale}${l.path}` })) }
-          : {}),
-      },
-    ])
+    Object.entries(termRecord).map(([key, item]) => {
+      const links = (item.links ?? [])
+        .filter((l) => readable.includes(l.site))
+        .map((l) => ({ label: l.label, href: `${SITE_ORIGINS[l.site]}/${locale}${l.path}` }));
+      return [
+        key,
+        {
+          term: item.term,
+          cat: item.cat,
+          def: item.def,
+          ...(item.note ? { note: item.note } : {}),
+          ...(links.length ? { links } : {}),
+        },
+      ];
+    })
   );
 
   // アンカーIDの生成は表示側（MobaGlossary）と同じ関数を使い、

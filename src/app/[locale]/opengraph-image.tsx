@@ -20,12 +20,12 @@ export default async function OpengraphImage({ params }: { params: Promise<{ loc
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Home' });
 
-  // 見出しは何のサイトかを示し、その下では扱っている2タイトルを具体的に見せる
+  // 見出しは何のサイトかを示し、その下では扱っているタイトルを具体的に見せる
   const headline = t('heading');
   const covers =
     locale === 'ja'
-      ? 'ワイルドリフト × オナー・オブ・キングス'
-      : 'Wild Rift  ×  Honor of Kings';
+      ? 'オナー・オブ・キングス × ワイルドリフト × モバイル・レジェンド'
+      : 'Honor of Kings  ×  Wild Rift  ×  Mobile Legends';
 
   return new ImageResponse(
     (

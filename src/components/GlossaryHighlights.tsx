@@ -6,9 +6,9 @@ import { toAnchorId } from '@/utils/glossary';
 /**
  * トップに置く「最初の1試合で事故る5点」。
  *
- * 用語集（/glossary）の note には2タイトルの仕組みの差が1文で書かれているが、
+ * 用語集（/glossary）の note にはタイトルごとの仕組みの差が1文で書かれているが、
  * 44語の中に埋もれていてトップからは辿れない。そこで初戦で判断が変わる5語だけを
- * 抜き出し、note を「Honor of Kings 側」「Wild Rift 側」の2セルに割って見せる。
+ * 抜き出し、note をタイトルごとのセルに割って見せる。
  *
  * /guides/term-mapping（22項目）とは切り口を分けている。
  * あちらは「呼び名の全対応」、ここは「1試合目でやらかす点」。行を増やさないこと。
@@ -21,11 +21,22 @@ import { toAnchorId } from '@/utils/glossary';
 // 表示順。messages の Home.firstMatchItems と Glossary.terms の両方でこのキーを使う
 const TERM_KEYS = ['Ward', 'Recall', 'LastHit', 'Tower', 'Objective'] as const;
 
+/**
+ * タイトルごとのセル。key は messages のキー、列見出しは Home.firstMatchCol* から引く。
+ * 色は他のタイトル別表示（最新データ表、最新パッチの注目）と揃える。
+ */
+const TITLE_CELLS = [
+  { key: 'hok', label: 'firstMatchColHok', box: 'bg-amber-50/70 border-amber-100', text: 'text-amber-700' },
+  { key: 'wr', label: 'firstMatchColWr', box: 'bg-cyan-50/70 border-cyan-100', text: 'text-cyan-700' },
+  { key: 'mlbb', label: 'firstMatchColMlbb', box: 'bg-violet-50/70 border-violet-100', text: 'text-violet-700' },
+] as const;
+
 type FirstMatchItem = {
   label: string;
   pitfall: string;
   hok: string;
   wr: string;
+  mlbb: string;
 };
 
 export default async function GlossaryHighlights() {
@@ -94,21 +105,17 @@ export default async function GlossaryHighlights() {
 
               <p className="mt-1.5 text-xs text-slate-600 font-medium leading-relaxed">{item.text.pitfall}</p>
 
-              {/* 2・3セル目: 同じ場面が各タイトルでどう違うか。
-                  色は「最新パッチの注目」と揃える（HoK=amber / Wild Rift=indigo） */}
-              <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                <div className="rounded-2xl bg-amber-50/70 border border-amber-100 p-3">
-                  <span className="block text-[10px] font-black tracking-wide text-amber-700 mb-1">
-                    {t('firstMatchColHok')}
-                  </span>
-                  <p className="text-xs text-slate-700 font-medium leading-relaxed">{item.text.hok}</p>
-                </div>
-                <div className="rounded-2xl bg-indigo-50/70 border border-indigo-100 p-3">
-                  <span className="block text-[10px] font-black tracking-wide text-indigo-700 mb-1">
-                    {t('firstMatchColWr')}
-                  </span>
-                  <p className="text-xs text-slate-700 font-medium leading-relaxed">{item.text.wr}</p>
-                </div>
+              {/* 残りのセル: 同じ場面が各タイトルでどう違うか。
+                  色は他のタイトル別表示と揃える（HoK=amber / Wild Rift=cyan / MLBB=violet） */}
+              <div className="mt-3 grid gap-2 sm:grid-cols-3">
+                {TITLE_CELLS.map((cell) => (
+                  <div key={cell.key} className={`rounded-2xl border p-3 ${cell.box}`}>
+                    <span className={`block text-[10px] font-black tracking-wide mb-1 ${cell.text}`}>
+                      {t(cell.label)}
+                    </span>
+                    <p className="text-xs text-slate-700 font-medium leading-relaxed">{item.text[cell.key]}</p>
+                  </div>
+                ))}
               </div>
             </Link>
           </li>

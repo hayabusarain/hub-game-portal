@@ -11,7 +11,25 @@ import { ARTICLES, formatArticleDate } from '@/data/articles';
 import { getAlternates } from '@/utils/seo';
 import GlossaryTermLinks from '@/components/GlossaryTermLinks';
 
-type TableRow = { axis: string; hok: string; wr: string };
+type TableRow = { axis: string; hok: string; wr: string; mlbb: string };
+
+/**
+ * 比較する3タイトルと、それぞれの色・messages のキー接頭辞。
+ *
+ * 順番はここだけで決まる。カード・本文の並び・表の列・結論の並びが、すべてこの配列を見る。
+ * 色はサイト内の他のタイトル別表示（トップのバッジ、最新データ表の見出し）と揃えてある。
+ *
+ * ワイルドリフトの接頭辞が 'wr' なのは、記事を2タイトルで公開していた頃のキーをそのまま
+ * 使っているため。翻訳を一括で差し替えずに列を1つ増やせるようにしてある。
+ *
+ * **リンクではなく解説なので、公開していない言語でも3タイトルとも出す。**
+ * 読者を姉妹サイトへ送る動線（トップのカード、フッター）だけが言語で変わる。
+ */
+const TITLES = [
+  { key: 'hok', text: 'text-amber-700', accent: 'text-amber-600', bar: 'border-amber-500' },
+  { key: 'wr', text: 'text-cyan-700', accent: 'text-cyan-600', bar: 'border-cyan-500' },
+  { key: 'mlbb', text: 'text-violet-700', accent: 'text-violet-600', bar: 'border-violet-500' },
+] as const;
 
 const meta = ARTICLES.compare;
 
@@ -46,8 +64,6 @@ export default async function CompareGuidePage({ params }: { params: Promise<{ l
   );
 
   const tableRows = t.raw('tableRows') as TableRow[];
-  const hokPoints = t.raw('recommendHok.points') as string[];
-  const wrPoints = t.raw('recommendWr.points') as string[];
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-700 flex flex-col font-sans">
@@ -94,22 +110,14 @@ export default async function CompareGuidePage({ params }: { params: Promise<{ l
         <article className="space-y-8 text-slate-700 leading-relaxed text-sm md:text-base font-normal">
 
           {/* Quick Summary Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-5 bg-white border border-slate-200 rounded-2xl shadow-sm space-y-2">
-              <span className="text-xs font-bold text-amber-600 uppercase">{t('cards.hok.label')}</span>
-              <h2 className="text-lg font-bold text-slate-900">{t('cards.hok.name')}</h2>
-              <p className="text-xs text-slate-600">
-                {t('cards.hok.body')}
-              </p>
-            </div>
-
-            <div className="p-5 bg-white border border-slate-200 rounded-2xl shadow-sm space-y-2">
-              <span className="text-xs font-bold text-cyan-600 uppercase">{t('cards.wr.label')}</span>
-              <h2 className="text-lg font-bold text-slate-900">{t('cards.wr.name')}</h2>
-              <p className="text-xs text-slate-600">
-                {t('cards.wr.body')}
-              </p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {TITLES.map(({ key, accent }) => (
+              <div key={key} className="p-5 bg-white border border-slate-200 rounded-2xl shadow-sm space-y-2">
+                <span className={`text-xs font-bold uppercase ${accent}`}>{t(`cards.${key}.label`)}</span>
+                <h2 className="text-lg font-bold text-slate-900">{t(`cards.${key}.name`)}</h2>
+                <p className="text-xs text-slate-600">{t(`cards.${key}.body`)}</p>
+              </div>
+            ))}
           </div>
 
           <h2 className="text-xl font-bold text-slate-900 pt-4 border-t border-slate-200">
@@ -122,45 +130,44 @@ export default async function CompareGuidePage({ params }: { params: Promise<{ l
             })}
           </p>
 
-          <p>
-            <strong>{t('section1.hokLabel')}</strong> {t('section1.hokBody')}
-          </p>
-
-          <p>
-            <strong>{t('section1.wrLabel')}</strong> {t('section1.wrBody')}
-          </p>
+          {TITLES.map(({ key }) => (
+            <p key={key}>
+              <strong>{t(`section1.${key}Label`)}</strong> {t(`section1.${key}Body`)}
+            </p>
+          ))}
 
           <h2 className="text-xl font-bold text-slate-900 pt-4 border-t border-slate-200">
             {t('section2.heading')}
           </h2>
 
-          <p>
-            <strong>{t('section2.hokLabel')}</strong> {t('section2.hokBody')}
-          </p>
-
-          <p>
-            <strong>{t('section2.wrLabel')}</strong> {t('section2.wrBody')}
-          </p>
+          {TITLES.map(({ key }) => (
+            <p key={key}>
+              <strong>{t(`section2.${key}Label`)}</strong> {t(`section2.${key}Body`)}
+            </p>
+          ))}
 
           <h2 className="text-xl font-bold text-slate-900 pt-4 border-t border-slate-200">
             {t('section3.heading')}
           </h2>
 
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse text-xs md:text-sm">
+            {/* 列が3つになるので、狭い画面では横に送る。折り返して潰すより読める */}
+            <table className="w-full text-left border-collapse text-xs md:text-sm" style={{ minWidth: '760px' }}>
               <thead>
                 <tr className="bg-slate-100 border-b border-slate-200 text-slate-600">
                   <th className="py-3 px-3">{t('tableHeader.axis')}</th>
-                  <th className="py-3 px-3 text-amber-700">{t('tableHeader.hok')}</th>
-                  <th className="py-3 px-3 text-cyan-700">{t('tableHeader.wr')}</th>
+                  {TITLES.map(({ key, text }) => (
+                    <th key={key} className={`py-3 px-3 ${text}`}>{t(`tableHeader.${key}`)}</th>
+                  ))}
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-200 text-slate-700">
                 {tableRows.map((row, i) => (
                   <tr key={i}>
                     <td className="py-3 px-3 font-semibold text-slate-900">{row.axis}</td>
-                    <td className="py-3 px-3">{row.hok}</td>
-                    <td className="py-3 px-3">{row.wr}</td>
+                    {TITLES.map(({ key }) => (
+                      <td key={key} className="py-3 px-3">{row[key]}</td>
+                    ))}
                   </tr>
                 ))}
               </tbody>
@@ -177,29 +184,22 @@ export default async function CompareGuidePage({ params }: { params: Promise<{ l
           </h2>
 
           <div className="space-y-4">
-            <div className="p-4 bg-white border-l-4 border-amber-500 rounded-r-xl shadow-sm">
-              <h3 className="font-bold text-amber-700 mb-1">{t('recommendHok.heading')}</h3>
-              <p className="text-xs text-slate-600">
-                {hokPoints.map((point, i) => (
-                  <Fragment key={i}>
-                    {i > 0 && <br />}
-                    {point}
-                  </Fragment>
-                ))}
-              </p>
-            </div>
-
-            <div className="p-4 bg-white border-l-4 border-cyan-500 rounded-r-xl shadow-sm">
-              <h3 className="font-bold text-cyan-700 mb-1">{t('recommendWr.heading')}</h3>
-              <p className="text-xs text-slate-600">
-                {wrPoints.map((point, i) => (
-                  <Fragment key={i}>
-                    {i > 0 && <br />}
-                    {point}
-                  </Fragment>
-                ))}
-              </p>
-            </div>
+            {TITLES.map(({ key, text, bar }) => {
+              const points = t.raw(`recommend.${key}.points`) as string[];
+              return (
+                <div key={key} className={`p-4 bg-white border-l-4 rounded-r-xl shadow-sm ${bar}`}>
+                  <h3 className={`font-bold mb-1 ${text}`}>{t(`recommend.${key}.heading`)}</h3>
+                  <p className="text-xs text-slate-600">
+                    {points.map((point, i) => (
+                      <Fragment key={i}>
+                        {i > 0 && <br />}
+                        {point}
+                      </Fragment>
+                    ))}
+                  </p>
+                </div>
+              );
+            })}
           </div>
 
           {/* Diagnostic Quiz section */}

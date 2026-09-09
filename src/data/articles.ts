@@ -11,7 +11,13 @@
  * 上げ忘れは npm run audit が検知する（messages を触ったのに日付が古い場合）。
  */
 
-export type ArticleSlug = 'what-is-moba' | 'honor-of-kings' | 'wild-rift' | 'compare' | 'term-mapping';
+export type ArticleSlug =
+  | 'what-is-moba'
+  | 'honor-of-kings'
+  | 'wild-rift'
+  | 'mobile-legends'
+  | 'compare'
+  | 'term-mapping';
 
 export type ArticleMeta = {
   /** ロケールを含まないパス */
@@ -26,27 +32,32 @@ export const ARTICLES: Record<ArticleSlug, ArticleMeta> = {
   'what-is-moba': {
     path: '/guides/what-is-moba',
     published: '2026-07-01',
-    updated: '2026-08-26',
+    updated: '2026-09-10',
   },
   'honor-of-kings': {
     path: '/guides/honor-of-kings',
     published: '2026-07-01',
-    updated: '2026-09-08',
+    updated: '2026-09-10',
   },
   'wild-rift': {
     path: '/guides/wild-rift',
     published: '2026-07-01',
-    updated: '2026-09-06',
+    updated: '2026-09-10',
+  },
+  'mobile-legends': {
+    path: '/guides/mobile-legends',
+    published: '2026-09-10',
+    updated: '2026-09-10',
   },
   compare: {
     path: '/guides/compare',
     published: '2026-07-01',
-    updated: '2026-09-08',
+    updated: '2026-09-10',
   },
   'term-mapping': {
     path: '/guides/term-mapping',
     published: '2026-08-26',
-    updated: '2026-09-08',
+    updated: '2026-09-10',
   },
 };
 
@@ -55,13 +66,13 @@ export const ARTICLES: Record<ArticleSlug, ArticleMeta> = {
  * 内容を変えたらその日に上げる。法的ページも権利表記の変更などで動く。
  */
 export const PAGE_UPDATED: Record<string, string> = {
-  '': '2026-09-08',
-  '/guides': '2026-08-26',
-  '/diagnosis': '2026-08-29',
-  '/glossary': '2026-09-08',
-  '/about': '2026-08-26',
+  '': '2026-09-10',
+  '/guides': '2026-09-10',
+  '/diagnosis': '2026-09-10',
+  '/glossary': '2026-09-10',
+  '/about': '2026-09-10',
   '/contact': '2026-08-13',
-  '/disclaimer': '2026-08-26',
+  '/disclaimer': '2026-09-10',
   '/privacy': '2026-08-26',
   '/terms': '2026-08-26',
 };

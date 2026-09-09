@@ -1,3 +1,5 @@
+import type { HighlightSite } from '@/data/highlights';
+
 /**
  * 適性診断の設問データと判定ロジック。
  *
@@ -13,8 +15,8 @@ export type Role = 'top' | 'jungle' | 'mid' | 'adc' | 'support';
 export type QuizOption = {
   /** メッセージのキー */
   id: string;
-  /** タイトル判定の重み。負なら Honor of Kings 寄り、正ならワイルドリフト寄り */
-  title: number;
+  /** この選択肢が推すタイトル。ロール設問（Q4・Q5）では null */
+  site: HighlightSite | null;
   /** 本人が直接そのロールを選んだ設問のときだけ設定する。同点時の優先に使う */
   lead?: Role;
   /** ロール判定の加点 */
@@ -24,16 +26,22 @@ export type QuizOption = {
 export type QuizQuestion = {
   /** メッセージのキー。フォームの input[name] にもそのまま使う */
   id: string;
+  /** タイトル判定での重み。ロール設問は 0 */
+  weight: number;
   options: QuizOption[];
 };
 
 /**
  * 設問の設計
  *
- * - Q1〜Q3（テンポ／操作感／世界観）はタイトル判定用。重みは ±1 のみで、3問＝奇数なので
- *   合計が 0 になることがなく、Honor of Kings とワイルドリフトの引き分けは構造上起きない。
- *   このうち Q1・Q2 はプレイスタイルにも直結するため、ロール判定にも ±1 の補正として効かせる。
- *   Q3 は見た目の好みなのでロールには一切加点しない。
+ * - Q1〜Q3（テンポ／操作と準備／世界観）はタイトル判定用。3タイトルなので選択肢も3つずつあり、
+ *   選んだ選択肢が推すタイトルへ、その設問の重みをまるごと加える。
+ *   重みは Q1 が 3、Q2 と Q3 が 2。**この配分だと最高得点が必ず1タイトルに決まる。**
+ *   3・2・2 を3タイトルへ分ける形は5通りしかなく、どれも最大値がひとつだけになる
+ *   （3/2/2、5/2/0、3/4/0、7/0/0、5/0/2）。引き分けは構造上起きない。
+ *   Q1 を突出させていないのは、Q1 で選ばなかったタイトルでも Q2 と Q3 が揃えば勝てるようにするため。
+ * - Q1・Q2 はプレイスタイルにも直結するため、ロール判定にも1点ずつの補正として効かせる。
+ *   Q3 は絵柄の好みなのでロールには一切加点しない。
  * - Q4（立ち位置）・Q5（勝ち方）はロール判定用。選んだロールに +3、隣接するロールに +1。
  *   +1 の配り方は 5 ロールの置換にしてあり、どのロールも Q4・Q5 から 1 回ずつだけ +1 を受け取る。
  *   これで特定ロールに加点が偏らない。
@@ -41,43 +49,51 @@ export type QuizQuestion = {
 export const QUESTIONS: QuizQuestion[] = [
   {
     id: 'q1',
+    weight: 3,
     options: [
-      { id: 'q1a1', title: -1, roles: { jungle: 1, mid: 1 } },
-      { id: 'q1a2', title: 1, roles: { adc: 1, top: 1 } }
+      { id: 'q1a1', site: 'hok', roles: { jungle: 1, mid: 1 } },
+      { id: 'q1a2', site: 'wildrift', roles: { top: 1, support: 1 } },
+      { id: 'q1a3', site: 'mlbb', roles: { adc: 1, jungle: 1 } }
     ]
   },
   {
     id: 'q2',
+    weight: 2,
     options: [
-      { id: 'q2a1', title: -1, roles: { top: 1, mid: 1 } },
-      { id: 'q2a2', title: 1, roles: { support: 1, adc: 1 } }
+      { id: 'q2a1', site: 'hok', roles: { mid: 1, adc: 1 } },
+      { id: 'q2a2', site: 'wildrift', roles: { support: 1, top: 1 } },
+      { id: 'q2a3', site: 'mlbb', roles: { top: 1, mid: 1 } }
     ]
   },
   {
     id: 'q3',
+    weight: 2,
     options: [
-      { id: 'q3a1', title: -1, roles: {} },
-      { id: 'q3a2', title: 1, roles: {} }
+      { id: 'q3a1', site: 'hok', roles: {} },
+      { id: 'q3a2', site: 'wildrift', roles: {} },
+      { id: 'q3a3', site: 'mlbb', roles: {} }
     ]
   },
   {
     id: 'q4',
+    weight: 0,
     options: [
-      { id: 'q4a1', title: 0, lead: 'top', roles: { top: 3, jungle: 1 } },
-      { id: 'q4a2', title: 0, lead: 'mid', roles: { mid: 3, top: 1 } },
-      { id: 'q4a3', title: 0, lead: 'jungle', roles: { jungle: 3, support: 1 } },
-      { id: 'q4a4', title: 0, lead: 'adc', roles: { adc: 3, mid: 1 } },
-      { id: 'q4a5', title: 0, lead: 'support', roles: { support: 3, adc: 1 } }
+      { id: 'q4a1', site: null, lead: 'top', roles: { top: 3, jungle: 1 } },
+      { id: 'q4a2', site: null, lead: 'mid', roles: { mid: 3, top: 1 } },
+      { id: 'q4a3', site: null, lead: 'jungle', roles: { jungle: 3, support: 1 } },
+      { id: 'q4a4', site: null, lead: 'adc', roles: { adc: 3, mid: 1 } },
+      { id: 'q4a5', site: null, lead: 'support', roles: { support: 3, adc: 1 } }
     ]
   },
   {
     id: 'q5',
+    weight: 0,
     options: [
-      { id: 'q5a1', title: 0, lead: 'top', roles: { top: 3, mid: 1 } },
-      { id: 'q5a2', title: 0, lead: 'jungle', roles: { jungle: 3, support: 1 } },
-      { id: 'q5a3', title: 0, lead: 'mid', roles: { mid: 3, jungle: 1 } },
-      { id: 'q5a4', title: 0, lead: 'adc', roles: { adc: 3, top: 1 } },
-      { id: 'q5a5', title: 0, lead: 'support', roles: { support: 3, adc: 1 } }
+      { id: 'q5a1', site: null, lead: 'top', roles: { top: 3, mid: 1 } },
+      { id: 'q5a2', site: null, lead: 'jungle', roles: { jungle: 3, support: 1 } },
+      { id: 'q5a3', site: null, lead: 'mid', roles: { mid: 3, jungle: 1 } },
+      { id: 'q5a4', site: null, lead: 'adc', roles: { adc: 3, top: 1 } },
+      { id: 'q5a5', site: null, lead: 'support', roles: { support: 3, adc: 1 } }
     ]
   }
 ];
@@ -85,21 +101,31 @@ export const QUESTIONS: QuizQuestion[] = [
 /** 同点がどうしても解けなかったときの最終的な優先順位 */
 export const ROLE_ORDER: Role[] = ['top', 'jungle', 'mid', 'adc', 'support'];
 
-export type QuizResult = { isHok: boolean; role: Role };
+/**
+ * タイトルを見る順。得点が並ぶことは構造上起きないが、
+ * find に順序を与えて結果が呼ぶたびに変わらないようにしておく。
+ */
+const SITE_ORDER: HighlightSite[] = ['hok', 'wildrift', 'mlbb'];
+
+export type QuizResult = { site: HighlightSite; role: Role };
 
 export function getResult(answers: number[]): QuizResult {
-  let titleScore = 0;
+  const siteScores: Record<HighlightSite, number> = { hok: 0, wildrift: 0, mlbb: 0 };
   const roleScores: Record<Role, number> = { top: 0, jungle: 0, mid: 0, adc: 0, support: 0 };
   const leads: Role[] = [];
 
   answers.forEach((optionIndex, questionIndex) => {
-    const option = QUESTIONS[questionIndex].options[optionIndex];
-    titleScore += option.title;
+    const question = QUESTIONS[questionIndex];
+    const option = question.options[optionIndex];
+    if (option.site) siteScores[option.site] += question.weight;
     if (option.lead) leads.push(option.lead);
     (Object.keys(option.roles) as Role[]).forEach(role => {
       roleScores[role] += option.roles[role] ?? 0;
     });
   });
+
+  const topScore = Math.max(...SITE_ORDER.map(candidate => siteScores[candidate]));
+  const site = SITE_ORDER.find(candidate => siteScores[candidate] === topScore) ?? SITE_ORDER[0];
 
   // 同点のときは、本人がロールを直接選んでいる Q4 → Q5 の回答を優先する。
   // それでも決まらない場合だけ ROLE_ORDER で確定させる。
@@ -107,7 +133,7 @@ export function getResult(answers: number[]): QuizResult {
   const max = Math.max(...ROLE_ORDER.map(role => roleScores[role]));
   const role = priority.find(candidate => roleScores[candidate] === max) ?? ROLE_ORDER[0];
 
-  return { isHok: titleScore < 0, role };
+  return { site, role };
 }
 
 /** URL のクエリから受け取った回答。値は選択肢のインデックス、未回答・不正な値は null */

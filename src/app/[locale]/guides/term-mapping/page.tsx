@@ -8,18 +8,34 @@ import { buildArticle, buildBreadcrumb, buildGraph } from '@/utils/jsonld';
 import { ARTICLES, formatArticleDate } from '@/data/articles';
 import { getAlternates } from '@/utils/seo';
 import GlossaryTermLinks from '@/components/GlossaryTermLinks';
+import { SITE_ORIGINS, liveSitesFor } from '@/data/highlights';
 
 /**
- * HoK⇄ワイルドリフトの用語対応表と乗り換えガイド。
+ * 3タイトルの用語対応表と乗り換えガイド。
  *
- * 同じ概念が両タイトルで別の名前で呼ばれている（水晶⇄ネクサス、タイラント⇄ドラゴン等）。
- * 片方から乗り換える人が最初につまずくのはここなので、対応を一覧にし、
- * 名前だけでなく仕組みの違いを一行ずつ添える。単体の攻略サイトには置けない、
- * 2タイトルを扱うポータルにしか書けない記事。
+ * 同じ概念がタイトルごとに別の名前で呼ばれている（水晶／ネクサス／ベース、
+ * タイラント／ドラゴン／タートル）。乗り換える人が最初につまずくのはここなので、
+ * 対応を一覧にし、名前だけでなく仕組みの違いを一行ずつ添える。
+ * 単体の攻略サイトには置けない、複数タイトルを扱うポータルにしか書けない記事。
  */
 
-type MappingRow = { concept: string; hok: string; wr: string; note: string };
+type MappingRow = { concept: string; hok: string; wr: string; mlbb: string; note: string };
 type MappingSection = { heading: string; intro: string; rows: MappingRow[] };
+
+/**
+ * 表の列と、乗り換えカードの並び。key は messages のキー接頭辞。
+ *
+ * 解説なので、公開していない言語でも3タイトルとも出す。
+ * 読者を姉妹サイトへ送るボタンだけが、その言語で公開しているサイトに絞られる。
+ *
+ * guide は各サイトの初心者ガイドのパス。**サイトごとに違うので直書きしない。**
+ * MLBB Hub には /guide が無く（404）、入口は /guide/basics になっている。
+ */
+const TITLES = [
+  { key: 'hok', site: 'hok', guide: '/guide', text: 'text-amber-700', bar: 'border-amber-500', cta: 'bg-amber-500 hover:bg-amber-400' },
+  { key: 'wr', site: 'wildrift', guide: '/guide', text: 'text-cyan-700', bar: 'border-cyan-500', cta: 'bg-cyan-500 hover:bg-cyan-400' },
+  { key: 'mlbb', site: 'mlbb', guide: '/guide/basics', text: 'text-violet-700', bar: 'border-violet-500', cta: 'bg-violet-500 hover:bg-violet-400' },
+] as const;
 
 const meta = ARTICLES['term-mapping'];
 
@@ -54,8 +70,8 @@ export default async function TermMappingPage({ params }: { params: Promise<{ lo
   );
 
   const sections = t.raw('sections') as MappingSection[];
-  const hokToWr = t.raw('switchGuide.hokToWr') as string[];
-  const wrToHok = t.raw('switchGuide.wrToHok') as string[];
+  // 姉妹サイトへのボタンは、その言語で公開しているサイトだけ出す
+  const liveTitles = TITLES.filter((title) => liveSitesFor(locale).includes(title.site));
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-700 flex flex-col font-sans">
@@ -101,12 +117,14 @@ export default async function TermMappingPage({ params }: { params: Promise<{ lo
               <p>{section.intro}</p>
 
               <div className="overflow-x-auto">
-                <table className="w-full text-left border-collapse text-xs md:text-sm">
+                {/* 列が5つになるので、狭い画面では横に送る。折り返して潰すより読める */}
+                <table className="w-full text-left border-collapse text-xs md:text-sm" style={{ minWidth: '860px' }}>
                   <thead>
                     <tr className="bg-slate-100 border-b border-slate-200 text-slate-600">
                       <th className="py-3 px-3">{t('tableHeader.concept')}</th>
-                      <th className="py-3 px-3 text-amber-700">{t('tableHeader.hok')}</th>
-                      <th className="py-3 px-3 text-cyan-700">{t('tableHeader.wr')}</th>
+                      {TITLES.map(({ key, text }) => (
+                        <th key={key} className={`py-3 px-3 ${text}`}>{t(`tableHeader.${key}`)}</th>
+                      ))}
                       <th className="py-3 px-3">{t('tableHeader.note')}</th>
                     </tr>
                   </thead>
@@ -114,8 +132,9 @@ export default async function TermMappingPage({ params }: { params: Promise<{ lo
                     {section.rows.map((row, j) => (
                       <tr key={j} className="align-top">
                         <td className="py-3 px-3 font-semibold text-slate-900 whitespace-nowrap">{row.concept}</td>
-                        <td className="py-3 px-3">{row.hok}</td>
-                        <td className="py-3 px-3">{row.wr}</td>
+                        {TITLES.map(({ key }) => (
+                          <td key={key} className="py-3 px-3">{row[key]}</td>
+                        ))}
                         <td className="py-3 px-3 text-slate-600 min-w-[14rem]">{row.note}</td>
                       </tr>
                     ))}
@@ -130,41 +149,36 @@ export default async function TermMappingPage({ params }: { params: Promise<{ lo
               {t('switchGuide.heading')}
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-5 bg-white border-l-4 border-cyan-500 rounded-r-xl shadow-sm space-y-3">
-                <h3 className="font-bold text-cyan-700">{tCommon('switchHokToWr')}</h3>
-                {hokToWr.map((paragraph, i) => (
-                  <p key={i} className="text-sm text-slate-700 leading-relaxed">{paragraph}</p>
-                ))}
-              </div>
-              <div className="p-5 bg-white border-l-4 border-amber-500 rounded-r-xl shadow-sm space-y-3">
-                <h3 className="font-bold text-amber-700">{tCommon('switchWrToHok')}</h3>
-                {wrToHok.map((paragraph, i) => (
-                  <p key={i} className="text-sm text-slate-700 leading-relaxed">{paragraph}</p>
-                ))}
-              </div>
+            {/* 「どこから来たか」で1枚ずつ。行き先ごとに分けると6通りになって読み切れない */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {TITLES.map(({ key, text, bar }) => {
+                const paragraphs = t.raw(`switchGuide.from.${key}.body`) as string[];
+                return (
+                  <div key={key} className={`p-5 bg-white border-l-4 rounded-r-xl shadow-sm space-y-3 ${bar}`}>
+                    <h3 className={`font-bold ${text}`}>{t(`switchGuide.from.${key}.heading`)}</h3>
+                    {paragraphs.map((paragraph, i) => (
+                      <p key={i} className="text-sm text-slate-700 leading-relaxed">{paragraph}</p>
+                    ))}
+                  </div>
+                );
+              })}
             </div>
           </section>
 
           <p>{t('closing')}</p>
 
           <div className="pt-4 flex flex-wrap justify-center gap-3">
-            <a
-              href={`https://hok.hub-game.com/${locale}/guide`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl text-sm transition-all"
-            >
-              {t('ctaHok')}
-            </a>
-            <a
-              href={`https://wildrift.hub-game.com/${locale}/guide`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-xl text-sm transition-all"
-            >
-              {t('ctaWr')}
-            </a>
+            {liveTitles.map(({ key, site, guide, cta }) => (
+              <a
+                key={key}
+                href={`${SITE_ORIGINS[site]}/${locale}${guide}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center gap-2 px-5 py-3 text-slate-950 font-bold rounded-xl text-sm transition-all ${cta}`}
+              >
+                {t(`cta.${key}`)}
+              </a>
+            ))}
           </div>
 
           <GlossaryTermLinks termKeys={['Objective', 'Ward', 'Recall', 'Support', 'Jungler', 'Nexus', 'Build', 'Meta']} />

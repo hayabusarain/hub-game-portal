@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from "@/i18n/routing";
-import { BookMarked, BookOpen, ChevronRight, Flame, Sparkles, Swords, Target, Compass, ArrowLeftRight } from "lucide-react";
+import { BookMarked, BookOpen, ChevronRight, Flame, Sparkles, Swords, Target, Compass, ArrowLeftRight, Gem } from "lucide-react";
 import HeaderNav from "@/components/HeaderNav";
 import FooterNav from "@/components/FooterNav";
 import JsonLd from "@/components/JsonLd";
@@ -20,6 +20,7 @@ export default async function GuidesPage({ params }: { params: Promise<{ locale:
   const tWhat = await getTranslations('GuideWhatIsMoba');
   const tHok = await getTranslations('GuideHOK');
   const tWr = await getTranslations('GuideWildRift');
+  const tMlbb = await getTranslations('GuideMLBB');
   const tComp = await getTranslations('GuideCompare');
   const tMap = await getTranslations('GuideTermMapping');
   const tGlossary = await getTranslations('Glossary');
@@ -58,6 +59,14 @@ export default async function GuidesPage({ params }: { params: Promise<{ locale:
       tag: t('tagReview'),
       color: "bg-cyan-500 text-slate-950",
       icon: Target
+    },
+    {
+      slug: "mobile-legends",
+      title: tMlbb('title'),
+      desc: tMlbb('intro'),
+      tag: t('tagReview'),
+      color: "bg-violet-500 text-white",
+      icon: Gem
     },
     {
       slug: "compare",

@@ -16,6 +16,7 @@ import FooterNav from '@/components/FooterNav';
 import JsonLd from '@/components/JsonLd';
 import QuizForm from '@/components/QuizForm';
 import { QUESTIONS, getResult, parseAnswers, type Role } from '@/lib/quiz';
+import type { HighlightSite } from '@/data/highlights';
 import { getAlternates } from '@/utils/seo';
 import { buildBreadcrumb, buildGraph } from '@/utils/jsonld';
 
@@ -27,6 +28,40 @@ const ROLE_ICONS: Record<Role, LucideIcon> = {
   mid: Wand2,
   adc: Crosshair,
   support: HeartHandshake
+};
+
+/**
+ * 結果の見た目と、参照する文言・記事。
+ *
+ * ロール名も説明文もタイトルごとに別物にしてある。レーンの呼び名が3タイトルで違ううえ
+ * （EXP／クラッシュ／トップ、ゴールド／ファーム／デュオ）、ワイルドリフト前提の文面を
+ * そのまま出すと「Honor of Kings のロームがワードを置く」ことになる。
+ *
+ * key は messages 側の接頭辞。ワイルドリフトだけ 'wr' なのは既存のキーに合わせたもの。
+ * 色は他のページのタイトル別の色（トップのバッジ、最新データ表の見出し）と揃えてある。
+ */
+const SITE_RESULT: Record<
+  HighlightSite,
+  { key: string; guide: string; panel: string; badge: string }
+> = {
+  hok: {
+    key: 'hok',
+    guide: '/guides/honor-of-kings',
+    panel: 'bg-gradient-to-br from-amber-50 to-orange-50',
+    badge: 'from-amber-400 to-orange-500'
+  },
+  wildrift: {
+    key: 'wr',
+    guide: '/guides/wild-rift',
+    panel: 'bg-gradient-to-br from-cyan-50 to-blue-50',
+    badge: 'from-cyan-500 to-blue-600'
+  },
+  mlbb: {
+    key: 'mlbb',
+    guide: '/guides/mobile-legends',
+    panel: 'bg-gradient-to-br from-violet-50 to-indigo-50',
+    badge: 'from-violet-500 to-indigo-600'
+  }
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -87,17 +122,9 @@ export default async function DiagnosisPage({
         {result && answers ? (
           <>
             <section className="overflow-hidden rounded-3xl border border-slate-200 bg-white p-1 shadow-xl shadow-indigo-100/50">
-              <div
-                className={`flex flex-col items-center gap-5 rounded-[22px] p-6 text-center ${
-                  result.isHok
-                    ? 'bg-gradient-to-br from-amber-50 to-orange-50'
-                    : 'bg-gradient-to-br from-indigo-50 to-blue-50'
-                }`}
-              >
+              <div className={`flex flex-col items-center gap-5 rounded-[22px] p-6 text-center ${SITE_RESULT[result.site].panel}`}>
                 <div
-                  className={`flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br text-white shadow-lg ${
-                    result.isHok ? 'from-amber-400 to-orange-500' : 'from-indigo-500 to-blue-600'
-                  }`}
+                  className={`flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br text-white shadow-lg ${SITE_RESULT[result.site].badge}`}
                 >
                   <CheckCircle2 size={32} />
                 </div>
@@ -107,20 +134,19 @@ export default async function DiagnosisPage({
                     {t('resultTitleLabel')}
                   </p>
                   <h2 className="mb-2 text-xl font-black text-slate-900">
-                    {result.isHok ? t('resultHok') : t('resultWr')}
+                    {t(`result_${SITE_RESULT[result.site].key}`)}
                   </h2>
                   <p className="text-sm font-medium leading-relaxed text-slate-600">
-                    {result.isHok ? t('resultHokDesc') : t('resultWrDesc')}
+                    {t(`result_${SITE_RESULT[result.site].key}_desc`)}
                   </p>
                 </div>
 
                 {(() => {
-                  // ロール名も説明文もタイトルごとに別物。レーン名（クラッシュ／ファーム／ローム）が違ううえ、
-                  // ワイルドリフト前提の文面をそのまま出すと「HoK のロームがワードを置く」ことになる
-                  const game = result.isHok ? 'hok' : 'wr';
+                  const site = SITE_RESULT[result.site];
+                  const game = site.key;
                   const roleName = t(`role_${game}_${result.role}`);
                   const RoleIcon = ROLE_ICONS[result.role];
-                  const gameName = result.isHok ? t('gameHok') : t('gameWr');
+                  const gameName = t(`game_${game}`);
                   const shareUrl = `https://x.com/intent/post?text=${encodeURIComponent(
                     t('shareText', { game: gameName, role: roleName })
                   )}&url=${encodeURIComponent(`${SITE_URL}/${locale}/diagnosis`)}`;
@@ -130,11 +156,7 @@ export default async function DiagnosisPage({
                       <div className="w-full rounded-2xl border border-white bg-white/80 p-5 text-left shadow-sm">
                         <div className="mb-3 flex items-center gap-3">
                           <div
-                            className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-md ${
-                              result.isHok
-                                ? 'from-amber-400 to-orange-500'
-                                : 'from-indigo-500 to-blue-600'
-                            }`}
+                            className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-md ${site.badge}`}
                           >
                             <RoleIcon size={22} />
                           </div>
@@ -154,7 +176,7 @@ export default async function DiagnosisPage({
 
                       <div className="flex w-full flex-col gap-3">
                         <Link
-                          href={result.isHok ? '/guides/honor-of-kings' : '/guides/wild-rift'}
+                          href={site.guide}
                           className="flex w-full items-center justify-center gap-2 rounded-2xl bg-slate-900 py-3.5 text-sm font-bold text-white shadow-md transition-all hover:shadow-lg active:scale-95"
                         >
                           {t('readGuide')} <ArrowRight size={16} />

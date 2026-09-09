@@ -8,11 +8,54 @@ import QuizForm from "@/components/QuizForm";
 import GlossaryHighlights from "@/components/GlossaryHighlights";
 import TitleSnapshot from "@/components/TitleSnapshot";
 import { getAlternates } from '@/utils/seo';
-import { getLatestHighlights, buildHighlightUrl, SITE_LABELS } from '@/data/highlights';
+import {
+  getLatestHighlights,
+  buildHighlightUrl,
+  SITE_LABELS,
+  SITE_ORIGINS,
+  liveSitesFor,
+  type HighlightSite,
+} from '@/data/highlights';
 import { getLiveHighlights } from '@/lib/sisterSites';
 
 // 姉妹サイトの最新情報を取り込むため、静的生成のまま30分ごとに作り直す
 export const revalidate = 1800;
+
+/**
+ * ゲームカードの素材と文言キー。
+ *
+ * 並ぶ順と出す・出さないは highlights.ts の liveSitesFor(locale) が決める。
+ * **カードを1枚足すためにこのファイルへ JSX を書き足す必要は無い。**
+ * ここに1行、messages に2つ、画像を1枚置けば増える。
+ *
+ * 言語別に絞るのは、日本語だけで公開しているサイトを英語のトップに出さないため。
+ * 出すと、英語の読者が読めないページへ送られる。
+ *
+ * バナーは公式アートを自サイトにホストしたもの。外部CDNへ直リンクすると、
+ * 相手の都合でURLが変わったときに画像が消える。
+ *
+ * mobile-legends.jpg は 2026-09-09 に作成。公式サイト（mobilelegends.com）の
+ * ヒーロー面が出している Kalea の painting（750×721、背景は黒）を、カードの比率に
+ * 合わせた 900×413 の地の上へ screen 合成したもの。絵そのものには手を入れていない。
+ * 3枚とも同じ比率で、カード側が上端を基準に切り抜く。
+ *
+ * **MLBB Hub 本体は方針が違う。** あちらは公式由来の画像を 128px 以下のアイコンに
+ * 限り、スプラッシュを載せない（モバレサイトの docs/OFFICIAL_ASSETS.md）。
+ * Moonton の許諾も得ていない。この1枚はポータル側の既存2枚に揃えた運営者の判断で、
+ * 削除要請が来たら3枚とも取り下げる。
+ */
+const SITE_CARDS: Record<HighlightSite, { image: string; titleKey: string; descKey: string }> = {
+  hok: { image: '/images/games/honor-of-kings.jpg', titleKey: 'hokTitle', descKey: 'hokDesc' },
+  wildrift: { image: '/images/games/wild-rift.jpg', titleKey: 'wildRiftTitle', descKey: 'wildRiftDesc' },
+  mlbb: { image: '/images/games/mobile-legends.jpg', titleKey: 'mlbbTitle', descKey: 'mlbbDesc' },
+};
+
+/** 「最新パッチの注目」のサイト別バッジ色。表の見出し色（TitleSnapshot）と揃えてある */
+const PICK_BADGE: Record<HighlightSite, string> = {
+  hok: 'bg-amber-100 text-amber-700',
+  wildrift: 'bg-cyan-100 text-cyan-700',
+  mlbb: 'bg-violet-100 text-violet-700',
+};
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -30,7 +73,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   // 姉妹サイトのパッチ情報は各サイトの /api/latest から取得し、
   // 取得できた分を手動ピックより前に出す（落ちていても手動分だけで成立する）
   const livePicks = await getLiveHighlights(locale);
-  const picks = [...livePicks, ...getLatestHighlights(4)].slice(0, 4);
+  const picks = [...livePicks, ...getLatestHighlights(4, locale)].slice(0, 4);
 
   // 一番新しいピックの日付を、そのまま「最終更新」として見せる
   const latestDate = picks.reduce((newest, p) => (p.date > newest ? p.date : newest), picks[0].date);
@@ -69,86 +112,59 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             <Gamepad2 size={20} className="text-indigo-500" /> {t('gamesSectionTitle')}
           </h3>
           
-          {/* Wild Rift Card */}
-          <Link href="https://wildrift.hub-game.com" target="_blank" rel="noopener noreferrer" className="group block relative bg-white rounded-[32px] overflow-hidden shadow-sm border border-slate-200/60 transition-all active:scale-[0.98] hover:shadow-xl hover:border-indigo-100">
-            {/* バナー: 公式アートは外部CDNへ直リンクせず自サイトにホストする（相手の都合で壊れないように） */}
-            <div className="w-full h-44 relative overflow-hidden bg-slate-200">
-              <Image
-                src="/images/games/wild-rift.jpg"
-                alt=""
-                aria-hidden="true"
-                fill
-                sizes="(min-width: 768px) 768px, 100vw"
-                priority
-                className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+          {liveSitesFor(locale).map((site, index) => {
+            const card = SITE_CARDS[site];
+            return (
+              <Link
+                key={site}
+                href={SITE_ORIGINS[site]}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block relative bg-white rounded-[32px] overflow-hidden shadow-sm border border-slate-200/60 transition-all active:scale-[0.98] hover:shadow-xl hover:border-indigo-100"
+              >
+                {/* バナー: 公式アートは外部CDNへ直リンクせず自サイトにホストする（相手の都合で壊れないように） */}
+                <div className="w-full h-44 relative overflow-hidden bg-slate-200">
+                  <Image
+                    src={card.image}
+                    alt=""
+                    aria-hidden="true"
+                    fill
+                    sizes="(min-width: 768px) 768px, 100vw"
+                    priority={index === 0}
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-              <div className="absolute bottom-5 left-5 flex gap-2">
-                <span className="px-3 py-1.5 text-[10px] font-black bg-indigo-500/90 backdrop-blur-md text-white rounded-lg shadow-sm tracking-wider">
-                  MOBA
-                </span>
-                <span className="px-3 py-1.5 text-[10px] font-black bg-emerald-500/90 backdrop-blur-md text-white rounded-lg shadow-sm tracking-wider">
-                  {t('activeBadge')}
-                </span>
-              </div>
-            </div>
-            
-            {/* Card Content */}
-            <div className="p-6">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="text-xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors">{t('wildRiftTitle')}</h3>
-                <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-indigo-50 transition-colors shrink-0">
-                  <ArrowRight size={18} className="text-slate-400 group-hover:text-indigo-600 transition-colors" />
+                  <div className="absolute bottom-5 left-5 flex gap-2">
+                    <span className="px-3 py-1.5 text-[10px] font-black bg-indigo-500/90 backdrop-blur-md text-white rounded-lg shadow-sm tracking-wider">
+                      MOBA
+                    </span>
+                    <span className="px-3 py-1.5 text-[10px] font-black bg-emerald-500/90 backdrop-blur-md text-white rounded-lg shadow-sm tracking-wider">
+                      {t('activeBadge')}
+                    </span>
+                  </div>
                 </div>
-              </div>
-              <p className="text-xs text-slate-500 leading-relaxed font-medium">
-                {t('wildRiftDesc')}
-              </p>
-            </div>
-          </Link>
 
-          {/* Honor of Kings Card */}
-          <Link href="https://hok.hub-game.com" target="_blank" rel="noopener noreferrer" className="group block relative bg-white rounded-[32px] overflow-hidden shadow-sm border border-slate-200/60 transition-all active:scale-[0.98] hover:shadow-xl hover:border-indigo-100">
-            {/* バナー: 公式アートは外部CDNへ直リンクせず自サイトにホストする（相手の都合で壊れないように） */}
-            <div className="w-full h-44 relative overflow-hidden bg-slate-200">
-              <Image
-                src="/images/games/honor-of-kings.jpg"
-                alt=""
-                aria-hidden="true"
-                fill
-                sizes="(min-width: 768px) 768px, 100vw"
-                className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-              <div className="absolute bottom-5 left-5 flex gap-2">
-                <span className="px-3 py-1.5 text-[10px] font-black bg-indigo-500/90 backdrop-blur-md text-white rounded-lg shadow-sm tracking-wider">
-                  MOBA
-                </span>
-                <span className="px-3 py-1.5 text-[10px] font-black bg-emerald-500/90 backdrop-blur-md text-white rounded-lg shadow-sm tracking-wider">
-                  {t('activeBadge')}
-                </span>
-              </div>
-            </div>
-            
-            {/* Card Content */}
-            <div className="p-6">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="text-xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors">{t('hokTitle')}</h3>
-                <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-indigo-50 transition-colors shrink-0">
-                  <ArrowRight size={18} className="text-slate-400 group-hover:text-indigo-600 transition-colors" />
+                <div className="p-6">
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="text-xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors">
+                      {t(card.titleKey)}
+                    </h3>
+                    <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-indigo-50 transition-colors shrink-0">
+                      <ArrowRight size={18} className="text-slate-400 group-hover:text-indigo-600 transition-colors" />
+                    </div>
+                  </div>
+                  <p className="text-xs text-slate-500 leading-relaxed font-medium">
+                    {t(card.descKey)}
+                  </p>
                 </div>
-              </div>
-              <p className="text-xs text-slate-500 leading-relaxed font-medium">
-                {t('hokDesc')}
-              </p>
-            </div>
-          </Link>
+              </Link>
+            );
+          })}
 
         </section>
 
-        {/* 2タイトルの最新データ: 数字はHoK側の /api/latest から取り込む。取れなければ表ごと出ない */}
+        {/* タイトル別の最新データ: 数字は各サイトの /api/latest から取り込む。列は公開済みのサイトぶんだけ出る */}
         <TitleSnapshot locale={locale} />
 
         {/* 最新パッチの注目: 姉妹サイトのピックアップ。自動取得分と src/data/highlights.ts の常設プールを混ぜて出す */}
@@ -178,11 +194,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                     className="group flex flex-col gap-1.5 bg-white border border-slate-200/80 rounded-2xl p-4 shadow-sm hover:shadow-md hover:border-amber-300 transition-all active:scale-[0.99]"
                   >
                     <span
-                      className={`w-fit px-2.5 py-1 rounded-lg text-[10px] font-black tracking-wide ${
-                        pick.site === 'hok'
-                          ? 'bg-amber-100 text-amber-700'
-                          : 'bg-indigo-100 text-indigo-700'
-                      }`}
+                      className={`w-fit px-2.5 py-1 rounded-lg text-[10px] font-black tracking-wide ${PICK_BADGE[pick.site]}`}
                     >
                       {SITE_LABELS[pick.site]}
                     </span>

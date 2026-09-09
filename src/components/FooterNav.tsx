@@ -1,12 +1,17 @@
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { Link } from "@/i18n/routing";
 import { ChevronRight, Gamepad2 } from "lucide-react";
+import { SITE_LABELS, SITE_ORIGINS, liveSitesFor } from '@/data/highlights';
 
 // 表示するのはテキストとリンクだけで状態もイベントハンドラも持たないため、
 // サーバーコンポーネントとして描画し、翻訳メッセージをクライアントへ送らない
 export default async function FooterNav() {
   const t = await getTranslations();
   const footerT = await getTranslations('Footer');
+  // ゲーム欄はその言語で公開しているサイトだけを並べる。
+  // 日本語だけのサイトを英語のフッターに出すと、読めないページへ送ることになる
+  const locale = await getLocale();
+  const games = liveSitesFor(locale);
 
   return (
     <footer className="mt-auto border-t border-slate-800 bg-slate-950 px-6 py-10 relative overflow-hidden text-slate-400">
@@ -38,12 +43,17 @@ export default async function FooterNav() {
 
           <div className="flex flex-col gap-3">
             <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest">{footerT('games')}</h3>
-            <a href="https://hok.hub-game.com" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-slate-300 hover:text-amber-400 transition-colors flex items-center gap-1 group">
-              <ChevronRight size={14} className="text-slate-600 group-hover:text-amber-400 transition-colors" /> Honor of Kings
-            </a>
-            <a href="https://wildrift.hub-game.com" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-slate-300 hover:text-amber-400 transition-colors flex items-center gap-1 group">
-              <ChevronRight size={14} className="text-slate-600 group-hover:text-amber-400 transition-colors" /> Wild Rift
-            </a>
+            {games.map((site) => (
+              <a
+                key={site}
+                href={SITE_ORIGINS[site]}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-semibold text-slate-300 hover:text-amber-400 transition-colors flex items-center gap-1 group"
+              >
+                <ChevronRight size={14} className="text-slate-600 group-hover:text-amber-400 transition-colors" /> {SITE_LABELS[site]}
+              </a>
+            ))}
           </div>
 
           <div className="flex flex-col gap-3">

@@ -38,7 +38,8 @@ export const SITE_ORIGINS: Record<HighlightSite, string> = {
 export const SITE_LABELS: Record<HighlightSite, string> = {
   wildrift: 'Wild Rift',
   hok: 'Honor of Kings',
-  mlbb: 'Mobile Legends: Bang Bang',
+  // バッジやフッターに入る短い名前。正式名称は記事本文と免責事項が持つ
+  mlbb: 'Mobile Legends',
 };
 
 /**
@@ -83,6 +84,34 @@ export const liveSitesFor = (locale: string): HighlightSite[] =>
   SITE_ORDER.filter((s) => SITE_LOCALES[s].includes(locale));
 
 export const highlights: Highlight[] = [
+  {
+    id: 'mlbb-guide-basics-2026-09-10',
+    site: 'mlbb',
+    path: '/guide/basics',
+    date: '2026-09-10',
+    en: {
+      title: 'The Mobile Legends rules that only appear behind a question mark',
+      body: 'Turtle at 2:00, the five-minute turret shield, and the 22 shop rules hidden in the item list. The timings and systems that decide your early calls.',
+    },
+    ja: {
+      title: 'モバレの「?」を開かないと出てこない決まり',
+      body: 'タートルは2:00、外側タワーのシールドは5分、ロードは8:00。装備一覧の「?」に入っている22条の決まりと合わせて、序盤の判断に効く仕組みをまとめています。',
+    },
+  },
+  {
+    id: 'mlbb-tier-list-2026-09-10',
+    site: 'mlbb',
+    path: '/tier-list',
+    date: '2026-09-10',
+    en: {
+      title: 'Mobile Legends tier list for all 133 heroes',
+      body: 'Win, pick and ban rates from the official Hero Ranking, split by lane, so you can see which heroes are actually holding up right now.',
+    },
+    ja: {
+      title: 'モバイル・レジェンド 全133体のTier表',
+      body: '公式の Hero Ranking から取った勝率・出現率・BAN率を、全体と5レーンに分けて掲載。いま実際に勝てているヒーローが分かります。',
+    },
+  },
   {
     id: 'hok-item-usage-2026-08-26',
     site: 'hok',
@@ -173,9 +202,15 @@ export const highlights: Highlight[] = [
  * date の新しい順に並べて上位 limit 件を返す。
  * 同じ日付のものは配列の並び順を保つ（sort が安定ソートであることを利用）。
  * つまり同日に複数足すときは、見せたい順に並べておけばそのまま出る。
+ *
+ * locale を渡すと、その言語で公開しているサイトのピックだけに絞る。
+ * **読者が踏むカードなので、必ず渡すこと。** 渡さないと、日本語だけで公開している
+ * サイトのページが英語のトップに並び、読めないページへ送ることになる。
  */
-export function getLatestHighlights(limit = 4): Highlight[] {
+export function getLatestHighlights(limit = 4, locale?: string): Highlight[] {
+  const readable = locale ? liveSitesFor(locale) : liveSites();
   return [...highlights]
+    .filter((h) => readable.includes(h.site))
     .sort((a, b) => b.date.localeCompare(a.date))
     .slice(0, limit);
 }
