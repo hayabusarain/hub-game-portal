@@ -9,7 +9,7 @@
  *   2. 記事の日付    … articles.ts の日付が YYYY-MM-DD で、updated が published 以降・未来でないか
  *   3. sitemap 網羅  … STATIC_PATHS 全部に lastmod とページがあるか。逆に、page.tsx があるのに
  *                      STATIC_PATHS に無いページや getAlternates を呼んでいないページが無いか
- *   4. 権利表記      … 2タイトルの権利者（Riot / Tencent）が両言語の3キーに入っているか
+ *   4. 権利表記      … 3タイトルの権利者（Riot / Tencent / Moonton）が両言語の3キーに入っているか
  *   5. 広告の整合    … プライバシーポリシーが AdSense 利用を書いているなら layout に広告コードがあるか
  *   6. 更新日の鮮度  … messages を触った作業ツリーで、記事・ページの更新日が今日になっているか
  */
@@ -111,12 +111,17 @@ for (const [p, d] of Object.entries(pageUpdated)) {
 
 /* ---------- 4. 権利表記 ---------- */
 {
+  // 扱っているタイトルの権利者。サイトを足したらここにも足す。
+  // 目的は、3キーのどれかから権利者名が抜け落ちるのを止めること。
+  // 2026-09-10 に Moonton を追加した（MLBB を扱い始めたのに検査が2社のままだった）
+  const HOLDERS = ['Riot Games', 'Tencent', 'Moonton'];
   const keys = [['Home', 'disclaimerText'], ['Terms', 'copyrightNote'], ['Disclaimer', 'copyrightsText']];
   for (const [ns, key] of keys) {
     for (const [lang, msgs] of [['ja', ja], ['en', en]]) {
       const text = msgs[ns]?.[key] ?? '';
-      if (!/Riot Games/.test(text) || !/Tencent/.test(text)) {
-        report('権利表記', `messages/${lang}.json ${ns}.${key} に Riot Games と Tencent の両方が入っていない`);
+      const missing = HOLDERS.filter((h) => !text.includes(h));
+      if (missing.length) {
+        report('権利表記', `messages/${lang}.json ${ns}.${key} に ${missing.join('・')} が入っていない`);
       }
     }
   }

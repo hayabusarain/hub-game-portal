@@ -10,7 +10,7 @@ import { toAnchorId } from '@/utils/glossary';
  * 44語の中に埋もれていてトップからは辿れない。そこで初戦で判断が変わる5語だけを
  * 抜き出し、note をタイトルごとのセルに割って見せる。
  *
- * /guides/term-mapping（22項目）とは切り口を分けている。
+ * /guides/term-mapping（23項目）とは切り口を分けている。
  * あちらは「呼び名の全対応」、ここは「1試合目でやらかす点」。行を増やさないこと。
  *
  * 文言は messages の Home.firstMatch* から読む。ここで持つのは並び順とアンカーだけ。
@@ -83,8 +83,8 @@ export default async function GlossaryHighlights() {
               href={`/glossary#${item.anchor}`}
               className="group block bg-white border border-slate-200/80 rounded-3xl p-4 shadow-sm hover:shadow-md hover:border-amber-300 transition-all active:scale-[0.99]"
             >
-              {/* 1セル目: つまずく場面。カードを縦に積むと3列の表頭が付けられないので、
-                  列見出しは読み上げ用に持たせ、HoK/WR の2セルは見えるラベルで示す */}
+              {/* 1セル目: つまずく場面。カードを縦に積むと表頭が付けられないので、
+                  列見出しは読み上げ用に持たせ、タイトル別のセルは見えるラベルで示す */}
               <div className="flex items-start justify-between gap-3">
                 <h4 className="text-sm font-black text-slate-900 leading-snug flex items-center gap-2">
                   <span

@@ -215,6 +215,28 @@ export function getLatestHighlights(limit = 4, locale?: string): Highlight[] {
     .slice(0, limit);
 }
 
+/**
+ * 取り込みに失敗したサイトを埋めるための手動ピック。
+ *
+ * `covered` に入っているサイト（= /api/latest から取り込めたサイト）は返さない。
+ * トップの見出しは「各サイトの最新パッチから1件ずつ」と約束しているので、
+ * **同じサイトのカードが2枚並ばないようにする。** 1サイトにつき最大1件。
+ *
+ * これで手動ピックの役目がはっきりする。ふだんは出ず、姉妹サイトの
+ * /api/latest が落ちた日にだけ、そのサイトの枠を埋める控えとして出る。
+ */
+export function getFallbackHighlights(covered: HighlightSite[], locale: string): Highlight[] {
+  const done = new Set<HighlightSite>(covered);
+  const readable = liveSitesFor(locale);
+  const out: Highlight[] = [];
+  for (const h of [...highlights].sort((a, b) => b.date.localeCompare(a.date))) {
+    if (!readable.includes(h.site) || done.has(h.site)) continue;
+    done.add(h.site);
+    out.push(h);
+  }
+  return out;
+}
+
 export function buildHighlightUrl(highlight: Highlight, locale: string): string {
   return `${SITE_ORIGINS[highlight.site]}/${locale}${highlight.path}`;
 }

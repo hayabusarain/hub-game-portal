@@ -143,7 +143,7 @@ export default function MobaGlossary({ terms: termRecord }: { terms: Record<stri
                   {item.def}
                 </p>
 
-                {/* 2タイトルで呼び名や仕組みが違う語には、その差を定義の下に添える */}
+                {/* タイトルで呼び名や仕組みが違う語には、その差を定義の下に添える */}
                 {item.note && (
                   <p className="mt-2 text-xs text-slate-700 leading-relaxed bg-slate-50 border border-slate-200 rounded-xl px-3 py-2">
                     <span className="font-black text-amber-700">{t('crossNote')}</span>

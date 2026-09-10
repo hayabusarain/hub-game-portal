@@ -12,7 +12,7 @@ import { SITE_ORIGINS, liveSites, liveSitesFor, type Highlight, type HighlightSi
  * 取り出し口は2つある。どちらも取得できなければ null か空配列を返し、
  * 呼び出し側がその部分だけを描かずに済ませる。
  * - getLiveHighlights() … 「最新パッチの注目」カード用。以前からある
- * - getSiteSnapshot()   … 「2タイトルの最新データ」表用。snapshot キーが無い相手には null を返すので、
+ * - getSiteSnapshot()   … 「タイトル別の最新データ」表用。snapshot キーが無い相手には null を返すので、
  *                         対応していないサイトが混ざっても既存の表示は変わらない
  */
 

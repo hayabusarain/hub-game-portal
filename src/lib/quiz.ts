@@ -127,11 +127,18 @@ export function getResult(answers: number[]): QuizResult {
   const topScore = Math.max(...SITE_ORDER.map(candidate => siteScores[candidate]));
   const site = SITE_ORDER.find(candidate => siteScores[candidate] === topScore) ?? SITE_ORDER[0];
 
-  // 同点のときは、本人がロールを直接選んでいる Q4 → Q5 の回答を優先する。
-  // それでも決まらない場合だけ ROLE_ORDER で確定させる。
-  const priority = [...leads, ...ROLE_ORDER];
-  const max = Math.max(...ROLE_ORDER.map(role => roleScores[role]));
-  const role = priority.find(candidate => roleScores[candidate] === max) ?? ROLE_ORDER[0];
+  // 結果は、本人が直接選んだロール（Q4 と Q5）のどちらかにする。
+  //
+  // 得点だけで決めると、選んでいないロールが勝つことがある。Q1・Q2 の補正で2点、
+  // Q4・Q5 の隣接ボーナスで2点、合わせて4点まで積めるのに対し、直接選んだロールは
+  // 3点から始まるため。実際に q1=1,q2=1,q4=ミッド,q5=ADC で「TOP」が返っていた
+  // （2026-09-10 に675通りを全列挙して発見）。
+  //
+  // Q1・Q2 の補正と隣接ボーナスは、Q4 と Q5 が食い違ったときにどちらを採るかを
+  // 決めるために使う。同点なら、自分でポジションを選んだ Q4 を優先する。
+  const candidates = leads.length > 0 ? leads : ROLE_ORDER;
+  const max = Math.max(...candidates.map(role => roleScores[role]));
+  const role = candidates.find(candidate => roleScores[candidate] === max) ?? ROLE_ORDER[0];
 
   return { site, role };
 }

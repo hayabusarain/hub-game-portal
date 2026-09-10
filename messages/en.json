@@ -2,7 +2,7 @@
   "Meta": {
     "home": {
       "title": "HUB-GAME | Mobile MOBA Strategy Portal",
-      "description": "Strategy portal for Honor of Kings, Wild Rift and Mobile Legends: Bang Bang. Compare the three titles, take the aptitude quiz, and browse the glossary to find the mobile MOBA that fits you."
+      "description": "Strategy portal for Honor of Kings, Wild Rift and Mobile Legends. Compare the three, take the aptitude quiz, and find the mobile MOBA that fits you."
     },
     "guides": {
       "title": "MOBA Guides & Articles",
@@ -50,7 +50,7 @@
     },
     "termMapping": {
       "title": "Mobile MOBA Term Map and Switching Guide",
-      "description": "Twenty-three things Honor of Kings, Wild Rift and Mobile Legends all have but call by different names, lined up side by side — each with a one-line note on how the mechanics actually differ, from spawn timers to what you are allowed to buy."
+      "description": "Twenty-three things Honor of Kings, Wild Rift and Mobile Legends all call by different names, side by side, each with a note on how the mechanics actually differ."
     },
     "diagnosis": {
       "title": "Mobile MOBA Aptitude Quiz: Your Game and Role in 5 Questions",
@@ -305,10 +305,10 @@
   },
   "GuideCompare": {
     "title": "Honor of Kings vs Wild Rift vs Mobile Legends: Which Suits You?",
-    "intro": "Tempo, objective timers and shop rules across three mobile MOBAs, from someone who plays all of them. Honor of Kings and Mobile Legends run 10 to 15 minutes a game, Wild Rift 15 to 20. Here is how to choose.",
+    "intro": "Tempo, objective timers and shop rules across three mobile MOBAs, lined up from the data each of our strategy sites publishes. Honor of Kings and Mobile Legends run 10 to 15 minutes a game, Wild Rift 15 to 20. Here is how to choose.",
     "category": "Comparison / Opinion",
     "heading": "Honor of Kings, Wild Rift or Mobile Legends? An Honest Take on Which to Play",
-    "lead": "Honor of Kings (HoK), League of Legends: Wild Rift and Mobile Legends: Bang Bang (MLBB) are the three heavyweights of mobile MOBA. If you are stuck on which one to start with, here is a straight answer from someone who plays all three.",
+    "lead": "Honor of Kings (HoK), League of Legends: Wild Rift and Mobile Legends: Bang Bang (MLBB) are the three heavyweights of mobile MOBA. If you are stuck on which one to start with, here is a straight answer from someone who runs a strategy site for each of them, built by lining the three data sets up side by side.",
     "cards": {
       "hok": {
         "label": "Fast, high-tempo matches",
@@ -387,7 +387,7 @@
       },
       {
         "axis": "Hero / champion count",
-        "hok": "116 heroes across six roles: Tank, Fighter, Assassin, Mage, Marksman and Support. 33 of them are listed under two roles.",
+        "hok": "116 heroes across six roles: Tank, Fighter, Assassin, Mage, Marksman and Support. 41 of them are listed under two roles.",
         "wr": "141 champions across the same six roles: Fighter, Tank, Mage, Assassin, Marksman and Support.",
         "mlbb": "133 heroes across the same six roles, with 35 listed under two. Roles and lanes are assigned separately, so one does not imply the other."
       },
@@ -413,7 +413,7 @@
         "axis": "Summoner spells / battle spells",
         "hok": "11 spells with 30-120s cooldowns, unlocked by account level: Sprint at level 1, Flash not until level 19. Jungle items require Smite.",
         "wr": "9 spells with 10-150s cooldowns. Smite is the shortest at 10s; Flash and Teleport the longest at 150s. Smite upgrades to Chill Smite after three uses.",
-        "mlbb": "12 spells, unlocked one at a time by account level. A new account has Retribution and Healing Spell only; Flicker comes at 12 and Purify at 21. Retribution is the price of entry to the jungle."
+        "mlbb": "12 spells, unlocked one at a time by account level. A new account has Retribution and Revitalize only; Flicker comes at 12 and Purify at 21. Retribution is the price of entry to the jungle."
       },
       {
         "axis": "Major objectives",
@@ -443,7 +443,7 @@
     "section4": {
       "heading": "■ 4. Verdict: Which One Is for You"
     },
-    "tableFootnote": "Figures for Honor of Kings and Wild Rift are as of August 29, 2026, and for Mobile Legends as of September 9, 2026. Hero, item, arcana/rune/emblem and spell counts come from the data published on each strategy site; patch dates are the publication dates of each game’s official patch notes, except Mobile Legends 2.1.95 which is taken from the in-game notes; app size and OS requirements are as shown on the Japanese App Store.",
+    "tableFootnote": "Figures for Honor of Kings and Wild Rift are as of August 29, 2026, and for Mobile Legends as of September 9, 2026. Hero, item, arcana/rune/emblem and spell counts come from the data published on each strategy site; patch dates are the publication dates of each game’s official patch notes, except Mobile Legends 2.1.95 which is taken from the in-game notes; app size and OS requirements are as shown on the Japanese App Store. Match lengths are the operator’s impression from playing, not a measured average.",
     "recommend": {
       "hok": {
         "heading": "▶ Who Honor of Kings Is For",
@@ -466,7 +466,7 @@
         "points": [
           "• Players watching their storage: 339.7 MB, the smallest of the three",
           "• Anyone who wants a short list to learn — objective timers and the shop rules cover most calls",
-          "• Players who do not mind verifying things themselves, since written coverage is still thin"
+          "• Players who do not mind verifying things themselves, since Japanese-language coverage is still thin"
         ]
       }
     }
@@ -525,7 +525,7 @@
     "reset": "Clear my answers",
     "answered": "{answered} / {total} answered",
     "incomplete": "Some questions are still unanswered. Fill in the rest, then submit again.",
-    "pageLead": "The title comes from Q1 to Q3. Each answer gives its title the weight of that question: three points for Q1, two each for Q2 and Q3. Split that way, one title always ends up ahead on its own, so a tie cannot happen. The role comes from Q4 and Q5: three points to the role you picked and one to the role beside it, with one more point each from your Q1 and Q2 answers. If two roles still tie, the role you picked yourself in Q4 wins, then Q5.",
+    "pageLead": "The title comes from Q1 to Q3. Each answer gives its title the weight of that question: three points for Q1, two each for Q2 and Q3. Split that way, one title always ends up ahead on its own, so a tie cannot happen. The role is always one of the two you picked yourself in Q4 and Q5. When those disagree, your Q1 and Q2 answers and the points that spill onto neighbouring roles decide which one wins, and if they are still level, Q4 takes it.",
     "yourAnswers": "Your answers",
     "backToTop": "Back to the home page",
     "howItWorks": "How the quiz scores your answers",
@@ -542,7 +542,7 @@
     "game_wr": "Wild Rift",
     "game_mlbb": "Mobile Legends",
     "role_mlbb_top": "EXP Lane",
-    "role_mlbb_top_desc": "The EXP lane is the island lane: you take all the experience there, level fastest, and get the least help. Your answers lean toward handling a situation on your own, which is what a long 1v1 in the EXP lane asks for. The Turtle pit is right beside it, so this is also the lane that can reach the river at 2:00.",
+    "role_mlbb_top_desc": "The EXP lane is the island lane: you take all the experience there, level fastest, and get the least help. Your answers lean toward handling a situation on your own, which is what a long 1v1 in the EXP lane asks for. The Turtle pit is right beside it, and only this lane and the jungler can reach the river at 2:00.",
     "role_mlbb_jungle": "Jungle",
     "role_mlbb_jungle_desc": "Junglers skip laning entirely and clear camps instead. You said you win by reading the enemy and hitting first, and jungle is the one role that chooses where the fight happens. It requires the battle spell Retribution, which also restricts you to jungle boots. The red and blue buffs run out after 75 seconds, so be in position for the next one before then.",
     "role_mlbb_mid": "Mid Lane",
@@ -574,7 +574,7 @@
         "term": "Laning",
         "cat": "basic",
         "def": "The early phase of the game where you kill minions in your lane to earn experience and gold.",
-        "note": "The lane names differ. Wild Rift uses Top (Baron Lane), Mid and Duo (Dragon Lane); Honor of Kings uses Clash Lane (upper), Mid and Farm Lane (lower); Mobile Legends uses EXP Lane (upper), Mid and Gold Lane (lower).",
+        "note": "The lane names differ. Wild Rift uses Top (Baron Lane), Mid and Duo (Dragon Lane); Honor of Kings uses Clash Lane (upper), Mid and Farm Lane (lower). Mobile Legends uses EXP Lane, Mid and Gold Lane, and which side of the map they sit on changes between matches.",
         "links": [
           {
             "site": "hok",
@@ -783,7 +783,7 @@
         "term": "Minions",
         "cat": "basic",
         "def": "The AI soldiers that march down each lane. They are your steady income — clearing waves pays for your build, and shoving them into a tower is how you take it down.",
-        "note": "Honor of Kings adds a Ballista from four minutes, and killing the Overlord turns your next two waves into Dragon Vanguards. In Wild Rift, Baron empowers nearby minions. Mobile Legends runs four-minion waves for the first ten, then adds a siege minion after five minutes.",
+        "note": "Honor of Kings adds a Ballista from four minutes, and killing the Overlord turns your next two waves into Dragon Vanguards. In Wild Rift, Baron empowers nearby minions. In Mobile Legends the mid lane runs four-minion waves for the first ten, then adds a siege minion after five minutes.",
         "links": [
           {
             "site": "hok",
@@ -806,7 +806,7 @@
         "term": "Recall (Back)",
         "cat": "basic",
         "def": "Channeling back to your fountain to heal and shop. Time it right after you shove the wave in, so you lose the least gold and experience while you are away.",
-        "note": "Honor of Kings lets you buy anywhere, so a recall is for healing. In Wild Rift, go before the cannon minion arrives or right after shoving the wave. Mobile Legends puts small healing camps up within 30 to 40 seconds, so health and mana can be reset without going home.",
+        "note": "Honor of Kings lets you buy anywhere, so a recall is for healing. In Wild Rift, go before the cannon minion arrives or right after shoving the wave. Mobile Legends puts small healing camps up 30 to 40 seconds into the match, returning 70 seconds after each kill, so health and mana can be reset without going home.",
         "links": [
           {
             "site": "hok",
@@ -971,7 +971,7 @@
         "term": "Tower Dive",
         "cat": "combat",
         "def": "Attacking an enemy who is standing under their own tower. It only works when you have a minion wave to hold the tower's aggro and enough damage to finish before it kills you.",
-        "note": "Honor of Kings towers take 40% less damage for the first four minutes, so a dive in that window almost never works. Mobile Legends shields its outer turrets for the first five minutes with the same effect. The Wild Rift encyclopedia has an entry on passing tower aggro between allies.",
+        "note": "Honor of Kings towers take 40% less damage for the first four minutes, so a dive in that window almost never works. Mobile Legends shields its outer turrets for the first five minutes instead, cutting the turret’s damage taken by 30% and nearby allies’ by 15%, and a dive there rarely works either. The Wild Rift encyclopedia has an entry on passing tower aggro between allies.",
         "links": [
           {
             "site": "hok",
@@ -1221,7 +1221,7 @@
     "siteTitle": "About This Site",
     "siteText": "HUB-GAME (hub-game.com) is a strategy portal focused on mobile MOBAs. This site offers comparison articles, an aptitude quiz, and a glossary to help you choose a title, while our sister sites cover detailed strategy for Honor of Kings, Wild Rift and Mobile Legends: Bang Bang. The Mobile Legends site is published in Japanese only.",
     "operatorTitle": "Operator",
-    "operatorText": "HUB-GAME team (email: contact@hub-game.com / X: @hub_gamecom). The articles and data are produced by an operator who plays Honor of Kings, Wild Rift and Mobile Legends daily, working from hands-on play and the actual in-game screens.",
+    "operatorText": "HUB-GAME team (email: contact@hub-game.com / X: @hub_gamecom). The articles and data are produced by an operator who plays Honor of Kings and Wild Rift daily, working from hands-on play and the actual in-game screens. Mobile Legends figures come from our sister site MLBB Hub, which transcribes what the client shows.",
     "policyTitle": "Editorial Policy",
     "policyText": "Articles are based on what we have verified through actual play. Because patches make information go stale, we note the verification date for numbers and balance claims wherever possible. Anything we cannot confirm is marked as unverified rather than guessed. If you spot an error, please let us know via the contact page.",
     "contactTitle": "Get in Touch",
@@ -1272,14 +1272,14 @@
             "note": "All three spawn Super Minions in that lane once destroyed. MLBB gives each team nine turrets in three tiers: outer, inner and base."
           },
           {
-            "concept": "Upper solo lane",
+            "concept": "Solo lane",
             "hok": "Clash Lane",
             "wr": "Baron Lane (listed as \"Top\" on Wild Rift Hub)",
             "mlbb": "EXP Lane",
             "note": "A fighter or tank 1v1 in all three. In MLBB the Turtle pit sits right beside it, and only this lane and the jungler can reach the river by 2:00."
           },
           {
-            "concept": "Lower duo lane",
+            "concept": "Duo lane",
             "hok": "Farm Lane",
             "wr": "Dragon Lane (\"Duo\" on Wild Rift Hub)",
             "mlbb": "Gold Lane",
@@ -1289,8 +1289,8 @@
             "concept": "Getting vision",
             "hok": "Bushes and skills (no wards)",
             "wr": "Wards / Sweeping Lens",
-            "mlbb": "Bushes and roaming items",
-            "note": "Every Wild Rift player carries a free ward, and where you place it is a mind game. HoK and MLBB rely on bushes: step into one the enemy has no vision of and you vanish on the spot."
+            "mlbb": "Bushes (no wards)",
+            "note": "Every Wild Rift player carries a free ward, and where you place it is a mind game. Neither HoK nor MLBB has wards: both rely on bushes, and stepping into one the enemy has no vision of makes you vanish on the spot."
           }
         ]
       },
@@ -1316,8 +1316,8 @@
             "concept": "Mid-game upgrade",
             "hok": "Shadow Tyrant / Shadow Overlord (10:00)",
             "wr": "Baron Nashor",
-            "mlbb": "Evolved Lord (18:00)",
-            "note": "At 10:00 both HoK bosses are replaced by their Shadow versions. Baron appears from the mid game on and grants Hand of Baron: more AD/AP and heavily empowered nearby minions."
+            "mlbb": "Super Minions",
+            "note": "At 10:00 both HoK bosses are replaced by their Shadow versions. Baron appears from the mid game on and grants Hand of Baron: more AD/AP and heavily empowered nearby minions. In Mobile Legends, losing one base turret means that lane spawns Super Minions for the rest of the game."
           },
           {
             "concept": "The two jungle buffs",
@@ -1330,8 +1330,8 @@
             "concept": "Late-game decider",
             "hok": "Tempest Dragon (20:00)",
             "wr": "Elder Dragon",
-            "mlbb": "Super Minions",
-            "note": "Tempest shields every living teammate for 20–50% of max HP. Elder makes your attacks execute enemies below a health threshold. In MLBB, losing a base turret means that lane spawns Super Minions for the rest of the game."
+            "mlbb": "Evolved Lord (18:00)",
+            "note": "Tempest shields every living teammate for 20–50% of max HP. Elder makes your attacks execute enemies below a health threshold. The Mobile Legends Lord evolves at 18:00 and hits turrets harder from then on."
           }
         ]
       },
@@ -1419,7 +1419,7 @@
             "hok": "Recall",
             "wr": "Recall",
             "mlbb": "Recall",
-            "note": "HoK lets you buy anywhere, so recalling is almost purely for health. Wild Rift confines shopping to the fountain, which makes the timing a skill. MLBB has small healing camps up within 30 to 40 seconds, so you can reset health and mana without going home."
+            "note": "HoK lets you buy anywhere, so recalling is almost purely for health. Wild Rift confines shopping to the fountain, which makes the timing a skill. MLBB has small healing camps 30 to 40 seconds into the match, returning 70 seconds after each kill, so you can reset health and mana without going home."
           },
           {
             "concept": "Match length",
@@ -1517,7 +1517,7 @@
   },
   "GuideMLBB": {
     "title": "Mobile Legends Review: Three Timers and a 339 MB Download",
-    "intro": "A review of Mobile Legends: Bang Bang, live since 2016. The Turtle at 2:00 and the Lord at 8:00 decide most of your calls, and one emblem is all the pre-match setup you need. The thin English and Japanese coverage is covered honestly too.",
+    "intro": "A review of Mobile Legends: Bang Bang, live since 2016. The Turtle at 2:00 and the Lord at 8:00 decide most of your calls, and one emblem is all the pre-match setup you need. The thin Japanese-language coverage is written up honestly too.",
     "category": "Game Review / Opinion",
     "heading": "Learn Three Timers and Your Calls Change: Inside Mobile Legends",
     "author": "Written by HUB-GAME",
@@ -1529,7 +1529,7 @@
     "section1Body": [
       "The Turtle first spawns at 2:00. Kill it and another arrives two minutes later, until the spawns stop at 8:00. The first one always appears on the EXP lane side of the river.",
       "Only the EXP laner and the jungler can reach the river by 2:00. Whether those two have shoved their wave decides who takes the first objective.",
-      "Outer turrets carry a golden shield for the first five minutes. The turret takes 30% less damage and allies standing near it take 15% less. Before five minutes, they are not coming down.",
+      "Outer turrets carry a golden shield for the first five minutes. The turret takes 30% less damage and allies standing near it take 15% less. Diving under one in that window almost never works.",
       "The Lord arrives around 8:00, two minutes after the last Turtle dies. Kill it and it marches with you, hitting the first turret it meets for 30% of that turret’s maximum health as true damage. It evolves at 18:00.",
       "Those three timers are enough to answer the only question that matters early: stay in lane, or step to the river."
     ],
@@ -1540,17 +1540,17 @@
       "There are 61 items. Selling returns 60% of what you paid, and advanced boots only 30%. For the first 15 seconds of a match, though, anything sells for full price, so a misclick can be undone on the spot.",
       "One pre-match choice does bind your shop. Bring the battle spell Retribution and the only boots you may buy are jungle boots; leave it at home and jungle boots are locked out. You decide whether you are jungling before the game begins."
     ],
-    "section3Heading": "■ The honest downside: coverage is thin",
+    "section3Heading": "■ The honest downside: Japanese coverage is thin",
     "section3Body": [
-      "There is far less written about MLBB than about the two newer titles, in English and in Japanese. Even hero name spellings are not settled everywhere.",
+      "Far less has been written about MLBB in Japanese than about the two newer titles. Even hero name spellings are not settled everywhere.",
       "The in-game text and the official site do not always agree either. The ranged carry role is shown as Hunter in the Japanese client and as Marksman on the official English site.",
-      "The official data assigns each hero six possible roles and five possible lanes separately. Of the 133 heroes, 35 carry two roles, and some are listed under two lanes. Knowing the role does not tell you the lane.",
+      "The official data files every hero under two separate systems: six roles and five lanes. Of the 133 heroes, 35 are listed under two roles, and some under two lanes. Knowing the role does not tell you the lane.",
       "Roamers have a rule that catches people out: for the first eight minutes, killing minions or jungle camps alone pays only 30%. Farm on your own without knowing that and eight minutes pass with nothing to show."
     ],
     "section4Heading": "■ Verdict: who this is for",
     "verdictParagraphs": [
       "What you get is a game that pays back the little it asks you to learn. Three timers cover the early calls. One emblem covers the pre-match setup.",
-      "What you take on is checking things yourself. The written coverage is thin and the naming is inconsistent, which is why this site transcribes what the client actually shows.",
+      "What you take on is checking things yourself. The written coverage is thin and the naming is inconsistent, which is why our Mobile Legends site transcribes what the client actually shows.",
       "If storage matters, there is one more reason. The Japanese App Store lists it at 339.7 MB, against 1.1 GB for Wild Rift and 819.1 MB for Honor of Kings."
     ],
     "verdictDataHeading": "Mobile Legends by the numbers (as of September 9, 2026)",
@@ -1561,6 +1561,7 @@
       "The Japanese App Store lists 339.7 MB, iOS 12.0 or later. First published on November 11, 2016 by MOONTON."
     ],
     "conclusion": "Light to install, light to learn, and clear about what decides a fight. Whether it suits you better than Honor of Kings or Wild Rift is easier to judge with all three side by side in the comparison article.",
-    "ctaLabel": "Open MLBB Hub for hero guides"
+    "ctaLabel": "Open MLBB Hub for hero guides",
+    "compareCtaLabel": "Compare all three side by side"
   }
 }

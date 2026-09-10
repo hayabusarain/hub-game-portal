@@ -9,7 +9,7 @@ import GlossaryHighlights from "@/components/GlossaryHighlights";
 import TitleSnapshot from "@/components/TitleSnapshot";
 import { getAlternates } from '@/utils/seo';
 import {
-  getLatestHighlights,
+  getFallbackHighlights,
   buildHighlightUrl,
   SITE_LABELS,
   SITE_ORIGINS,
@@ -37,7 +37,10 @@ export const revalidate = 1800;
  * mobile-legends.jpg は 2026-09-09 に作成。公式サイト（mobilelegends.com）の
  * ヒーロー面が出している Kalea の painting（750×721、背景は黒）を、カードの比率に
  * 合わせた 900×413 の地の上へ screen 合成したもの。絵そのものには手を入れていない。
- * 3枚とも同じ比率で、カード側が上端を基準に切り抜く。
+ *
+ * カードは高さ 176px の枠に object-cover で上端基準に収める。幅900pxで作れば
+ * 比率は問わない（既存は 900×413 が2枚、wild-rift.jpg だけ 900×531）。
+ * 被写体は上半分に置くこと。PCでは上端から4分の1ほどしか見えない。
  *
  * **MLBB Hub 本体は方針が違う。** あちらは公式由来の画像を 128px 以下のアイコンに
  * 限り、スプラッシュを載せない（モバレサイトの docs/OFFICIAL_ASSETS.md）。
@@ -70,10 +73,11 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const t = await getTranslations('Home');
   const tQuiz = await getTranslations('Quiz');
 
-  // 姉妹サイトのパッチ情報は各サイトの /api/latest から取得し、
-  // 取得できた分を手動ピックより前に出す（落ちていても手動分だけで成立する）
+  // 姉妹サイトのパッチ情報は各サイトの /api/latest から取得する。
+  // 取り込めなかったサイトだけを手動ピックで埋めるので、1サイトにつきカードは1枚。
+  // 見出しが「各サイトの最新パッチから1件ずつ」と言っている以上、同じサイトを2枚出さない
   const livePicks = await getLiveHighlights(locale);
-  const picks = [...livePicks, ...getLatestHighlights(4, locale)].slice(0, 4);
+  const picks = [...livePicks, ...getFallbackHighlights(livePicks.map((p) => p.site), locale)];
 
   // 一番新しいピックの日付を、そのまま「最終更新」として見せる
   const latestDate = picks.reduce((newest, p) => (p.date > newest ? p.date : newest), picks[0].date);
@@ -167,7 +171,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         {/* タイトル別の最新データ: 数字は各サイトの /api/latest から取り込む。列は公開済みのサイトぶんだけ出る */}
         <TitleSnapshot locale={locale} />
 
-        {/* 最新パッチの注目: 姉妹サイトのピックアップ。自動取得分と src/data/highlights.ts の常設プールを混ぜて出す */}
+        {/* 最新パッチの注目: 各サイトの /api/latest から1件ずつ。取り込めなかったサイトだけ src/data/highlights.ts の控えで埋める */}
         <section className="flex flex-col gap-4">
           <div className="flex items-end justify-between gap-3">
             <h3 className="text-lg font-black text-slate-800 flex items-center gap-2">

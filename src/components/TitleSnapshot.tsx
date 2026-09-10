@@ -219,8 +219,12 @@ export default async function TitleSnapshot({ locale }: Props) {
                     value={
                       col?.siteUpdatedAt ? (
                         <time dateTime={col.siteUpdatedAt}>{col.siteUpdatedAt}</time>
-                      ) : (
+                      ) : col ? (
+                        // 列はあるのに日付が無い = そのサイトが最終更新日を公開していない
                         t('notPublished')
+                      ) : (
+                        // 列そのものが作れなかった。取得に失敗しただけで「未公開」ではない
+                        DASH
                       )
                     }
                   />

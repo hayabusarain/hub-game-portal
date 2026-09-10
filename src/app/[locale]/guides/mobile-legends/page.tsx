@@ -134,9 +134,10 @@ export default async function MobileLegendsGuidePage({ params }: { params: Promi
 
           <p>{t('conclusion')}</p>
 
-          {/* MLBB Hub は日本語のみ。英語ではボタンを出さず、記事だけで完結させる */}
-          {hasSite && (
-            <div className="pt-6 text-center">
+          {/* MLBB Hub は日本語のみ。英語では姉妹サイトへ送れないので、代わりに
+              3タイトルの比較記事へ送る。ここを空にすると英語版だけ行き止まりになる */}
+          <div className="pt-6 text-center">
+            {hasSite ? (
               <a
                 href={SITE_ORIGINS.mlbb}
                 target="_blank"
@@ -145,8 +146,15 @@ export default async function MobileLegendsGuidePage({ params }: { params: Promi
               >
                 {t('ctaLabel')}
               </a>
-            </div>
-          )}
+            ) : (
+              <Link
+                href="/guides/compare"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-violet-500 hover:bg-violet-400 text-slate-950 font-bold rounded-xl text-sm transition-all"
+              >
+                {t('compareCtaLabel')}
+              </Link>
+            )}
+          </div>
 
           <GlossaryTermLinks termKeys={['Objective', 'LastHit', 'Farm', 'Jungler', 'Support', 'Build', 'Scaling', 'Meta']} />
         </article>
