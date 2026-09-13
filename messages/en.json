@@ -176,6 +176,19 @@
       "Late game, the match already looking lost, no vision anywhere on the map, and the teamfight timing lands exactly right. Their main damage dealer goes down in the opening second, the ace follows, and a dead game flips.",
       "The shaking hands and the rush that hits right after aren't something I've found in any action game or FPS. Once you've had that once, the eight losses stop reading as losses and turn into the setup for the next one. That, I think, is the genuinely dangerous part of this genre."
     ],
+    "flowHeading": "■ What actually happens in a match: from lane to base",
+    "flowParagraphs": [
+      "The map has three lanes, with a forest filling the space between them. That forest is the jungle, home to neutral monsters. Each lane is lined with both teams' towers, and small units called minions keep marching down it toward the enemy base.",
+      "The early game looks like nothing more than killing minions in your own lane. The difference is in the final blow, the last hit. In Honor of Kings, a minion you finish yourself pays about 1.5 times the gold of one that dies near you to something else. Those small gaps add up to when your first item is finished.",
+      "When the first real fight happens comes down to level. Whether ultimates are up can flip a fight between two players at the same health. Honor of Kings unlocks them at level 4. That is the first window to make a play together with your jungler.",
+      "Once the mid game starts, the reason to fight moves out of the lanes. That is when objectives appear: large neutral monsters that raise your whole team's pushing power when you take them. In Honor of Kings, the Overlord and the Tyrant both spawn at 4:00. At the same four-minute mark, the 40% damage reduction protecting the outer towers wears off. With both teams working toward the same clock, the first teamfight tends to start right there.",
+      "This is where numbers start to matter. A lane that is even one on one can be pushed through the moment one more ally shows up. It is the same reason the mid laner and the support drift into side lanes, and the whole idea behind a jungler's gank.",
+      "To take a tower, you need minions with you. In Honor of Kings, attacking a tower without allied minions cuts your damage by 55%. Break one, and the area behind that lane becomes safe, and a way into the enemy jungle opens up.",
+      "In the late game, a single death gets expensive. Respawn timers get longer, and a team that is one player short can get pushed right up to its base. In front of each base stands a last tower. In Wild Rift it is the Inhibitor Turret, and in Mobile Legends it is the Base Turret. Once it falls, that lane starts sending out Super Minions.",
+      "The first team to destroy the other side's base structure wins. In Honor of Kings, you cannot attack the Crystal until at least one High Ground Tower is down. The Tempest Dragon spawns at 20:00, and taking it gives your team a shield worth 20 to 50% of max HP. The next teamfight is usually one-sided, so it becomes a race to reach the base before the buff runs out.",
+      "Every timer and number in this section comes from Honor of Kings. The shape of a match is the same in all three titles. What changes is when players first converge, and what each objective is called. All three are laid out side by side in the term map."
+    ],
+    "flowCta": "Term map: names and timers across the three titles",
     "section2Heading": "■ Five roles, and one of them will fit you",
     "section2Intro": "The same way soccer has strikers and keepers, a MOBA team is built out of five roles.",
     "roles": [
@@ -200,6 +213,7 @@
         "description": "Heals, shields, and vision for the rest of the team. It looks unglamorous, but the support is usually the one who decides when a teamfight starts."
       }
     ],
+    "section2Naming": "The five roles hold across titles, but their names do not. In Honor of Kings and Mobile Legends, the support is a role called Roam. Wild Rift calls it Support. The label changes; the job underneath it barely does.",
     "section2Outro": "Even if you start out sure your reflexes aren't good enough, you can still decide games from the jungle or by specializing on support. Finding the role that matches how your head already works is a real part of the appeal.",
     "section3Heading": "■ Last thing, for anyone about to start",
     "section3Paragraphs": [

@@ -32,7 +32,7 @@ export const ARTICLES: Record<ArticleSlug, ArticleMeta> = {
   'what-is-moba': {
     path: '/guides/what-is-moba',
     published: '2026-07-01',
-    updated: '2026-09-10',
+    updated: '2026-09-14',
   },
   'honor-of-kings': {
     path: '/guides/honor-of-kings',

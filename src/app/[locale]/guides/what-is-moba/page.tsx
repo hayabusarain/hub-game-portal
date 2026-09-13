@@ -46,6 +46,7 @@ export default async function WhatIsMobaPage({ params }: { params: Promise<{ loc
   const leadParagraphs = t.raw('leadParagraphs') as string[];
   const section1Setup = t.raw('section1Setup') as string[];
   const section1Payoff = t.raw('section1Payoff') as string[];
+  const flowParagraphs = t.raw('flowParagraphs') as string[];
   const section3Paragraphs = t.raw('section3Paragraphs') as string[];
   const roles = t.raw('roles') as { name: string; description: string }[];
 
@@ -130,6 +131,26 @@ export default async function WhatIsMobaPage({ params }: { params: Promise<{ loc
             <p key={i}>{paragraph}</p>
           ))}
 
+          {/* 「MOBAとは」で来た人が次に知りたいのは、1試合で何が起きてどう勝つか。
+              時刻と数値は HoK Hub のデータから取り、3タイトルの対応表は用語対応表に任せる
+              （同じ表をここに持つと、ポータル内で仕様差の説明が5ページ目に増える） */}
+          <h2 className="text-xl font-bold text-slate-900 pt-6 border-t border-slate-200">
+            {t('flowHeading')}
+          </h2>
+
+          {flowParagraphs.map((paragraph, i) => (
+            <p key={`flow-${i}`}>{paragraph}</p>
+          ))}
+
+          <p>
+            <Link
+              href="/guides/term-mapping"
+              className="font-semibold text-amber-700 hover:text-amber-600 underline underline-offset-2"
+            >
+              {t('flowCta')}
+            </Link>
+          </p>
+
           <h2 className="text-xl font-bold text-slate-900 pt-6 border-t border-slate-200">
             {t('section2Heading')}
           </h2>
@@ -141,6 +162,8 @@ export default async function WhatIsMobaPage({ params }: { params: Promise<{ loc
               <li key={i}><strong>{role.name}</strong> {role.description}</li>
             ))}
           </ul>
+
+          <p>{t('section2Naming')}</p>
 
           <p>{t('section2Outro')}</p>
 
@@ -161,7 +184,7 @@ export default async function WhatIsMobaPage({ params }: { params: Promise<{ loc
             </Link>
           </div>
         
-          <GlossaryTermLinks termKeys={['Minion', 'LastHit', 'Gank', 'Ace', 'Bush', 'Carry', 'Support', 'Jungler', 'Macro', 'Farm']} />
+          <GlossaryTermLinks termKeys={['Minion', 'LastHit', 'Gank', 'Ace', 'Bush', 'Carry', 'Support', 'Jungler', 'Macro', 'Farm', 'Objective', 'Tower', 'Roam']} />
         </article>
       </main>
 
