@@ -265,14 +265,34 @@
       "On a tired weeknight brain, the inputs still go where I aim them. Slipping behind the enemy line on an assassin and landing the whole combo stayed with me whether the game went my way or not.",
       "The speed costs you the comeback. Gold comes in fast, and the team that takes the first lead usually rides it all the way to the base. If the part you enjoy is the heavier macro game — holding the map, grinding an advantage back — this is not the one."
     ],
-    "verdictDataHeading": "Honor of Kings by the numbers (as of 2026-08-29)",
+    "verdictDataHeading": "Honor of Kings by the numbers (as of 2026-09-21)",
     "verdictList": [
-      "116 heroes as of 2026-08-29 (Honor of Kings Hub data). Fighters (38) and Mages (37) make up the bulk of the roster, while Tanks (17) and Supports (16) are the thinnest roles.",
-      "Patches land every two weeks. The last three hit on July 30, August 13 and August 27, 2026, exactly 14 days apart. The shop holds 114 items, and there are 30 Arcana, ten each in red, blue and green (as of 2026-08-29).",
+      "116 heroes as of 2026-09-21 (Honor of Kings Hub data). Fighters (40) and Mages (38) make up the bulk of the roster, while Supports (16) and Marksmen (19) are the thinnest roles.",
+      "Patches land every two weeks. The last three hit on August 13, August 27 and September 10, 2026, exactly 14 days apart. The shop holds 114 items, and there are 30 Arcana, ten each in red, blue and green (as of 2026-09-21).",
       "The match runs on a fixed clock. Outer towers take 40% reduced damage for the first four minutes, the Overlord and the Tyrant both spawn at 4:00, and the Tempest Dragon at 20:00. Most games finish well before that, and 20 minutes is about the ceiling (Honor of Kings Hub beginner guide, checked 2026-09-08)."
     ],
     "closing": "If you want the tension of a competitive match in a short sitting, Honor of Kings is enough. How it differs from Wild Rift and Mobile Legends is laid out properly in the three-title comparison.",
-    "cta": "See tier lists and builds on Honor of Kings Hub"
+    "cta": "See tier lists and builds on Honor of Kings Hub",
+    "related": {
+      "heading": "Read on at Honor of Kings Hub",
+      "items": [
+        {
+          "key": "hero",
+          "title": "First heroes to learn",
+          "desc": "Two picks per lane, every one of them rated Easy or Normal in game."
+        },
+        {
+          "key": "faq",
+          "title": "FAQ",
+          "desc": "22 questions, from how many lanes there are to how the tiers are set."
+        },
+        {
+          "key": "tier",
+          "title": "Tier list",
+          "desc": "Official HoK Camp ratings, next to win, pick and ban rates from the same date."
+        }
+      ]
+    }
   },
   "GuideWildRift": {
     "title": "Wild Rift: Depth and Competitiveness on Mobile",

@@ -11,6 +11,13 @@ import GlossaryTermLinks from '@/components/GlossaryTermLinks';
 
 const meta = ARTICLES['honor-of-kings'];
 
+/** 案内リンクの行き先。ロケールは URL の先頭に付ける（Honor of Kings Hub も /ja と /en を持つ） */
+const HOK_PATHS: Record<string, string> = {
+  hero: '/guide/beginner-heroes',
+  faq: '/faq',
+  tier: '/tier-list',
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Meta' });
@@ -133,6 +140,27 @@ export default async function HonorOfKingsGuidePage({ params }: { params: Promis
           <p>
             {t('closing')}
           </p>
+
+          {/* 読み終えた人が次に知りたいことへ直接送る。トップに落として探させない。
+              パスは Honor of Kings Hub の実在ページで、日英とも同じ構成（2026-09-21 に確認） */}
+          <aside className="mt-8 rounded-2xl border border-slate-200 bg-slate-50 p-5">
+            <h2 className="text-base font-bold text-slate-900">{t('related.heading')}</h2>
+            <ul className="mt-3 space-y-3">
+              {(t.raw('related.items') as { key: string; title: string; desc: string }[]).map((item) => (
+                <li key={item.key}>
+                  <a
+                    href={`https://hok.hub-game.com/${locale}${HOK_PATHS[item.key] ?? ''}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-bold text-amber-700 underline underline-offset-2 hover:text-amber-800"
+                  >
+                    {item.title}
+                  </a>
+                  <span className="block text-sm text-slate-600">{item.desc}</span>
+                </li>
+              ))}
+            </ul>
+          </aside>
 
           <div className="pt-6 text-center">
             <a

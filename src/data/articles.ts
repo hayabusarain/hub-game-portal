@@ -37,7 +37,7 @@ export const ARTICLES: Record<ArticleSlug, ArticleMeta> = {
   'honor-of-kings': {
     path: '/guides/honor-of-kings',
     published: '2026-07-01',
-    updated: '2026-09-10',
+    updated: '2026-09-21',
   },
   'wild-rift': {
     path: '/guides/wild-rift',
