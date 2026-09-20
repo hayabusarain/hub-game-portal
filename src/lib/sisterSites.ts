@@ -213,3 +213,14 @@ export async function getSiteSnapshot(site: HighlightSite): Promise<SiteSnapshot
   const data = await fetchLatest(site);
   return data ? toSnapshot(site, data) : null;
 }
+
+/**
+ * /api/latest の応答をそのまま返す。X の投稿下書き（src/lib/xPosts.ts）だけが使う。
+ *
+ * 読者に出す表は toSnapshot が項目の揃ったものだけを通すが、下書きは種類ごとに
+ * 作れるものだけ作るので、1項目欠けただけで丸ごと落とすわけにはいかない。
+ * 画面に出す値として使うときは toSnapshot を通すこと。ここでは型を保証しない。
+ */
+export async function getLatestResponse(site: HighlightSite): Promise<unknown> {
+  return fetchLatest(site);
+}

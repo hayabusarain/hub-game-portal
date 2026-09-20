@@ -6,6 +6,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
+      // /studio は運営者用の下書き画面。読者向けの中身が無いので検索には出さない
+      disallow: '/studio',
     },
     // AdSense の審査もクロールもドメイン単位で行われるため、
     // 姉妹サイト（サブドメイン）のサイトマップもルートの robots.txt から参照させる。
