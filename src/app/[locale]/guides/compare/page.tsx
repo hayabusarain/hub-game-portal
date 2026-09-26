@@ -66,7 +66,7 @@ export default async function CompareGuidePage({ params }: { params: Promise<{ l
   const tableRows = t.raw('tableRows') as TableRow[];
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-700 flex flex-col font-sans">
+    <div className="min-h-screen bg-background text-slate-700 flex flex-col font-sans">
       <JsonLd data={graph} />
       <HeaderNav />
 

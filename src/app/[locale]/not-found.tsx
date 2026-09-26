@@ -26,7 +26,7 @@ export default async function NotFound() {
       <HeaderNav />
 
       <main className="flex-1 flex flex-col items-center justify-center px-5 py-20 w-full max-w-2xl mx-auto text-center gap-6">
-        <p className="text-6xl font-black tracking-tight text-slate-300" aria-hidden="true">
+        <p className="text-6xl font-black tracking-tight text-slate-400" aria-hidden="true">
           {t('code')}
         </p>
 

@@ -1,3 +1,4 @@
+import type { Viewport } from "next";
 import { Geist } from "next/font/google";
 import Script from 'next/script';
 import "../globals.css";
@@ -57,6 +58,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     other: { 'google-adsense-account': 'ca-pub-7201202773518258' },
   };
 }
+
+// アドレスバーの色。ページの地（globals.css の --background）と揃える。
+// 割れると、アドレスバーとページの境目に段差が出る（2026-09-27 に夜の配色へ切り替え）
+export const viewport: Viewport = {
+  themeColor: '#090c13',
+  colorScheme: 'dark',
+};
 
 // 対応ロケールを静的生成の対象にする
 export function generateStaticParams() {
@@ -166,7 +174,7 @@ export default async function RootLayout({
         </a>
         <JsonLd data={siteGraph} />
         <NextIntlClientProvider messages={clientMessages}>
-          <div className="w-full mx-auto min-h-screen bg-slate-50 relative overflow-hidden flex flex-col">
+          <div className="w-full mx-auto min-h-screen bg-background relative overflow-hidden flex flex-col">
             {children}
           </div>
         </NextIntlClientProvider>

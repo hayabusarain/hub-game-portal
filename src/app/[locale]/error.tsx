@@ -23,7 +23,7 @@ export default function LocaleError({ reset }: { error: Error & { digest?: strin
         <button
           type="button"
           onClick={reset}
-          className="flex-1 inline-flex items-center justify-center gap-2 bg-slate-900 text-white font-bold text-sm py-3.5 px-5 rounded-2xl shadow-md hover:shadow-lg transition-all active:scale-95"
+          className="flex-1 inline-flex items-center justify-center gap-2 bg-amber-500 text-white font-bold text-sm py-3.5 px-5 rounded-2xl shadow-md hover:shadow-lg transition-all active:scale-95"
         >
           <RotateCcw size={16} />
           {t('retry')}

@@ -139,7 +139,7 @@ export default function XPostList({ drafts, siteLabels }: { drafts: XPostDraft[]
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => markPosted(d.id)}
-                className="inline-flex items-center gap-1.5 rounded-xl bg-slate-900 px-4 py-2 text-sm font-bold text-white hover:bg-slate-700"
+                className="inline-flex items-center gap-1.5 rounded-xl bg-amber-500 px-4 py-2 text-sm font-bold text-white hover:bg-amber-400"
               >
                 <ExternalLink size={14} />
                 Xの投稿画面を開く

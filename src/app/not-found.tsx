@@ -16,8 +16,8 @@ export default function RootNotFound() {
   return (
     <html lang={routing.defaultLocale}>
       <body className="antialiased">
-        <main className="min-h-screen bg-slate-50 flex flex-col items-center justify-center gap-6 px-5 text-center font-sans">
-          <p className="text-6xl font-black tracking-tight text-slate-300" aria-hidden="true">
+        <main className="min-h-screen bg-background flex flex-col items-center justify-center gap-6 px-5 text-center font-sans">
+          <p className="text-6xl font-black tracking-tight text-slate-400" aria-hidden="true">
             404
           </p>
           <div className="flex flex-col gap-3 max-w-md">
@@ -28,7 +28,7 @@ export default function RootNotFound() {
           </div>
           <Link
             href={home}
-            className="inline-flex items-center justify-center bg-slate-900 text-white font-bold text-sm py-3.5 px-6 rounded-2xl shadow-md hover:shadow-lg transition-all active:scale-95"
+            className="inline-flex items-center justify-center bg-amber-500 text-white font-bold text-sm py-3.5 px-6 rounded-2xl shadow-md hover:shadow-lg transition-all active:scale-95"
           >
             Back to HUB-GAME
           </Link>

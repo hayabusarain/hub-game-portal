@@ -99,7 +99,7 @@ export default async function GlossaryHighlights() {
                 <ArrowUpRight
                   size={14}
                   aria-hidden="true"
-                  className="mt-1 shrink-0 text-slate-300 group-hover:text-amber-600 transition-colors"
+                  className="mt-1 shrink-0 text-slate-400 group-hover:text-amber-600 transition-colors"
                 />
               </div>
 

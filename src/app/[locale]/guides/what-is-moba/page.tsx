@@ -51,7 +51,7 @@ export default async function WhatIsMobaPage({ params }: { params: Promise<{ loc
   const roles = t.raw('roles') as { name: string; description: string }[];
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-700 flex flex-col font-sans">
+    <div className="min-h-screen bg-background text-slate-700 flex flex-col font-sans">
       <JsonLd data={graph} />
       <HeaderNav />
 
@@ -178,7 +178,7 @@ export default async function WhatIsMobaPage({ params }: { params: Promise<{ loc
           <div className="pt-6 text-center">
             <Link
               href="/guides/compare"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl text-sm transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-400 text-white font-bold rounded-xl text-sm transition-all"
             >
               {t('ctaCompare')}
             </Link>

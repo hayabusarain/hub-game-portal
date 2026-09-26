@@ -28,7 +28,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   );
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans">
+    <div className="min-h-screen bg-background text-slate-900 flex flex-col font-sans">
       <JsonLd data={graph} />
       <HeaderNav />
 
@@ -42,7 +42,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
               </Link>
             </li>
             <li className="flex items-center gap-2">
-              <span aria-hidden="true" className="text-slate-300">/</span>
+              <span aria-hidden="true" className="text-slate-400">/</span>
               <span aria-current="page" className="text-slate-700">{t('title')}</span>
             </li>
           </ol>
@@ -79,7 +79,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
               rel="noopener noreferrer"
               className="flex items-center gap-4 p-4 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-slate-100 active:scale-[0.99] transition-all"
             >
-              <div className="w-11 h-11 shrink-0 rounded-full bg-slate-900 flex items-center justify-center text-white">
+              <div className="w-11 h-11 shrink-0 rounded-full bg-slate-100 flex items-center justify-center text-slate-700">
                 <svg viewBox="0 0 24 24" aria-hidden="true" className="w-5 h-5 fill-current">
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.005 3.869H5.078z"></path>
                 </svg>

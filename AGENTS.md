@@ -125,6 +125,29 @@ npm run build        ビルド
 
 <!-- hub-game:shared:end -->
 
+## 配色（夜の配色、2026-09-27〜）
+
+姉妹サイト3つ（HoK Hub・MLBB Hub・Wild Rift Hub）に合わせて、暗い地を既定にした。
+地は3サイトの間を取った「青みの墨」`#090c13`、カードは `#131720`、差し色は琥珀。
+
+**部品のクラス名は変えずに、色の変数の値を段ごとに写し替えている**（`globals.css` の `@theme`）。
+
+- `bg-white` … カードの地（暗い）。`text-white` は「色の塗りの上の文字」なので暗い色になる
+- `slate-50`〜`300` … 暗い面と線。`slate-400` は飾りとアイコン、`500` が補足、`700` が本文、`900` が見出し
+- ページの地は `bg-background`。`bg-slate-50` はカードより明るくなるので、ページの地に使わない
+- 選択中は琥珀の線と淡い塗り（`border-amber-500 bg-amber-50 text-amber-700`）。主ボタンは `bg-amber-500 text-white`
+
+値は `scripts/dark_palette.mjs` が OKLCH で作り、文字と地の105組を検算したもの。**色を足すときも手で書かない。**
+`theme-color`（`[locale]/layout.tsx` の `viewport`）と `manifest.ts` の2色も同じ `#090c13`。
+
+夜の配色で壊れるもの（3サイトとこのサイトで実際に踏んだ）:
+
+- もともと暗い帯（`bg-slate-900` / `950`）は、写し替えると白に近くなる。ヘッダーとフッターはこれで作り直した
+- 濃い塗りに白文字（`bg-slate-900 text-white`）は白く光るボタンになる
+- 明るい塗りに濃い文字（`bg-amber-500 text-slate-950`）は、塗りの上にほぼ白の文字が載る。文字は `text-white` にする
+- `shadow-*` は暗い地でほぼ見えない。区切りは線で出す
+- `return (` の直後に JSX のコメントを置くと、要素が2つ並んで構文エラーになる。コメントは要素の中に置く
+
 <!-- BEGIN:nextjs-agent-rules -->
 # This is NOT the Next.js you know
 

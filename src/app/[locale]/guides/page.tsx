@@ -41,7 +41,7 @@ export default async function GuidesPage({ params }: { params: Promise<{ locale:
       title: tWhat('title'),
       desc: tWhat('intro'),
       tag: t('tagIntro'),
-      color: "bg-amber-500 text-slate-950",
+      color: "bg-amber-500 text-white",
       icon: Flame
     },
     {
@@ -49,7 +49,7 @@ export default async function GuidesPage({ params }: { params: Promise<{ locale:
       title: tHok('title'),
       desc: tHok('intro'),
       tag: t('tagReview'),
-      color: "bg-amber-500 text-slate-950",
+      color: "bg-amber-500 text-white",
       icon: Compass
     },
     {
@@ -57,7 +57,7 @@ export default async function GuidesPage({ params }: { params: Promise<{ locale:
       title: tWr('title'),
       desc: tWr('intro'),
       tag: t('tagReview'),
-      color: "bg-cyan-500 text-slate-950",
+      color: "bg-cyan-500 text-white",
       icon: Target
     },
     {
@@ -87,7 +87,7 @@ export default async function GuidesPage({ params }: { params: Promise<{ locale:
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans">
+    <div className="min-h-screen bg-background text-slate-900 flex flex-col font-sans">
       <JsonLd data={graph} />
       <HeaderNav />
 
@@ -130,7 +130,7 @@ export default async function GuidesPage({ params }: { params: Promise<{ locale:
                       <span className={`px-3 py-1 text-[11px] font-black rounded-lg ${article.color}`}>
                         {article.tag}
                       </span>
-                      <div className="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-slate-950 transition-colors">
+                      <div className="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition-colors">
                         <ChevronRight size={16} />
                       </div>
                     </div>
@@ -166,7 +166,7 @@ export default async function GuidesPage({ params }: { params: Promise<{ locale:
                 <span className="px-3 py-1 text-[11px] font-black rounded-lg bg-indigo-500 text-white">
                   {t('glossaryCta')}
                 </span>
-                <div className="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-slate-950 transition-colors">
+                <div className="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition-colors">
                   <ChevronRight size={16} />
                 </div>
               </div>

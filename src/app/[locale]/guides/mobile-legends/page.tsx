@@ -57,7 +57,7 @@ export default async function MobileLegendsGuidePage({ params }: { params: Promi
   );
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-700 flex flex-col font-sans">
+    <div className="min-h-screen bg-background text-slate-700 flex flex-col font-sans">
       <JsonLd data={graph} />
       <HeaderNav />
 
@@ -142,14 +142,14 @@ export default async function MobileLegendsGuidePage({ params }: { params: Promi
                 href={SITE_ORIGINS.mlbb}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-violet-500 hover:bg-violet-400 text-slate-950 font-bold rounded-xl text-sm transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-violet-500 hover:bg-violet-400 text-white font-bold rounded-xl text-sm transition-all"
               >
                 {t('ctaLabel')}
               </a>
             ) : (
               <Link
                 href="/guides/compare"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-violet-500 hover:bg-violet-400 text-slate-950 font-bold rounded-xl text-sm transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-violet-500 hover:bg-violet-400 text-white font-bold rounded-xl text-sm transition-all"
               >
                 {t('compareCtaLabel')}
               </Link>

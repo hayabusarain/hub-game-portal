@@ -104,7 +104,7 @@ export default async function DiagnosisPage({
   );
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-50 font-sans text-slate-900">
+    <div className="flex min-h-screen flex-col bg-background font-sans text-slate-900">
       <JsonLd data={graph} />
       <HeaderNav />
 
@@ -177,7 +177,7 @@ export default async function DiagnosisPage({
                       <div className="flex w-full flex-col gap-3">
                         <Link
                           href={site.guide}
-                          className="flex w-full items-center justify-center gap-2 rounded-2xl bg-slate-900 py-3.5 text-sm font-bold text-white shadow-md transition-all hover:shadow-lg active:scale-95"
+                          className="flex w-full items-center justify-center gap-2 rounded-2xl bg-amber-500 py-3.5 text-sm font-bold text-white shadow-md transition-all hover:shadow-lg active:scale-95"
                         >
                           {t('readGuide')} <ArrowRight size={16} />
                         </Link>

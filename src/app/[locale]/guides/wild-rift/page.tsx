@@ -42,7 +42,7 @@ export default async function WildRiftGuidePage({ params }: { params: Promise<{ 
   );
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-700 flex flex-col font-sans">
+    <div className="min-h-screen bg-background text-slate-700 flex flex-col font-sans">
       <JsonLd data={graph} />
       <HeaderNav />
 
@@ -139,7 +139,7 @@ export default async function WildRiftGuidePage({ params }: { params: Promise<{ 
               href="https://wildrift.hub-game.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-xl text-sm transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-white font-bold rounded-xl text-sm transition-all"
             >
               {t('ctaLabel')}
             </a>

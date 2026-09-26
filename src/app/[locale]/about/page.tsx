@@ -28,7 +28,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   );
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans">
+    <div className="min-h-screen bg-background text-slate-900 flex flex-col font-sans">
       <JsonLd data={graph} />
       <HeaderNav />
 
@@ -42,7 +42,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               </Link>
             </li>
             <li className="flex items-center gap-2">
-              <span aria-hidden="true" className="text-slate-300">/</span>
+              <span aria-hidden="true" className="text-slate-400">/</span>
               <span aria-current="page" className="text-slate-700">{t('title')}</span>
             </li>
           </ol>

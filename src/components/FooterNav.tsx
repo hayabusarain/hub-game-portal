@@ -14,7 +14,9 @@ export default async function FooterNav() {
   const games = liveSitesFor(locale);
 
   return (
-    <footer className="mt-auto border-t border-slate-800 bg-slate-950 px-6 py-10 relative overflow-hidden text-slate-400">
+    <footer className="mt-auto border-t border-slate-200 bg-white px-6 py-10 relative overflow-hidden text-slate-500">
+      {/* 夜の配色（2026-09-27）。以前は明るいページの下に置いた暗い帯（bg-slate-950）だった。
+          写し替えると slate-950 は白に近くなるので、カードの地にして線で区切る。文字色も明るい配色の段に読み替えた */}
       <div className="flex flex-col gap-8 relative z-10 max-w-6xl mx-auto w-full">
         
         <div className="flex items-center gap-3">
@@ -22,63 +24,63 @@ export default async function FooterNav() {
             <Gamepad2 size={20} className="text-white" />
           </div>
           <div>
-            <h2 className="text-lg font-black tracking-tight text-white">HUB-GAME</h2>
-            <p className="text-xs text-slate-400 font-medium">{footerT('tagline')}</p>
+            <h2 className="text-lg font-black tracking-tight text-slate-900">HUB-GAME</h2>
+            <p className="text-xs text-slate-500 font-medium">{footerT('tagline')}</p>
           </div>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-6">
           <div className="flex flex-col gap-3">
-            <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest">{footerT('quickLinks')}</h3>
-            <Link href="/guides" className="text-sm font-semibold text-slate-300 hover:text-amber-400 transition-colors flex items-center gap-1 group">
-              <ChevronRight size={14} className="text-slate-600 group-hover:text-amber-400 transition-colors" /> {t('Nav.guides')}
+            <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest">{footerT('quickLinks')}</h3>
+            <Link href="/guides" className="text-sm font-semibold text-slate-700 hover:text-amber-700 transition-colors flex items-center gap-1 group">
+              <ChevronRight size={14} className="text-slate-400 group-hover:text-amber-700 transition-colors" /> {t('Nav.guides')}
             </Link>
-            <Link href="/guides/compare" className="text-sm font-semibold text-slate-300 hover:text-amber-400 transition-colors flex items-center gap-1 group">
-              <ChevronRight size={14} className="text-slate-600 group-hover:text-amber-400 transition-colors" /> {t('Nav.compare')}
+            <Link href="/guides/compare" className="text-sm font-semibold text-slate-700 hover:text-amber-700 transition-colors flex items-center gap-1 group">
+              <ChevronRight size={14} className="text-slate-400 group-hover:text-amber-700 transition-colors" /> {t('Nav.compare')}
             </Link>
-            <Link href="/terms" className="text-sm font-semibold text-slate-300 hover:text-amber-400 transition-colors flex items-center gap-1 group">
-              <ChevronRight size={14} className="text-slate-600 group-hover:text-amber-400 transition-colors" /> {t('Terms.title')}
+            <Link href="/terms" className="text-sm font-semibold text-slate-700 hover:text-amber-700 transition-colors flex items-center gap-1 group">
+              <ChevronRight size={14} className="text-slate-400 group-hover:text-amber-700 transition-colors" /> {t('Terms.title')}
             </Link>
           </div>
 
           <div className="flex flex-col gap-3">
-            <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest">{footerT('games')}</h3>
+            <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest">{footerT('games')}</h3>
             {games.map((site) => (
               <a
                 key={site}
                 href={SITE_ORIGINS[site]}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-semibold text-slate-300 hover:text-amber-400 transition-colors flex items-center gap-1 group"
+                className="text-sm font-semibold text-slate-700 hover:text-amber-700 transition-colors flex items-center gap-1 group"
               >
-                <ChevronRight size={14} className="text-slate-600 group-hover:text-amber-400 transition-colors" /> {SITE_LABELS[site]}
+                <ChevronRight size={14} className="text-slate-400 group-hover:text-amber-700 transition-colors" /> {SITE_LABELS[site]}
               </a>
             ))}
           </div>
 
           <div className="flex flex-col gap-3">
-            <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest">{footerT('policy')}</h3>
-            <Link href="/about" className="text-sm font-semibold text-slate-300 hover:text-amber-400 transition-colors flex items-center gap-1 group">
-              <ChevronRight size={14} className="text-slate-600 group-hover:text-amber-400 transition-colors" /> {t('About.title')}
+            <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest">{footerT('policy')}</h3>
+            <Link href="/about" className="text-sm font-semibold text-slate-700 hover:text-amber-700 transition-colors flex items-center gap-1 group">
+              <ChevronRight size={14} className="text-slate-400 group-hover:text-amber-700 transition-colors" /> {t('About.title')}
             </Link>
-            <Link href="/privacy" className="text-sm font-semibold text-slate-300 hover:text-amber-400 transition-colors flex items-center gap-1 group">
-              <ChevronRight size={14} className="text-slate-600 group-hover:text-amber-400 transition-colors" /> {t('Privacy.title')}
+            <Link href="/privacy" className="text-sm font-semibold text-slate-700 hover:text-amber-700 transition-colors flex items-center gap-1 group">
+              <ChevronRight size={14} className="text-slate-400 group-hover:text-amber-700 transition-colors" /> {t('Privacy.title')}
             </Link>
-            <Link href="/disclaimer" className="text-sm font-semibold text-slate-300 hover:text-amber-400 transition-colors flex items-center gap-1 group">
-              <ChevronRight size={14} className="text-slate-600 group-hover:text-amber-400 transition-colors" /> {t('Disclaimer.title')}
+            <Link href="/disclaimer" className="text-sm font-semibold text-slate-700 hover:text-amber-700 transition-colors flex items-center gap-1 group">
+              <ChevronRight size={14} className="text-slate-400 group-hover:text-amber-700 transition-colors" /> {t('Disclaimer.title')}
             </Link>
-            <Link href="/contact" className="text-sm font-semibold text-slate-300 hover:text-amber-400 transition-colors flex items-center gap-1 group">
-              <ChevronRight size={14} className="text-slate-600 group-hover:text-amber-400 transition-colors" /> {t('Contact.title')}
+            <Link href="/contact" className="text-sm font-semibold text-slate-700 hover:text-amber-700 transition-colors flex items-center gap-1 group">
+              <ChevronRight size={14} className="text-slate-400 group-hover:text-amber-700 transition-colors" /> {t('Contact.title')}
             </Link>
           </div>
         </div>
         
-        <div className="flex flex-col gap-4 pt-6 border-t border-slate-800">
-          <p className="text-[10px] text-slate-400 leading-relaxed font-medium">
+        <div className="flex flex-col gap-4 pt-6 border-t border-slate-200">
+          <p className="text-[10px] text-slate-500 leading-relaxed font-medium">
             {t('Home.disclaimerText')}
           </p>
           <div className="flex items-center justify-between">
-            <p className="text-xs text-slate-400 font-bold">
+            <p className="text-xs text-slate-500 font-bold">
               {footerT('rights')}
             </p>
             <div className="flex gap-2">
@@ -88,7 +90,7 @@ export default async function FooterNav() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="X (Twitter)"
-                className="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:border-amber-500/40 hover:text-amber-400 transition-colors"
+                className="w-8 h-8 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:border-amber-500/40 hover:text-amber-700 transition-colors"
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true" className="w-3.5 h-3.5 fill-current">
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.005 3.869H5.078z"></path>

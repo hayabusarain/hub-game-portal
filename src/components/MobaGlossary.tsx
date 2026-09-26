@@ -90,7 +90,7 @@ export default function MobaGlossary({ terms: termRecord }: { terms: Record<stri
               aria-pressed={filter === c.id}
               className={`px-4 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap border ${
                 filter === c.id
-                  ? 'bg-amber-500 border-amber-500 text-slate-950 shadow-md'
+                  ? 'bg-amber-50 border-amber-500 text-amber-700'
                   : 'bg-white border-slate-200 text-slate-600 hover:text-slate-900 hover:border-slate-300'
               }`}
             >
@@ -147,7 +147,7 @@ export default function MobaGlossary({ terms: termRecord }: { terms: Record<stri
                 {item.note && (
                   <p className="mt-2 text-xs text-slate-700 leading-relaxed bg-slate-50 border border-slate-200 rounded-xl px-3 py-2">
                     <span className="font-black text-amber-700">{t('crossNote')}</span>
-                    <span className="mx-1.5 text-slate-300" aria-hidden="true">|</span>
+                    <span className="mx-1.5 text-slate-400" aria-hidden="true">|</span>
                     {item.note}
                   </p>
                 )}

@@ -1,8 +1,18 @@
 @import "tailwindcss";
 
+/*
+ * 夜の配色（2026-09-27）。姉妹サイト3つ（HoK・MLBB・Wild Rift）と同じく暗い地を既定にした。
+ * 部品のクラス名は明るい配色のまま残し、色の変数を段ごとに暗い値へ写し替えている。
+ *   bg-white … カードの地（暗い）。text-white は「濃い地の上の文字」なので暗い色になる
+ *   slate-50〜300 … 暗い面と線。500 が補足、700 が本文、900 が見出し
+ *   amber … 差し色（琥珀）。文字は amber-700
+ * 値は scripts/dark_palette.mjs が OKLCH で作り、文字と地の105組を検算したもの。手で書き換えない。
+ * もともと暗かった面（bg-slate-900 / 950 の帯や塗り）は写し替えると明るくなるので、部品の側で直してある。
+ */
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  color-scheme: dark;
+  --background: #090c13;
+  --foreground: #e5e8ed; /* slate-800 と同じ */
 }
 
 @theme inline {
@@ -11,8 +21,188 @@
   --font-sans: var(--font-geist-sans);
 }
 
+@theme {
+  --color-white: #131720;
+  --color-slate-50: #1c1f27;
+  --color-slate-100: #23262e;
+  --color-slate-200: #30343c;
+  --color-slate-300: #454952;
+  --color-slate-400: #8f929a;
+  --color-slate-500: #a9acb4;
+  --color-slate-600: #bfc3cb;
+  --color-slate-700: #d5d7dc;
+  --color-slate-800: #e5e8ed;
+  --color-slate-900: #f1f3f8;
+  --color-slate-950: #f8fafe;
+  --color-amber-50: #2b1d0b;
+  --color-amber-100: #37250c;
+  --color-amber-200: #4f3000;
+  --color-amber-300: #6e4600;
+  --color-amber-400: #af7100;
+  --color-amber-500: #d68c02;
+  --color-amber-600: #efa437;
+  --color-amber-700: #f9be72;
+  --color-amber-800: #fed6a6;
+  --color-amber-900: #ffe9cf;
+  --color-amber-950: #fef5eb;
+  --color-yellow-50: #26200c;
+  --color-yellow-100: #30290c;
+  --color-yellow-200: #433700;
+  --color-yellow-300: #5f4f01;
+  --color-yellow-400: #977e05;
+  --color-yellow-500: #bb9c00;
+  --color-yellow-600: #d2b439;
+  --color-yellow-700: #e1ca74;
+  --color-yellow-800: #eddea5;
+  --color-yellow-900: #f5edcf;
+  --color-yellow-950: #fbf7e8;
+  --color-orange-50: #2e1b11;
+  --color-orange-100: #3b2214;
+  --color-orange-200: #542c13;
+  --color-orange-300: #763f1d;
+  --color-orange-400: #bc662f;
+  --color-orange-500: #e77f3e;
+  --color-orange-600: #fc995f;
+  --color-orange-700: #ffb891;
+  --color-orange-800: #fed4bd;
+  --color-orange-900: #fee8db;
+  --color-orange-950: #fef5f0;
+  --color-red-50: #2f1a18;
+  --color-red-100: #3c201d;
+  --color-red-200: #572825;
+  --color-red-300: #7a3a36;
+  --color-red-400: #c25d58;
+  --color-red-500: #ed756e;
+  --color-red-600: #ff938b;
+  --color-red-700: #feb5ae;
+  --color-red-800: #fed2cd;
+  --color-red-900: #fee7e4;
+  --color-red-950: #fff4f3;
+  --color-rose-50: #2f191c;
+  --color-rose-100: #3c1f23;
+  --color-rose-200: #56272e;
+  --color-rose-300: #793942;
+  --color-rose-400: #c05b6b;
+  --color-rose-500: #ec7385;
+  --color-rose-600: #ff909f;
+  --color-rose-700: #feb3bb;
+  --color-rose-800: #fed1d5;
+  --color-rose-900: #fee6e8;
+  --color-rose-950: #fff4f5;
+  --color-pink-50: #2e1921;
+  --color-pink-100: #3a1f2a;
+  --color-pink-200: #53273a;
+  --color-pink-300: #753952;
+  --color-pink-400: #bb5c84;
+  --color-pink-500: #e573a3;
+  --color-pink-600: #fb8eba;
+  --color-pink-700: #feb0ce;
+  --color-pink-800: #fecfe0;
+  --color-pink-900: #fee5ee;
+  --color-pink-950: #fef4f7;
+  --color-purple-50: #241c2d;
+  --color-purple-100: #2e233a;
+  --color-purple-200: #402e53;
+  --color-purple-300: #5b4375;
+  --color-purple-400: #916cbb;
+  --color-purple-500: #b386e5;
+  --color-purple-600: #ca9ffa;
+  --color-purple-700: #d9bbff;
+  --color-purple-800: #e7d5fe;
+  --color-purple-900: #f2e8ff;
+  --color-purple-950: #f9f5fe;
+  --color-violet-50: #211d2f;
+  --color-violet-100: #29253c;
+  --color-violet-200: #393157;
+  --color-violet-300: #51467b;
+  --color-violet-400: #8271c3;
+  --color-violet-500: #a18cef;
+  --color-violet-600: #b7a7ff;
+  --color-violet-700: #cbc1ff;
+  --color-violet-800: #ded9fe;
+  --color-violet-900: #edeaff;
+  --color-violet-950: #f7f6fe;
+  --color-indigo-50: #1c1f30;
+  --color-indigo-100: #23273e;
+  --color-indigo-200: #2f345a;
+  --color-indigo-300: #444a7e;
+  --color-indigo-400: #6e78c9;
+  --color-indigo-500: #8994f6;
+  --color-indigo-600: #a3afff;
+  --color-indigo-700: #bdc7fe;
+  --color-indigo-800: #d5dcfe;
+  --color-indigo-900: #e8ecff;
+  --color-indigo-950: #f5f6fe;
+  --color-blue-50: #162130;
+  --color-blue-100: #1b293e;
+  --color-blue-200: #21385a;
+  --color-blue-300: #31507e;
+  --color-blue-400: #4f80c9;
+  --color-blue-500: #649ff6;
+  --color-blue-600: #87b8ff;
+  --color-blue-700: #abcdfe;
+  --color-blue-800: #cbe0fe;
+  --color-blue-900: #e2eeff;
+  --color-blue-950: #f2f7fe;
+  --color-sky-50: #10232d;
+  --color-sky-100: #132c3a;
+  --color-sky-200: #0e3d54;
+  --color-sky-300: #165676;
+  --color-sky-400: #218abc;
+  --color-sky-500: #2eaae6;
+  --color-sky-600: #58c2fa;
+  --color-sky-700: #8dd5ff;
+  --color-sky-800: #bbe5fe;
+  --color-sky-900: #daf1fe;
+  --color-sky-950: #eff8fe;
+  --color-cyan-50: #0c242a;
+  --color-cyan-100: #0c2e35;
+  --color-cyan-200: #023f4b;
+  --color-cyan-300: #035a69;
+  --color-cyan-400: #068fa7;
+  --color-cyan-500: #06b1ce;
+  --color-cyan-600: #34cae8;
+  --color-cyan-700: #78dbf3;
+  --color-cyan-800: #aaeafa;
+  --color-cyan-900: #d3f4fc;
+  --color-cyan-950: #eafafe;
+  --color-teal-50: #0e2521;
+  --color-teal-100: #102f2a;
+  --color-teal-200: #03423a;
+  --color-teal-300: #025d53;
+  --color-teal-400: #069485;
+  --color-teal-500: #00b7a4;
+  --color-teal-600: #47cebb;
+  --color-teal-700: #80dfcf;
+  --color-teal-800: #afece1;
+  --color-teal-900: #d5f5ee;
+  --color-teal-950: #ebfbf8;
+  --color-emerald-50: #12251c;
+  --color-emerald-100: #142f23;
+  --color-emerald-200: #11422e;
+  --color-emerald-300: #1b5d42;
+  --color-emerald-400: #2a956a;
+  --color-emerald-500: #38b884;
+  --color-emerald-600: #5fcf9d;
+  --color-emerald-700: #8ddfb7;
+  --color-emerald-800: #b7edd0;
+  --color-emerald-900: #d9f5e6;
+  --color-emerald-950: #edfbf3;
+  --color-green-50: #152518;
+  --color-green-100: #1a2f1e;
+  --color-green-200: #1d4126;
+  --color-green-300: #2b5c37;
+  --color-green-400: #45935a;
+  --color-green-500: #58b670;
+  --color-green-600: #77cc8a;
+  --color-green-700: #9bdda8;
+  --color-green-800: #bfebc7;
+  --color-green-900: #ddf4e0;
+  --color-green-950: #effaf0;
+}
+
 body {
-  background: #e2e8f0; /* Outer background outside the app shell */
+  background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   min-height: 100vh;

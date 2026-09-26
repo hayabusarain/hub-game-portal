@@ -74,7 +74,7 @@ export default async function TermMappingPage({ params }: { params: Promise<{ lo
   const liveTitles = TITLES.filter((title) => liveSitesFor(locale).includes(title.site));
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-700 flex flex-col font-sans">
+    <div className="min-h-screen bg-background text-slate-700 flex flex-col font-sans">
       <JsonLd data={graph} />
       <HeaderNav />
 
@@ -174,7 +174,7 @@ export default async function TermMappingPage({ params }: { params: Promise<{ lo
                 href={`${SITE_ORIGINS[site]}/${locale}${guide}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`inline-flex items-center gap-2 px-5 py-3 text-slate-950 font-bold rounded-xl text-sm transition-all ${cta}`}
+                className={`inline-flex items-center gap-2 px-5 py-3 text-white font-bold rounded-xl text-sm transition-all ${cta}`}
               >
                 {t(`cta.${key}`)}
               </a>
