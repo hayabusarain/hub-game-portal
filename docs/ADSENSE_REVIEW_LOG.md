@@ -166,3 +166,9 @@ Search Console で観測できている検索語（"what is a moba" "what is mob
   （`src/content/guide/flow.ts` の origin: 'web'）。ゲーム内では未確認
 
 検証: tsc / eslint src / audit / build、`next start` でローカル表示を日英とも確認。
+
+## 2026-09-27 適性診断を廃止
+
+運営者の判断で、適性診断（/diagnosis、トップと比較ページの設問フォーム）を削除した。
+理由はサイト統合（hub-game.com/hok/ja/… の形・Cloudflare の静的書き出し）で、結果ページがサーバーで URL を読む作りのままでは書き出せないため。
+上の集計にある「診断 約1,900字」は掲載文から減る。旧 URL は各言語のトップへ 301（next.config.ts の redirects）。

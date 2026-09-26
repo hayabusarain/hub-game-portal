@@ -27,6 +27,11 @@ const nextConfig = {
   async headers() {
     return [{ source: '/:path*', headers: securityHeaders }];
   },
+  // 適性診断は 2026-09-27 に運営者の判断で廃止した。検索に残っている旧 URL は各言語のトップへ送る。
+  // Cloudflare へ移したら、同じ規則を public/_redirects に移すこと（静的書き出しでは redirects() が効かない）
+  async redirects() {
+    return [{ source: '/:locale(ja|en)/diagnosis', destination: '/:locale', permanent: true }];
+  },
 };
 
 export default withNextIntl(nextConfig);

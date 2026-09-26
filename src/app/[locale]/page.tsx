@@ -4,7 +4,6 @@ import Image from "next/image";
 import { Gamepad2, ArrowRight, BookOpen, Sparkles } from "lucide-react";
 import HeaderNav from "@/components/HeaderNav";
 import FooterNav from "@/components/FooterNav";
-import QuizForm from "@/components/QuizForm";
 import GlossaryHighlights from "@/components/GlossaryHighlights";
 import TitleSnapshot from "@/components/TitleSnapshot";
 import { getAlternates } from '@/utils/seo';
@@ -89,7 +88,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations('Home');
-  const tQuiz = await getTranslations('Quiz');
 
   // 姉妹サイトのパッチ情報は各サイトの /api/latest から取得する。
   // 取り込めなかったサイトだけを手動ピックで埋めるので、1サイトにつきカードは1枚。
@@ -231,19 +229,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               );
             })}
           </ul>
-        </section>
-
-        {/* Diagnostic Quiz Section
-            設問と選択肢をサーバー側で描くので、JSが無くても読めてそのまま送信できる。
-            送信先は /[locale]/diagnosis。結果は1つのURLに集約している */}
-        <section className="flex flex-col gap-4">
-          <QuizForm locale={locale} />
-          <Link
-            href="/diagnosis"
-            className="self-center text-xs font-bold text-indigo-600 transition-colors hover:text-indigo-800"
-          >
-            {tQuiz('howItWorks')}
-          </Link>
         </section>
 
         {/* 用語集の note から、初戦で判断が変わる5語だけを抜いたブロック。

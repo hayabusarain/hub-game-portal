@@ -24,7 +24,6 @@ const geistSans = Geist({
  *
  * 一覧は src 配下の 'use client' を grep して機械的に抽出したもの:
  * - 'Nav'      : src/components/HeaderNav.tsx         useTranslations('Nav')
- * - 'Quiz'     : src/components/MobaDiagnosticQuiz.tsx useTranslations('Quiz')
  * - 'Glossary' : src/components/MobaGlossary.tsx       useTranslations('Glossary')
  *                （ラベル類のみ。用語データ本体の terms は容量が大きいので
  *                  用語集ページから props で渡し、下の絞り込みで除外している）
@@ -36,7 +35,7 @@ const geistSans = Geist({
  * サーバーコンポーネントの getTranslations はこの props とは無関係に
  * src/i18n/request.ts のメッセージを直接読むため、この絞り込みの影響を受けない。
  */
-const CLIENT_NAMESPACES = ['Nav', 'Quiz', 'Glossary', 'Error'] as const;
+const CLIENT_NAMESPACES = ['Nav', 'Glossary', 'Error'] as const;
 
 // ロケールごとにメタデータを生成する（Next 16 では params は Promise）
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {

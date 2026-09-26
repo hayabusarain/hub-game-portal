@@ -3,7 +3,6 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import HeaderNav from '@/components/HeaderNav';
 import FooterNav from '@/components/FooterNav';
-import MobaDiagnosticQuiz from '@/components/MobaDiagnosticQuiz';
 import { ArrowLeft } from 'lucide-react';
 import JsonLd from '@/components/JsonLd';
 import { buildArticle, buildBreadcrumb, buildGraph } from '@/utils/jsonld';
@@ -202,10 +201,6 @@ export default async function CompareGuidePage({ params }: { params: Promise<{ l
             })}
           </div>
 
-          {/* Diagnostic Quiz section */}
-          <div className="pt-8 border-t border-slate-200">
-            <MobaDiagnosticQuiz />
-          </div>
 
         
           <GlossaryTermLinks termKeys={['Ward', 'Recall', 'Fountain', 'LastHit', 'Farm', 'Objective', 'Engage', 'Meta']} />

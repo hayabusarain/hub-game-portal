@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'HUB-GAME Portal',
     short_name: 'HUB-GAME',
-    description: 'A mobile MOBA portal with title comparisons, an aptitude quiz, and a glossary.',
+    description: 'A mobile MOBA portal with title comparisons and a glossary.',
     lang: 'en',
     start_url: '/',
     display: 'standalone',

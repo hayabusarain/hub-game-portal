@@ -52,7 +52,7 @@ export const ARTICLES: Record<ArticleSlug, ArticleMeta> = {
   compare: {
     path: '/guides/compare',
     published: '2026-07-01',
-    updated: '2026-09-10',
+    updated: '2026-09-27',
   },
   'term-mapping': {
     path: '/guides/term-mapping',
@@ -66,11 +66,10 @@ export const ARTICLES: Record<ArticleSlug, ArticleMeta> = {
  * 内容を変えたらその日に上げる。法的ページも権利表記の変更などで動く。
  */
 export const PAGE_UPDATED: Record<string, string> = {
-  '': '2026-09-10',
-  '/guides': '2026-09-10',
-  '/diagnosis': '2026-09-10',
+  '': '2026-09-27',
+  '/guides': '2026-09-27',
   '/glossary': '2026-09-10',
-  '/about': '2026-09-10',
+  '/about': '2026-09-27',
   '/contact': '2026-08-13',
   '/disclaimer': '2026-09-10',
   '/privacy': '2026-08-26',

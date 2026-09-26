@@ -14,7 +14,6 @@ const STATIC_PATHS = [
   '/guides/honor-of-kings',
   '/guides/mobile-legends',
   '/guides/term-mapping',
-  '/diagnosis',
   '/glossary',
   '/about',
   '/contact',

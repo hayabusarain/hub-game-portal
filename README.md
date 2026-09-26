@@ -1,9 +1,10 @@
 # HUB-GAME Portal
 
 スマホMOBAの攻略ポータル [hub-game.com](https://hub-game.com) のソースコードです。
-ワイルドリフトとオナー・オブ・キングスの比較記事・適性診断・用語集を掲載し、姉妹サイト
-[wildrift.hub-game.com](https://wildrift.hub-game.com) / [hok.hub-game.com](https://hok.hub-game.com)
-への入口となるハブサイトです。
+オナー・オブ・キングス、ワイルドリフト、モバイル・レジェンドの比較記事・用語集を掲載し、姉妹サイト
+[hok.hub-game.com](https://hok.hub-game.com) / [wildrift.hub-game.com](https://wildrift.hub-game.com) /
+[mlbb.hub-game.com](https://mlbb.hub-game.com) への入口となるハブサイトです。
+適性診断は 2026-09-27 に廃止した（旧 URL の `/ja/diagnosis` と `/en/diagnosis` は各言語のトップへ 301）。
 
 ## 技術構成
 
