@@ -23,8 +23,12 @@ npm run lint   # ESLint によるチェック
 
 ## サイト統合（2026-09-27 運営者了承）
 
-4サイトを hub-game.com の1つにまとめ、Cloudflare（Workers の静的アセット）へ移す予定。
-ポータルはドメイン直下、姉妹サイトは `/hok`・`/mlbb`・`/wildrift` の下に入る。計画は HoK のリポジトリの `docs/CONSOLIDATION_PLAN.md`。
+4サイトを hub-game.com の1つにまとめ、Cloudflare（Workers の静的アセット）へ移した（2026-09-27 夜に切り替え）。
+ポータルはドメイン直下、姉妹サイトは `/hok`・`/mlbb`・`/wildrift` の下に入る。計画と切り替えの記録は HoK のリポジトリの `docs/CONSOLIDATION_PLAN.md`。
+
+**デプロイ**: main に push すると、Cloudflare の Workers Builds（Worker `hub-game-portal`）がビルドして出す。
+ビルドの環境変数は `NEXT_PUBLIC_SITE_ORIGIN=https://hub-game.com` の1つ（Cloudflare の管理画面の Worker の設定 → ビルド）。
+Vercel はもう hub-game.com を配っていない。
 
 統合後の形は、ビルド時の環境変数 `NEXT_PUBLIC_SITE_ORIGIN=https://hub-game.com` で切り替わる（`src/lib/siteOrigin.ts`）。
 無ければ今の Vercel 向けのまま。統合後のビルドは静的書き出し（`out/`）で、`src/proxy.ts` は動かない。
