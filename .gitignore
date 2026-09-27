@@ -41,4 +41,4 @@ yarn-error.log*
 next-env.d.ts
 
 # サイト統合（Cloudflare）の手元の確認
-/.wrangler/
+.wrangler/

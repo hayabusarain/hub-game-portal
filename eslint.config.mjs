@@ -13,7 +13,7 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
     // wrangler dev（サイト統合の手元の確認）が作る一時ファイル
-    ".wrangler/**",
+    "**/.wrangler/**",
   ]),
 ]);
 

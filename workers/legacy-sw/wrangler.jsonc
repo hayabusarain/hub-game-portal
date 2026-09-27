@@ -1,0 +1,22 @@
+// サイト統合（2026-09-27）の切り替え日から、旧サブドメインの /sw.js に解除用のスクリプトを返す Worker。中身は index.js の冒頭。
+// ポータルの Worker（リポジトリ直下の wrangler.jsonc）とは別の Worker。Workers Builds で作るときはルートのフォルダを workers/legacy-sw にする。
+// 中身はほぼ変わらないので、運営者が一度だけ `npx wrangler deploy`（このフォルダで）してもよい。
+//
+// 切り替え日の手順7で、旧サブドメインの DNS をプロキシした仮レコードに替えたあと、下の routes を有効にしてデプロイする
+// （ルートはプロキシしたホスト名にしか効かない）。Single Redirects は /sw.js を除く条件にしておく:
+//   (http.host eq "hok.hub-game.com" and http.request.uri.path ne "/sw.js")
+//   (http.host eq "mlbb.hub-game.com" and http.request.uri.path ne "/sw.js")
+// wildrift.hub-game.com と www は Service Worker を使っていないので、除く必要もここへのルートも要らない。
+//
+// 手元の確認: HoK のフォルダで node scratch/check_legacy_sw_0927.mjs（旧 Service Worker を入れた状態から外れるまでを試す）
+{
+  "name": "hub-game-legacy-sw",
+  "main": "index.js",
+  "compatibility_date": "2026-09-01",
+  // workers.dev では配らない（旧サブドメインのルートだけで使う）
+  "workers_dev": false
+  // "routes": [
+  //   { "pattern": "hok.hub-game.com/sw.js", "zone_name": "hub-game.com" },
+  //   { "pattern": "mlbb.hub-game.com/sw.js", "zone_name": "hub-game.com" }
+  // ]
+}

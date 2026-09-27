@@ -157,6 +157,21 @@ export default async function RootLayout({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7201202773518258"
           crossOrigin="anonymous"
         />
+        {/* Google アナリティクス（2026-09-27〜）。測定 ID は姉妹サイト3つと同じ1つ（G-65P6KEVN7X）で、
+            content_group にサイト名を入れて GA4 の標準レポートでサイト別に見る。サイト統合で4サイトが hub-game.com の
+            1つのホスト名になると、ホスト名では見分けられなくなるため（HoK の docs/CONSOLIDATION_PLAN.md の6章）。
+            gtag と dataLayer は上の Consent Mode の既定値で定義してある。プライバシーポリシーの記述は監査の検査5が見張る */}
+        <Script
+          id="google-gtag"
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-65P6KEVN7X"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            gtag('js', new Date());
+            gtag('config', 'G-65P6KEVN7X', { content_group: 'portal' });
+          `}
+        </Script>
       </head>
       <body
         className={`${geistSans.variable} antialiased`}

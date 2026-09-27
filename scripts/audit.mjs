@@ -10,7 +10,8 @@
  *   3. sitemap 網羅  … STATIC_PATHS 全部に lastmod とページがあるか。逆に、page.tsx があるのに
  *                      STATIC_PATHS に無いページや getAlternates を呼んでいないページが無いか
  *   4. 権利表記      … 3タイトルの権利者（Riot / Tencent / Moonton）が両言語の3キーに入っているか
- *   5. 広告の整合    … プライバシーポリシーが AdSense 利用を書いているなら layout に広告コードがあるか
+ *   5. 広告の整合    … プライバシーポリシーが AdSense 利用を書いているなら layout に広告コードがあるか。
+ *                      Google アナリティクスも同じ（タグがあればポリシーに利用と止め方、content_group）
  *   6. 更新日の鮮度  … messages を触った作業ツリーで、記事・ページの更新日が今日になっているか
  *   7. 姉妹サイトの URL … src と messages に姉妹サイトの URL（hok.hub-game.com・hub-game.com/hok など）を直書きしていないか。
  *                      書いてよいのは src/data/highlights.ts の SITE_ORIGINS だけ（サイト統合で切り替わるため）。コメントは見ない
@@ -137,6 +138,15 @@ for (const [p, d] of Object.entries(pageUpdated)) {
   if (claimsAds && !hasAds) report('広告', 'プライバシーポリシーは AdSense 利用を書いているが、layout.tsx に adsbygoogle.js が無い');
   if (hasAds && !claimsAds) report('広告', 'layout.tsx に広告コードがあるのに、プライバシーポリシーに AdSense の記述が無い');
   if (hasAds && !layout.includes("gtag('consent', 'default'")) report('広告', '広告コードがあるのに Consent Mode の既定値が無い（EEA 向け配信に必要）');
+
+  // アクセス解析も同じ考え方。2026-09-27 に Google アナリティクスを入れたとき、ポリシーは「利用していません」のままだった。
+  // 入れたら、使っていると書き、止め方（オプトアウトのアドオン）を載せる。サイト別に見るための content_group も要る
+  const hasGa = layout.includes('googletagmanager.com/gtag/js');
+  const gaText = [ja.Privacy?.analyticsText ?? '', en.Privacy?.analyticsText ?? ''];
+  const claimsGa = gaText.every((s) => /Google (?:Analytics|アナリティクス)/.test(s) && /<optout>/.test(s)) && !/利用していません|does not currently use/.test(gaText.join(' '));
+  if (hasGa && !claimsGa) report('解析', 'layout.tsx に Google アナリティクスがあるのに、プライバシーポリシー（Privacy.analyticsText）が利用と止め方を書いていない');
+  if (!hasGa && claimsGa) report('解析', 'プライバシーポリシーは Google アナリティクスの利用を書いているが、layout.tsx にタグが無い');
+  if (hasGa && !/content_group:\s*'portal'/.test(layout)) report('解析', "Google アナリティクスの config に content_group: 'portal' が無い（サイト統合後にサイト別に見られなくなる）");
 }
 
 /* ---------- 6. 更新日の鮮度 ---------- */

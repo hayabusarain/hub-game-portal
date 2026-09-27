@@ -72,7 +72,7 @@ export const PAGE_UPDATED: Record<string, string> = {
   '/about': '2026-09-27',
   '/contact': '2026-08-13',
   '/disclaimer': '2026-09-10',
-  '/privacy': '2026-08-26',
+  '/privacy': '2026-09-27',
   '/terms': '2026-08-26',
 };
 

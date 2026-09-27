@@ -170,6 +170,10 @@ npm run build        ビルド
 - **統合後の robots.txt は4サイト分を1枚で出す。** 姉妹サイトが止めているパスは `highlights.ts` の `SITE_DISALLOW` が正本。
   姉妹サイトの `robots.ts` が変わったら、ここも直す（統合後は `/hok/robots.txt` などはクローラーに読まれない）
 - `ads.txt`・`/sw.js`（昔の Service Worker を外す掃除用）もポータルの持ち物。ドメイン直下に置けるのはポータルだけ
+- `workers/legacy-sw/` は別の Worker。切り替え日から、旧サブドメイン（hok・mlbb）の `/sw.js` に解除用のスクリプトを返す。
+  ポータルの Worker（リポジトリ直下の `wrangler.jsonc`）とは別に出す。最低1年は残す
+- アクセス解析は姉妹サイトと同じ測定 ID で、`content_group: 'portal'` を付けて送る（2026-09-27〜）。
+  タグとプライバシーポリシー（`Privacy.analyticsText`）の食い違いは監査の検査5が止める
 - 統合後のビルドは、姉妹サイトの `/api/latest` が取れないと止まる（`src/lib/sisterSites.ts`）。30分ごとの取り直しが無くなるので、
   欠けたまま出すと次に作り直すまで欠ける。作り直しは姉妹サイトのデプロイからデプロイフックで起こす（`docs/SNAPSHOT_CONTRACT.md` の7章）
 - 動的なルートに `generateStaticParams` を置くときは、今の本番で ISR にならないか確かめる。`[...rest]` では、置いただけで

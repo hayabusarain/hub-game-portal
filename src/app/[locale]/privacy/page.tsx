@@ -60,7 +60,20 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
 
             <section>
               <h2 className="text-base font-bold text-slate-900 mb-2">{t('analyticsTitle')}</h2>
-              <p>{t('analyticsText')}</p>
+              <p>
+                {t.rich('analyticsText', {
+                  optout: (chunks) => (
+                    <a
+                      href="https://tools.google.com/dlpage/gaoptout"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-amber-700 underline underline-offset-2 hover:text-amber-800"
+                    >
+                      {chunks}
+                    </a>
+                  ),
+                })}
+              </p>
             </section>
 
             <section>
