@@ -18,8 +18,8 @@ import {
 import { getLiveHighlights } from '@/lib/sisterSites';
 
 // 姉妹サイトの最新情報を取り込むため、静的生成のまま30分ごとに作り直す。
-// サイト統合後の静的書き出しでは効かない（サーバーが無い）。姉妹サイトのデプロイのたびに、デプロイフックでポータルを作り直す
-// （docs/SNAPSHOT_CONTRACT.md の「サイト統合の後」）
+// サイト統合後の静的書き出しでは効かない（サーバーが無い）。GitHub Actions の refresh-sister-data が1時間ごとに
+// 姉妹サイトの変化を見て、変わっていればポータルを作り直す（docs/SNAPSHOT_CONTRACT.md の「サイト統合の後」）
 export const revalidate = 1800;
 
 /**

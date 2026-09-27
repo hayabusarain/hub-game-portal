@@ -161,10 +161,11 @@ curl -s https://wildrift.hub-game.com/api/latest | jq .snapshot
   ポータルは「前置き付きの入口・言語・path」の順に組み立てる（`src/data/highlights.ts` の `sisterSiteUrl`）
 - 拡張子が無いので、各サイトの `_headers` で `Content-Type: application/json` を付ける（HoK・MLBB は対応済み）。
   同じオリジンになるので、`Access-Control-Allow-Origin: *` は要らなくなる（残しても害は無い）
-- **ポータルへの反映は、ポータルを作り直したとき。** 30分ごとの取り直しは無くなる。
-  姉妹サイトのデプロイのたびに、ポータルの Worker のデプロイフック（Workers Builds、2026-04〜）へ POST して作り直す。
-  呼ぶのは各サイトのビルドの最後（デプロイのコマンドの後に `curl -X POST "$PORTAL_DEPLOY_HOOK"`）。
-  フックの URL は秘密として各サイトのビルドの環境変数に置き、リポジトリには書かない
+- **ポータルへの反映は、ポータルを作り直したとき。** 30分ごとの取り直しは無くなった。
+  代わりに、ポータルの GitHub Actions（`.github/workflows/refresh-sister-data.yml`）が1時間ごとに3サイトの `/api/latest` を見て、
+  中身が変わっていれば `.github/refresh/sister-latest.json` を書き換えて main へ push する。その push で Workers Builds がポータルを作り直す。
+  **姉妹サイトの側ですることは無い**（デプロイフックを各サイトのビルドから呼ぶ案もあったが、各サイトの Cloudflare の設定に秘密の URL を置く手間が要るのでやめた。2026-09-28）。
+  反映までの遅れは最大で1時間とポータルのビルドの数分
 - ポータルの統合後のビルドは、姉妹サイトの `/api/latest` が1つでも取れないと止まる（前のデプロイが残る）。
   今のように欠けた部分を描かずに出すと、次に作り直すまで欠けたまま残るため（`src/lib/sisterSites.ts`）
 - 取った中身は `.next/cache/fetch-cache` に30分残り、その間の次のビルドは取り直さずにそれを使う。続けてデプロイされると、あとの更新がポータルに出ない。

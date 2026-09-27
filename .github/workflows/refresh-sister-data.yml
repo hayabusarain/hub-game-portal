@@ -1,0 +1,45 @@
+# 姉妹サイトの更新をポータルに取り込む（サイト統合 2026-09-27〜）。
+# 1時間ごとに3サイトの /api/latest を見て、変わっていれば .github/refresh/sister-latest.json を書き換えて main へ push する。
+# その push で Cloudflare の Workers Builds がポータルを作り直し、トップの表とカードの数字が新しくなる。
+# 仕組みの説明は .github/refresh/check.mjs の冒頭と docs/SNAPSHOT_CONTRACT.md の7章。
+#
+# このリポジトリは公開なので、GitHub Actions の実行時間は無料。作り直すのは変わったときだけ。
+# ボットが main に push するので、手元で push する前に git pull --rebase すること。
+name: 姉妹サイトの更新を取り込む
+
+on:
+  schedule:
+    # 毎時23分（UTC）。0分は GitHub の予約が混み、遅れたり飛ばされたりする
+    - cron: '23 * * * *'
+  workflow_dispatch:
+  # このファイルを変えて push したときにも1回走らせる（仕組みが動くかをその場で確かめるため）
+  push:
+    branches: [main]
+    paths: ['.github/workflows/refresh-sister-data.yml', '.github/refresh/check.mjs']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-sister-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 3サイトの /api/latest を取り、前回と比べる
+        id: check
+        run: node .github/refresh/check.mjs
+
+      - name: 変わっていれば記録を push（Cloudflare がポータルを作り直す）
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .github/refresh/sister-latest.json
+          git commit -m "chore(refresh): 姉妹サイトの更新をポータルに取り込む（${{ steps.check.outputs.sites }}）"
+          git push
