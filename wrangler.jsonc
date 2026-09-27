@@ -16,6 +16,7 @@
 {
   "name": "hub-game-portal",
   "compatibility_date": "2026-09-01",
+  "routes": [{ "pattern": "hub-game.com", "custom_domain": true }],
   "main": "worker/entry.js",
   "vars": {
     "BASE_PATH": "",
