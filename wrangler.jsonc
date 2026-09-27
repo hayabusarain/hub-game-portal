@@ -1,0 +1,35 @@
+// サイト統合（2026-09-27）。Workers の静的アセットで out/ を配る。計画は HoK の docs/CONSOLIDATION_PLAN.md。
+// ポータルはドメイン直下なので前置きを持たず、姉妹サイトのような後処理（postbuild_basepath.mjs）も要らない。
+// 本番では routes に { "pattern": "hub-game.com", "custom_domain": true } を足す（切り替え日の手順6。計画の5章）。
+// **いま足して push すると、その時点で hub-game.com が Vercel から Cloudflare へ移る**（Workers Builds の wrangler deploy は確認なしで、
+// 同じ名前の既存の DNS レコードを置き換える）。/hok* などは各サイトの Worker のルートが先に受ける。
+// 切り替えを確かめ終わったら "workers_dev": false を足す（既定では workers.dev でも同じ中身が配られ続ける）。
+// ビルドは npm run build（prebuild が姉妹サイトの取得結果の保存分を消す）。Workers Builds のビルドキャッシュは有効にしない。
+//
+// スクリプト（main）は入口の言語の振り分けだけ。assets.run_worker_first に "/" だけを並べ、ほかのリクエストは
+// スクリプトを通さず静的アセットが返す。worker/entry.js は hub-game-rules から配られている（手で直さない）。
+//
+// 手元の確認（姉妹サイトがまだ新しいパスで配っていない間は、今のサブドメインから /api/latest を取る）:
+//   NEXT_PUBLIC_SITE_ORIGIN=https://hub-game.com SISTER_ORIGIN_HOK=https://hok.hub-game.com \
+//     SISTER_ORIGIN_MLBB=https://mlbb.hub-game.com SISTER_ORIGIN_WILDRIFT=https://wildrift.hub-game.com npm run build
+//   npx wrangler dev   （止めるときは親の npx ごと止める。子の workerd が out/ を掴み、次のビルドが EPERM で止まる）
+{
+  "name": "hub-game-portal",
+  "compatibility_date": "2026-09-01",
+  "main": "worker/entry.js",
+  "vars": {
+    "BASE_PATH": "",
+    "LOCALES": "en,ja",
+    "DEFAULT_LOCALE": "en"
+  },
+  "assets": {
+    "directory": "./out",
+    "binding": "ASSETS",
+    // 入口（/）だけスクリプトを先に通す。ほかは静的アセットが直接返す（スクリプトは動かない）
+    "run_worker_first": ["/"],
+    // 見つからないパスは、いちばん近い 404.html を 404 で返す（/ja/xxx なら out/ja/404.html）
+    "not_found_handling": "404-page",
+    // /ja/guides を ja/guides.html から返す（trailingSlash: false の書き出しに合わせる）
+    "html_handling": "auto-trailing-slash"
+  }
+}

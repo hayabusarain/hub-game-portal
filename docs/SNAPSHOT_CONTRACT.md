@@ -149,6 +149,28 @@ curl -s https://wildrift.hub-game.com/api/latest | jq .snapshot
 
 `jq` が無ければ `| grep -o '"snapshot".*'` でもよい。
 
+## 7. サイト統合の後（2026-09-27 運営者了承）
+
+4サイトを hub-game.com の1つにまとめ、Cloudflare の静的アセットで配る（計画は HoK の `docs/CONSOLIDATION_PLAN.md`）。
+統合後は、5章と6章のうち次の点が変わる。
+
+- `/api/latest` は、各サイトがビルドしたときに書き出す静的なファイルになる。
+  URL は `https://hub-game.com/hok/api/latest`・`/mlbb/api/latest`・`/wildrift/api/latest`。
+  `revalidate` は効かず、中身はそのサイトを作り直したときに新しくなる
+- 返す `path` には前置き（`/hok`）も言語も含めない。今と同じ `/patches` の形のままにする。
+  ポータルは「前置き付きの入口・言語・path」の順に組み立てる（`src/data/highlights.ts` の `sisterSiteUrl`）
+- 拡張子が無いので、各サイトの `_headers` で `Content-Type: application/json` を付ける（HoK・MLBB は対応済み）。
+  同じオリジンになるので、`Access-Control-Allow-Origin: *` は要らなくなる（残しても害は無い）
+- **ポータルへの反映は、ポータルを作り直したとき。** 30分ごとの取り直しは無くなる。
+  姉妹サイトのデプロイのたびに、ポータルの Worker のデプロイフック（Workers Builds、2026-04〜）へ POST して作り直す。
+  呼ぶのは各サイトのビルドの最後（デプロイのコマンドの後に `curl -X POST "$PORTAL_DEPLOY_HOOK"`）。
+  フックの URL は秘密として各サイトのビルドの環境変数に置き、リポジトリには書かない
+- ポータルの統合後のビルドは、姉妹サイトの `/api/latest` が1つでも取れないと止まる（前のデプロイが残る）。
+  今のように欠けた部分を描かずに出すと、次に作り直すまで欠けたまま残るため（`src/lib/sisterSites.ts`）
+- 取った中身は `.next/cache/fetch-cache` に30分残り、その間の次のビルドは取り直さずにそれを使う。続けてデプロイされると、あとの更新がポータルに出ない。
+  統合後のビルドの前に `scripts/prebuild_static.mjs` がこのキャッシュを消す。Workers Builds のビルドキャッシュもポータルでは有効にしない
+- 確かめ方: `curl -s https://hub-game.com/wildrift/api/latest | jq .snapshot`
+
 ---
 
 ## 補足: なぜこの形なのか

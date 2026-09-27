@@ -26,8 +26,10 @@ export default function RootNotFound() {
               The page you were looking for may have moved or been removed.
             </p>
           </div>
+          {/* 先読みはしない。静的書き出し（サイト統合後）では存在しない RSC ファイルを取りに行き 404 を出す */}
           <Link
             href={home}
+            prefetch={false}
             className="inline-flex items-center justify-center bg-amber-500 text-white font-bold text-sm py-3.5 px-6 rounded-2xl shadow-md hover:shadow-lg transition-all active:scale-95"
           >
             Back to HUB-GAME

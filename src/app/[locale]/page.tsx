@@ -11,13 +11,15 @@ import {
   getFallbackHighlights,
   buildHighlightUrl,
   SITE_LABELS,
-  SITE_ORIGINS,
+  sisterSiteUrl,
   liveSitesFor,
   type HighlightSite,
 } from '@/data/highlights';
 import { getLiveHighlights } from '@/lib/sisterSites';
 
-// 姉妹サイトの最新情報を取り込むため、静的生成のまま30分ごとに作り直す
+// 姉妹サイトの最新情報を取り込むため、静的生成のまま30分ごとに作り直す。
+// サイト統合後の静的書き出しでは効かない（サーバーが無い）。姉妹サイトのデプロイのたびに、デプロイフックでポータルを作り直す
+// （docs/SNAPSHOT_CONTRACT.md の「サイト統合の後」）
 export const revalidate = 1800;
 
 /**
@@ -134,10 +136,12 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           
           {liveSitesFor(locale).map((site, index) => {
             const card = SITE_CARDS[site];
+            // 素の <a> にする。next-intl の Link は、サイト統合で同じドメイン（hub-game.com/hok）になると
+            // 内部リンクとして扱い、別アプリのページを先読みしにいく（Next.js のマルチゾーンの手引きも <a> を使う）
             return (
-              <Link
+              <a
                 key={site}
-                href={SITE_ORIGINS[site]}
+                href={sisterSiteUrl(site, locale)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group block relative bg-white rounded-[32px] overflow-hidden shadow-sm border border-slate-200/60 transition-all active:scale-[0.98] hover:shadow-xl hover:border-indigo-100"
@@ -178,7 +182,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                     {t(card.descKey)}
                   </p>
                 </div>
-              </Link>
+              </a>
             );
           })}
 

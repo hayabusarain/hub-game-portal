@@ -16,7 +16,10 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
-/** /api/latest 側と同じ30分。開くたびに姉妹サイトを叩かない */
+/**
+ * /api/latest 側と同じ30分。開くたびに姉妹サイトを叩かない。
+ * サイト統合後の静的書き出しでは効かず、トップと同じくポータルを作り直したときに新しくなる
+ */
 export const revalidate = 1800;
 
 export default async function StudioPage() {

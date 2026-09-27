@@ -14,6 +14,7 @@
  * date は「ポータルで紹介した日」を指す。元記事の公開日ではないので、
  * 同じページを再度取り上げたいときは新しい date でエントリを足せばよい。
  */
+import { CONSOLIDATED, SITE_ORIGIN } from '@/lib/siteOrigin';
 
 export type HighlightSite = 'wildrift' | 'hok' | 'mlbb';
 
@@ -29,10 +30,48 @@ export type Highlight = {
   ja: { title: string; body: string };
 };
 
-export const SITE_ORIGINS: Record<HighlightSite, string> = {
-  wildrift: 'https://wildrift.hub-game.com',
-  hok: 'https://hok.hub-game.com',
-  mlbb: 'https://mlbb.hub-game.com',
+/**
+ * 姉妹サイトの入口（言語を付ける前の URL）。**姉妹サイトの URL はここにしか書かない**（scripts/audit.mjs の検査7）。
+ *
+ * サイト統合（src/lib/siteOrigin.ts）の後は hub-game.com の下のパスになる。名前は SITE_ORIGINS のままだが、
+ * 統合後はオリジンではなく「オリジン＋前置き」を指す。読者を送るリンクは sisterSiteUrl で言語を付けて作る
+ */
+export const SITE_ORIGINS: Record<HighlightSite, string> = CONSOLIDATED
+  ? {
+      wildrift: `${SITE_ORIGIN}/wildrift`,
+      hok: `${SITE_ORIGIN}/hok`,
+      mlbb: `${SITE_ORIGIN}/mlbb`,
+    }
+  : {
+      wildrift: 'https://wildrift.hub-game.com',
+      hok: 'https://hok.hub-game.com',
+      mlbb: 'https://mlbb.hub-game.com',
+    };
+
+/**
+ * 姉妹サイトのページの URL。path はロケールを除いた形（'/tier-list' など。トップなら省く）。
+ *
+ * 読者の言語を付けて送る。言語の無い入口へ送ると、統合後は入口の振り分けを1回通るうえ、
+ * ブラウザの言語で決まるので、英語のポータルを読んでいる人が日本語のページに着くことがある。
+ * そのサイトが読者の言語を持っていなければ、持っている最初の言語にする（MLBB なら /ja。2026-09-27 の運営者の答え）。
+ * ただし今は、英語のページに MLBB へのリンクを出していない（liveSitesFor で外している）ので、この切り替えは使われていない
+ */
+export function sisterSiteUrl(site: HighlightSite, locale: string, path = ''): string {
+  const locales = SITE_LOCALES[site];
+  const lang = locales.includes(locale) ? locale : (locales[0] ?? locale);
+  return `${SITE_ORIGINS[site]}/${lang}${path}`;
+}
+
+/**
+ * 統合後に姉妹サイトが robots.txt で止めていたパス（前置きを除いた形）。
+ * クローラーが読む robots.txt はドメイン直下の1枚だけなので、統合後は各サイトの robots.ts が効かなくなる。
+ * **統合後の Disallow の正本はここ**（src/app/robots.ts が前置きを付けて並べる）。各サイトの robots.ts を変えたら、ここも直す
+ */
+export const SITE_DISALLOW: Record<HighlightSite, string[]> = {
+  // 2026-09-27 時点の各サイトの src/app/robots.ts と同じ
+  hok: ['/api/latest'],
+  mlbb: ['/api/latest'],
+  wildrift: ['/api/'],
 };
 
 export const SITE_LABELS: Record<HighlightSite, string> = {
@@ -238,5 +277,5 @@ export function getFallbackHighlights(covered: HighlightSite[], locale: string):
 }
 
 export function buildHighlightUrl(highlight: Highlight, locale: string): string {
-  return `${SITE_ORIGINS[highlight.site]}/${locale}${highlight.path}`;
+  return sisterSiteUrl(highlight.site, locale, highlight.path);
 }

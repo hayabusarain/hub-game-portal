@@ -8,7 +8,7 @@ import JsonLd from "@/components/JsonLd";
 import { toAnchorId } from '@/utils/glossary';
 import { buildBreadcrumb, buildDefinedTermSet, buildGraph } from '@/utils/jsonld';
 import { getAlternates } from '@/utils/seo';
-import { SITE_ORIGINS, liveSitesFor, type HighlightSite } from '@/data/highlights';
+import { sisterSiteUrl, liveSitesFor, type HighlightSite } from '@/data/highlights';
 
 // messages/{locale}.json の Glossary.terms に対応する用語データの型。
 // note はタイトルごとの違いの注記、links は姉妹サイトの該当ページ（どちらも任意）
@@ -49,7 +49,7 @@ export default async function GlossaryPage({ params }: { params: Promise<{ local
     Object.entries(termRecord).map(([key, item]) => {
       const links = (item.links ?? [])
         .filter((l) => readable.includes(l.site))
-        .map((l) => ({ label: l.label, href: `${SITE_ORIGINS[l.site]}/${locale}${l.path}` }));
+        .map((l) => ({ label: l.label, href: sisterSiteUrl(l.site, locale, l.path) }));
       return [
         key,
         {

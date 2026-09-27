@@ -158,6 +158,23 @@ npm run build        ビルド
 - `shadow-*` は暗い地でほぼ見えない。区切りは線で出す
 - `return (` の直後に JSX のコメントを置くと、要素が2つ並んで構文エラーになる。コメントは要素の中に置く
 
+## サイト統合でのポータルの役目（2026-09-27〜）
+
+ポータルは hub-game.com の直下を受け持つ。姉妹サイトは `/hok`・`/mlbb`・`/wildrift` の下に入り、ドメイン直下にしか置けないものはポータルが出す。
+統合後の形は `NEXT_PUBLIC_SITE_ORIGIN` があるときだけ有効になる（`src/lib/siteOrigin.ts`）。無ければ今の Vercel 向けのまま。
+
+- **姉妹サイトの URL は `src/data/highlights.ts` の `SITE_ORIGINS` にしか書かない。** リンクは `sisterSiteUrl(site, locale, path)` で作る
+  （読者の言語を付ける。英語のページには日本語だけの MLBB を出していないが、出すなら `/ja` になる）。
+  直書き（`hok.hub-game.com` も `hub-game.com/hok` も）は監査の検査7が止める。コメントは見ない
+- 姉妹サイトへのリンクは `<Link>` ではなく素の `<a>`。同じドメインになると `<Link>` が別アプリのページを先読みしにいく
+- **統合後の robots.txt は4サイト分を1枚で出す。** 姉妹サイトが止めているパスは `highlights.ts` の `SITE_DISALLOW` が正本。
+  姉妹サイトの `robots.ts` が変わったら、ここも直す（統合後は `/hok/robots.txt` などはクローラーに読まれない）
+- `ads.txt`・`/sw.js`（昔の Service Worker を外す掃除用）もポータルの持ち物。ドメイン直下に置けるのはポータルだけ
+- 統合後のビルドは、姉妹サイトの `/api/latest` が取れないと止まる（`src/lib/sisterSites.ts`）。30分ごとの取り直しが無くなるので、
+  欠けたまま出すと次に作り直すまで欠ける。作り直しは姉妹サイトのデプロイからデプロイフックで起こす（`docs/SNAPSHOT_CONTRACT.md` の7章）
+- 動的なルートに `generateStaticParams` を置くときは、今の本番で ISR にならないか確かめる。`[...rest]` では、置いただけで
+  未知のパスの 404 がパスごとに1年キャッシュされた。静的書き出しのときだけ関数を出す形にしてある
+
 <!-- BEGIN:nextjs-agent-rules -->
 # This is NOT the Next.js you know
 

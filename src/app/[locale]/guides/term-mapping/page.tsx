@@ -8,7 +8,7 @@ import { buildArticle, buildBreadcrumb, buildGraph } from '@/utils/jsonld';
 import { ARTICLES, formatArticleDate } from '@/data/articles';
 import { getAlternates } from '@/utils/seo';
 import GlossaryTermLinks from '@/components/GlossaryTermLinks';
-import { SITE_ORIGINS, liveSitesFor } from '@/data/highlights';
+import { sisterSiteUrl, liveSitesFor } from '@/data/highlights';
 
 /**
  * 3タイトルの用語対応表と乗り換えガイド。
@@ -171,7 +171,7 @@ export default async function TermMappingPage({ params }: { params: Promise<{ lo
             {liveTitles.map(({ key, site, guide, cta }) => (
               <a
                 key={key}
-                href={`${SITE_ORIGINS[site]}/${locale}${guide}`}
+                href={sisterSiteUrl(site, locale, guide)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`inline-flex items-center gap-2 px-5 py-3 text-white font-bold rounded-xl text-sm transition-all ${cta}`}

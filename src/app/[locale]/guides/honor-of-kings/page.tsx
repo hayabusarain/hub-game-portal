@@ -8,6 +8,7 @@ import { buildArticle, buildBreadcrumb, buildGraph } from '@/utils/jsonld';
 import { ARTICLES, formatArticleDate } from '@/data/articles';
 import { getAlternates } from '@/utils/seo';
 import GlossaryTermLinks from '@/components/GlossaryTermLinks';
+import { sisterSiteUrl } from '@/data/highlights';
 
 const meta = ARTICLES['honor-of-kings'];
 
@@ -149,7 +150,7 @@ export default async function HonorOfKingsGuidePage({ params }: { params: Promis
               {(t.raw('related.items') as { key: string; title: string; desc: string }[]).map((item) => (
                 <li key={item.key}>
                   <a
-                    href={`https://hok.hub-game.com/${locale}${HOK_PATHS[item.key] ?? ''}`}
+                    href={sisterSiteUrl('hok', locale, HOK_PATHS[item.key] ?? '')}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-bold text-amber-700 underline underline-offset-2 hover:text-amber-800"
@@ -164,7 +165,7 @@ export default async function HonorOfKingsGuidePage({ params }: { params: Promis
 
           <div className="pt-6 text-center">
             <a
-              href="https://hok.hub-game.com"
+              href={sisterSiteUrl('hok', locale)}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-400 text-white font-bold rounded-xl text-sm transition-all"

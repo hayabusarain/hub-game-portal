@@ -12,6 +12,8 @@
  *   4. 権利表記      … 3タイトルの権利者（Riot / Tencent / Moonton）が両言語の3キーに入っているか
  *   5. 広告の整合    … プライバシーポリシーが AdSense 利用を書いているなら layout に広告コードがあるか
  *   6. 更新日の鮮度  … messages を触った作業ツリーで、記事・ページの更新日が今日になっているか
+ *   7. 姉妹サイトの URL … src と messages に姉妹サイトの URL（hok.hub-game.com・hub-game.com/hok など）を直書きしていないか。
+ *                      書いてよいのは src/data/highlights.ts の SITE_ORIGINS だけ（サイト統合で切り替わるため）。コメントは見ない
  */
 import fs from 'fs';
 import path from 'path';
@@ -155,6 +157,29 @@ if (!process.env.SKIP_FRESHNESS_CHECK) {
         `messages を変更しているのに、articles.ts のどの updated / PAGE_UPDATED も今日 (${today}) になっていない。` +
         `\n      → 触ったページの日付を上げる。文言に関係ない作業なら SKIP_FRESHNESS_CHECK=1 npm run audit`);
     }
+  }
+}
+
+/* ---------- 7. 姉妹サイトの URL ---------- */
+// サイト統合（2026-09-27、src/lib/siteOrigin.ts）で、姉妹サイトは hok.hub-game.com から hub-game.com/hok に移る。
+// 切り替えは SITE_ORIGINS の1か所で行うので、ほかに直書きがあると、そこだけサブドメインのまま残り 301 を1回通る。
+// 統合前の調べで、ガイド2本の3か所が定数を通さず直書きしていた
+// 統合後の形（hub-game.com/hok）の直書きも同じ理由で止める。コメントの行は見ない
+{
+  const SUBDOMAIN = /(?:hok|mlbb|wildrift)\.hub-game\.com|hub-game\.com\/(?:hok|mlbb|wildrift)\b/;
+  const COMMENT = /^\s*(?:\/\/|\/\*|\*|\{\/\*)/;
+  const ALLOW = new Set(['src/data/highlights.ts']);
+  const walk = (dir) =>
+    fs.readdirSync(path.join(root, dir), { withFileTypes: true }).flatMap((e) =>
+      e.isDirectory() ? walk(`${dir}/${e.name}`) : [`${dir}/${e.name}`]
+    );
+  for (const file of [...walk('src'), ...walk('messages')].filter((f) => /\.(tsx?|json|css)$/.test(f))) {
+    if (ALLOW.has(file)) continue;
+    read(file).split('\n').forEach((line, i) => {
+      if (SUBDOMAIN.test(line) && !COMMENT.test(line)) {
+        report('姉妹サイトの URL', `${file}:${i + 1} に姉妹サイトの URL がある。src/data/highlights.ts の sisterSiteUrl を使う`);
+      }
+    });
   }
 }
 

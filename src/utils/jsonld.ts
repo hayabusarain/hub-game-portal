@@ -1,5 +1,6 @@
 import { routing } from '@/i18n/routing';
 import { SITE_ORIGINS, liveSites } from '@/data/highlights';
+import { CONSOLIDATED, SITE_ORIGIN } from '@/lib/siteOrigin';
 
 /**
  * 構造化データ（JSON-LD）のビルダー。
@@ -7,14 +8,17 @@ import { SITE_ORIGINS, liveSites } from '@/data/highlights';
  * 埋め込みは src/components/JsonLd.tsx を使う。
  */
 
-const BASE_URL = 'https://hub-game.com';
+const BASE_URL = SITE_ORIGIN;
 
 /**
  * 姉妹サイト。sameAs に並べて同一運営であることを機械可読に示す。
  * 未公開のサイトは並べない（highlights.ts の SITE_LOCALES が単一の正）。
- * 同一運営であることを示すだけなので、言語には依らない
+ * 同一運営であることを示すだけなので、言語には依らない。
+ *
+ * サイト統合（src/lib/siteOrigin.ts）の後は並べない。sameAs は同じ主体の「別の所在」を示す欄で、
+ * hub-game.com/hok は同じサイトの一部になるため
  */
-const SISTER_SITES = liveSites().map((s) => SITE_ORIGINS[s]);
+const SISTER_SITES = CONSOLIDATED ? [] : liveSites().map((s) => SITE_ORIGINS[s]);
 
 const X_ACCOUNT = 'https://x.com/hub_gamecom';
 

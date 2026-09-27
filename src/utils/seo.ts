@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { routing } from '@/i18n/routing';
+import { SITE_ORIGIN } from '@/lib/siteOrigin';
 
-const BASE_URL = 'https://hub-game.com';
+const BASE_URL = SITE_ORIGIN;
 
 /**
  * ページごとの canonical と hreflang を生成する。

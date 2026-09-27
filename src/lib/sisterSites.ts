@@ -1,5 +1,6 @@
 import { cache } from 'react';
 import { SITE_ORIGINS, liveSites, liveSitesFor, type Highlight, type HighlightSite } from '@/data/highlights';
+import { STATIC_EXPORT } from '@/lib/siteOrigin';
 
 /**
  * 姉妹サイトの「最新情報」を各サイトの公開エンドポイントから取得する。
@@ -176,16 +177,29 @@ function toSnapshot(site: HighlightSite, data: LatestResponse): SiteSnapshot | n
  * 両方から呼ばれるため、react の cache で1リクエストにまとめている。
  */
 const fetchLatest = cache(async (site: HighlightSite): Promise<LatestResponse | null> => {
+  let reason: string;
   try {
     const res = await fetch(ENDPOINTS[site], {
       next: { revalidate: REVALIDATE_SECONDS },
     });
-    if (!res.ok) return null;
-    return (await res.json()) as LatestResponse;
-  } catch {
-    // 姉妹サイトが未デプロイ・停止中でもトップページは成立させる
-    return null;
+    if (res.ok) return (await res.json()) as LatestResponse;
+    reason = `HTTP ${res.status}`;
+  } catch (e) {
+    reason = e instanceof Error ? e.message : String(e);
   }
+  // 今の本番（ISR）では、姉妹サイトが未デプロイ・停止中でもトップページは成立させる。欠けた部分は30分後に取り直す。
+  // サイト統合後の静的書き出しでは、次に作り直すまで欠けたまま残るので、ビルドを止めて前のデプロイを残す。
+  // 姉妹サイトがまだ新しいパスで配っていない時期に手元で試すときは、SISTER_ORIGIN_* で今のサブドメインから取るか、
+  // SISTER_FETCH_OPTIONAL=1 で止めない（1 のときだけ。0 や false を入れても止める側のまま）。
+  // 取れた中身は revalidate 1800 で .next/cache/fetch-cache に残り、30分以内の次のビルドはそれを使ってしまう。
+  // 統合後のビルドでは scripts/prebuild_static.mjs がビルドの前にこのキャッシュを消す
+  if (STATIC_EXPORT && process.env.SISTER_FETCH_OPTIONAL !== '1') {
+    throw new Error(
+      `[sisterSites] ${site} の /api/latest が取れない（${ENDPOINTS[site]}: ${reason}）。` +
+        '欠けたまま書き出すと、次に作り直すまで表とカードが欠ける。姉妹サイトが新しいパスで 200 を返してから作り直す'
+    );
+  }
+  return null;
 });
 
 /**

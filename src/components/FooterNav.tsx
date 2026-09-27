@@ -1,7 +1,7 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 import { Link } from "@/i18n/routing";
 import { ChevronRight, Gamepad2 } from "lucide-react";
-import { SITE_LABELS, SITE_ORIGINS, liveSitesFor } from '@/data/highlights';
+import { SITE_LABELS, sisterSiteUrl, liveSitesFor } from '@/data/highlights';
 
 // 表示するのはテキストとリンクだけで状態もイベントハンドラも持たないため、
 // サーバーコンポーネントとして描画し、翻訳メッセージをクライアントへ送らない
@@ -48,7 +48,7 @@ export default async function FooterNav() {
             {games.map((site) => (
               <a
                 key={site}
-                href={SITE_ORIGINS[site]}
+                href={sisterSiteUrl(site, locale)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm font-semibold text-slate-700 hover:text-amber-700 transition-colors flex items-center gap-1 group"

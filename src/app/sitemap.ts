@@ -1,8 +1,12 @@
 import { MetadataRoute } from 'next';
 import { routing } from '@/i18n/routing';
 import { getLastModified } from '@/data/articles';
+import { SITE_ORIGIN } from '@/lib/siteOrigin';
 
-const BASE_URL = 'https://hub-game.com';
+const BASE_URL = SITE_ORIGIN;
+
+// 静的書き出し（サイト統合）でもファイルとして出す（今の本番でも静的に生成されている）
+export const dynamic = 'force-static';
 
 // 公開中の静的パス（ロケールプレフィックスなし）。ページを足したらここにも追加する
 const STATIC_PATHS = [

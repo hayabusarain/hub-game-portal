@@ -8,6 +8,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import JsonLd from '@/components/JsonLd';
 import { buildGraph, buildOrganization, buildWebSite } from '@/utils/jsonld';
+import { SITE_ORIGIN } from '@/lib/siteOrigin';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,14 +43,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Meta' });
   return {
-    metadataBase: new URL('https://hub-game.com'),
+    metadataBase: new URL(SITE_ORIGIN),
     title: { default: t('home.title'), template: '%s | HUB-GAME' },
     description: t('home.description'),
     openGraph: {
       siteName: 'HUB-GAME',
       type: 'website',
       locale: locale === 'ja' ? 'ja_JP' : 'en_US',
-      url: `https://hub-game.com/${locale}`,
+      url: `${SITE_ORIGIN}/${locale}`,
     },
     // OGP画像は opengraph-image.tsx が自動で付くので、カード種別だけ大きい方を指定する
     twitter: { card: 'summary_large_image' },

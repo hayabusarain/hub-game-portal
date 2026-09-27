@@ -8,7 +8,7 @@ import { buildArticle, buildBreadcrumb, buildGraph } from '@/utils/jsonld';
 import { ARTICLES, formatArticleDate } from '@/data/articles';
 import { getAlternates } from '@/utils/seo';
 import GlossaryTermLinks from '@/components/GlossaryTermLinks';
-import { SITE_ORIGINS, liveSitesFor } from '@/data/highlights';
+import { sisterSiteUrl, liveSitesFor } from '@/data/highlights';
 
 /**
  * Mobile Legends: Bang Bang のタイトルレビュー。
@@ -139,7 +139,7 @@ export default async function MobileLegendsGuidePage({ params }: { params: Promi
           <div className="pt-6 text-center">
             {hasSite ? (
               <a
-                href={SITE_ORIGINS.mlbb}
+                href={sisterSiteUrl('mlbb', locale)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-violet-500 hover:bg-violet-400 text-white font-bold rounded-xl text-sm transition-all"

@@ -21,6 +21,17 @@ npm run build  # 本番ビルド
 npm run lint   # ESLint によるチェック
 ```
 
+## サイト統合（2026-09-27 運営者了承）
+
+4サイトを hub-game.com の1つにまとめ、Cloudflare（Workers の静的アセット）へ移す予定。
+ポータルはドメイン直下、姉妹サイトは `/hok`・`/mlbb`・`/wildrift` の下に入る。計画は HoK のリポジトリの `docs/CONSOLIDATION_PLAN.md`。
+
+統合後の形は、ビルド時の環境変数 `NEXT_PUBLIC_SITE_ORIGIN=https://hub-game.com` で切り替わる（`src/lib/siteOrigin.ts`）。
+無ければ今の Vercel 向けのまま。統合後のビルドは静的書き出し（`out/`）で、`src/proxy.ts` は動かない。
+`/` のブラウザの言語による振り分けは `worker/entry.js`（hub-game-rules から配られる）、
+転送とヘッダーは `src/app/%5Fredirects`・`%5Fheaders` が書き出す `_redirects`・`_headers` が受け持つ。
+手元の確認の手順は `wrangler.jsonc` の冒頭にある（`next start` は静的書き出しでは使えない）。
+
 ## ディレクトリ構成の要点
 
 ```

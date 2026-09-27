@@ -8,6 +8,7 @@ import { buildArticle, buildBreadcrumb, buildGraph } from '@/utils/jsonld';
 import { ARTICLES, formatArticleDate } from '@/data/articles';
 import { getAlternates } from '@/utils/seo';
 import GlossaryTermLinks from '@/components/GlossaryTermLinks';
+import { sisterSiteUrl } from '@/data/highlights';
 
 const meta = ARTICLES['wild-rift'];
 
@@ -136,7 +137,7 @@ export default async function WildRiftGuidePage({ params }: { params: Promise<{ 
 
           <div className="pt-6 text-center">
             <a
-              href="https://wildrift.hub-game.com"
+              href={sisterSiteUrl('wildrift', locale)}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-white font-bold rounded-xl text-sm transition-all"

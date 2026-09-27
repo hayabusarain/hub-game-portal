@@ -1,4 +1,5 @@
 import createNextIntlPlugin from 'next-intl/plugin';
+import { REDIRECTS } from './src/lib/redirectRules';
 
 const withNextIntl = createNextIntlPlugin();
 
@@ -6,6 +7,9 @@ const withNextIntl = createNextIntlPlugin();
  * 全レスポンスに付けるセキュリティヘッダー。
  * CSP は AdSense のスクリプトを通す必要があり、誤ると広告が表示されなくなるため
  * ここでは入れていない（導入するなら Report-Only から始めること）。
+ *
+ * サイト統合後の静的書き出しでは headers() が効かない。同じ5つは Cloudflare のゾーンの Transform Rules で
+ * hub-game.com の全パス（姉妹サイトの /hok なども）にまとめて付ける（HoK の docs/CONSOLIDATION_PLAN.md の2章）
  */
 const securityHeaders = [
   // MIME タイプの推測を止める
@@ -22,15 +26,18 @@ const securityHeaders = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // サイト統合（2026-09-27）。NEXT_PUBLIC_SITE_ORIGIN があるときだけ静的書き出しに切り替える（src/lib/siteOrigin.ts）。
+  // 無ければ今の Vercel（サーバーあり）向けのまま。ポータルはドメイン直下なので basePath は持たない。
+  // 画像の最適化はサーバーが要るので、静的書き出しでは切る（バナー3枚が縮小されずに配られる。/ja で計約277KB）
+  ...(process.env.NEXT_PUBLIC_SITE_ORIGIN?.trim() ? { output: 'export' as const, images: { unoptimized: true } } : {}),
   // Next.js のバージョンを露出させない
   poweredByHeader: false,
   async headers() {
     return [{ source: '/:path*', headers: securityHeaders }];
   },
-  // 適性診断は 2026-09-27 に運営者の判断で廃止した。検索に残っている旧 URL は各言語のトップへ送る。
-  // Cloudflare へ移したら、同じ規則を public/_redirects に移すこと（静的書き出しでは redirects() が効かない）
+  // 旧 URL の転送。一覧は src/lib/redirectRules.ts（静的書き出しの _redirects と共通）
   async redirects() {
-    return [{ source: '/:locale(ja|en)/diagnosis', destination: '/:locale', permanent: true }];
+    return REDIRECTS;
   },
 };
 
