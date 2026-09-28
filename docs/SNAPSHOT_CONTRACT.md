@@ -165,7 +165,8 @@ curl -s https://wildrift.hub-game.com/api/latest | jq .snapshot
   代わりに、ポータルの GitHub Actions（`.github/workflows/refresh-sister-data.yml`）が1時間ごとに3サイトの `/api/latest` を見て、
   中身が変わっていれば `.github/refresh/sister-latest.json` を書き換えて main へ push する。その push で Workers Builds がポータルを作り直す。
   **姉妹サイトの側ですることは無い**（デプロイフックを各サイトのビルドから呼ぶ案もあったが、各サイトの Cloudflare の設定に秘密の URL を置く手間が要るのでやめた。2026-09-28）。
-  反映までの遅れは最大で1時間とポータルのビルドの数分
+  予約は1時間ごとだが、GitHub の予約実行は混み具合で遅れたり飛ばされたりする。**実測では2〜6時間おきだった**
+  （2026-09-27 夜〜28 朝の4回。すべて成功）。急ぎで反映したいときは、GitHub の Actions の画面から「Run workflow」で手で走らせる
 - ポータルの統合後のビルドは、姉妹サイトの `/api/latest` が1つでも取れないと止まる（前のデプロイが残る）。
   今のように欠けた部分を描かずに出すと、次に作り直すまで欠けたまま残るため（`src/lib/sisterSites.ts`）
 - 取った中身は `.next/cache/fetch-cache` に30分残り、その間の次のビルドは取り直さずにそれを使う。続けてデプロイされると、あとの更新がポータルに出ない。

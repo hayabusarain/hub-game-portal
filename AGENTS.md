@@ -179,7 +179,7 @@ npm run build        ビルド
 - アクセス解析は姉妹サイトと同じ測定 ID で、`content_group: 'portal'` を付けて送る（2026-09-27〜）。
   タグとプライバシーポリシー（`Privacy.analyticsText`）の食い違いは監査の検査5が止める
 - 統合後のビルドは、姉妹サイトの `/api/latest` が取れないと止まる（`src/lib/sisterSites.ts`）。30分ごとの取り直しが無くなるので、
-  欠けたまま出すと次に作り直すまで欠ける。作り直しは GitHub Actions の `refresh-sister-data` が1時間ごとに変化を見て、
+  欠けたまま出すと次に作り直すまで欠ける。作り直しは GitHub Actions の `refresh-sister-data` が1時間ごと（実測は2〜6時間おき）に変化を見て、
   変わっていれば記録を main へ push して起こす（`docs/SNAPSHOT_CONTRACT.md` の7章）。**ボットが main に push するので、push の前に `git pull --rebase`**
 - デプロイは main への push で Cloudflare の Workers Builds が行う（2026-09-27 夜〜）。Vercel はもう使っていない。
   `wrangler.jsonc` の `routes`（hub-game.com のカスタムドメイン）は消さない。消すと hub-game.com が止まる

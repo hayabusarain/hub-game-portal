@@ -1,5 +1,6 @@
 # 姉妹サイトの更新をポータルに取り込む（サイト統合 2026-09-27〜）。
 # 1時間ごとに3サイトの /api/latest を見て、変わっていれば .github/refresh/sister-latest.json を書き換えて main へ push する。
+# GitHub の予約実行は混むと遅れたり飛ばされたりし、実測では2〜6時間おきだった（2026-09-27〜28）。急ぐときは Actions の画面の Run workflow。
 # その push で Cloudflare の Workers Builds がポータルを作り直し、トップの表とカードの数字が新しくなる。
 # 仕組みの説明は .github/refresh/check.mjs の冒頭と docs/SNAPSHOT_CONTRACT.md の7章。
 #
