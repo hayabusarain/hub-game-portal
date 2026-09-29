@@ -66,7 +66,7 @@ export const ARTICLES: Record<ArticleSlug, ArticleMeta> = {
  * 内容を変えたらその日に上げる。法的ページも権利表記の変更などで動く。
  */
 export const PAGE_UPDATED: Record<string, string> = {
-  '': '2026-09-27',
+  '': '2026-09-29',
   '/guides': '2026-09-27',
   '/glossary': '2026-09-10',
   '/about': '2026-09-27',

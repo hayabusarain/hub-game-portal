@@ -22,6 +22,9 @@ import { getLiveHighlights } from '@/lib/sisterSites';
 // 姉妹サイトの変化を見て、変わっていればポータルを作り直す（docs/SNAPSHOT_CONTRACT.md の「サイト統合の後」）
 export const revalidate = 1800;
 
+/** 姉妹サイトの中のページ。path はロケールを除いた形で、URL は sisterSiteUrl が組み立てる */
+type SiteLink = { path: string; labelKey: string };
+
 /**
  * ゲームカードの素材と文言キー。
  *
@@ -65,11 +68,46 @@ export const revalidate = 1800;
  * 差し替え先は用意してある。scripts/make_original_banner.mjs が、MOBA の地図を
  * 図にした自作バナーを同じ寸法で書き出す。公式素材をいっさい使わないので、
  * 要請が来た日に走らせればそのまま置き換えられる。
+ *
+ * ■ カードの下のリンク（links）
+ *
+ * 2026-09-29 に足した。それまでトップから姉妹サイトへのリンクは、カードと「最新パッチの注目」の
+ * 1本ずつ（計6本）だけで、AdSense の不承認（2026-09-08）のときと同じ本数だった
+ * （docs/ADSENSE_REVIEW_LOG.md の「読み」）。読者がトップから直接行き先を選べるように、
+ * 3タイトルで同じ5種類（Tier表・一覧・パッチ・装備・初心者向け）を並べる。
+ * 行き先は 2026-09-29 に各サイトのサイトマップで実在を確かめた。姉妹サイトがパスを変えたら、ここも直す
  */
-const SITE_CARDS: Record<HighlightSite, { image: string; titleKey: string; descKey: string }> = {
-  hok: { image: '/images/games/honor-of-kings.jpg', titleKey: 'hokTitle', descKey: 'hokDesc' },
-  wildrift: { image: '/images/games/wild-rift.jpg', titleKey: 'wildRiftTitle', descKey: 'wildRiftDesc' },
-  mlbb: { image: '/images/games/mobile-legends.jpg', titleKey: 'mlbbTitle', descKey: 'mlbbDesc' },
+const SITE_CARDS: Record<HighlightSite, { image: string; titleKey: string; descKey: string; links: SiteLink[] }> = {
+  hok: {
+    image: '/images/games/honor-of-kings.jpg', titleKey: 'hokTitle', descKey: 'hokDesc',
+    links: [
+      { path: '/tier-list', labelKey: 'linkTierList' },
+      { path: '/heroes', labelKey: 'linkHeroes' },
+      { path: '/patches', labelKey: 'linkPatches' },
+      { path: '/items', labelKey: 'linkEquipment' },
+      { path: '/guide', labelKey: 'linkGuide' },
+    ],
+  },
+  wildrift: {
+    image: '/images/games/wild-rift.jpg', titleKey: 'wildRiftTitle', descKey: 'wildRiftDesc',
+    links: [
+      { path: '/tier-list', labelKey: 'linkTierList' },
+      { path: '/champions', labelKey: 'linkChampions' },
+      { path: '/patches', labelKey: 'linkPatches' },
+      { path: '/items', labelKey: 'linkItems' },
+      { path: '/guide', labelKey: 'linkGuide' },
+    ],
+  },
+  mlbb: {
+    image: '/images/games/mobile-legends.jpg', titleKey: 'mlbbTitle', descKey: 'mlbbDesc',
+    links: [
+      { path: '/tier-list', labelKey: 'linkTierList' },
+      { path: '/heroes', labelKey: 'linkHeroes' },
+      { path: '/patches', labelKey: 'linkPatches' },
+      { path: '/items', labelKey: 'linkEquipment' },
+      { path: '/guide/basics', labelKey: 'linkGuide' },
+    ],
+  },
 };
 
 /** 「最新パッチの注目」のサイト別バッジ色。表の見出し色（TitleSnapshot）と揃えてある */
@@ -137,52 +175,75 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           {liveSitesFor(locale).map((site, index) => {
             const card = SITE_CARDS[site];
             // 素の <a> にする。next-intl の Link は、サイト統合で同じドメイン（hub-game.com/hok）になると
-            // 内部リンクとして扱い、別アプリのページを先読みしにいく（Next.js のマルチゾーンの手引きも <a> を使う）
+            // 内部リンクとして扱い、別アプリのページを先読みしにいく（Next.js のマルチゾーンの手引きも <a> を使う）。
+            // カード全体を1本のリンクにすると下のリンクの行を入れ子にできないので、バナーと説明だけをリンクにする
             return (
-              <a
+              <div
                 key={site}
-                href={sisterSiteUrl(site, locale)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block relative bg-white rounded-[32px] overflow-hidden shadow-sm border border-slate-200/60 transition-all active:scale-[0.98] hover:shadow-xl hover:border-indigo-100"
+                className="bg-white rounded-[32px] overflow-hidden shadow-sm border border-slate-200/60 transition-all hover:shadow-xl hover:border-indigo-100"
               >
-                {/* バナー: 公式アートは外部CDNへ直リンクせず自サイトにホストする（相手の都合で壊れないように） */}
-                <div className="w-full h-44 relative overflow-hidden bg-slate-200">
-                  <Image
-                    src={card.image}
-                    alt=""
-                    aria-hidden="true"
-                    fill
-                    sizes="(min-width: 768px) 768px, 100vw"
-                    priority={index === 0}
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <a
+                  href={sisterSiteUrl(site, locale)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block relative"
+                >
+                  {/* バナー: 公式アートは外部CDNへ直リンクせず自サイトにホストする（相手の都合で壊れないように） */}
+                  <div className="w-full h-44 relative overflow-hidden bg-slate-200">
+                    <Image
+                      src={card.image}
+                      alt=""
+                      aria-hidden="true"
+                      fill
+                      sizes="(min-width: 768px) 768px, 100vw"
+                      priority={index === 0}
+                      className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-                  <div className="absolute bottom-5 left-5 flex gap-2">
-                    <span className="px-3 py-1.5 text-[10px] font-black bg-indigo-500/90 backdrop-blur-md text-white rounded-lg shadow-sm tracking-wider">
-                      MOBA
-                    </span>
-                    <span className="px-3 py-1.5 text-[10px] font-black bg-emerald-500/90 backdrop-blur-md text-white rounded-lg shadow-sm tracking-wider">
-                      {t('activeBadge')}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-6">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors">
-                      {t(card.titleKey)}
-                    </h3>
-                    <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-indigo-50 transition-colors shrink-0">
-                      <ArrowRight size={18} className="text-slate-400 group-hover:text-indigo-600 transition-colors" />
+                    <div className="absolute bottom-5 left-5 flex gap-2">
+                      <span className="px-3 py-1.5 text-[10px] font-black bg-indigo-500/90 backdrop-blur-md text-white rounded-lg shadow-sm tracking-wider">
+                        MOBA
+                      </span>
+                      <span className="px-3 py-1.5 text-[10px] font-black bg-emerald-500/90 backdrop-blur-md text-white rounded-lg shadow-sm tracking-wider">
+                        {t('activeBadge')}
+                      </span>
                     </div>
                   </div>
-                  <p className="text-xs text-slate-500 leading-relaxed font-medium">
-                    {t(card.descKey)}
-                  </p>
-                </div>
-              </a>
+
+                  <div className="px-6 pt-6 pb-4">
+                    <div className="flex justify-between items-start mb-2">
+                      <h3 className="text-xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors">
+                        {t(card.titleKey)}
+                      </h3>
+                      <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-indigo-50 transition-colors shrink-0">
+                        <ArrowRight size={18} className="text-slate-400 group-hover:text-indigo-600 transition-colors" />
+                      </div>
+                    </div>
+                    <p className="text-xs text-slate-500 leading-relaxed font-medium">
+                      {t(card.descKey)}
+                    </p>
+                  </div>
+                </a>
+
+                {/* そのサイトの主なページ。スマホで押しやすいよう高さ 44px */}
+                <nav aria-label={t('siteLinksLabel', { site: t(card.titleKey) })} className="px-6 pb-6">
+                  <ul className="flex flex-wrap gap-2">
+                    {card.links.map((link) => (
+                      <li key={link.path}>
+                        <a
+                          href={sisterSiteUrl(site, locale, link.path)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex min-h-11 items-center rounded-full border border-slate-200 bg-slate-50 px-4 text-sm font-bold text-slate-700 transition-colors hover:border-indigo-200 hover:text-indigo-600"
+                        >
+                          {t(link.labelKey)}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              </div>
             );
           })}
 
