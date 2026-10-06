@@ -29,7 +29,7 @@ type MappingSection = { heading: string; intro: string; rows: MappingRow[] };
  * 読者を姉妹サイトへ送るボタンだけが、その言語で公開しているサイトに絞られる。
  *
  * guide は各サイトの初心者ガイドのパス。**サイトごとに違うので直書きしない。**
- * MLBB Hub には /guide が無く（404）、入口は /guide/basics になっている。
+ * Mobare Hub には /guide が無く（404）、入口は /guide/basics になっている。
  */
 const TITLES = [
   { key: 'hok', site: 'hok', guide: '/guide', text: 'text-amber-700', bar: 'border-amber-500', cta: 'bg-amber-500 hover:bg-amber-400' },

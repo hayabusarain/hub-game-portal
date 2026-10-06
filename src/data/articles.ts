@@ -47,7 +47,7 @@ export const ARTICLES: Record<ArticleSlug, ArticleMeta> = {
   'mobile-legends': {
     path: '/guides/mobile-legends',
     published: '2026-09-10',
-    updated: '2026-09-10',
+    updated: '2026-10-06',
   },
   compare: {
     path: '/guides/compare',
@@ -69,7 +69,7 @@ export const PAGE_UPDATED: Record<string, string> = {
   '': '2026-09-29',
   '/guides': '2026-09-27',
   '/glossary': '2026-09-10',
-  '/about': '2026-09-27',
+  '/about': '2026-10-06',
   '/contact': '2026-08-13',
   '/disclaimer': '2026-09-10',
   '/privacy': '2026-09-27',

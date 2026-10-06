@@ -56,7 +56,7 @@ type SiteLink = { path: string; labelKey: string };
  *
  * ■ 権利。弱いのは MLBB の1枚
  *
- * **MLBB Hub 本体は方針が違う。** あちらは公式由来の画像を 128px 以下のアイコンに
+ * **Mobare Hub 本体は方針が違う。** あちらは公式由来の画像を 128px 以下のアイコンに
  * 限り、スプラッシュを載せない（モバレサイトの docs/OFFICIAL_ASSETS.md）。
  * Moonton は許諾を出しておらず、ファンコンテンツの方針も公開していない。
  * この1枚はポータル側の既存2枚に揃えた運営者の判断。

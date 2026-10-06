@@ -14,8 +14,8 @@ import { sisterSiteUrl, liveSitesFor } from '@/data/highlights';
  * Mobile Legends: Bang Bang のタイトルレビュー。
  *
  * 記事そのものは日英とも出す。ゲームの話であって、当方のサイトの話ではない。
- * ただし末尾の「MLBB Hub を見る」ボタンだけは、その言語で公開しているときにしか出さない。
- * MLBB Hub は日本語のみで公開しているので、英語の読者を読めないサイトへ送らないため。
+ * ただし末尾の「Mobare Hub を見る」ボタンだけは、その言語で公開しているときにしか出さない。
+ * Mobare Hub は日本語のみで公開しているので、英語の読者を読めないサイトへ送らないため。
  */
 
 const meta = ARTICLES['mobile-legends'];
@@ -134,7 +134,7 @@ export default async function MobileLegendsGuidePage({ params }: { params: Promi
 
           <p>{t('conclusion')}</p>
 
-          {/* MLBB Hub は日本語のみ。英語では姉妹サイトへ送れないので、代わりに
+          {/* Mobare Hub は日本語のみ。英語では姉妹サイトへ送れないので、代わりに
               3タイトルの比較記事へ送る。ここを空にすると英語版だけ行き止まりになる */}
           <div className="pt-6 text-center">
             {hasSite ? (

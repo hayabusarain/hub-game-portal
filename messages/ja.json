@@ -546,7 +546,7 @@
           {
             "site": "mlbb",
             "path": "/tier-list",
-            "label": "MLBB Hub: レーン別Tier表"
+            "label": "Mobare Hub: レーン別Tier表"
           }
         ]
       },
@@ -569,7 +569,7 @@
           {
             "site": "mlbb",
             "path": "/tier-list/gold",
-            "label": "MLBB Hub: ゴールドレーンTier表"
+            "label": "Mobare Hub: ゴールドレーンTier表"
           }
         ]
       },
@@ -592,7 +592,7 @@
           {
             "site": "mlbb",
             "path": "/items",
-            "label": "MLBB Hub: 装備一覧"
+            "label": "Mobare Hub: 装備一覧"
           }
         ]
       },
@@ -615,7 +615,7 @@
           {
             "site": "mlbb",
             "path": "/guide/basics",
-            "label": "MLBB Hub: 初心者ガイド（試合の決まり）"
+            "label": "Mobare Hub: 初心者ガイド（試合の決まり）"
           }
         ]
       },
@@ -653,7 +653,7 @@
           {
             "site": "mlbb",
             "path": "/tier-list/exp",
-            "label": "MLBB Hub: EXPレーンTier表"
+            "label": "Mobare Hub: EXPレーンTier表"
           }
         ]
       },
@@ -686,7 +686,7 @@
           {
             "site": "mlbb",
             "path": "/tier-list/gold",
-            "label": "MLBB Hub: ゴールドレーンTier表"
+            "label": "Mobare Hub: ゴールドレーンTier表"
           }
         ]
       },
@@ -709,7 +709,7 @@
           {
             "site": "mlbb",
             "path": "/tier-list/roam",
-            "label": "MLBB Hub: ロームTier表"
+            "label": "Mobare Hub: ロームTier表"
           }
         ]
       },
@@ -732,7 +732,7 @@
           {
             "site": "mlbb",
             "path": "/spells",
-            "label": "MLBB Hub: バトルスキル一覧（狩猟）"
+            "label": "Mobare Hub: バトルスキル一覧（狩猟）"
           }
         ]
       },
@@ -755,7 +755,7 @@
           {
             "site": "mlbb",
             "path": "/guide/basics",
-            "label": "MLBB Hub: 初心者ガイド（試合の決まり）"
+            "label": "Mobare Hub: 初心者ガイド（試合の決まり）"
           }
         ]
       },
@@ -778,7 +778,7 @@
           {
             "site": "mlbb",
             "path": "/guide/basics",
-            "label": "MLBB Hub: 初心者ガイド（試合の決まり）"
+            "label": "Mobare Hub: 初心者ガイド（試合の決まり）"
           }
         ]
       },
@@ -816,7 +816,7 @@
           {
             "site": "mlbb",
             "path": "/guide/basics",
-            "label": "MLBB Hub: 初心者ガイド（タワーとシールド）"
+            "label": "Mobare Hub: 初心者ガイド（タワーとシールド）"
           }
         ]
       },
@@ -839,7 +839,7 @@
           {
             "site": "mlbb",
             "path": "/guide/basics",
-            "label": "MLBB Hub: 初心者ガイド（ベースタワー）"
+            "label": "Mobare Hub: 初心者ガイド（ベースタワー）"
           }
         ]
       },
@@ -862,7 +862,7 @@
           {
             "site": "mlbb",
             "path": "/guide/terms",
-            "label": "MLBB Hub: 用語集（ブッシュと視界）"
+            "label": "Mobare Hub: 用語集（ブッシュと視界）"
           }
         ]
       },
@@ -905,7 +905,7 @@
           {
             "site": "mlbb",
             "path": "/guide/terms",
-            "label": "MLBB Hub: 用語集（制圧・強靭）"
+            "label": "Mobare Hub: 用語集（制圧・強靭）"
           }
         ]
       },
@@ -943,7 +943,7 @@
           {
             "site": "mlbb",
             "path": "/guide/terms",
-            "label": "MLBB Hub: 用語集（タワーダイブ）"
+            "label": "Mobare Hub: 用語集（タワーダイブ）"
           }
         ]
       },
@@ -996,7 +996,7 @@
           {
             "site": "mlbb",
             "path": "/guide/basics",
-            "label": "MLBB Hub: 初心者ガイド（タートルとロード）"
+            "label": "Mobare Hub: 初心者ガイド（タートルとロード）"
           }
         ]
       },
@@ -1019,7 +1019,7 @@
           {
             "site": "mlbb",
             "path": "/tier-list/roam",
-            "label": "MLBB Hub: ロームTier表"
+            "label": "Mobare Hub: ロームTier表"
           }
         ]
       },
@@ -1042,7 +1042,7 @@
           {
             "site": "mlbb",
             "path": "/guide/terms",
-            "label": "MLBB Hub: 用語集（スーパーミニオン）"
+            "label": "Mobare Hub: 用語集（スーパーミニオン）"
           }
         ]
       },
@@ -1075,7 +1075,7 @@
           {
             "site": "mlbb",
             "path": "/tier-list/exp",
-            "label": "MLBB Hub: EXPレーンTier表"
+            "label": "Mobare Hub: EXPレーンTier表"
           }
         ]
       },
@@ -1098,7 +1098,7 @@
           {
             "site": "mlbb",
             "path": "/tier-list",
-            "label": "MLBB Hub: 最新Tier表"
+            "label": "Mobare Hub: 最新Tier表"
           }
         ]
       }
@@ -1178,7 +1178,7 @@
     "siteTitle": "サイト概要",
     "siteText": "HUB-GAME（hub-game.com）は、スマートフォン向けMOBAを中心としたゲーム攻略ポータルです。タイトル選びに役立つ比較記事と用語集を本サイトで提供し、タイトル別の詳しい攻略情報は姉妹サイト（オナー・オブ・キングス攻略、ワイルドリフト攻略、モバイル・レジェンド攻略）で公開しています。",
     "operatorTitle": "運営者",
-    "operatorText": "HUB-GAME運営（メール: contact@hub-game.com ／ X: @hub_gamecom）。オナー・オブ・キングスとワイルドリフトを日常的にプレイする運営者が、実際のプレイと実機の画面をもとに記事とデータを作っています。モバイル・レジェンドは、実機の表示を書き起こした姉妹サイト MLBB Hub のデータを使っています。",
+    "operatorText": "HUB-GAME運営（メール: contact@hub-game.com ／ X: @hub_gamecom）。オナー・オブ・キングスとワイルドリフトを日常的にプレイする運営者が、実際のプレイと実機の画面をもとに記事とデータを作っています。モバイル・レジェンドは、実機の表示を書き起こした姉妹サイト Mobare Hub（モバレハブ）のデータを使っています。",
     "policyTitle": "掲載方針",
     "policyText": "記事は実際にプレイして確認した内容をもとに作成しています。パッチにより情報が古くなるため、数値やバランスに関する記述にはできる限り検証時点を明記します。断定できないことは「未確認」と書き、推測で埋めません。誤りを見つけた場合は、お問い合わせよりご連絡ください。",
     "contactTitle": "ご連絡",
@@ -1507,7 +1507,7 @@
     "section4Heading": "■ 総評：こんな人におすすめ",
     "verdictParagraphs": [
       "手に入るのは、覚える量に対して見返りの大きい試合だ。時刻を3つ押さえるだけで、川へ寄るかどうかの判断がつく。試合前の準備はエンブレム1枚で足ります。",
-      "代わりに引き受けるのは、情報を自分で確かめる手間。日本語の記事は少なく、呼び名も揺れている。姉妹サイトの MLBB Hub が実機の表示を書き起こしているのは、そのためです。",
+      "代わりに引き受けるのは、情報を自分で確かめる手間。日本語の記事は少なく、呼び名も揺れている。姉妹サイトの Mobare Hub（モバレハブ）が実機の表示を書き起こしているのは、そのためです。",
       "端末の容量が気になるなら、選ぶ理由はもう1つあります。App Store（日本）の表示で339.7MB。ワイルドリフトの1.1GB、オナー・オブ・キングスの819.1MBと比べて、いちばん軽い。"
     ],
     "verdictDataHeading": "数字で見るモバイル・レジェンド（2026-09-09時点）",
@@ -1518,7 +1518,7 @@
       "App Store（日本）の表示は339.7MB、iOS 12.0以降。初回公開は2016年11月11日、提供はMOONTONです。"
     ],
     "conclusion": "軽くて、覚える量が少なくて、判断の基準がはっきりしている。オナー・オブ・キングスやワイルドリフトとどれが合うかは、3タイトルを並べた比較記事で見比べてほしい。",
-    "ctaLabel": "MLBB Hubでヒーロー攻略を見る",
+    "ctaLabel": "Mobare Hubでヒーロー攻略を見る",
     "compareCtaLabel": "3タイトルを並べた比較記事を読む"
   }
 }

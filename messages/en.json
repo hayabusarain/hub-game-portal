@@ -546,7 +546,7 @@
           {
             "site": "mlbb",
             "path": "/tier-list",
-            "label": "MLBB Hub: tier lists by lane"
+            "label": "Mobare Hub: tier lists by lane"
           }
         ]
       },
@@ -569,7 +569,7 @@
           {
             "site": "mlbb",
             "path": "/tier-list/gold",
-            "label": "MLBB Hub: Gold Lane tier list"
+            "label": "Mobare Hub: Gold Lane tier list"
           }
         ]
       },
@@ -592,7 +592,7 @@
           {
             "site": "mlbb",
             "path": "/items",
-            "label": "MLBB Hub: item list"
+            "label": "Mobare Hub: item list"
           }
         ]
       },
@@ -615,7 +615,7 @@
           {
             "site": "mlbb",
             "path": "/guide/basics",
-            "label": "MLBB Hub: beginner guide"
+            "label": "Mobare Hub: beginner guide"
           }
         ]
       },
@@ -653,7 +653,7 @@
           {
             "site": "mlbb",
             "path": "/tier-list/exp",
-            "label": "MLBB Hub: EXP Lane tier list"
+            "label": "Mobare Hub: EXP Lane tier list"
           }
         ]
       },
@@ -686,7 +686,7 @@
           {
             "site": "mlbb",
             "path": "/tier-list/gold",
-            "label": "MLBB Hub: Gold Lane tier list"
+            "label": "Mobare Hub: Gold Lane tier list"
           }
         ]
       },
@@ -709,7 +709,7 @@
           {
             "site": "mlbb",
             "path": "/tier-list/roam",
-            "label": "MLBB Hub: Roam tier list"
+            "label": "Mobare Hub: Roam tier list"
           }
         ]
       },
@@ -732,7 +732,7 @@
           {
             "site": "mlbb",
             "path": "/spells",
-            "label": "MLBB Hub: battle spells (Retribution)"
+            "label": "Mobare Hub: battle spells (Retribution)"
           }
         ]
       },
@@ -755,7 +755,7 @@
           {
             "site": "mlbb",
             "path": "/guide/basics",
-            "label": "MLBB Hub: beginner guide"
+            "label": "Mobare Hub: beginner guide"
           }
         ]
       },
@@ -778,7 +778,7 @@
           {
             "site": "mlbb",
             "path": "/guide/basics",
-            "label": "MLBB Hub: beginner guide"
+            "label": "Mobare Hub: beginner guide"
           }
         ]
       },
@@ -816,7 +816,7 @@
           {
             "site": "mlbb",
             "path": "/guide/basics",
-            "label": "MLBB Hub: beginner guide (turret shields)"
+            "label": "Mobare Hub: beginner guide (turret shields)"
           }
         ]
       },
@@ -839,7 +839,7 @@
           {
             "site": "mlbb",
             "path": "/guide/basics",
-            "label": "MLBB Hub: beginner guide (base turrets)"
+            "label": "Mobare Hub: beginner guide (base turrets)"
           }
         ]
       },
@@ -862,7 +862,7 @@
           {
             "site": "mlbb",
             "path": "/guide/terms",
-            "label": "MLBB Hub: glossary (bushes and vision)"
+            "label": "Mobare Hub: glossary (bushes and vision)"
           }
         ]
       },
@@ -905,7 +905,7 @@
           {
             "site": "mlbb",
             "path": "/guide/terms",
-            "label": "MLBB Hub: glossary (suppression and tenacity)"
+            "label": "Mobare Hub: glossary (suppression and tenacity)"
           }
         ]
       },
@@ -943,7 +943,7 @@
           {
             "site": "mlbb",
             "path": "/guide/terms",
-            "label": "MLBB Hub: glossary (turret dive)"
+            "label": "Mobare Hub: glossary (turret dive)"
           }
         ]
       },
@@ -996,7 +996,7 @@
           {
             "site": "mlbb",
             "path": "/guide/basics",
-            "label": "MLBB Hub: beginner guide (Turtle and Lord)"
+            "label": "Mobare Hub: beginner guide (Turtle and Lord)"
           }
         ]
       },
@@ -1019,7 +1019,7 @@
           {
             "site": "mlbb",
             "path": "/tier-list/roam",
-            "label": "MLBB Hub: Roam tier list"
+            "label": "Mobare Hub: Roam tier list"
           }
         ]
       },
@@ -1042,7 +1042,7 @@
           {
             "site": "mlbb",
             "path": "/guide/terms",
-            "label": "MLBB Hub: glossary (super minions)"
+            "label": "Mobare Hub: glossary (super minions)"
           }
         ]
       },
@@ -1075,7 +1075,7 @@
           {
             "site": "mlbb",
             "path": "/tier-list/exp",
-            "label": "MLBB Hub: EXP Lane tier list"
+            "label": "Mobare Hub: EXP Lane tier list"
           }
         ]
       },
@@ -1098,7 +1098,7 @@
           {
             "site": "mlbb",
             "path": "/tier-list",
-            "label": "MLBB Hub: current tier list"
+            "label": "Mobare Hub: current tier list"
           }
         ]
       }
@@ -1178,7 +1178,7 @@
     "siteTitle": "About This Site",
     "siteText": "HUB-GAME (hub-game.com) is a strategy portal focused on mobile MOBAs. This site offers comparison articles and a glossary to help you choose a title, while our sister sites cover detailed strategy for Honor of Kings, Wild Rift and Mobile Legends: Bang Bang. The Mobile Legends site is published in Japanese only.",
     "operatorTitle": "Operator",
-    "operatorText": "HUB-GAME team (email: contact@hub-game.com / X: @hub_gamecom). The articles and data are produced by an operator who plays Honor of Kings and Wild Rift daily, working from hands-on play and the actual in-game screens. Mobile Legends figures come from our sister site MLBB Hub, which transcribes what the client shows.",
+    "operatorText": "HUB-GAME team (email: contact@hub-game.com / X: @hub_gamecom). The articles and data are produced by an operator who plays Honor of Kings and Wild Rift daily, working from hands-on play and the actual in-game screens. Mobile Legends figures come from our sister site Mobare Hub, which transcribes what the client shows.",
     "policyTitle": "Editorial Policy",
     "policyText": "Articles are based on what we have verified through actual play. Because patches make information go stale, we note the verification date for numbers and balance claims wherever possible. Anything we cannot confirm is marked as unverified rather than guessed. If you spot an error, please let us know via the contact page.",
     "contactTitle": "Get in Touch",
@@ -1518,7 +1518,7 @@
       "The Japanese App Store lists 339.7 MB, iOS 12.0 or later. First published on November 11, 2016 by MOONTON."
     ],
     "conclusion": "Light to install, light to learn, and clear about what decides a fight. Whether it suits you better than Honor of Kings or Wild Rift is easier to judge with all three side by side in the comparison article.",
-    "ctaLabel": "Open MLBB Hub for hero guides",
+    "ctaLabel": "Open Mobare Hub for hero guides",
     "compareCtaLabel": "Compare all three side by side"
   }
 }
