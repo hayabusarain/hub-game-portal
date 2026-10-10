@@ -62,6 +62,17 @@ const HASHTAGS: Record<HighlightSite, string> = {
   mlbb: '#モバイルレジェンド #MLBB',
 };
 
+/**
+ * サイトごとの呼び名。Wild Rift は「チャンピオン」「アイテム」で、HoK と MLBB は「ヒーロー」「装備」。
+ * 以前は3サイトとも「ヒーロー」「装備」で組んでいて、Wild Rift の下書きが「ヒーロー142体と装備179種」になっていた。
+ * 各サイトの本番のトップで使っている語に合わせた（2026-10-10 に数えて確認）
+ */
+const TERMS: Record<HighlightSite, { hero: string; item: string }> = {
+  hok: { hero: 'ヒーロー', item: '装備' },
+  wildrift: { hero: 'チャンピオン', item: 'アイテム' },
+  mlbb: { hero: 'ヒーロー', item: '装備' },
+};
+
 /** 日本語ページのURL。MLBB は日本語のみだが、他の2つも投稿は日本語なので /ja に送る */
 const jaUrl = (site: HighlightSite, path: string) => `${SITE_ORIGINS[site]}/ja${path}`;
 
@@ -109,7 +120,7 @@ function buildForSite(site: HighlightSite, latest: unknown): XPostDraft[] {
     const latestPath = str(latest.path) ?? '/patches';
     const path = latestPath.startsWith('/patches') ? latestPath : '/patches';
     const head = `${name}の${patchLabel}を反映しました。`;
-    const detail = changed && changed > 0 ? `調整されたヒーローは${changed}体。` : '';
+    const detail = changed && changed > 0 ? `調整された${TERMS[site].hero}は${changed}体。` : '';
     // ja.title を要点として足せるのは、それがこのパッチの話だと確かめられるときだけ。
     // サイトによっては「最新の注目」が統計の更新を指していて、パッチとは別物のことがある
     const jaTitle = isRecord(latest.ja) ? str(latest.ja.title) : null;
@@ -151,7 +162,7 @@ function buildForSite(site: HighlightSite, latest: unknown): XPostDraft[] {
         'data',
         `data-${site}-${siteUpdatedAt}`,
         `掲載データ（${toJaDate(siteUpdatedAt)}更新）`,
-        `${name}の掲載データを更新しました。ヒーロー${heroes}体と装備${items}種の数値を、ゲーム内の表示から載せています。`,
+        `${name}の掲載データを更新しました。${TERMS[site].hero}${heroes}体と${TERMS[site].item}${items}種の数値を、ゲーム内の表示から載せています。`,
         `${SITE_ORIGINS[site]}/ja`,
       ),
     );
