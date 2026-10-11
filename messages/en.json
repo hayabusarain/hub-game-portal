@@ -269,10 +269,10 @@
       "On a tired weeknight brain, the inputs still go where I aim them. Slipping behind the enemy line on an assassin and landing the whole combo stayed with me whether the game went my way or not.",
       "The speed costs you the comeback. Gold comes in fast, and the team that takes the first lead usually rides it all the way to the base. If the part you enjoy is the heavier macro game — holding the map, grinding an advantage back — this is not the one."
     ],
-    "verdictDataHeading": "Honor of Kings by the numbers (as of 2026-09-21)",
+    "verdictDataHeading": "Honor of Kings by the numbers (as of 2026-10-12)",
     "verdictList": [
-      "116 heroes as of 2026-09-21 (Honor of Kings Hub data). Fighters (40) and Mages (38) make up the bulk of the roster, while Supports (16) and Marksmen (19) are the thinnest roles.",
-      "Patches land every two weeks. The last three hit on August 13, August 27 and September 10, 2026, exactly 14 days apart. The shop holds 114 items, and there are 30 Arcana, ten each in red, blue and green (as of 2026-09-21).",
+      "119 heroes as of 2026-10-12 (Honor of Kings Hub data). Fighters (40) and Mages (40) make up the bulk of the roster, while Supports (17) and Marksmen (19) are the thinnest roles.",
+      "Patches land about every two weeks. The last three hit on August 27, September 10 and September 23, 2026, 14 and 13 days apart, and the September 23 update opened Season 16. The shop holds 115 items, and there are 30 Arcana, ten each in red, blue and green (as of 2026-10-12).",
       "The match runs on a fixed clock. Outer towers take 40% reduced damage for the first four minutes, the Overlord and the Tyrant both spawn at 4:00, and the Tempest Dragon at 20:00. Most games finish well before that, and 20 minutes is about the ceiling (Honor of Kings Hub beginner guide, checked 2026-09-08)."
     ],
     "closing": "If you want the tension of a competitive match in a short sitting, Honor of Kings is enough. How it differs from Wild Rift and Mobile Legends is laid out properly in the three-title comparison.",
@@ -333,10 +333,10 @@
       "What you give up is control over your free time. A game runs 15 to 20 minutes, and once it starts you're in it to the end. The list of things to hold in your head keeps growing too: items, what each ability actually does, the Dragon buffs your team is stacking.",
       "If you want to be able to explain a win in your own words, that weight is worth carrying. If low commitment is what matters most to you, Wild Rift isn't the answer."
     ],
-    "verdictDataHeading": "Wild Rift by the numbers (as of 2026-08-26)",
+    "verdictDataHeading": "Wild Rift by the numbers (as of 2026-10-12)",
     "recommendedFor": [
-      "141 champions as of 2026-08-26 (Wild Rift Hub). Six roles — Fighter, Tank, Mage, Assassin, Marksman and Support — spread across five positions: Top (Solo), Jungle, Mid, Duo (ADC) and Support.",
-      "Patches arrive roughly every two weeks. Patch 7.2 landed on July 8, 2026, and 7.2a followed a week later on July 15. From there 7.2b (July 29), 7.2c (August 12) and 7.2d (August 26) came at 14-day intervals. Wild Rift Hub's tier list already applies the 7.2d adjustments, but the statistics behind it were captured on August 25, the day before 7.2d shipped, so the rankings will still move."
+      "142 champions as of 2026-10-12 (Wild Rift Hub). Six roles — Fighter, Tank, Mage, Assassin, Marksman and Support — spread across five positions: Top (Solo), Jungle, Mid, Duo (ADC) and Support.",
+      "Patches arrive roughly every two weeks. 7.2e (September 9) came 14 days after 7.2d (August 26), 7.3 followed 12 days later on September 21, and 7.3a eight days after that on September 29. Patch 7.3 arrived with the new season and added a new champion, Hwei, along with a rework of Smite, jungle progression and turrets. The statistics behind Wild Rift Hub's tier list were captured on October 10, after 7.3a."
     ],
     "conclusion": "If you want the PC experience on a phone, Wild Rift delivers it. Which of the three suits you is easier to judge with all of them side by side in the comparison article.",
     "ctaLabel": "Browse champion guides on Wild Rift Hub"
@@ -361,7 +361,7 @@
       "mlbb": {
         "label": "Light, and driven by the clock",
         "name": "Mobile Legends: Bang Bang",
-        "body": "Matches run 10 to 15 minutes. Turtle at 2:00, Lord at 8:00. Few timers to learn, and at 339.7 MB the smallest install of the three."
+        "body": "Matches run 10 to 15 minutes. Turtle at 2:00, Lord at 8:00. Few timers to learn, and at 343.9 MB the smallest install of the three."
       }
     },
     "section1": {
@@ -379,7 +379,7 @@
       "hokLabel": "Honor of Kings:",
       "hokBody": "You can buy items anywhere on the map without recalling. Unless you are one hit from dying there is no reason to head back, so the game keeps rolling. Arcana fill 10 slots each in red, blue and green, 30 in all, levelled from 1 to 5.",
       "wrLabel": "Wild Rift:",
-      "wrBody": "Buying items means recalling to the fountain. Reading the lane and picking your moment to reset is itself a skill. Runes come from four trees totalling 53: one keystone plus three minor runes.",
+      "wrBody": "Buying items means recalling to the fountain. Reading the lane and picking your moment to reset is itself a skill. Runes come from four trees totalling 54: one keystone plus three minor runes.",
       "mlbbLabel": "Mobile Legends:",
       "mlbbBody": "Seven emblems, but the talents are the same on all of them; only the emblem’s own stat line differs. What does bind you is the battle spell: bring Retribution and the only boots you may buy are jungle boots. One pre-match pick sets your shop."
     },
@@ -425,8 +425,8 @@
       },
       {
         "axis": "Hero / champion count",
-        "hok": "116 heroes across six roles: Tank, Fighter, Assassin, Mage, Marksman and Support. 41 of them are listed under two roles.",
-        "wr": "141 champions across the same six roles: Fighter, Tank, Mage, Assassin, Marksman and Support.",
+        "hok": "119 heroes across six roles: Tank, Fighter, Assassin, Mage, Marksman and Support. 42 of them are listed under two roles.",
+        "wr": "142 champions across the same six roles: Fighter, Tank, Mage, Assassin, Marksman and Support.",
         "mlbb": "133 heroes across the same six roles, with 35 listed under two. Roles and lanes are assigned separately, so one does not imply the other."
       },
       {
@@ -437,21 +437,21 @@
       },
       {
         "axis": "Item count",
-        "hok": "114 items in six categories (physical, magic, defense, movement, jungle, roam), with six slots. Every tier-2 boot costs 700G.",
-        "wr": "167 items including 16 boots. Non-boot items split by price into 12 basic, 43 mid-tier and 96 core, topping out at 3,400G. Six slots, and only one item with an active effect.",
+        "hok": "115 items in six categories (physical, magic, defense, movement, jungle, roam), with six slots. Every tier-2 boot costs 700G.",
+        "wr": "179 items including 16 boots. Non-boot items split by price into 12 basic, 46 mid-tier and 105 core, topping out at 3,400G. Six slots, and only one item with an active effect.",
         "mlbb": "61 items with six slots. One pair of boots and one active item at a time, and unique passives that share a name do not stack — only the stronger fires."
       },
       {
         "axis": "Arcana / runes / emblems",
         "hok": "30 Arcana, 10 each in red, blue and green. You fill 10 slots per color, 30 in total, and level each one from 1 to 5, where the big jump comes at level 5.",
-        "wr": "53 runes in four trees (Domination, Precision, Resolve, Sorcery): 13 keystones plus 40 minor runes.",
+        "wr": "54 runes in four trees (Domination, Precision, Resolve, Sorcery): 13 keystones plus 41 minor runes.",
         "mlbb": "7 emblems. The talents are identical on every emblem, one from each of three tiers; only the emblem’s own stat line differs."
       },
       {
         "axis": "Summoner spells / battle spells",
         "hok": "11 spells with 30-120s cooldowns, unlocked by account level: Sprint at level 1, Flash not until level 19. Jungle items require Smite.",
-        "wr": "9 spells with 10-150s cooldowns. Smite is the shortest at 10s; Flash and Teleport the longest at 150s. Smite upgrades to Chill Smite after three uses.",
-        "mlbb": "12 spells, unlocked one at a time by account level. A new account has Retribution and Revitalize only; Flicker comes at 12 and Purify at 21. Retribution is the price of entry to the jungle."
+        "wr": "9 spells with 10-150s cooldowns. Smite is the shortest at 10s; Flash and Teleport the longest at 150s. Since 7.3, Smite upgrades to 1,000 true damage once 8 stacks have been spent, and to 1,400 at 20.",
+        "mlbb": "12 spells, unlocked one at a time by account level. A new account starts with Retribution only; Revitalize comes at 3, Flicker at 12 and Purify at 21. Retribution is the price of entry to the jungle."
       },
       {
         "axis": "Major objectives",
@@ -461,9 +461,9 @@
       },
       {
         "axis": "Patch cadence",
-        "hok": "Roughly every two weeks. In July and August 2026 the updates landed on Jul 2, Jul 16, Jul 30, Aug 13 and Aug 27, 14 days apart. The Season 15 \"Grand Venture\" update on Jun 17 added four heroes at once.",
-        "wr": "Roughly every two weeks. After 7.2 on Jul 8, patches 7.2a-7.2d followed on Jul 15, Jul 29, Aug 12 and Aug 26. Numbered patches are about three months apart (7.1 on Apr 7, 7.2 on Jul 8); ranked Season 21 opened Apr 10.",
-        "mlbb": "The most recent patch we have verified is 2.1.95 (Aug 26), which adjusted four heroes. Patch notes go up on the official site irregularly; the one before it was 2.1.88 on Jun 17."
+        "hok": "Roughly every two weeks. From July to September 2026 the updates landed on Jul 2, Jul 16, Jul 30, Aug 13, Aug 27 and Sep 10, 14 days apart, and the Season 16 \"Flow As One\" update came 13 days later on Sep 23. Season 16 added two heroes at once, and Wang Wei joined on Oct 8.",
+        "wr": "Roughly every two weeks. After 7.2 on Jul 8, patches 7.2a-7.2e followed on Jul 15, Jul 29, Aug 12, Aug 26 and Sep 9. Numbered patches come every two to three months (7.1 on Apr 7, 7.2 on Jul 8, 7.3 on Sep 21), and 7.3a followed on Sep 29. A new season opened with 7.3 on Sep 23.",
+        "mlbb": "The most recent patch we have verified is 2.2.16 (Sep 16), which adjusted 23 heroes, and the map changed on Sep 28. Patch notes go up on the official site irregularly; the one before 2.2.16 was 2.1.88 on Jun 17."
       },
       {
         "axis": "Developer and launch",
@@ -473,15 +473,15 @@
       },
       {
         "axis": "App size and OS",
-        "hok": "819.1 MB, iOS 12.0 or later. Also on Google Play for Android.",
+        "hok": "872.3 MB, iOS 13.0 or later. Also on Google Play for Android.",
         "wr": "1.1 GB, iOS 15.0 or later. Also on Google Play for Android.",
-        "mlbb": "339.7 MB, iOS 12.0 or later. Also on Google Play for Android."
+        "mlbb": "343.9 MB, iOS 12.0 or later. Also on Google Play for Android."
       }
     ],
     "section4": {
       "heading": "■ 4. Verdict: Which One Is for You"
     },
-    "tableFootnote": "Figures for Honor of Kings and Wild Rift are as of August 29, 2026, and for Mobile Legends as of September 9, 2026. Hero, item, arcana/rune/emblem and spell counts come from the data published on each strategy site; patch dates are the publication dates of each game’s official patch notes, except Mobile Legends 2.1.95 which is taken from the in-game notes; app size and OS requirements are as shown on the Japanese App Store. Match lengths are the operator’s impression from playing, not a measured average.",
+    "tableFootnote": "Figures are as of October 12, 2026. Hero, item, arcana/rune/emblem and spell counts come from the data published on each strategy site; patch dates are the publication dates of each game’s official patch notes, except the Mobile Legends map update, which is taken from the in-game notes; app size and OS requirements are as shown on the Japanese App Store. Match lengths are the operator’s impression from playing, not a measured average.",
     "recommend": {
       "hok": {
         "heading": "▶ Who Honor of Kings Is For",
@@ -502,7 +502,7 @@
       "mlbb": {
         "heading": "▶ Who Mobile Legends Is For",
         "points": [
-          "• Players watching their storage: 339.7 MB, the smallest of the three",
+          "• Players watching their storage: 343.9 MB, the smallest of the three",
           "• Anyone who wants a short list to learn — objective timers and the shop rules cover most calls",
           "• Players who do not mind verifying things themselves, since Japanese-language coverage is still thin"
         ]
@@ -577,7 +577,7 @@
         "term": "Build",
         "cat": "basic",
         "def": "The order in which you buy items and level skills. Adapting your build to the enemy team is key to winning.",
-        "note": "Wild Rift has 167 items plus 53 runes, Honor of Kings 114 items plus 30 Arcana, and Mobile Legends 61 items plus 7 emblems. All three give you six slots; in MLBB only one pair of boots and one active item may be held at a time.",
+        "note": "Wild Rift has 179 items plus 54 runes, Honor of Kings 115 items plus 30 Arcana, and Mobile Legends 61 items plus 7 emblems. All three give you six slots; in MLBB only one pair of boots and one active item may be held at a time.",
         "links": [
           {
             "site": "hok",
@@ -717,7 +717,7 @@
         "term": "Jungler",
         "cat": "basic",
         "def": "The player who farms neutral camps instead of a lane and decides where to gank. Their pathing sets the early tempo for the whole team.",
-        "note": "What lets you jungle differs. Honor of Kings requires Smite (1,500 true damage, 30s cooldown) to buy jungle items. Wild Rift deals 600 on a 10s cooldown and upgrades to Chill Smite after three uses. Mobile Legends restricts Retribution holders to jungle boots and cuts damage taken from normal monsters by 40%.",
+        "note": "What lets you jungle differs. Honor of Kings requires Smite (1,500 true damage, 30s cooldown) to buy jungle items. Wild Rift deals 600 on a 10s cooldown, and since 7.3 upgrades to 1,000 after 8 stacks are spent and 1,400 after 20. Mobile Legends restricts Retribution holders to jungle boots and cuts damage taken from normal monsters by 40%.",
         "links": [
           {
             "site": "hok",
@@ -1260,7 +1260,7 @@
             "hok": "Tyrant (4:00)",
             "wr": "Dragon (four elements)",
             "mlbb": "Turtle (2:00)",
-            "note": "Tyrant gives everyone Chain Lightning on their attacks. Wild Rift’s dragons each buff a different team-wide stat. The Turtle pays gold, experience and a shield to the whole team, with an extra stat bonus for whoever lands the last hit."
+            "note": "Tyrant gives everyone Chain Lightning on their attacks. Wild Rift’s dragons each buff a different team-wide stat. The Turtle pays gold and experience to the whole team, with an extra stat bonus for whoever lands the last hit. Since the September 28 map update it no longer grants a shield; instead an allied Turtle appears in a lane to help push."
           },
           {
             "concept": "Pushing minions and turrets",
@@ -1322,7 +1322,7 @@
             "hok": "Smite (30s CD)",
             "wr": "Smite (10s CD)",
             "mlbb": "Retribution (35s CD)",
-            "note": "HoK deals 1,500 true damage with a 1s stun, and without it you cannot buy jungle items. Wild Rift deals 600 and heals off monsters. MLBB’s Retribution restricts you to jungle boots, and skipping it locks jungle boots out entirely."
+            "note": "HoK deals 1,500 true damage with a 1s stun, and without it you cannot buy jungle items. Wild Rift deals 600, and since 7.3 using it no longer heals you. MLBB’s Retribution restricts you to jungle boots, and skipping it locks jungle boots out entirely."
           },
           {
             "concept": "Clearing crowd control",
@@ -1425,13 +1425,13 @@
           "heading": "Coming from Mobile Legends",
           "body": [
             "Your timers will be wrong. The equivalent of the 2:00 Turtle is the Overlord and Tyrant at 4:00 in HoK, and the Rift Herald at 6:00 in Wild Rift.",
-            "Pre-game setup gets heavier. MLBB gives every emblem the same talents, while HoK asks you to fill 30 Arcana slots and Wild Rift to build runes from four trees totalling 53.",
+            "Pre-game setup gets heavier. MLBB gives every emblem the same talents, while HoK asks you to fill 30 Arcana slots and Wild Rift to build runes from four trees totalling 54.",
             "Your shop opens up. In MLBB, Retribution decides your boots. HoK sells every tier-2 boot at 700G and lets you swap free after five minutes; Wild Rift unlocks tier 3 at 10:00."
           ]
         }
       }
     },
-    "closing": "Figures for Honor of Kings and Wild Rift are as of 2026-08-29, and for Mobile Legends as of 2026-09-09. All of them move with patches, so when in doubt check the glossary and boss pages on each site.",
+    "closing": "Figures are as of 2026-10-12. All of them move with patches, so when in doubt check the glossary and boss pages on each site.",
     "cta": {
       "hok": "Open the Honor of Kings beginner guide",
       "wr": "Open the Wild Rift beginner guide",
@@ -1508,14 +1508,14 @@
     "verdictParagraphs": [
       "What you get is a game that pays back the little it asks you to learn. Three timers cover the early calls. One emblem covers the pre-match setup.",
       "What you take on is checking things yourself. The written coverage is thin and the naming is inconsistent, which is why our Mobile Legends site transcribes what the client actually shows.",
-      "If storage matters, there is one more reason. The Japanese App Store lists it at 339.7 MB, against 1.1 GB for Wild Rift and 819.1 MB for Honor of Kings."
+      "If storage matters, there is one more reason. The Japanese App Store lists it at 343.9 MB, against 1.1 GB for Wild Rift and 872.3 MB for Honor of Kings."
     ],
-    "verdictDataHeading": "Mobile Legends by the numbers (as of September 9, 2026)",
+    "verdictDataHeading": "Mobile Legends by the numbers (as of October 12, 2026)",
     "recommendedFor": [
       "133 heroes across six roles: Tank, Fighter, Assassin, Mage, Marksman and Support, with 35 of them listed under two roles. Five lanes: Gold, EXP, Mid, Jungle and Roam.",
-      "61 items, 7 emblems and 12 battle spells. Battle spells unlock one at a time with account level, and a new account has two of them.",
-      "The most recent patch we have verified is 2.1.95 (August 26, 2026), which adjusted four heroes.",
-      "The Japanese App Store lists 339.7 MB, iOS 12.0 or later. First published on November 11, 2016 by MOONTON."
+      "61 items, 7 emblems and 12 battle spells. Battle spells unlock one at a time with account level: a new account starts with Retribution only, and Revitalize opens at level 3.",
+      "The most recent patch we have verified is 2.2.16 (September 16, 2026), which adjusted 23 heroes. A map update followed on September 28, and killing the Turtle no longer grants a shield.",
+      "The Japanese App Store lists 343.9 MB, iOS 12.0 or later. First published on November 11, 2016 by MOONTON."
     ],
     "conclusion": "Light to install, light to learn, and clear about what decides a fight. Whether it suits you better than Honor of Kings or Wild Rift is easier to judge with all three side by side in the comparison article.",
     "ctaLabel": "Open Mobare Hub for hero guides",

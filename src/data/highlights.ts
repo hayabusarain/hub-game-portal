@@ -157,12 +157,12 @@ export const highlights: Highlight[] = [
     path: '/items/usage',
     date: '2026-08-26',
     en: {
-      title: 'Item pick rates from 226 popular builds',
-      body: 'Which of the 114 items actually get built across all 116 heroes, filterable by role and lane. A quick read on what the current meta is buying.',
+      title: 'Item pick rates from 227 popular builds',
+      body: 'Which items actually get built across 227 popular builds for 116 heroes, filterable by role and lane. A quick read on what the current meta is buying.',
     },
     ja: {
-      title: '装備採用率ランキング（人気ビルド226通り）',
-      body: '116体の人気ビルドを集計し、114種の装備がどれだけ組まれているかをロール別・レーン別に確認できます。今の環境で買われている装備が一目で分かります。',
+      title: '装備採用率ランキング（人気ビルド227通り）',
+      body: 'ヒーロー116体の人気ビルド227通りを集計し、どの装備がどれだけ組まれているかをロール別・レーン別に確認できます。今の環境で買われている装備が一目で分かります。',
     },
   },
   {
