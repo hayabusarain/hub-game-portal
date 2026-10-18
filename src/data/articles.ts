@@ -42,7 +42,7 @@ export const ARTICLES: Record<ArticleSlug, ArticleMeta> = {
   'wild-rift': {
     path: '/guides/wild-rift',
     published: '2026-07-01',
-    updated: '2026-10-12',
+    updated: '2026-10-18',
   },
   'mobile-legends': {
     path: '/guides/mobile-legends',
@@ -52,7 +52,7 @@ export const ARTICLES: Record<ArticleSlug, ArticleMeta> = {
   compare: {
     path: '/guides/compare',
     published: '2026-07-01',
-    updated: '2026-10-12',
+    updated: '2026-10-18',
   },
   'term-mapping': {
     path: '/guides/term-mapping',
