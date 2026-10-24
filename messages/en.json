@@ -269,10 +269,10 @@
       "On a tired weeknight brain, the inputs still go where I aim them. Slipping behind the enemy line on an assassin and landing the whole combo stayed with me whether the game went my way or not.",
       "The speed costs you the comeback. Gold comes in fast, and the team that takes the first lead usually rides it all the way to the base. If the part you enjoy is the heavier macro game — holding the map, grinding an advantage back — this is not the one."
     ],
-    "verdictDataHeading": "Honor of Kings by the numbers (as of 2026-10-12)",
+    "verdictDataHeading": "Honor of Kings by the numbers (as of 2026-10-25)",
     "verdictList": [
-      "119 heroes as of 2026-10-12 (Honor of Kings Hub data). Fighters (40) and Mages (40) make up the bulk of the roster, while Supports (17) and Marksmen (19) are the thinnest roles.",
-      "Patches land about every two weeks. The last three hit on August 27, September 10 and September 23, 2026, 14 and 13 days apart, and the September 23 update opened Season 16. The shop holds 115 items, and there are 30 Arcana, ten each in red, blue and green (as of 2026-10-12).",
+      "120 heroes as of 2026-10-25 (Honor of Kings Hub data). Fighters (40) and Mages (40) make up the bulk of the roster, while Supports (18) and Marksmen (19) are the thinnest roles.",
+      "Patches came about every two weeks from July to September. The last three landed on September 10, September 23 and October 21, 2026, 13 and then 28 days apart. The September 23 update opened Season 16, and the October 21 update added a new hero, Dunshan. The shop holds 115 items, and there are 30 Arcana, ten each in red, blue and green (as of 2026-10-25).",
       "The match runs on a fixed clock. Outer towers take 40% reduced damage for the first four minutes, the Overlord and the Tyrant both spawn at 4:00, and the Tempest Dragon at 20:00. Most games finish well before that, and 20 minutes is about the ceiling (Honor of Kings Hub beginner guide, checked 2026-09-08)."
     ],
     "closing": "If you want the tension of a competitive match in a short sitting, Honor of Kings is enough. How it differs from Wild Rift and Mobile Legends is laid out properly in the three-title comparison.",
@@ -333,10 +333,10 @@
       "What you give up is control over your free time. A game runs 15 to 20 minutes, and once it starts you're in it to the end. The list of things to hold in your head keeps growing too: items, what each ability actually does, the Dragon buffs your team is stacking.",
       "If you want to be able to explain a win in your own words, that weight is worth carrying. If low commitment is what matters most to you, Wild Rift isn't the answer."
     ],
-    "verdictDataHeading": "Wild Rift by the numbers (as of 2026-10-18)",
+    "verdictDataHeading": "Wild Rift by the numbers (as of 2026-10-25)",
     "recommendedFor": [
-      "142 champions as of 2026-10-18 (Wild Rift Hub). Six roles — Fighter, Tank, Mage, Assassin, Marksman and Support — spread across five positions: Top (Solo), Jungle, Mid, Duo (ADC) and Support.",
-      "Patches arrive roughly every two weeks. 7.3 (September 21) came 12 days after 7.2e (September 9), 7.3a followed eight days later on September 29, and 7.3b 15 days after that on October 14. Patch 7.3 arrived with the new season and added a new champion, Hwei, along with a rework of Smite, jungle progression and turrets. The statistics behind Wild Rift Hub's tier list were captured on October 16, after 7.3b."
+      "142 champions as of 2026-10-25 (Wild Rift Hub). Six roles — Fighter, Tank, Mage, Assassin, Marksman and Support — spread across five positions: Top (Solo), Jungle, Mid, Duo (ADC) and Support.",
+      "Patches arrive roughly every two weeks. 7.3 (September 21) came 12 days after 7.2e (September 9), 7.3a followed eight days later on September 29, 7.3b 15 days after that on October 14, and 7.3c a week later on October 21. Patch 7.3 arrived with the new season and added a new champion, Hwei, along with a rework of Smite, jungle progression and turrets. The statistics behind Wild Rift Hub's tier list were captured on October 23, after 7.3c."
     ],
     "conclusion": "If you want the PC experience on a phone, Wild Rift delivers it. Which of the three suits you is easier to judge with all of them side by side in the comparison article.",
     "ctaLabel": "Browse champion guides on Wild Rift Hub"
@@ -425,7 +425,7 @@
       },
       {
         "axis": "Hero / champion count",
-        "hok": "119 heroes across six roles: Tank, Fighter, Assassin, Mage, Marksman and Support. 42 of them are listed under two roles.",
+        "hok": "120 heroes across six roles: Tank, Fighter, Assassin, Mage, Marksman and Support. 43 of them are listed under two roles.",
         "wr": "142 champions across the same six roles: Fighter, Tank, Mage, Assassin, Marksman and Support.",
         "mlbb": "133 heroes across the same six roles, with 35 listed under two. Roles and lanes are assigned separately, so one does not imply the other."
       },
@@ -438,7 +438,7 @@
       {
         "axis": "Item count",
         "hok": "115 items in six categories (physical, magic, defense, movement, jungle, roam), with six slots. Every tier-2 boot costs 700G.",
-        "wr": "179 items including 16 boots. Non-boot items split by price into 12 basic, 46 mid-tier and 105 core, topping out at 3,400G. Six slots, and only one item with an active effect.",
+        "wr": "179 items including 15 boots. Non-boot items split by price into 12 basic, 47 mid-tier and 105 core, topping out at 3,400G. Six slots, and only one item with an active effect.",
         "mlbb": "61 items with six slots. One pair of boots and one active item at a time, and unique passives that share a name do not stack — only the stronger fires."
       },
       {
@@ -461,8 +461,8 @@
       },
       {
         "axis": "Patch cadence",
-        "hok": "Roughly every two weeks. From July to September 2026 the updates landed on Jul 2, Jul 16, Jul 30, Aug 13, Aug 27 and Sep 10, 14 days apart, and the Season 16 \"Flow As One\" update came 13 days later on Sep 23. Season 16 added two heroes at once, and Wang Wei joined on Oct 8.",
-        "wr": "Roughly every two weeks. After 7.2 on Jul 8, patches 7.2a-7.2e followed on Jul 15, Jul 29, Aug 12, Aug 26 and Sep 9. Numbered patches come every two to three months (7.1 on Apr 7, 7.2 on Jul 8, 7.3 on Sep 21), and 7.3a and 7.3b followed on Sep 29 and Oct 14. A new season opened with 7.3 on Sep 23.",
+        "hok": "Roughly every two weeks from July to September 2026: the updates landed on Jul 2, Jul 16, Jul 30, Aug 13, Aug 27 and Sep 10, 14 days apart, and the Season 16 \"Flow As One\" update came 13 days later on Sep 23. Season 16 added two heroes at once, and Wang Wei joined on Oct 8. The next update came 28 days later on Oct 21 and added Dunshan.",
+        "wr": "Roughly every two weeks. After 7.2 on Jul 8, patches 7.2a-7.2e followed on Jul 15, Jul 29, Aug 12, Aug 26 and Sep 9. Numbered patches come every two to three months (7.1 on Apr 7, 7.2 on Jul 8, 7.3 on Sep 21), and 7.3a, 7.3b and 7.3c followed on Sep 29, Oct 14 and Oct 21. A new season opened with 7.3 on Sep 23.",
         "mlbb": "The most recent patch we have verified is 2.2.16 (Sep 16), which adjusted 23 heroes, and the map changed on Sep 28. Patch notes go up on the official site irregularly; the one before 2.2.16 was 2.1.88 on Jun 17."
       },
       {
@@ -481,7 +481,7 @@
     "section4": {
       "heading": "■ 4. Verdict: Which One Is for You"
     },
-    "tableFootnote": "Figures are as of October 18, 2026. Hero, item, arcana/rune/emblem and spell counts come from the data published on each strategy site; patch dates are the publication dates of each game’s official patch notes, except the Mobile Legends map update, which is taken from the in-game notes; app size and OS requirements are as shown on the Japanese App Store. Match lengths are the operator’s impression from playing, not a measured average.",
+    "tableFootnote": "Figures are as of October 25, 2026. Hero, item, arcana/rune/emblem and spell counts come from the data published on each strategy site; patch dates are the publication dates of each game’s official patch notes, except the Mobile Legends map update, which is taken from the in-game notes; app size and OS requirements are as shown on the Japanese App Store. Match lengths are the operator’s impression from playing, not a measured average.",
     "recommend": {
       "hok": {
         "heading": "▶ Who Honor of Kings Is For",

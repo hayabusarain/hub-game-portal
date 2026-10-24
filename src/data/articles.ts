@@ -37,12 +37,12 @@ export const ARTICLES: Record<ArticleSlug, ArticleMeta> = {
   'honor-of-kings': {
     path: '/guides/honor-of-kings',
     published: '2026-07-01',
-    updated: '2026-10-12',
+    updated: '2026-10-25',
   },
   'wild-rift': {
     path: '/guides/wild-rift',
     published: '2026-07-01',
-    updated: '2026-10-18',
+    updated: '2026-10-25',
   },
   'mobile-legends': {
     path: '/guides/mobile-legends',
@@ -52,7 +52,7 @@ export const ARTICLES: Record<ArticleSlug, ArticleMeta> = {
   compare: {
     path: '/guides/compare',
     published: '2026-07-01',
-    updated: '2026-10-18',
+    updated: '2026-10-25',
   },
   'term-mapping': {
     path: '/guides/term-mapping',
