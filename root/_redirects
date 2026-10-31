@@ -1,0 +1,13 @@
+# 2026-11〜（案D、docs/PLAN_D_2026-10-31.md）。ポータルの記事ページを閉じたあとの転送。
+# /ja・/en は 302。あとでポータルを開け直すときに、訪問者のブラウザに転送を残さないため。
+# 301 は中身が1対1で対応するページだけ。ほかを関係のないページへまとめて送ると、ソフト404として扱われる。
+# ここに無いパスは 404.html の 404 になる（wrangler.jsonc の not_found_handling）
+/ja / 302
+/ja/ / 302
+/en / 302
+/en/ / 302
+/ja/diagnosis / 302
+/en/diagnosis / 302
+/ja/guides/honor-of-kings /hok/ja/guide 301
+/en/guides/honor-of-kings /hok/en/guide 301
+/ja/guides/mobile-legends /mlbb/ja/guide/basics 301

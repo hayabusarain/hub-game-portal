@@ -1,3 +1,6 @@
+# **2026-11 に止めた（案D、docs/PLAN_D_2026-10-31.md）。** ポータルの記事ページを閉じ、姉妹サイトのデータを使わなくなったため。
+# 予約実行と push での実行を外し、手動の Run workflow だけを残した。走らせる理由はもう無い。以下は止める前の説明。
+#
 # 姉妹サイトの更新をポータルに取り込む（サイト統合 2026-09-27〜）。
 # 1時間ごとに3サイトの /api/latest を見て、変わっていれば .github/refresh/sister-latest.json を書き換えて main へ push する。
 # GitHub の予約実行は混むと遅れたり飛ばされたりし、実測では2〜6時間おきだった（2026-09-27〜28）。急ぐときは Actions の画面の Run workflow。
@@ -9,14 +12,7 @@
 name: 姉妹サイトの更新を取り込む
 
 on:
-  schedule:
-    # 毎時23分（UTC）。0分は GitHub の予約が混み、遅れたり飛ばされたりする
-    - cron: '23 * * * *'
   workflow_dispatch:
-  # このファイルを変えて push したときにも1回走らせる（仕組みが動くかをその場で確かめるため）
-  push:
-    branches: [main]
-    paths: ['.github/workflows/refresh-sister-data.yml', '.github/refresh/check.mjs']
 
 permissions:
   contents: write

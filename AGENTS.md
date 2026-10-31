@@ -139,52 +139,27 @@ npm run build        ビルド
 
 <!-- hub-game:shared:end -->
 
-## 配色（夜の配色、2026-09-27〜）
+## このリポジトリの今の役目（2026-11〜、案D）
 
-姉妹サイト3つ（HoK Hub・Mobare Hub・Wild Rift Hub）に合わせて、暗い地を既定にした。
-地は3サイトの間を取った「青みの墨」`#090c13`、カードは `#131720`、差し色は琥珀。
+2026-10-31 に運営者が、WR とポータルの記事を閉じ、HoK と MLBB の2サイトで運用すると決めた。計画と経緯は `docs/PLAN_D_2026-10-31.md`。
+このリポジトリは hub-game.com の**直下に置くファイルだけ**を受け持つ。記事のページ（`/ja`・`/en` の下の28 URL）はもう出していない。
 
-**部品のクラス名は変えずに、色の変数の値を段ごとに写し替えている**（`globals.css` の `@theme`）。
+- ビルドは `npm run build`（`scripts/build_root.mjs`）。`root/` と `public/` の決まったファイルを `out/` に写すだけ。
+  **Next.js の `src/` はビルドに使っていない。** 閉じる前のポータルは `portal-final-2026-11` のタグにある。開け直すときはそこから戻す
+- 直下に出すもの: `/`（運営者 HUB-GAME のページ）、`404.html`、`robots.txt`、`sitemap_index.xml`、`ads.txt`、`sw.js`、アイコン、`_redirects`
+- **`/` と 404 に広告のコードを載せない。** 入口だけの画面とエラーページへの広告は、AdSense のポリシーで認められていない。
+  所有権の確認タグ（`google-adsense-account`）は `/` に載せる。HoK と MLBB の layout にも同じタグがある
+- `/` の Organization（`https://hub-game.com/#organization`）を、HoK と MLBB の JSON-LD の publisher が @id で指している。
+  運営者名や連絡先を変えるときは、`/`・HoK・MLBB の3か所をそろえる。about の「運営者」「掲載方針」の文も2サイトで同じ文にしてある
+- **`robots.txt` の Disallow は HoK と MLBB の `/api/latest` だけ。** 姉妹サイトの `robots.ts` が変わったら、ここも直す（直下の robots.txt しかクローラーに読まれない）
+- `/ja`・`/en` は `/` へ 302。301 にしない（訪問者のブラウザに残り、開け直す妨げになる）。301 は中身が1対1で対応する記事2本だけ
+- `wrangler.jsonc` の `routes`（hub-game.com のカスタムドメイン）は消さない。この Worker が apex の DNS の持ち主で、消すと /hok と /mlbb も止まる
+- `workers/legacy-sw/` は別の Worker。旧サブドメイン（hok・mlbb）の `/sw.js` に解除用のスクリプトを返す。最低1年は残す
+- GitHub Actions の `refresh-sister-data` は止めた（予約実行を外した）。姉妹サイトのデータを使わなくなったため
+- デプロイは main への push で Cloudflare の Workers Builds が行う。Vercel はもう使っていない
+- 上の決まりは `npm run audit` の7項目が機械で止める
 
-- `bg-white` … カードの地（暗い）。`text-white` は「色の塗りの上の文字」なので暗い色になる
-- `slate-50`〜`300` … 暗い面と線。`slate-400` は飾りとアイコン、`500` が補足、`700` が本文、`900` が見出し
-- ページの地は `bg-background`。`bg-slate-50` はカードより明るくなるので、ページの地に使わない
-- 選択中は琥珀の線と淡い塗り（`border-amber-500 bg-amber-50 text-amber-700`）。主ボタンは `bg-amber-500 text-white`
-
-値は `scripts/dark_palette.mjs` が OKLCH で作り、文字と地の105組を検算したもの。**色を足すときも手で書かない。**
-`theme-color`（`[locale]/layout.tsx` の `viewport`）と `manifest.ts` の2色も同じ `#090c13`。
-
-夜の配色で壊れるもの（3サイトとこのサイトで実際に踏んだ）:
-
-- もともと暗い帯（`bg-slate-900` / `950`）は、写し替えると白に近くなる。ヘッダーとフッターはこれで作り直した
-- 濃い塗りに白文字（`bg-slate-900 text-white`）は白く光るボタンになる
-- 明るい塗りに濃い文字（`bg-amber-500 text-slate-950`）は、塗りの上にほぼ白の文字が載る。文字は `text-white` にする
-- `shadow-*` は暗い地でほぼ見えない。区切りは線で出す
-- `return (` の直後に JSX のコメントを置くと、要素が2つ並んで構文エラーになる。コメントは要素の中に置く
-
-## サイト統合でのポータルの役目（2026-09-27〜）
-
-ポータルは hub-game.com の直下を受け持つ。姉妹サイトは `/hok`・`/mlbb`・`/wildrift` の下に入り、ドメイン直下にしか置けないものはポータルが出す。
-統合後の形は `NEXT_PUBLIC_SITE_ORIGIN` があるときだけ有効になる（`src/lib/siteOrigin.ts`）。無ければ今の Vercel 向けのまま。
-
-- **姉妹サイトの URL は `src/data/highlights.ts` の `SITE_ORIGINS` にしか書かない。** リンクは `sisterSiteUrl(site, locale, path)` で作る
-  （読者の言語を付ける。英語のページには日本語だけの MLBB を出していないが、出すなら `/ja` になる）。
-  直書き（`hok.hub-game.com` も `hub-game.com/hok` も）は監査の検査7が止める。コメントは見ない
-- 姉妹サイトへのリンクは `<Link>` ではなく素の `<a>`。同じドメインになると `<Link>` が別アプリのページを先読みしにいく
-- **統合後の robots.txt は4サイト分を1枚で出す。** 姉妹サイトが止めているパスは `highlights.ts` の `SITE_DISALLOW` が正本。
-  姉妹サイトの `robots.ts` が変わったら、ここも直す（統合後は `/hok/robots.txt` などはクローラーに読まれない）
-- `ads.txt`・`/sw.js`（昔の Service Worker を外す掃除用）もポータルの持ち物。ドメイン直下に置けるのはポータルだけ
-- `workers/legacy-sw/` は別の Worker。切り替え日から、旧サブドメイン（hok・mlbb）の `/sw.js` に解除用のスクリプトを返す。
-  ポータルの Worker（リポジトリ直下の `wrangler.jsonc`）とは別に出す。最低1年は残す
-- アクセス解析は姉妹サイトと同じ測定 ID で、`content_group: 'portal'` を付けて送る（2026-09-27〜）。
-  タグとプライバシーポリシー（`Privacy.analyticsText`）の食い違いは監査の検査5が止める
-- 統合後のビルドは、姉妹サイトの `/api/latest` が取れないと止まる（`src/lib/sisterSites.ts`）。30分ごとの取り直しが無くなるので、
-  欠けたまま出すと次に作り直すまで欠ける。作り直しは GitHub Actions の `refresh-sister-data` が1時間ごと（実測は2〜6時間おき）に変化を見て、
-  変わっていれば記録を main へ push して起こす（`docs/SNAPSHOT_CONTRACT.md` の7章）。**ボットが main に push するので、push の前に `git pull --rebase`**
-- デプロイは main への push で Cloudflare の Workers Builds が行う（2026-09-27 夜〜）。Vercel はもう使っていない。
-  `wrangler.jsonc` の `routes`（hub-game.com のカスタムドメイン）は消さない。消すと hub-game.com が止まる
-- 動的なルートに `generateStaticParams` を置くときは、今の本番で ISR にならないか確かめる。`[...rest]` では、置いただけで
-  未知のパスの 404 がパスごとに1年キャッシュされた。静的書き出しのときだけ関数を出す形にしてある
+`root/` の2枚の色は、閉じる前のポータルの夜の配色（地 `#090c13`、カード `#131720`、差し色は琥珀 `#efa437`）に合わせた。
 
 <!-- BEGIN:nextjs-agent-rules -->
 # This is NOT the Next.js you know

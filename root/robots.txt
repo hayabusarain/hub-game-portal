@@ -1,0 +1,7 @@
+User-Agent: *
+Allow: /
+Disallow: /hok/api/latest
+Disallow: /mlbb/api/latest
+
+Sitemap: https://hub-game.com/hok/sitemap.xml
+Sitemap: https://hub-game.com/mlbb/sitemap.xml

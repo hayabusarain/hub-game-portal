@@ -3,12 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "prebuild": "node scripts/prebuild_static.mjs",
-    "build": "next build",
-    "start": "next start",
+    "build": "node scripts/build_root.mjs",
     "lint": "eslint",
-    "audit": "node scripts/audit.mjs && node scripts/check-shared-rules.mjs"
+    "audit": "node scripts/audit.mjs && node scripts/check-shared-rules.mjs",
+    "preview": "npx wrangler dev"
   },
   "dependencies": {
     "lucide-react": "^1.17.0",

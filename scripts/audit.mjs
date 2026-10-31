@@ -1,204 +1,109 @@
 /**
- * サイトデータの整合性監査（HoK サイトの scripts/audit.mjs と同じ思想の縮小版）。
+ * ドメイン直下のファイルの監査（2026-11〜、案D。計画は docs/PLAN_D_2026-10-31.md）。
  *
  * 使い方: npm run audit
  * 問題があれば一覧表示して exit code 1 で終了する。
  *
+ * ポータルの記事ページを閉じたので、このリポジトリが本番に出すのは root/ と public/ の決まったファイルだけになった。
+ * 閉じる前の監査（翻訳キー・記事の日付・sitemap の網羅など7つ）は portal-final-2026-11 のタグにある。
+ *
  * チェック内容:
- *   1. 翻訳キー差分  … messages/ja.json と en.json のキー構造が一致するか
- *   2. 記事の日付    … articles.ts の日付が YYYY-MM-DD で、updated が published 以降・未来でないか
- *   3. sitemap 網羅  … STATIC_PATHS 全部に lastmod とページがあるか。逆に、page.tsx があるのに
- *                      STATIC_PATHS に無いページや getAlternates を呼んでいないページが無いか
- *   4. 権利表記      … 3タイトルの権利者（Riot / Tencent / Moonton）が両言語の3キーに入っているか
- *   5. 広告の整合    … プライバシーポリシーが AdSense 利用を書いているなら layout に広告コードがあるか。
- *                      Google アナリティクスも同じ（タグがあればポリシーに利用と止め方、content_group）
- *   6. 更新日の鮮度  … messages を触った作業ツリーで、記事・ページの更新日が今日になっているか
- *   7. 姉妹サイトの URL … src と messages に姉妹サイトの URL（hok.hub-game.com・hub-game.com/hok など）を直書きしていないか。
- *                      書いてよいのは src/data/highlights.ts の SITE_ORIGINS だけ（サイト統合で切り替わるため）。コメントは見ない
+ *   1. ドメイン     … wrangler.jsonc の routes に hub-game.com のカスタムドメインがあるか。消すと /hok と /mlbb も止まる
+ *   2. ads.txt      … パブリッシャーIDの行がそのまま入っているか
+ *   3. 書き出し     … scripts/build_root.mjs が写すファイルが全部あるか
+ *   4. 閉じたサイト … robots.txt・索引・_redirects・HTML に /wildrift と閉じたポータルのページが残っていないか
+ *   5. 広告のコード … / と 404 に広告やアクセス解析のコードが無いか。/ に所有権の確認タグがあるか
+ *   6. 転送        … /ja・/en が 302 か（301 はブラウザに残り、開け直す妨げになる）
+ *   7. 構造化データ … / の JSON-LD が読めて、HoK と MLBB が指す Organization の @id があるか
  */
-import fs from 'fs';
-import path from 'path';
-import { execSync } from 'child_process';
-import { fileURLToPath } from 'url';
+import fs from 'node:fs';
+import path from 'node:path';
+import { FILES } from './build_root.mjs';
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const root = path.resolve(import.meta.dirname, '..');
 const read = (p) => fs.readFileSync(path.join(root, p), 'utf8');
-const readJson = (p) => JSON.parse(read(p));
 
 const problems = [];
 const report = (check, msg) => problems.push(`[${check}] ${msg}`);
 
-/* ---------- 1. 翻訳キー差分 ---------- */
-const ja = readJson('messages/ja.json');
-const en = readJson('messages/en.json');
-function keysOf(obj, prefix = '') {
-  const out = [];
-  for (const [k, v] of Object.entries(obj)) {
-    const key = prefix ? `${prefix}.${k}` : k;
-    // 配列は要素数だけ見る（本文の配列は長さが揃っていれば十分）
-    if (Array.isArray(v)) out.push(`${key}[${v.length}]`);
-    else if (v && typeof v === 'object') out.push(...keysOf(v, key));
-    else out.push(key);
-  }
-  return out;
-}
+const PUB_ID = 'pub-7201202773518258';
+const ORG_ID = 'https://hub-game.com/#organization';
+
+// 1. ドメイン
 {
-  const jaKeys = new Set(keysOf(ja));
-  const enKeys = new Set(keysOf(en));
-  for (const k of jaKeys) if (!enKeys.has(k)) report('i18nキー', `en.json に欠落または配列長が違う: ${k}`);
-  for (const k of enKeys) if (!jaKeys.has(k)) report('i18nキー', `ja.json に欠落または配列長が違う: ${k}`);
+  const wrangler = read('wrangler.jsonc');
+  if (!/"pattern"\s*:\s*"hub-game\.com"\s*,\s*"custom_domain"\s*:\s*true/.test(wrangler)) {
+    report('ドメイン', 'wrangler.jsonc の routes に { "pattern": "hub-game.com", "custom_domain": true } が無い');
+  }
 }
 
-/* ---------- 2. 記事の日付 ---------- */
-const articlesSrc = read('src/data/articles.ts');
-// 掲載日は日本時間で書いている。UTCで数えると朝9時前の作業が前日扱いになり、
-// 当日の日付を入れたほうが「未来」で落ちる（sv-SE ロケールが YYYY-MM-DD を返す）
-const today = new Date().toLocaleDateString('sv-SE', { timeZone: 'Asia/Tokyo' });
-const ISO = /^\d{4}-\d{2}-\d{2}$/;
-const articleBlocks = [...articlesSrc.matchAll(/path:\s*'([^']+)',\s*published:\s*'([^']+)',\s*updated:\s*'([^']+)'/g)];
-// 冒頭のコメントにも PAGE_UPDATED の語が出るので、宣言（const ... = {）だけを拾う
-const pageUpdated = Object.fromEntries(
-  [...(articlesSrc.match(/const PAGE_UPDATED[^=]*=\s*\{([\s\S]*?)\}/)?.[1] ?? '').matchAll(/'([^']*)':\s*'([^']+)'/g)].map((m) => [m[1], m[2]])
-);
-for (const [, p, published, updated] of articleBlocks) {
-  if (!ISO.test(published) || !ISO.test(updated)) report('記事日付', `${p}: 日付が YYYY-MM-DD でない (${published} / ${updated})`);
-  if (updated < published) report('記事日付', `${p}: updated (${updated}) が published (${published}) より前`);
-  if (updated > today) report('記事日付', `${p}: updated (${updated}) が未来`);
-}
-for (const [p, d] of Object.entries(pageUpdated)) {
-  if (!ISO.test(d)) report('記事日付', `PAGE_UPDATED['${p}']: 日付が YYYY-MM-DD でない (${d})`);
-  if (d > today) report('記事日付', `PAGE_UPDATED['${p}']: ${d} が未来`);
-}
-
-/* ---------- 3. sitemap 網羅 ---------- */
+// 2. ads.txt
 {
-  const sitemapSrc = read('src/app/sitemap.ts');
-  const paths = [...(sitemapSrc.match(/STATIC_PATHS\s*=\s*\[([\s\S]*?)\]/)?.[1] ?? '').matchAll(/'([^']*)'/g)].map((m) => m[1]);
-  const articlePaths = new Set(articleBlocks.map((m) => m[1]));
-  for (const p of paths) {
-    if (!articlePaths.has(p) && !(p in pageUpdated)) {
-      report('sitemap', `${p || '/'} に更新日が無い（articles.ts の ARTICLES か PAGE_UPDATED に追加する）`);
-    }
-  }
-  // 逆に、存在しないページの日付だけが残っていないか
-  const pageDir = path.join(root, 'src/app/[locale]');
-  for (const p of paths) {
-    const dir = path.join(pageDir, p.replace(/^\//, ''));
-    if (!fs.existsSync(path.join(dir, 'page.tsx'))) report('sitemap', `${p || '/'} のページファイルが無い`);
-  }
-
-  // 逆方向。ページを足して STATIC_PATHS への追記を忘れると、sitemap に出ず hreflang も出ない。
-  // 記事を追加する作業でいちばん起きやすい取りこぼしなので、page.tsx の側から数える。
-  // canonical と hreflang の付け忘れも同じ走査で見る。
-  // 動的セグメント（[...rest] など）とルートグループは静的パスに出せないので降りない。
-  {
-    const declared = new Set(paths);
-    const inspect = (dir, rel) => {
-      const file = path.join(dir, 'page.tsx');
-      if (fs.existsSync(file)) {
-        if (!declared.has(rel)) {
-          report('sitemap', `${rel || '/'} に page.tsx があるのに sitemap.ts の STATIC_PATHS に無い（sitemap に出ず hreflang も出ない）`);
-        }
-        if (!/getAlternates/.test(fs.readFileSync(file, 'utf8'))) {
-          report('sitemap', `${rel || '/'} が @/utils/seo の getAlternates を呼んでいない（canonical と hreflang が出ない）`);
-        }
-      }
-      for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-        if (!e.isDirectory() || e.name.startsWith('[') || e.name.startsWith('(')) continue;
-        inspect(path.join(dir, e.name), `${rel}/${e.name}`);
-      }
-    };
-    inspect(pageDir, '');
+  const ads = read('public/ads.txt');
+  if (!ads.split(/\r?\n/).some((l) => l.trim() === `google.com, ${PUB_ID}, DIRECT, f08c47fec0942fa0`)) {
+    report('ads.txt', `public/ads.txt に「google.com, ${PUB_ID}, DIRECT, f08c47fec0942fa0」の行が無い`);
   }
 }
 
-/* ---------- 4. 権利表記 ---------- */
+// 3. 書き出し
+for (const [from] of FILES) {
+  if (!fs.existsSync(path.join(root, from))) report('書き出し', `${from} が無い（scripts/build_root.mjs が写せない）`);
+}
+
+// 4. 閉じたサイト。/wildrift は 410、ポータルの /ja・/en の下は 404 なので、どこからも指さない
+const TEXT_FILES = ['root/index.html', 'root/404.html', 'root/robots.txt', 'root/sitemap_index.xml', 'root/_redirects'];
+for (const f of TEXT_FILES) {
+  const body = read(f);
+  if (/\/wildrift\b/.test(body)) report('閉じたサイト', `${f} に /wildrift が残っている`);
+}
+for (const f of ['root/robots.txt', 'root/sitemap_index.xml']) {
+  if (/hub-game\.com\/sitemap\.xml/.test(read(f))) report('閉じたサイト', `${f} が閉じたポータルの /sitemap.xml を指している`);
+}
+for (const f of ['root/index.html', 'root/404.html']) {
+  const hrefs = [...read(f).matchAll(/href="([^"]+)"/g)].map((m) => m[1]);
+  for (const h of hrefs) {
+    if (/^(https:\/\/hub-game\.com)?\/(ja|en)(\/|$)/.test(h)) report('閉じたサイト', `${f} が閉じたポータルのページ ${h} を指している`);
+  }
+}
+
+// 5. 広告のコード。入口だけの画面とエラーページへの広告は、AdSense のポリシーで認められていない
+for (const f of ['root/index.html', 'root/404.html']) {
+  const body = read(f).replace(/<!--[\s\S]*?-->/g, '');
+  for (const word of ['adsbygoogle', 'pagead2.googlesyndication.com', 'googletagmanager.com', 'gtag(']) {
+    if (body.includes(word)) report('広告のコード', `${f} に ${word} がある`);
+  }
+}
+if (!read('root/index.html').includes(`<meta name="google-adsense-account" content="ca-${PUB_ID}">`)) {
+  report('広告のコード', 'root/index.html に AdSense の所有権の確認タグ（google-adsense-account）が無い');
+}
+
+// 6. 転送
 {
-  // 扱っているタイトルの権利者。サイトを足したらここにも足す。
-  // 目的は、3キーのどれかから権利者名が抜け落ちるのを止めること。
-  // 2026-09-10 に Moonton を追加した（MLBB を扱い始めたのに検査が2社のままだった）
-  const HOLDERS = ['Riot Games', 'Tencent', 'Moonton'];
-  const keys = [['Home', 'disclaimerText'], ['Terms', 'copyrightNote'], ['Disclaimer', 'copyrightsText']];
-  for (const [ns, key] of keys) {
-    for (const [lang, msgs] of [['ja', ja], ['en', en]]) {
-      const text = msgs[ns]?.[key] ?? '';
-      const missing = HOLDERS.filter((h) => !text.includes(h));
-      if (missing.length) {
-        report('権利表記', `messages/${lang}.json ${ns}.${key} に ${missing.join('・')} が入っていない`);
-      }
+  const lines = read('root/_redirects').split(/\r?\n/).map((l) => l.trim()).filter((l) => l && !l.startsWith('#'));
+  for (const l of lines) {
+    const [from, , code] = l.split(/\s+/);
+    if (/^\/(ja|en)\/?$/.test(from) && code !== '302') report('転送', `${from} が ${code}（302 にする）`);
+    if (from === '/') report('転送', '/ を転送している（/ は運営者のページを 200 で返す）');
+  }
+}
+
+// 7. 構造化データ
+{
+  const m = read('root/index.html').match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  if (!m) report('構造化データ', 'root/index.html に JSON-LD が無い');
+  else {
+    try {
+      const data = JSON.parse(m[1]);
+      const ids = (data['@graph'] ?? []).map((n) => n['@id']);
+      if (!ids.includes(ORG_ID)) report('構造化データ', `Organization の @id ${ORG_ID} が無い（HoK と MLBB の publisher がこれを指す）`);
+    } catch (e) {
+      report('構造化データ', `root/index.html の JSON-LD が読めない: ${e.message}`);
     }
   }
 }
 
-/* ---------- 5. 広告の整合 ---------- */
-{
-  const layout = read('src/app/[locale]/layout.tsx');
-  const hasAds = layout.includes('adsbygoogle.js');
-  const claimsAds = /AdSense/.test(ja.Privacy?.adsText ?? '') && /AdSense/.test(en.Privacy?.adsText ?? '');
-  if (claimsAds && !hasAds) report('広告', 'プライバシーポリシーは AdSense 利用を書いているが、layout.tsx に adsbygoogle.js が無い');
-  if (hasAds && !claimsAds) report('広告', 'layout.tsx に広告コードがあるのに、プライバシーポリシーに AdSense の記述が無い');
-  if (hasAds && !layout.includes("gtag('consent', 'default'")) report('広告', '広告コードがあるのに Consent Mode の既定値が無い（EEA 向け配信に必要）');
-
-  // アクセス解析も同じ考え方。2026-09-27 に Google アナリティクスを入れたとき、ポリシーは「利用していません」のままだった。
-  // 入れたら、使っていると書き、止め方（オプトアウトのアドオン）を載せる。サイト別に見るための content_group も要る
-  const hasGa = layout.includes('googletagmanager.com/gtag/js');
-  const gaText = [ja.Privacy?.analyticsText ?? '', en.Privacy?.analyticsText ?? ''];
-  const claimsGa = gaText.every((s) => /Google (?:Analytics|アナリティクス)/.test(s) && /<optout>/.test(s)) && !/利用していません|does not currently use/.test(gaText.join(' '));
-  if (hasGa && !claimsGa) report('解析', 'layout.tsx に Google アナリティクスがあるのに、プライバシーポリシー（Privacy.analyticsText）が利用と止め方を書いていない');
-  if (!hasGa && claimsGa) report('解析', 'プライバシーポリシーは Google アナリティクスの利用を書いているが、layout.tsx にタグが無い');
-  if (hasGa && !/content_group:\s*'portal'/.test(layout)) report('解析', "Google アナリティクスの config に content_group: 'portal' が無い（サイト統合後にサイト別に見られなくなる）");
-}
-
-/* ---------- 6. 更新日の鮮度 ---------- */
-// messages を変更した作業ツリーなのに、どの記事・ページの更新日も今日になっていなければ上げ忘れ。
-// 中身に関係ない作業なら SKIP_FRESHNESS_CHECK=1 で飛ばせる
-if (!process.env.SKIP_FRESHNESS_CHECK) {
-  let changed = '';
-  try {
-    changed = execSync('git status --porcelain -- messages src/app src/components src/data', { cwd: root }).toString();
-  } catch {
-    changed = '';
-  }
-  const touchedContent = changed.split('\n').some((l) => /messages\/(ja|en)\.json/.test(l));
-  if (touchedContent) {
-    const dates = [...articleBlocks.map((m) => m[3]), ...Object.values(pageUpdated)];
-    if (!dates.includes(today)) {
-      report('更新日',
-        `messages を変更しているのに、articles.ts のどの updated / PAGE_UPDATED も今日 (${today}) になっていない。` +
-        `\n      → 触ったページの日付を上げる。文言に関係ない作業なら SKIP_FRESHNESS_CHECK=1 npm run audit`);
-    }
-  }
-}
-
-/* ---------- 7. 姉妹サイトの URL ---------- */
-// サイト統合（2026-09-27、src/lib/siteOrigin.ts）で、姉妹サイトは hok.hub-game.com から hub-game.com/hok に移る。
-// 切り替えは SITE_ORIGINS の1か所で行うので、ほかに直書きがあると、そこだけサブドメインのまま残り 301 を1回通る。
-// 統合前の調べで、ガイド2本の3か所が定数を通さず直書きしていた
-// 統合後の形（hub-game.com/hok）の直書きも同じ理由で止める。コメントの行は見ない
-{
-  const SUBDOMAIN = /(?:hok|mlbb|wildrift)\.hub-game\.com|hub-game\.com\/(?:hok|mlbb|wildrift)\b/;
-  const COMMENT = /^\s*(?:\/\/|\/\*|\*|\{\/\*)/;
-  const ALLOW = new Set(['src/data/highlights.ts']);
-  const walk = (dir) =>
-    fs.readdirSync(path.join(root, dir), { withFileTypes: true }).flatMap((e) =>
-      e.isDirectory() ? walk(`${dir}/${e.name}`) : [`${dir}/${e.name}`]
-    );
-  for (const file of [...walk('src'), ...walk('messages')].filter((f) => /\.(tsx?|json|css)$/.test(f))) {
-    if (ALLOW.has(file)) continue;
-    read(file).split('\n').forEach((line, i) => {
-      if (SUBDOMAIN.test(line) && !COMMENT.test(line)) {
-        report('姉妹サイトの URL', `${file}:${i + 1} に姉妹サイトの URL がある。src/data/highlights.ts の sisterSiteUrl を使う`);
-      }
-    });
-  }
-}
-
-/* ---------- 結果 ---------- */
-if (problems.length === 0) {
-  console.log('✓ 監査OK: 問題は見つかりませんでした');
-  process.exit(0);
-} else {
-  console.error(`✗ 監査NG: ${problems.length} 件の問題`);
-  problems.forEach((p) => console.error('  ' + p));
+if (problems.length) {
+  console.error(`監査で ${problems.length} 件の問題が見つかった:\n${problems.map((p) => `  ${p}`).join('\n')}`);
   process.exit(1);
 }
+console.log('監査: 問題なし（ドメイン直下のファイル 7 項目）');
