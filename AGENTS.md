@@ -156,7 +156,7 @@ npm run build        ビルド
 - `/` の Organization（`https://hub-game.com/#organization`）を、HoK と MLBB の JSON-LD の publisher が @id で指している。
   運営者名や連絡先を変えるときは、`/`・HoK・MLBB の3か所をそろえる。about の「運営者」「掲載方針」の文も2サイトで同じ文にしてある
 - **`robots.txt` の Disallow は HoK と MLBB の `/api/latest` だけ。** 姉妹サイトの `robots.ts` が変わったら、ここも直す（直下の robots.txt しかクローラーに読まれない）
-- `/ja`・`/en` は `/` へ 302。301 にしない（訪問者のブラウザに残り、開け直す妨げになる）。301 は中身が1対1で対応する記事2本だけ
+- `/ja`・`/en` は `/` へ 302。301 にしない（訪問者のブラウザに残り、開け直す妨げになる）。301 は中身が1対1で対応する記事3本だけ（HoK のガイド、モバレのガイド、比較の記事。比較は 2026-11-15 にモバレの `/mlbb/ja/guide/hok-vs-mlbb` へ置き直した）
 - `wrangler.jsonc` の `routes`（hub-game.com のカスタムドメイン）は消さない。この Worker が apex の DNS の持ち主で、消すと /hok と /mlbb も止まる
 - `workers/legacy-sw/` は別の Worker。旧サブドメイン（hok・mlbb）の `/sw.js` に解除用のスクリプトを返す。最低1年は残す
 - GitHub Actions の `refresh-sister-data` は止めた（予約実行を外した）。姉妹サイトのデータを使わなくなったため
